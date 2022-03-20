@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Teams
+Type=Application
+Categories=Office
+Path=/usr/bin
+Icon=teams
+Exec=chromium --app=https://teams.microsoft.com

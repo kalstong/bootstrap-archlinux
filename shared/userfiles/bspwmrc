@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+script_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
+
+. $XDG_CONFIG_HOME/bspwm/bspwm.sh
+
+wm_kill_daemons
+wm_config_monitors
+wm_start_daemons

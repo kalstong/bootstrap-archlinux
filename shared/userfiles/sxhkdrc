@@ -1,0 +1,203 @@
+# --- bspwm: windows ---
+super + {h,j,k,l}
+	bspc node --focus {west,south,north,east}; \
+	nc_flash_window
+
+super + {q,shift + q}
+	bspc node {--close,--kill}
+
+super + period
+	nc_flash_window
+
+super + ctrl + {h,j,k,l}
+	bspc node --presel-dir {~west,~south,~north,~east}
+
+super + u
+	bspc node --focus older.urgent
+
+super + Tab
+	bspc node --focus last; nc_flash_window
+super + p
+	bspc node --focus last; nc_flash_window
+super + {i,o}
+	bspc wm --record-history off; \
+	bspc node --focus {older,newer}.local.window.!hidden.!sticky; \
+	nc_flash_window; \
+	bspc wm --record-history on
+super + shift + {button1,button3}
+	bspc wm --record-history off; \
+	bspc node --focus {older,newer}.local.window.!hidden.!sticky; \
+	nc_flash_window; \
+	bspc wm --record-history on
+
+super + apostrophe
+	bspc node --swap biggest.local --follow
+
+super + shift + {h,j,k,l}
+	bspc node --swap {west,south,north,east} --follow
+
+super + shift + {1-9,0}
+	bspc node --to-desktop focused:'^{1-9,10}'.local --follow
+
+super + {w,s,a,d}
+	bspc node --to-monitor {north,south,west,east} --follow
+
+super + ctrl + button1
+	bspc node --state ~floating
+super + ctrl + button3
+	bspc node --state ~fullscreen
+super + ctrl + button2
+	bspc node --state ~tiled
+super + {f,t,z}
+	bspc node --state {~floating,~tiled,~fullscreen}
+super + shift + {f,t}
+	selection=$(bspc query --nodes --node .window.!hidden.!sticky --desktop); \
+	for node in ${selection}; do bspc node $node --state {~floating,~tiled}; done
+
+super + m
+	bspc node --flag hidden
+super + shift + m
+	nid=$(bspc query --nodes --node .local.window.hidden | tail -1); \
+	[ "$nid" ] && \
+	bspc node $nid --flag hidden && \
+	bspc node $nid --focus
+
+super + {plus,minus}
+	bspc node @/.local --rotate {90,-90}
+
+super + v
+	bspc node --to-node older.!automatic.local; \
+	bspc node --state tiled
+
+super + alt + {Left,Down,Up,Right}
+	bspc node --resize {left -15 0,bottom 0 15,top 0 -15,right 15 0}
+super + alt + shift + {Left,Down,Up,Right}
+	bspc node --resize {right -15 0,top 0 15,bottom 0 -15,left 15 0}
+super + alt + {h,j,k,l}
+	bspc node --resize {left -5 0,bottom 0 5,top 0 -5,right 5 0}
+super + alt + shift + {h,j,k,l}
+	bspc node --resize {right -5 0,top 0 5,bottom 0 -5,left 5 0}
+super + ctrl + alt + {h,j,k,l}
+	bspc node --move {-5 0,0 5,0 -5,5 0}
+super + ctrl + {q,w,e,a,s,d,z,x,c}
+	source $HOME/.bashrc && move-window {top-left,top-center,top-right,center-left,center,center-right,bottom-left,bottom-center,bottom-right}
+
+
+# --- bspwm: desktops ---
+super + {1-9,0}
+	bspc desktop --focus focused:'^{1-9,10}'.local
+
+super + shift + {a,d}
+	bspc desktop --swap {prev,next}.local.occupied --follow
+
+super + shift + p
+	bspc desktop --focus last; nc_flash_window
+super + shift + {i,o}
+	bspc desktop --focus {prev,next}; nc_flash_window
+
+# --- bspwm: monitors ---
+super + comma
+	bspc monitor --focus next; \
+	nc_flash_window
+
+
+# --- system ---
+# super + alt + Return
+# 	cursorx=$(xdotool getmouselocation --shell | grep -oP "X=\K\d+"); \
+# 	cursory=$(xdotool getmouselocation --shell | grep -oP "Y=\K\d+"); \
+# 	WINIT_X11_SCALE_FACTOR=1 alacritty \
+# 		--option window.position.x=$(($cursorx - 50)) \
+#		--option window.position.y=$(($cursory - 50)) \
+# 		--command tmux
+
+super + {Insert,Home,Page_Up}
+	WINIT_X11_SCALE_FACTOR=1 alacritty \
+		--option window.dimensions.columns={80,160,240} \
+		--option window.dimensions.lines=30 \
+		--command tmux
+
+super + {Delete,End,Page_Down}
+	WINIT_X11_SCALE_FACTOR=1 alacritty \
+		--option window.dimensions.columns={80,160,240} \
+		--option window.dimensions.lines=60 \
+		--command tmux
+
+super + Return
+	WINIT_X11_SCALE_FACTOR=1 alacritty \
+		--option window.dimensions.columns=80 \
+		--option window.dimensions.lines=30 \
+		--command tmux
+
+super + shift + Return
+	WINIT_X11_SCALE_FACTOR=1 alacritty \
+		--option window.dimensions.columns=240 \
+		--option window.dimensions.lines=60 \
+		--command tmux
+
+super + shift + n
+	/usr/bin/firefox-esr -private-window
+
+super + @space
+	/usr/bin/rofi -modi drun -show drun -show-icons \
+		-matching fuzzy -sort -sorting-method fzf \
+		-me-select-entry '' -me-accept-entry 'MousePrimary' -theme rofi_1440p
+
+super + shift + @space
+	/usr/bin/rofi -modi window -show window -show-icons \
+		-matching fuzzy -sort -sorting-method fzf \
+		-me-select-entry '' -me-accept-entry 'MousePrimary' -theme rofi_1440p
+
+super + Escape
+	pkill -USR1 -x sxhkd
+
+super + ctrl + shift + r
+	bspc wm --restart
+
+super + ctrl + shift + p
+	systemctl poweroff
+
+super + ctrl + shift + s
+	slock systemctl suspend
+
+super + ctrl + shift + l
+	slock
+
+#super + e
+#	thunar
+
+super + less
+	pgrep -u $UID -x tint2 && \
+		killall -q tint2 || \
+		tint2 &> "$HOME/.local/share/tint2/log" &
+
+Print
+	source $HOME/.bashrc && screenshot
+
+XF86MonBrightness{Up,Down}
+	brightnessctl set {+1%,1%-}; \
+	echo "$(brightnessctl get)" > "$XDG_CONFIG_HOME/.brightnessctl"
+
+XF86AudioMute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
+XF86Audio{Lower,Raise}Volume
+	pactl set-sink-volume @DEFAULT_SINK@ {-1%,+1%}
+
+XF86AudioPlay
+	playerctl play-pause --all-players
+XF86AudioPause
+	playerctl play-pause --all-players
+XF86AudioStop
+	playerctl pause --all-players
+XF86AudioPrev
+	playerctl previous --all-players
+XF86AudioNext
+	playerctl next --all-players
+
+XF86AudioMicMute
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle
+shift + XF86AudioMute
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle
+shift + XF86AudioLowerVolume +
+	pactl set-source-volume @DEFAULT_SOURCE@ -1%
+shift + XF86AudioRaiseVolume +
+	pactl set-source-volume @DEFAULT_SOURCE@ +1%

@@ -1,0 +1,16 @@
+Defaults timestamp_timeout=<sudo-timeout-min>
+Defaults passwd_timeout=0
+Defaults:%wheel targetpw
+%wheel	ALL=(ALL) ALL
+Cmnd_Alias CPUPWR = /usr/bin/cpupower
+Cmnd_Alias IGPUFREQ = /usr/bin/intel_gpu_frequency
+Cmnd_Alias IGPUTOP = /usr/bin/intel_gpu_top
+Cmnd_Alias IOTOP = /usr/bin/iotop
+Cmnd_Alias KBDR = /usr/bin/kbdrate
+Cmnd_Alias MNT = /usr/bin/mount
+Cmnd_Alias PS = /usr/bin/ps
+Cmnd_Alias SLABTOP = /usr/bin/slabtop
+Cmnd_Alias UMNT = /usr/bin/umount
+Cmnd_Alias X86PPOL = /usr/bin/x86_energy_perf_policy
+root ALL=(ALL) ALL
+<bt_user> ALL=(ALL) NOPASSWD: CPUPWR,IGPUFREQ,IGPUTOP,IOTOP,KBDR,MNT,PS,SLABTOP,UMNT,X86PPOL

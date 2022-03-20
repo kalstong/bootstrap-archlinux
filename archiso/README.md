@@ -1,0 +1,4 @@
+- To build the ISO file: `$ sudo ./build.sh`.
+- To burn the ISO file: `$ ./burn.sh </dev/???>`.
+- To add/remove pkgs to the live image see `packages.x86_64`.
+- For more information about _archiso_ see https://wiki.archlinux.org/index.php/Archiso

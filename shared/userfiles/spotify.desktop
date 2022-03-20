@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Spotify
+Type=Application
+Categories=Multimedia
+Path=/usr/bin
+Icon=spotify
+Exec=chromium --app=https://open.spotify.com

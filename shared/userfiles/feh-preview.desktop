@@ -1,0 +1,8 @@
+# Main `Categories' are available here:
+# https://specifications.freedesktop.org/menu-spec/latest/apa.html#main-category-registry
+[Desktop Entry]
+Name=Image Preview with FEH
+Type=Application
+Categories=Graphics
+Path=/usr/bin
+Exec=feh --geometry 1280x800 --scale-down --auto-zoom --zoom fill

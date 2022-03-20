@@ -1,0 +1,18 @@
+# Based on https://wiki.archlinux.org/index.php/OpenSSH
+# -----------------------------------------------------
+
+AllowUsers <bt_user>
+AuthenticationMethods publickey,keyboard-interactive:pam
+AuthorizedKeysFile .ssh/authorized_keys
+ChallengeResponseAuthentication yes
+HostKey /etc/ssh/ssh_host_ed25519_key
+PasswordAuthentication yes
+PermitEmptyPasswords no
+PermitRootLogin no
+Port 16012
+PrintMotd no
+PubkeyAuthentication yes
+MaxAuthTries 3
+MaxSessions 3
+UsePAM yes
+Subsystem sftp /usr/lib/ssh/sftp-server

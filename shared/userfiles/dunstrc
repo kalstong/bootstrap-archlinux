@@ -1,0 +1,102 @@
+# Check /etc/dunst/dunstrc for examples.
+# Check man 5 dunst for documentation.
+# vim: ft=cfg
+
+[global]
+
+# Display
+# -------
+follow = mouse
+frame_width = 4
+height = 250
+horizontal_padding = 8
+idle_threshold = 120
+indicate_hidden = yes
+monitor = 0
+notification_limit = 7
+offset = 25x60
+origin = top-right
+padding = 8
+separator_color = frame
+separator_height = 4
+shrink = no
+sort = yes
+transparency = 0
+width = (0,500)
+
+# Text
+# ----
+font = <monospace-font-size>
+line_height = 0
+markup = full
+format = "<b>%s</b>\n%b"
+alignment = left
+vertical_alignment = center
+show_age_threshold = 1m
+word_wrap = no
+ellipsize = middle
+ignore_newline = no
+stack_duplicates = true
+hide_duplicate_count = false
+show_indicators = false
+
+# Icons
+# -----
+icon_position = left
+min_icon_size = 0
+max_icon_size = 32
+
+# History
+# -------
+sticky_history = yes
+history_length = 20
+
+# Misc/Advanced
+# -------------
+browser = /usr/bin/brave
+always_run_script = true
+title = Dunst
+class = Dunst
+corner_radius = 0
+ignore_dbusclose = false
+
+# Mouse
+# -----
+mouse_left_click = do_action, close_current
+mouse_middle_click = close_current
+mouse_right_click = close_all
+
+
+[experimental]
+per_monitor_dpi = false
+
+
+[shortcuts]
+# close = ctrl+space
+# close_all = ctrl+shift+space
+# history = ctrl+grave
+# context = ctrl+shift+period
+
+
+[urgency_low]
+background = "<urgency-low-bg>"
+foreground = "<urgency-low-fg>"
+frame_color = "<urgency-low-frame>"
+timeout = 10
+#icon = /path/to/icon
+
+
+[urgency_normal]
+background = "<urgency-normal-bg>"
+foreground = "<urgency-normal-fg>"
+frame_color = "<urgency-normal-frame>"
+timeout = 10
+#icon = /path/to/icon
+
+
+[urgency_critical]
+background = "<urgency-critical-bg>"
+foreground = "<urgency-critical-fg>"
+frame_color = "<urgency-critical-frame>"
+timeout = 0
+#icon = /path/to/icon

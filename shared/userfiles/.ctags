@@ -1,0 +1,17 @@
+--recurse=yes
+--exclude=*.tar.*
+--exclude=*.min.css
+--exclude=*.min.js
+--exclude=.git
+--exclude=.map
+--exclude=.pdb
+--exclude=.pyc
+--exclude=.sln
+--exclude=.swp
+--exclude=.tmp
+--exclude=coverage
+--exclude=cscope.*
+--exclude=dist
+--exclude=min
+--exclude=node_modules
+--exclude=tags
