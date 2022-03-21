@@ -8,7 +8,7 @@ xrandr --output eDP --primary --mode 1920x1080 --pos 0x0 --rotate normal \
 
 elif [ "$1" = "home" ]; then
 xrandr --output eDP --primary --mode 1920x1080 --pos 0x1440 --rotate normal \
-       --output DisplayPort-0 --mode 2560x1440 --pos 733x0 --rotate normal \
+       --output DisplayPort-0 --mode 2560x1440 --pos 1016x0 --rotate normal \
        --output DisplayPort-1 --off \
        --output DisplayPort-2 --off
 
