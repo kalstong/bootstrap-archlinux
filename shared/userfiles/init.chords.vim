@@ -72,15 +72,16 @@ nnoremap <Leader>re :%s///gc<left><left><left><left>
 nnoremap <Leader>rw :%s/<C-r><C-w>//gc<left><left><left>
 
 	" Toggle visual elements
-nnoremap <Leader>vn1 :set number<CR>
-nnoremap <Leader>vl1 :set list<CR>
-nnoremap <Leader>vc1 :set colorcolumn=101<CR>
-nnoremap <Leader>vc2 :set colorcolumn=121<CR>
-nnoremap <Leader>vs1 :syntax on<CR>
 nnoremap <Leader>vn0 :set nonumber<CR>
+nnoremap <Leader>vn1 :set number<CR>
 nnoremap <Leader>vl0 :set nolist<CR>
+nnoremap <Leader>vl1 :set list<CR>
 nnoremap <Leader>vc0 :set colorcolumn=0<CR>
+nnoremap <Leader>vc1 :set colorcolumn=80<CR>
+nnoremap <Leader>vc2 :set colorcolumn=100<CR>
+nnoremap <Leader>vc3 :set colorcolumn=120<CR>
 nnoremap <Leader>vs0 :syntax off<CR>
+nnoremap <Leader>vs1 :syntax on<CR>
 
 	" Navigation
 nnoremap - :e .<CR>
