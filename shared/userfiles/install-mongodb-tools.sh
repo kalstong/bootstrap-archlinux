@@ -37,7 +37,7 @@ Icon=mongodb-compass
 EOF
 
 [ "$1" = "--also-install-tools" ] && {
-	mongodb_tools_pkg="https://fastdl.mongodb.org/tools/db/mongodb-database-tools-debian10-x86_64-100.5.1.tgz";
+	mongodb_tools_pkg="https://fastdl.mongodb.org/tools/db/mongodb-database-tools-debian10-x86_64-100.5.2.tgz";
 	echo "Downloading $mongodb_tools_pkg ..." &&
 	curl -sS --connect-timeout 13 --retry 5 --retry-delay 2 -L "$mongodb_tools_pkg" -o /tmp/mongodb-tools.tgz &&
 
