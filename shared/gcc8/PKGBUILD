@@ -20,7 +20,7 @@ license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
 makedepends=(binutils libmpc doxygen python)
 checkdepends=(dejagnu inetutils)
-options=(!emptydirs)
+options=(!emptydirs !debug)
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.xz)
 sha256sums=('d308841a511bb830a6100397b0042db24ce11f642dab6ea6ee44842e5325ed50'
