@@ -10,9 +10,6 @@
 
 pkgname=(gcc8 gcc8-libs)
 pkgver=8.5.0
-_pkgver=8
-_majorver=${pkgver:0:1}
-_islver=0.21
 pkgrel=1
 pkgdesc='GNU Compiler Collection 8'
 arch=(x86_64)
@@ -21,6 +18,9 @@ url='http://gcc.gnu.org'
 makedepends=(binutils libmpc doxygen python)
 checkdepends=(dejagnu inetutils)
 options=(!emptydirs !debug)
+
+_pkgver=8
+_islver=0.21
 source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
         http://isl.gforge.inria.fr/isl-${_islver}.tar.xz)
 sha256sums=('d308841a511bb830a6100397b0042db24ce11f642dab6ea6ee44842e5325ed50'
