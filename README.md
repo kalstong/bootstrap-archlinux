@@ -16,3 +16,15 @@ Everything else:
 - Pacman: `sudo pacman -Sy && pacman -Qu`, `sudo pacman -Syu`.
 - PiP: `pip list --user --outdated`, `pip install --user --upgrade <pkg>`.
 - Vim plugins: `:PlugUpdate`, `:PlugUpgrade`, `:COQdeps`, `:TSUpdate`, `:UpdateRemotePlugins`.
+
+## Tasks
+- GCC8
+  * Remove Fortran from the build script.
+  * Check Arch's GCC11 script for optimizations like PGO, -march=native ...
+- GCC9
+  * Remove Fortran from the build script.
+  * Check Arch's GCC11 script for optimizations like PGO, -march=native ...
+- GCC10
+  * Remove Ada and Fortran from the build script.
+  * Check Arch's GCC11 script for optimizations like PGO, -march=native ...
+- GCC11: Start preparing the build script based on Arch's.
