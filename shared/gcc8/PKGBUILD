@@ -8,13 +8,13 @@
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
 # NOTE: libtool requires rebuilt with each new gcc version
 
-pkgname=(gcc8 gcc8-libs gcc8-fortran)
+pkgname=(gcc8 gcc8-libs)
 pkgver=8.5.0
 _pkgver=8
 _majorver=${pkgver:0:1}
 _islver=0.21
 pkgrel=1
-pkgdesc='The GNU Compiler Collection (8.x.x)'
+pkgdesc='GNU Compiler Collection 8'
 arch=(x86_64)
 license=(GPL LGPL FDL custom)
 url='http://gcc.gnu.org'
@@ -66,7 +66,7 @@ build() {
 		--mandir=/usr/share/man \
 		--infodir=/usr/share/info \
 		--with-bugurl=https://bugs.archlinux.org/ \
-		--enable-languages=c,c++,fortran,lto \
+		--enable-languages=c,c++,lto \
 		--enable-shared \
 		--enable-threads=posix \
 		--enable-libmpx \
@@ -188,23 +188,4 @@ package_gcc8() {
 
 	# Remove conflicting files
 	rm -r "$pkgdir"/usr/share/locale
-}
-
-package_gcc8-fortran() {
-	pkgdesc='Fortran front-end for GCC (8.x.x)'
-	depends=("gcc8=$pkgver-$pkgrel")
-
-	cd gcc-build
-	make -C $CHOST/libgfortran DESTDIR="$pkgdir" install-cafexeclibLTLIBRARIES \
-		install-{toolexeclibDATA,nodist_fincludeHEADERS}
-	make -C $CHOST/libgomp DESTDIR="$pkgdir" install-nodist_fincludeHEADERS
-	make -C gcc DESTDIR="$pkgdir" fortran.install-common
-	install -Dm755 gcc/f951 "$pkgdir/${_libdir}/f951"
-
-	ln -s gfortran-8 "$pkgdir/usr/bin/f95-8"
-
-	# Install Runtime Library Exception
-	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
-		"$pkgdir/usr/share/licenses/$pkgname/"
 }
