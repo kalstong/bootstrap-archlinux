@@ -28,3 +28,11 @@ Everything else:
   * Remove Ada and Fortran from the build script.
   * Check Arch's GCC11 script for optimizations like PGO, -march=native ...
 - GCC11: Start preparing the build script based on Arch's.
+- gpg: Improve helper functions to encrypt/decrypt text or binary files.
+- Polybar
+  * Rewrite all my plugins in C.
+  * Do a CPU usage plugin that reads `/proc/stat`.
+- mnt: Create a mount point with the partition's label. Check the `--json`
+  switch of `lsblk` and use `jq` to parse the output.
+- Undervolt: Do it through BIOS instead of software for  NUC8i7-HVK, 8700K,
+  9900K, 3950X.
