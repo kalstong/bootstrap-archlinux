@@ -2,7 +2,8 @@
 
 Some packages need manual intervention to check for updates:
 - For Azure Data Studio see [here](https://github.com/microsoft/azuredatastudio/releases).
-- For Brave see [here](https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md).
+- For Brave see [here](https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md)
+  (for Chromium [here](https://chromiumdash.appspot.com/releases?platform=Linux)).
 - For Firefox ESR see [here](https://www.mozilla.org/firefox/organizations/notes/).
 - For Go version manager (g) see [here](https://github.com/stefanmaric/g).
 - For MongoDB Compass see [here](https://www.mongodb.com/try/download/compass).
