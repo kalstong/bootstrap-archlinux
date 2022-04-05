@@ -3,7 +3,7 @@
 rm -rf /tmp/mongodb*
 
 #mongodb_pkg="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-debian10-5.0.2.tgz"
-mongodb_compass_pkg="https://github.com/mongodb-js/compass/releases/download/v1.31.0/mongodb-compass-isolated-1.31.0-linux-x64.tar.gz"
+mongodb_compass_pkg="https://github.com/mongodb-js/compass/releases/download/v1.31.1/mongodb-compass-isolated-1.31.1-linux-x64.tar.gz"
 mongodb_compass_icon="https://raw.githubusercontent.com/mongodb-js/compass/main/packages/compass/src/app/images/compass-dialog-icon.png"
 
 #echo "Downloading $mongodb_pkg ..." &&
