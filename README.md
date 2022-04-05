@@ -19,6 +19,8 @@ Everything else:
 - Vim plugins: `:PlugUpdate`, `:PlugUpgrade`, `:COQdeps`, `:TSUpdate`, `:UpdateRemotePlugins`.
 
 ## Tasks
+- Brave: Set up my own PKGBUILD.
+- Firefox ESR: Set up my own PKGBUILD.
 - GCC8
   * Remove Fortran from the build script.
   * Check Arch's GCC11 script for optimizations like PGO, -march=native ...
