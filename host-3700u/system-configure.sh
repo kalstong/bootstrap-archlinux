@@ -141,8 +141,12 @@ _dns="static domain_name_servers=${_dns_ipv4} ${_dns_ipv6}"
 sudo mkdir -p /etc/docker
 echo "{\"data-root\": \"/home/$bt_user/.cache/docker\"}" > /etc/docker/daemon.json
 
+cp /etc/fwupd/uefi_capsule.conf /etc/fwupd/uefi_capsule.conf.bak
+cp ../shared/sysfiles/fwupd.conf /etc/fwupd/uefi_capsule.conf
+
 cp ../shared/sysfiles/igvt.conf /etc/modules-load.d/
-mkdir -p /etc/iwd && cp ../shared/sysfiles/iwd.conf /etc/iwd/main.conf
+mkdir -p /etc/iwd &&
+	cp ../shared/sysfiles/iwd.conf /etc/iwd/main.conf
 
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 cp ../shared/sysfiles/sshd_config /etc/ssh/sshd_config

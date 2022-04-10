@@ -21,8 +21,6 @@ Everything else:
 ## Tasks
 - Brave: Set up my own PKGBUILD.
 - Firefox ESR: Set up my own PKGBUILD.
-- fwupd: Add fwupd to the pkgs list and
-  [configure the EFI partition](https://wiki.archlinux.org/title/Fwupd#UEFI_ESP_partition_not_detected_or_configured)
 - GCC8
   * Remove Fortran from the build script.
   * Check Arch's GCC11 script for optimizations like PGO, -march=native ...
