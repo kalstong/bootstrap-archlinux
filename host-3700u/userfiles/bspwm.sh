@@ -80,7 +80,7 @@ wm_start_daemons () {
 	export BKL_ICON="$(echo -e "\uf0eb ")";
 	SXHKD_SHELL=/usr/bin/bash
 
-	random-wallpaper &
+	set-wallpaper &
 
 	rm -rf "$HOME/.local/share/picom/log"
 	[ ! -p "$HOME/.local/share/polybar/polytimer-fifo" ] &&

@@ -618,6 +618,7 @@ random-wallpaper () {
 
 		local img=$(ls "$WALLPAPERS/$tod" | shuf -n 1)
 		feh --bg-fill "$WALLPAPERS/$tod/$img"
+		echo "$WALLPAPERS/$tod/$img" > /tmp/wallpaper
 	else
 		echo "You're not running a graphical session."
 	fi
@@ -661,24 +662,36 @@ secrm () {
 
 select-wallpaper () {
 	if [ -n "$DISPLAY" ]; then
-		[ -f "$1" ] && feh --bg-fill "$1" && return
+		[ -f "$1" ] && feh --bg-fill "$1" &&
+			echo "$1" > /tmp/wallpaper && return
 
 		local wallpaper=""
 		local hour=$(date '+%H')
 
 		if [ $hour -ge 6 ] && [ $hour -lt 14 ]; then
 			wallpaper=$(sxiv -o "$WALLPAPERS/morning")
-			[ -n "$wallpaper" ] && feh --bg-fill "$wallpaper"
+			[ -n "$wallpaper" ] &&
+				feh --bg-fill "$wallpaper" &&
+				echo "$wallpaper" > /tmp/wallpaper
 		elif [ $hour -ge 14 ] && [ $hour -lt 20 ]; then
 			wallpaper=$(sxiv -o "$WALLPAPERS/afternoon")
-			[ -n "$wallpaper" ] && feh --bg-fill "$wallpaper"
+			[ -n "$wallpaper" ] &&
+				feh --bg-fill "$wallpaper" &&
+				echo "$wallpaper" > /tmp/wallpaper
 		else
 			wallpaper=$(sxiv -o "$WALLPAPERS/night")
-			[ -n "$wallpaper" ] && feh --bg-fill "$wallpaper"
+			[ -n "$wallpaper" ] &&
+				feh --bg-fill "$wallpaper" &&
+				echo "$wallpaper" > /tmp/wallpaper
 		fi
 	else
 		echo "You're not running a graphical session."
 	fi
+}
+
+set-wallpaper () {
+[ -f /tmp/wallpaper ] && feh --bg-fill "$(cat /tmp/wallpaper)" && return
+	random-wallpaper
 }
 
 shup () {

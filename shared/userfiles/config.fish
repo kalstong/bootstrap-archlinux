@@ -197,6 +197,10 @@ function select-wallpaper --description "Select the wallpapers from a slideshow"
 	bash -l -c "select-wallpaper"
 end
 
+function set-wallpaper --description "Reapplies the current wallpapers or picks a random one"
+	bash -l -c "set-wallpaper"
+end
+
 function shup --description "Evaluate Bash commands out of a file"
 	bash -i -c "shup $argv"
 end
