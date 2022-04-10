@@ -2,7 +2,7 @@
 # https://github.com/archlinux/svntogit-community/blob/51c7f3215ef409e1f28727e05cffd24fc31cf0cb/gcc8/trunk/PKGBUILD
 
 # Maintainer: Sven-Hendrik Haase <svenstaro@gmail.com>
-# Contributor:  Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 
 # toolchain build order: linux-api-headers->glibc->binutils->gcc->binutils->glibc
@@ -21,8 +21,10 @@ options=(!emptydirs !debug)
 
 _pkgver=8
 _islver=0.21
-source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
-        http://isl.gforge.inria.fr/isl-${_islver}.tar.xz)
+source=(
+	https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz
+	https://libisl.sourceforge.io/isl-${_islver}.tar.xz
+)
 sha256sums=('d308841a511bb830a6100397b0042db24ce11f642dab6ea6ee44842e5325ed50'
             '777058852a3db9500954361e294881214f6ecd4b594c00da5eee974cd6a54960')
 
@@ -119,7 +121,6 @@ package_gcc8-libs() {
 	rm -f "$pkgdir/$_libdir/libgcc_eh.a"
 
 	for lib in libatomic \
-		libgfortran \
 		libgomp \
 		libitm \
 		libquadmath \

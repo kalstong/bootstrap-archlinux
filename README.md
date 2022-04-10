@@ -20,23 +20,15 @@ Everything else:
 - Vim plugins: `:PlugUpdate`, `:PlugUpgrade`, `:COQdeps`, `:TSUpdate`, `:UpdateRemotePlugins`.
 
 ## Tasks
-- Brave: Set up my own PKGBUILD.
-- Firefox ESR: Set up my own PKGBUILD.
-- GCC8
-  * Remove Fortran from the build script.
+- Create a mount point with the partition's label. Check the `--json`
+  switch of `lsblk` and use `jq` to parse the output.
+- GCC9, GCC10
+  * Fix ISL source URL.
+  * Remove Ada & Fortran from the build script.
   * Check Arch's GCC11 script for optimizations like PGO, -march=native ...
-- GCC9
-  * Remove Fortran from the build script.
-  * Check Arch's GCC11 script for optimizations like PGO, -march=native ...
-- GCC10
-  * Remove Ada and Fortran from the build script.
-  * Check Arch's GCC11 script for optimizations like PGO, -march=native ...
-- GCC11: Start preparing the build script based on Arch's.
-- gpg: Improve helper functions to encrypt/decrypt text or binary files.
+- Improve GPG helper functions to encrypt/decrypt text or binary files.
 - Polybar
   * Rewrite all my plugins in C.
   * Do a CPU usage plugin that reads `/proc/stat`.
-- mnt: Create a mount point with the partition's label. Check the `--json`
-  switch of `lsblk` and use `jq` to parse the output.
-- Undervolt: Do it through BIOS instead of software for  NUC8i7-HVK, 8700K,
-  9900K, 3950X.
+- Set BIOS undervolt for NUC8i7-HVK, 8700K, 9900K, 3950X.
+- Start preparing GCC11 build script based on Arch's.
