@@ -185,16 +185,16 @@ archl_pacman_core=(
 )
 archl_pacman_system=(
 	avahi bat bc bluez brightnessctl bspwm cpupower dash dhcpcd dunst efibootmgr
-	exa exfatprogs f2fs-tools fd fish fscrypt fzf gptfdisk gnupg gocryptfs iwd
-	libnotify lz4 man-db nss-mdns openbsd-netcat parted pbzip2 picom pigz playerctl
-	pulseaudio redshift ripgrep sxhkd tint2 tmux unzip usleep xclip xdg-user-dirs
-	xdg-utils xdotool xorg-server xorg-xinit xorg-xinput xorg-xprop xorg-xrandr
-	xorg-xset xorg-xsetroot zip zstd
+	exa exfatprogs f2fs-tools fd fish fscrypt fwupd fzf gptfdisk gnupg gocryptfs
+	iwd libnotify lz4 man-db nss-mdns openbsd-netcat parted pbzip2 picom pigz
+	playerctl pulseaudio redshift ripgrep sxhkd tint2 tmux unzip usleep xclip
+	xdg-user-dirs xdg-utils xdotool xorg-server xorg-xinit xorg-xinput
+	xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
 )
 archl_pacman_tools=(
-	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop curl
-	edk2-ovmf entr freerdp hey htop inotify-tools iotop jq libva-utils lfs lshw
-	lsof mesa-demos neovim nnn openconnect openssh openvpn p7zip qemu
+	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop
+	curl edk2-ovmf entr freerdp hey htop inotify-tools iotop jq libva-utils lfs
+	lshw lsof mesa-demos neovim nnn openconnect openssh openvpn p7zip qemu
 	qemu-arch-extra radeontop rsync time tree turbostat upx usbutils vkmark
 )
 archl_pacman_development=(
