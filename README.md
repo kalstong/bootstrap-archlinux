@@ -12,6 +12,7 @@ Some packages need manual intervention to check for updates:
 
 Everything else:
 - AUR: `git fetch`, `makepkg -sirc`.
+- Fwupd: `fwupdmgr get-devices`, `fwupdmgr refresh`, `fwupdmgr get-updates`, `fwupdmgr update`.
 - Golang: `g list-all`, `g install <version>`.
 - Node.js/NPM: `nvm ls-remote --lts=fermium`, `nvm install <pkg_version>`.
 - Pacman: `sudo pacman -Sy && pacman -Qu`, `sudo pacman -Syu`.
