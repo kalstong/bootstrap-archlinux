@@ -26,6 +26,9 @@ Everything else:
   * Fix ISL source URL.
   * Remove Ada & Fortran from the build script.
   * Check Arch's GCC11 script for optimizations like PGO, -march=native ...
+- GCC8, GCC9, GCC10 and GCC11 for ARM T32, A32 and A64. See
+  [Instruction Sets](https://developer.arm.com/architectures/instruction-sets)
+  for more details about each architecture.
 - Improve GPG helper functions to encrypt/decrypt text or binary files.
 - Polybar
   * Rewrite all my plugins in C.
