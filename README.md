@@ -9,6 +9,7 @@ Some packages need manual intervention to check for updates:
 - For MongoDB Compass see [here](https://www.mongodb.com/try/download/compass).
 - For Nerd Fonts see [here](https://github.com/ryanoasis/nerd-fonts/releases).
 - For Node.js version manage (NVM) see [here](https://github.com/nvm-sh/nvm/releases).
+- For NVFLASH see [here](https://www.techpowerup.com/download/nvidia-nvflash/).
 
 Everything else:
 - AUR: `git fetch`, `makepkg -sirc`.
