@@ -123,6 +123,10 @@ has-cmd () {
 	command -v "$1" &> /dev/null
 }
 
+logout () {
+	. "$HOME/.config/polybar/terminate-session.sh"
+}
+
 makefs () {
 	local fs=$1
 	local part=$(echo "$2" | sed -e 's/^[[:space:]]*//')

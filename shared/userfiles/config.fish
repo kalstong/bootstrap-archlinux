@@ -143,6 +143,10 @@ function qemu-start-win --description "Starts a QEMU Windows VM"
 	bash -l -c "qemu-start-win $argv"
 end
 
+function logout --description "Kill current user session"
+	bash -i -c "logout"
+end
+
 function makefs --description "Create a filesystem"
 	bash -i -c "makefs $argv"
 end

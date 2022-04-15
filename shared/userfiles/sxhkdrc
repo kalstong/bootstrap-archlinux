@@ -150,17 +150,20 @@ super + shift + @space
 super + Escape
 	pkill -USR1 -x sxhkd
 
-super + ctrl + shift + r
-	bspc wm --restart
+super + ctrl + shift + k
+	source "$XDG_CONFIG_HOME/polybar/terminate-session.sh"
+
+super + ctrl + shift + l
+	slock
 
 super + ctrl + shift + p
 	systemctl poweroff
 
+super + ctrl + shift + r
+	bspc wm --restart
+
 super + ctrl + shift + s
 	slock systemctl suspend
-
-super + ctrl + shift + l
-	slock
 
 #super + e
 #	thunar
