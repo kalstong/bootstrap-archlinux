@@ -2,17 +2,18 @@
 
 rm -rf /tmp/mongodb*
 
+compass_ver="1.31.1"
 #mongodb_pkg="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-debian10-5.0.2.tgz"
-mongodb_compass_pkg="https://github.com/mongodb-js/compass/releases/download/v1.31.1/mongodb-compass-isolated-1.31.1-linux-x64.tar.gz"
-mongodb_compass_icon="https://raw.githubusercontent.com/mongodb-js/compass/main/packages/compass/src/app/images/compass-dialog-icon.png"
+compass_pkg="https://github.com/mongodb-js/compass/releases/download/v${compass_ver}/mongodb-compass-isolated-${compass_ver}-linux-x64.tar.gz"
+compass_icon="https://raw.githubusercontent.com/mongodb-js/compass/main/packages/compass/src/app/images/compass-dialog-icon.png"
 
 #echo "Downloading $mongodb_pkg ..." &&
 #curl -sS --connect-timeout 13 --retry 5 --retry-delay 2 -L "$mongodb_pkg" -o /tmp/mongodb.tgz &&
-echo "Downloading $mongodb_compass_pkg ..." &&
+echo "Downloading $compass_pkg ..." &&
 curl -sS --connect-timeout 13 --retry 5 --retry-delay 2 -H 'Accept:application/vnd.github.v3.raw' \
-	-L "$mongodb_compass_pkg" -o /tmp/mongodb-compass.tgz &&
+	-L "$compass_pkg" -o /tmp/mongodb-compass.tgz &&
 curl -sS --connect-timeout 13 --retry 5 --retry-delay 2 -H 'Accept:application/vnd.github.v3.raw' \
-	-L "$mongodb_compass_icon" -o /tmp/mongodb-compass.png &&
+	-L "$compass_icon" -o /tmp/mongodb-compass.png &&
 
 #mkdir -p /tmp/mongodb /tmp/mongodb-compass &&
 #tar fvxz /tmp/mongodb.tgz -C /tmp/mongodb/ --wildcards  '*/bin/*' --strip-components=1 &&
@@ -37,11 +38,12 @@ Icon=mongodb-compass
 EOF
 
 [ "$1" = "--also-install-tools" ] && {
-	mongodb_tools_pkg="https://fastdl.mongodb.org/tools/db/mongodb-database-tools-debian10-x86_64-100.5.2.tgz";
-	echo "Downloading $mongodb_tools_pkg ..." &&
-	curl -sS --connect-timeout 13 --retry 5 --retry-delay 2 -L "$mongodb_tools_pkg" -o /tmp/mongodb-tools.tgz &&
+	tools_ver="100.5.2"
+	tools_pkg="https://fastdl.mongodb.org/tools/db/mongodb-database-tools-debian10-x86_64-${tools_ver}.tgz";
+	echo "Downloading $tools_pkg ..." &&
+	curl -sS --connect-timeout 13 --retry 5 --retry-delay 2 -L "$tools_pkg" -o /tmp/mongodb-tools.tgz &&
 
-	echo "Installing $mongodb_tools_pkg ..." &&
+	echo "Installing $tools_pkg ..." &&
 	mkdir -p /tmp/mongodb-tools &&
 	tar fvxz /tmp/mongodb-tools.tgz -C /tmp/mongodb-tools/ \
 		--wildcards  '*/bin/*' --strip-components=1 &&
