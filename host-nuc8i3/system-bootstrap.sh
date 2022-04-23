@@ -200,8 +200,9 @@ archl_pacman_tools=(
 	qemu-arch-extra rsync time tree turbostat upx usbutils vkmark
 )
 archl_pacman_development=(
-	base-devel diffutils docker docker-compose gdb git git-delta man-pages perf
-	python python-pip strace tokei vulkan-icd-loader vulkan-mesa-layers
+	autoconf-archive base-devel diffutils docker docker-compose gdb git git-delta
+	man-pages perf python python-pip strace tokei vulkan-icd-loader
+	vulkan-mesa-layers
 )
 archl_pacman_apps=(
 	alacritty arandr chromium drawing feh libreoffice-still maim mpv nomacs
