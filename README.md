@@ -32,6 +32,7 @@ To create new SSH keys:
 - `chmod u=r,g=,o= id_*`
 
 ## Tasks
+- Reenable zoomed flag in tmux.
 - Create a mount point with the partition's label. Check the `--json`
   switch of `lsblk` and use `jq` to parse the output.
 - GCC9, GCC10
