@@ -6,7 +6,7 @@ read_from_usb () {
 	while [ ! -L "$_usb_disk" ]; do usleep $((1000 * 100)); done
 
 	dd if="$_usb_disk" of=/tmp/keyfile \
-		skip=$((1024 * 1024 * 2)) \
+		skip=$((640 * 1024 * 1024 + 1024 * 1)) \
 		ibs=1 count=1024 status=none
 
 	kill -USR1 $$ 2> /dev/null

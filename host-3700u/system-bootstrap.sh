@@ -89,7 +89,7 @@ if [ ! -L "$_disk_key" ]; then
 fi
 
 dd if="$_disk_key" of=/tmp/main.keyfile \
-	skip=$((1024 * 1024 * 1)) \
+	skip=$((640 * 1024 * 1024 + 1024 * 0)) \
 	ibs=1 count=1024 status=none
 
 printinfo "\n  -> Requesting fallback decryption password ..."

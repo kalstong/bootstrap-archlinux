@@ -26,6 +26,11 @@ After the first boot:
 - Connect to WiFi: `iwctl`.
 - Enable NTP: `timedatectl set-ntp true`.
 
+To create new SSH keys:
+- `ssh-keygen -t ed25519 -C <host> -f id_ed25519`
+- `ssh-keygen -t rsa -b 8191 -C <host> -f id_rsa`
+- `chmod u=r,g=,o= id_*`
+
 ## Tasks
 - Create a mount point with the partition's label. Check the `--json`
   switch of `lsblk` and use `jq` to parse the output.
