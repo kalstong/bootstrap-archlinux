@@ -2,7 +2,7 @@
 
 rm -rf /tmp/mongodb*
 
-compass_ver="1.31.1"
+compass_ver="1.31.2"
 #mongodb_pkg="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-debian10-5.0.2.tgz"
 compass_pkg="https://github.com/mongodb-js/compass/releases/download/v${compass_ver}/mongodb-compass-isolated-${compass_ver}-linux-x64.tar.gz"
 compass_icon="https://raw.githubusercontent.com/mongodb-js/compass/main/packages/compass/src/app/images/compass-dialog-icon.png"
