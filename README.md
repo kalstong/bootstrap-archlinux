@@ -20,6 +20,12 @@ Everything else:
 - PiP: `pip list --user --outdated`, `pip install --user --upgrade <pkg>`.
 - Vim plugins: `:PlugUpdate`, `:PlugUpgrade`, `:COQdeps`, `:TSUpdate`, `:UpdateRemotePlugins`.
 
+After the first boot:
+- Set the energy policy: `energypolicy powersave`.
+- Install the SSH keys: `sudo cryptsetup open <dev> <name>`, `sudo cryptsetup close <name>`.
+- Connect to WiFi: `iwctl`.
+- Enable NTP: `timedatectl set-ntp true`.
+
 ## Tasks
 - Create a mount point with the partition's label. Check the `--json`
   switch of `lsblk` and use `jq` to parse the output.
