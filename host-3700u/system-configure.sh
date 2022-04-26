@@ -155,8 +155,9 @@ sed -i -r "s/<bt_user>/$bt_user/" /etc/ssh/sshd_config
 cp /etc/makepkg.conf /etc/makepkg.conf.bak
 cp ../shared/sysfiles/makepkg.conf /etc/makepkg.conf
 
-max_make_jobs=4
-sed -i -r "s/<max_make_jobs>/-j$max_make_jobs/" /etc/makepkg.conf
+num_logical_cores="$(grep "^processor" /proc/cpuinfo | wc -l)"
+num_physical_cores="$(grep -m 1 -oP "cpu cores\s*:\s*\K\d+" /proc/cpuinfo)"
+sed -i -r "s/<max_make_jobs>/-j$num_physical_cores/" /etc/makepkg.conf
 
 cp /etc/sudoers /etc/sudoers.bak
 cp ../shared/sysfiles/sudoers /etc/sudoers
