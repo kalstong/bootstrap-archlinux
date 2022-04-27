@@ -34,6 +34,8 @@ To create new SSH keys:
 
 ## Tasks
 - Reenable zoomed flag in tmux.
+- Set a TDP limit through `energypolicy` for NVIDIA GPUs. See
+  [here](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Custom_TDP_Limit).
 - Create a mount point with the partition's label. Check the `--json`
   switch of `lsblk` and use `jq` to parse the output.
 - GCC9, GCC10
