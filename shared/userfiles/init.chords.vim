@@ -101,7 +101,7 @@ nnoremap <C-a> <ESC>:wa!<CR>
 " -----------------------------------
 function! AgFzf(query, fullscreen)
 	let query = empty(a:query) ? '^(?=.)' : a:query
-	let ag_extra_opts = '--hidden --smart-case'
+	let ag_extra_opts = '--hidden --no-mmap --smart-case --workers 2'
 	let fzf_opts = { 'options': [ '--delimiter', ':', '--nth', '2..' ] }
 	call fzf#vim#ag(query, ag_extra_opts, fzf#vim#with_preview(fzf_opts), a:fullscreen)
 endfunction
