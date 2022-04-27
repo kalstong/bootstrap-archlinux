@@ -21,16 +21,16 @@ Everything else:
 - Vim plugins: `:PlugUpdate`, `:PlugUpgrade`, `:COQdeps`, `:TSUpdate`, `:UpdateRemotePlugins`.
 
 After the first boot:
-- Set the energy policy: `energypolicy powersave`.
-- Install the SSH keys: `sudo cryptsetup open <dev> <name>`, `sudo cryptsetup close <name>`.
-- Connect to WiFi: `iwctl`.
-- Enable NTP: `timedatectl set-ntp true`.
-- Install NVIM plugins: `:UpdateRemotePlugins`, `:COQdeps`
+1. Set the energy policy: `energypolicy powersave`.
+2. Install the SSH keys: `sudo cryptsetup open <dev> <name>`, `sudo cryptsetup close <name>`.
+3. Connect to WiFi: `iwctl`.
+4. Enable NTP: `timedatectl set-ntp true`.
+5. Install NVIM plugins: `:UpdateRemotePlugins`, `:COQdeps`
 
 To create new SSH keys:
-- `ssh-keygen -t ed25519 -C <host> -f id_ed25519`
-- `ssh-keygen -t rsa -b 8191 -C <host> -f id_rsa`
-- `chmod u=r,g=,o= id_*`
+- `ssh-keygen -t ed25519 -C <host> -f id_ed25519`.
+- `ssh-keygen -t rsa -b 8191 -C <host> -f id_rsa`.
+- For files: `chmod u=r,g=,o= id_*`. For folders: `chmod u=rx,g=,o= id_*`.
 
 ## Tasks
 - Reenable zoomed flag in tmux.
