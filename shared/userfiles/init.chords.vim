@@ -113,7 +113,7 @@ function! FilterHistory(expr)
 endfunction
 
 function! RgFzf(query, fullscreen)
-	let rg_cmd = 'rg --column --line-number --no-heading --hidden --color=always --smart-case  --glob !\.git/ -- ' . shellescape(a:query)
+	let rg_cmd = 'rg --no-mmap --threads 2 --column --line-number --no-heading --hidden --color=always --smart-case  --glob !\.git/ -- ' . shellescape(a:query)
 	let fzf_opts = { 'options': [ '--delimiter', ':', '--nth', '2..' ] }
 	call fzf#vim#grep(rg_cmd, 1, fzf#vim#with_preview(fzf_opts), a:fullscreen)
 endfunction
