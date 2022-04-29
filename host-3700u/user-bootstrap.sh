@@ -160,6 +160,7 @@ printinfo "+ -------------------------- +"
 printinfo "| Installing MongoDB Compass |"
 printinfo "+ -------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+. ../shared/userfiles/install-mongodb.sh --install-tools
 . ../shared/userfiles/install-mongodb.sh --install-compass
 
 popd > /dev/null
