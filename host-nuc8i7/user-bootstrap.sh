@@ -112,8 +112,7 @@ printinfo "+ ----------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 archl_aur=(
-	brave-bin@master firefox-esr-bin@master
-	msodbcsql@master polybar@master
+	brave-bin@master firefox-esr-bin@master polybar@master
 )
 
 cd "$AUR"
@@ -147,18 +146,5 @@ printinfo "+ ------------------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 nvim +PlugInstall +qa
 
-printinfo "\n"
-printinfo "+ ---------------------------- +"
-printinfo "| Installing Azure Data Studio |"
-printinfo "+ ---------------------------- +"
-[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-. ../shared/userfiles/install-ads.sh
-
-printinfo "\n"
-printinfo "+ -------------------------- +"
-printinfo "| Installing MongoDB Compass |"
-printinfo "+ -------------------------- +"
-[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-. ../shared/userfiles/install-mongodb.sh --install-compass
 
 popd > /dev/null
