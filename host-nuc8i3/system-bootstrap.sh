@@ -73,7 +73,7 @@ parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" && syn
 
 _starts_at=${_ends_at}
 _ends_at=$((${_starts_at} + 8 * 1024)) # 8GiB swap partition
-parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" && sleep 1
+parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" && sync
 
 _starts_at=${_ends_at} # Remaining space as the root partition
 parted "$_disk_system" mkpart primary "${_starts_at}MiB" "100%" && sync
@@ -181,33 +181,31 @@ printinfo "+ -------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 archl_pacman_core=(
-	base grub intel-media-driver intel-ucode linux-lts linux-firmware libva
-	libva-mesa-driver mesa ntfs-3g sshfs vulkan-intel xf86-video-intel
+	base grub intel-media-driver intel-ucode linux-lts linux-firmware libva mesa
+	ntfs-3g sshfs vulkan-intel xf86-video-intel
 )
 archl_pacman_system=(
-	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa
-	exfatprogs f2fs-tools fd fish fscrypt fwupd fzf gptfdisk gnupg gocryptfs
-	intel-gpu-tools intel-undervolt iwd libnotify lz4 man-db nss-mdns
-	openbsd-netcat parted pbzip2 picom pigz playerctl pulseaudio redshift
-	ripgrep sxhkd tint2 tmux unzip usleep x86_energy_perf_policy xclip
-	xdg-user-dirs xdg-utils xdotool xorg-server xorg-xinit xorg-xinput
-	xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
+	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa exfatprogs
+	f2fs-tools fd fish fscrypt fwupd fzf gptfdisk gnupg gocryptfs intel-gpu-tools
+	intel-undervolt iwd libnotify lz4 man-db nss-mdns openbsd-netcat parted pbzip2
+	picom pigz playerctl pulseaudio redshift ripgrep sxhkd tint2 tmux unzip usleep
+	x86_energy_perf_policy xclip xdg-user-dirs xdg-utils xdotool xorg-server
+	xorg-xinit xorg-xinput xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
 )
 archl_pacman_tools=(
-	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop
-	curl edk2-ovmf entr freerdp hey htop inotify-tools iotop jq libva-utils lfs
-	lshw lsof mesa-demos neovim nnn openconnect openssh openvpn p7zip qemu
-	qemu-arch-extra rsync time tree turbostat upx usbutils vkmark
+	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop curl
+	edk2-ovmf entr freerdp hey htop inotify-tools iotop jq libva-utils lfs lshw
+	lsof mesa-demos neovim nnn openconnect openssh openvpn p7zip qemu
+	qemu-arch-extra rsync time tree turbostat usbutils vkmark
 )
 archl_pacman_development=(
-	autoconf-archive base-devel diffutils docker docker-compose gdb git git-delta
+	autoconf-archive base-devel diffutils docker docker-compose git git-delta
 	man-pages perf python python-pip strace tokei vulkan-icd-loader
 	vulkan-mesa-layers
 )
 archl_pacman_apps=(
 	alacritty arandr chromium drawing feh libreoffice-still maim mpv nomacs
-	obs-studio pavucontrol peek remmina rofi signal-desktop slock sxiv
-	virt-viewer
+	obs-studio pavucontrol peek remmina rofi signal-desktop slock sxiv virt-viewer
 )
 archl_pacman_fonts=(
 	noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra terminus-font
