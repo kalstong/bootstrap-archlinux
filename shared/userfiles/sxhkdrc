@@ -112,13 +112,13 @@ super + comma
 
 super + {Insert,Home,Page_Up}
 	WINIT_X11_SCALE_FACTOR=1 alacritty \
-		--option window.dimensions.columns={80,160,240} \
+		--option window.dimensions.columns={80,161,242} \
 		--option window.dimensions.lines=30 \
 		--command tmux
 
 super + {Delete,End,Page_Down}
 	WINIT_X11_SCALE_FACTOR=1 alacritty \
-		--option window.dimensions.columns={80,160,240} \
+		--option window.dimensions.columns={80,161,242} \
 		--option window.dimensions.lines=60 \
 		--command tmux
 
@@ -130,7 +130,7 @@ super + Return
 
 super + shift + Return
 	WINIT_X11_SCALE_FACTOR=1 alacritty \
-		--option window.dimensions.columns=240 \
+		--option window.dimensions.columns=242 \
 		--option window.dimensions.lines=60 \
 		--command tmux
 
