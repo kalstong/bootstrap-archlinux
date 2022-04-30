@@ -86,15 +86,15 @@ if [ ! -L "$_disk_key" ]; then
 fi
 
 dd if="$_disk_key" of=/tmp/main.keyfile \
-	skip=$((640 * 1024 * 1024 + 1024 * 2)) \
-	ibs=1 count=1024 status=none
+   skip=$((640 * 1024 * 1024 + 1024 * 2)) \
+   ibs=1 count=1024 status=none && sync
 
+usleep $((1000 *  256))
 printinfo "\n  -> Requesting fallback decryption password ..."
 askpwd > /tmp/pwd.keyfile
 
 mkfs.fat -F32 "${_disk_system}p1"
 mkfs.f2fs -f "${_disk_system}p2"
-# mkswap "${_disk_system}p3"
 
 printinfo "\n  -> Encrypting root partition ..."
 cryptsetup --verbose \
@@ -150,7 +150,6 @@ printinfo "+ --------------------- +"
 cp ../shared/sysfiles/pacman.conf /etc/pacman.conf
 pacstrap -i "$bt_rootdir" mkinitcpio --noconfirm
 
-cp sysfiles/crypttab "$bt_rootdir/etc/crypttab"
 cp sysfiles/decrypt.hook "$bt_rootdir/etc/initcpio/hooks/decrypt"
 cp sysfiles/decrypt.install "$bt_rootdir/etc/initcpio/install/decrypt"
 
@@ -182,7 +181,7 @@ archl_pacman_core=(
 )
 archl_pacman_system=(
 	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa
-	exfatprogs f2fs-tools fd fish fscrypt fwupd fzf gptfdisk gnupg gocryptfs
+	exfatprogs f2fs-tools fd fish fwupd fzf gptfdisk gnupg gocryptfs
 	intel-gpu-tools intel-undervolt iwd libnotify lz4 man-db nss-mdns
 	openbsd-netcat parted pbzip2 picom pigz playerctl pulseaudio redshift
 	ripgrep sxhkd tint2 tmux unzip usleep x86_energy_perf_policy xclip

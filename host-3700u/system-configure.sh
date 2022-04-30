@@ -49,29 +49,28 @@ cp sysfiles/grub.cfg /boot/grub/grub.cfg
 chmod u=rw,g=r,o=r /boot/grub/grub.cfg
 
 printinfo "\n"
-printinfo "+ ------------------------------------ +"
-printinfo "| Configuring userspace FS encryption |"
-printinfo "+ ------------------------------------ +"
+printinfo "+ --------------------------------- +"
+printinfo "| Configuring system authentication |"
+printinfo "+ --------------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-
-fscrypt setup --force
 
 cp /etc/pam.d/passwd /etc/pam.d/passwd.bak
 cp /etc/pam.d/system-auth /etc/pam.d/system-auth.bak
 cp /etc/pam.d/system-login /etc/pam.d/system-login.bak
 
-# @NOTE: Change these if you want to auto-unlock fscrypt folders
-# upon user login. See: https://wiki.archlinux.org/index.php/Fscrypt#PAM_module
 cp ../shared/sysfiles/passwd /etc/pam.d/passwd
 cp ../shared/sysfiles/system-auth /etc/pam.d/system-auth
 cp ../shared/sysfiles/system-login /etc/pam.d/system-login
+chmod u=r,g=r,o=r /etc/pam.d/passwd \
+                  /etc/pam.d/system-auth \
+                  /etc/pam.d/system-login
 
-chmod u=r,g=r,o=r /etc/pam.d/passwd /etc/pam.d/system-auth /etc/pam.d/system-login
 printinfo "\n"
 printinfo "+ -------------------------------------------------------- +"
 printinfo "| Configuring mirrors, timezone, clock, locales and pacman |"
 printinfo "+ -------------------------------------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+
 cp ../shared/sysfiles/mirrorlist /etc/pacman.d/mirrorlist
 chmod u=rw,g=r,o=r /etc/pacman.d/mirrorlist
 
@@ -101,6 +100,7 @@ printinfo "+ -------------------- +"
 printinfo "| Configuring Hostname |"
 printinfo "+ -------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+
 echo "$bt_host" > /etc/hostname
 { echo -e "127.0.0.1\tlocalhost";
   echo -e "::1\tlocalhost";
@@ -112,6 +112,7 @@ printinfo "+ -------------------- +"
 printinfo "| Configuring services |"
 printinfo "+ -------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+
 systemctl enable avahi-daemon.service
 systemctl enable bluetooth.service
 systemctl enable dhcpcd.service
@@ -119,6 +120,8 @@ systemctl enable docker.service
 systemctl enable fstrim.timer
 systemctl enable iwd.service
 systemctl enable sshd.service
+
+# fscrypt setup
 
 cp /usr/share/doc/avahi/ssh.service /etc/avahi/services
 cp /etc/nsswitch.conf /etc/nsswitch.conf.bak
@@ -178,6 +181,7 @@ printinfo "+ --------------------- +"
 printinfo "| Creating user account |"
 printinfo "+ --------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+
 echo "/usr/bin/bash" >> /etc/shells
 chsh -s "/usr/bin/bash"
 
@@ -193,9 +197,9 @@ printinfo "+ ---------------------------- +"
 printinfo "| Configuring the user account |"
 printinfo "+ ---------------------------- +"
 chown "${bt_user}:${bt_user}" user-*.sh
-su -s /bin/bash -c \
-	"cd /tmp/bootstrap/ && . host-${bt_host}/user-bootstrap.sh -h ${bt_host} -u ${bt_user} ${bt_stepping}" \
-	--login ${bt_user}
+su -s /bin/bash \
+   -c "cd /tmp/bootstrap/ && . host-${bt_host}/user-bootstrap.sh -h ${bt_host} -u ${bt_user} ${bt_stepping}" \
+   --login ${bt_user}
 
 printinfo "\n"
 printinfo "+ -------------------------- +"

@@ -3,7 +3,7 @@
 auth  required  pam_shells.so
 auth  requisite pam_nologin.so
 auth  include   system-auth
-auth  optional  pam_fscrypt.so
+#auth  optional  pam_fscrypt.so
 
 account  required  pam_access.so
 account  required  pam_nologin.so
@@ -13,9 +13,10 @@ password  include  system-auth
 
 session   optional  pam_loginuid.so
 session   optional  pam_keyinit.so    force revoke
+#session   [sucess=1 default=ignore]   pam_succeed_if.so service = systemd-user quite
+#session   optional  pam_fscrypt.so
 session   include   system-auth
 session   optional  pam_motd.so       motd=/etc/motd
 session   optional  pam_mail.so       dir=/var/spool/mail standard quiet
 -session  optional  pam_systemd.so
 session   required  pam_env.so        user_readenv=1
-session   optional  pam_fscrypt.so    drop_caches  lock_policies

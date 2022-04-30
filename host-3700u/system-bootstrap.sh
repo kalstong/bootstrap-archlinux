@@ -89,9 +89,10 @@ if [ ! -L "$_disk_key" ]; then
 fi
 
 dd if="$_disk_key" of=/tmp/main.keyfile \
-	skip=$((640 * 1024 * 1024 + 1024 * 0)) \
-	ibs=1 count=1024 status=none
+   skip=$((640 * 1024 * 1024 + 1024 * 0)) \
+   ibs=1 count=1024 status=none && sync
 
+usleep $((1000 *  256))
 printinfo "\n  -> Requesting fallback decryption password ..."
 askpwd > /tmp/pwd.keyfile
 
@@ -185,11 +186,11 @@ archl_pacman_core=(
 )
 archl_pacman_system=(
 	avahi bat bc bluez brightnessctl bspwm cpupower dash dhcpcd dunst efibootmgr
-	exa exfatprogs f2fs-tools fd fish fscrypt fwupd fzf gptfdisk gnupg gocryptfs
-	iwd libnotify lz4 man-db nss-mdns openbsd-netcat parted pbzip2 picom pigz
-	playerctl pulseaudio redshift ripgrep sxhkd tint2 tmux unzip usleep xclip
-	xdg-user-dirs xdg-utils xdotool xorg-server xorg-xinit xorg-xinput
-	xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
+	exa exfatprogs f2fs-tools fd fish fwupd fzf gptfdisk gnupg gocryptfs iwd
+	libnotify lz4 man-db nss-mdns openbsd-netcat parted pbzip2 picom pigz playerctl
+	pulseaudio redshift ripgrep sxhkd tint2 tmux unzip usleep xclip xdg-user-dirs
+	xdg-utils xdotool xorg-server xorg-xinit xorg-xinput xorg-xprop xorg-xrandr
+	xorg-xset xorg-xsetroot zip zstd
 )
 archl_pacman_tools=(
 	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop curl
