@@ -61,7 +61,7 @@ let g:lightline = {
 	\   'statusline': 1,
 	\   'tabline': 1,
 	\ },
-	\ 'colorscheme': 'everforest',
+	\ 'colorscheme': 'wombat',
 	\ 'active': {
 	\   'left': [[ 'mode', 'paste' ],
 	\            [ 'gitbranch', 'readonly', 'relativepath', 'modified' ]]
@@ -73,19 +73,19 @@ let g:lightline = {
 	\   'left': [[ 'tabs' ]],
 	\   'right': [[ 'close' ]]
 	\ },
-  \ 'tab' : {
-  \   'active': [ 'rendertab' ],
-  \   'inactive': [ 'rendertab' ],
-  \ },
-  \ 'tab_component_function' : {
-  \   'rendertab': 'RenderTabName',
-  \ },
+	\ 'tab' : {
+	\   'active': [ 'rendertab' ],
+	\   'inactive': [ 'rendertab' ],
+	\ },
+	\ 'tab_component_function' : {
+	\   'rendertab': 'RenderTabName',
+	\ },
 	\ 'component_function': {
 	\   'gitbranch': 'gitbranch#name',
 	\   'filetype': 'RenderFileType',
 	\   'fileformat': 'RenderFileFormat',
 	\ },
-	\ }
+\ }
 
 " https://github.com/kristijanhusak/defx-git
 " https://github.com/kristijanhusak/defx-icons
