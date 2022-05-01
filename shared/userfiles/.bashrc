@@ -97,6 +97,19 @@ clipit () {
 	fi
 }
 
+display_layout () {
+	[ -z $1 ] && return
+
+	local layout=""
+	local layout_file="$XDG_CONFIG_HOME/display_layout"
+	local layout_new="$1"
+	[ -f "$layout_file" ] && layout=$(cat "$layout_file")
+
+	[ "$layout" != "$layout_new" ] &&
+		echo "$layout_new" > "$layout_file" &&
+		bspc wm --restart
+}
+
 energypolicy () {
 	if [ "$1" = "default" ]; then
 		. "$XDG_CONFIG_HOME/.energypolicy.sh" default

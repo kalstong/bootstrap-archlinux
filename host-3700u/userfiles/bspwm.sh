@@ -25,7 +25,7 @@ wm_config_monitors () {
 	. "$XDG_CONFIG_HOME/display_layout.sh" "$layout"
 	if [ "$layout" = "solo" ]; then
 		bspc monitor --reset-desktops 1 2 3 4 5 6 7 8 9 10
-	elif [ "$layout" = "office" ]; then
+	elif [ "$layout" = "dual" ]; then
 		bspc monitor eDP --reset-desktops 1 2 3 4 5 6 7 8 9 10
 		bspc monitor DisplayPort-0 --reset-desktops A B C D E F G H I J
 	else
@@ -93,7 +93,7 @@ wm_start_daemons () {
 	[ -f "$layout_file" ] && layout=$(cat "$layout_file")
 	if [ "$layout" = "solo" ]; then
 		polybar solo &> "$HOME/.local/share/polybar/solo.log" &
-	elif [ "$layout" = "office" ]; then
+	elif [ "$layout" = "dual" ]; then
 		polybar laptop &> "$HOME/.local/share/polybar/laptop.log" &
 		polybar external &> "$HOME/.local/share/polybar/external.log" &
 	else

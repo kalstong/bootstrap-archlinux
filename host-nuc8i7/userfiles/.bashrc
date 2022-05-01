@@ -25,16 +25,3 @@ export YARN_CACHE_FOLDER="$CACHE/yarn"
 export NNN_BMS="0://;a:$AUR;c:$CODE;d:$DOWNLOADS;f:$FILES;m:$MOUNT;n:$NOTES;r:$RECORDINGS;s:$SCREENSHOTS;t:$TRASH;w:$WORK"
 [[ ! "$PATH" =~ $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
 [[ ! "$PATH" =~ $GOPATH/bin ]] && export PATH="$PATH:$GOPATH/bin"
-
-display_layout () {
-	[ -z $1 ] && return
-
-	local layout=""
-	local layout_file="$XDG_CONFIG_HOME/display_layout"
-	local layout_new="$1"
-	[ -f "$layout_file" ] && layout=$(cat "$layout_file")
-
-	[ "$layout" != "$layout_new" ] &&
-		echo "$layout_new" > "$layout_file" &&
-		bspc wm --restart
-}
