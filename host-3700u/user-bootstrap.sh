@@ -156,11 +156,11 @@ printinfo "+ ---------------------------- +"
 . ../shared/userfiles/install-ads.sh
 
 printinfo "\n"
-printinfo "+ -------------------------- +"
-printinfo "| Installing MongoDB Compass |"
-printinfo "+ -------------------------- +"
+printinfo "+ ------------------------ +"
+printinfo "| Installing MongoDB Tools |"
+printinfo "+ ------------------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-. ../shared/userfiles/install-mongodb.sh --install-tools
-. ../shared/userfiles/install-mongodb.sh --install-compass
+bash ../shared/userfiles/install-mongodb.sh --install-tools
+bash ../shared/userfiles/install-mongodb.sh --install-compass
 
 popd > /dev/null
