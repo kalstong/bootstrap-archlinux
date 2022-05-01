@@ -127,7 +127,6 @@ do
 	cd "$_name"
 	git checkout "$_tag"
 	makepkg -sirc --noconfirm --needed || true
-	git clean -fddx
 	cd ..
 done
 cd "$script_path"
