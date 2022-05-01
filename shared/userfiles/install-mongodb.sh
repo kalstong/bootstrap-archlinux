@@ -47,12 +47,11 @@
 	mv /tmp/mongodb-compass.png "$HOME/.icons" &&
 	mkdir -p "$HOME/.local/share/applications" &&
 	echo "[Desktop Entry]
-Exec="$HOME/.local/bin/mongodb-compass/MongoDB Compass Isolated Edition" --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer --disable-gpu-driver-bug-workarounds --enable-accelerated-mjpeg-decode --enable-accelerated-video-decode --enable-features=CanvasOopRasterization,ParallelDownloading,UseVulkan,VaapiVideoDecoder,VaapiVideoEncoder --enable-gpu-rasterization --enable-native-gpu-memory-buffers --enable-oop-rasterization --enable-zero-copy --ignore-gpu-blocklist --use-vulkan
+Exec=\"$HOME/.local/bin/mongodb-compass/MongoDB Compass Isolated Edition\" --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer --disable-gpu-driver-bug-workarounds --enable-accelerated-mjpeg-decode --enable-accelerated-video-decode --enable-features=CanvasOopRasterization,ParallelDownloading,UseVulkan,VaapiVideoDecoder,VaapiVideoEncoder --enable-gpu-rasterization --enable-native-gpu-memory-buffers --enable-oop-rasterization --enable-zero-copy --ignore-gpu-blocklist --use-vulkan
 Type=Application
 Categories=Development
 Name=MongoDB Compass Isolated Edition
-Icon=mongodb-compass
-EOF" > "$HOME/.local/share/applications/mongodb-compass.desktop";
+Icon=mongodb-compass" > "$HOME/.local/share/applications/mongodb-compass.desktop";
 
 	rm -rf /tmp/mongodb* ;
 }
