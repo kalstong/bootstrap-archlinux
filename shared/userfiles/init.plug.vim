@@ -221,14 +221,9 @@ function! _Defx_JumpToFile(...)
 endfunction
 
 function! _Defx_Toggle()
-	if _Defx_IsOpenInCurrentTab()
-		Defx -buffer-name=`'defx-'.tabpagenr()` -close
-			\ -columns=indent:mark:git:icons:filename:type
-		exe "q"
-	else
-		Defx -buffer-name=`'defx-'.tabpagenr()`
-			\ -columns=indent:mark:git:icons:filename:type
-			\ -split=vertical -winwidth=30 -direction=topleft
-			\ -root-marker='' -ignored-files=.*,node_modules
-	endif
+	Defx -buffer-name=`'defx-'.tabpagenr()` -toggle
+		\ -columns=indent:mark:git:icons:filename:type
+		\ -split=vertical -winwidth=30 -direction=topleft
+		\ -root-marker='' -ignored-files=.*,node_modules
+		\ -columns=indent:mark:git:icons:filename:type
 endfunction
