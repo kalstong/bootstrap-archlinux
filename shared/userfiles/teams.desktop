@@ -4,4 +4,4 @@ Type=Application
 Categories=Office
 Path=/usr/bin
 Icon=teams
-Exec=chromium --app=https://teams.microsoft.com
+Exec=chromium --app=https://teams.microsoft.com --window-size=950,680
