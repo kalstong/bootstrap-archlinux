@@ -118,7 +118,6 @@ systemctl enable bluetooth.service
 systemctl enable dhcpcd.service
 systemctl enable docker.service
 systemctl enable fstrim.timer
-systemctl enable intel-undervolt.service
 systemctl enable iwd.service
 systemctl enable sshd.service
 
@@ -138,6 +137,9 @@ _dns="static domain_name_servers=${_dns_ipv4} ${_dns_ipv6}"
 { echo "";
   echo "interface eno1";
   echo "${_dns}";
+{ echo "";
+  echo "interface enp5s0";
+  echo "${_dns}";
   echo "";
   echo "interface wlan0";
   echo "${_dns}"; } >> /etc/dhcpcd.conf
@@ -149,8 +151,6 @@ cp /etc/fwupd/uefi_capsule.conf /etc/fwupd/uefi_capsule.conf.bak
 cp ../shared/sysfiles/fwupd.conf /etc/fwupd/uefi_capsule.conf
 
 cp ../shared/sysfiles/igvt.conf /etc/modules-load.d/
-
-cp sysfiles/intel-undervolt.conf /etc/
 
 mkdir -p /etc/iwd &&
 	cp ../shared/sysfiles/iwd.conf /etc/iwd/main.conf
@@ -177,6 +177,7 @@ sed -i -r 's/#SystemMaxUse=/SystemMaxUse=1G/' /etc/systemd/journald.conf
 sed -i -r 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
 # echo "vm.vfs_cache_pressure=90" >> /etc/sysctl.d/99-swappiness.conf
 
+cp sysfiles/30-amdgpu-pm.rules /etc/udev/rules.d/
 cp sysfiles/xorg.conf /etc/X11/xorg.conf.d/
 
 printinfo "\n"

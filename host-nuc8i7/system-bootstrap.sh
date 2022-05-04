@@ -5,7 +5,7 @@
 # CPU: Intel Core i7-8559U @2.70GHz [2]
 # RAM: 2x 16GiB DDR4 @2.40GHz-CL14 DC
 # GPU: Intel Iris Plus Graphics 655 @300/1200MHz
-# STO: 1TiB M.2 NVMe Intel 660p QLC
+# SSD: 1TiB M.2 NVMe Intel 660p QLC
 #
 # [1]: https://ark.intel.com/content/www/us/en/ark/products/126140/intel-nuc-kit-nuc8i7beh.html
 # [2]: https://ark.intel.com/content/www/us/en/ark/products/137979/intel-core-i7-8559u-processor-8m-cache-up-to-4-50-ghz.html
@@ -176,8 +176,8 @@ printinfo "+ -------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 archl_pacman_core=(
-	base grub intel-media-driver intel-ucode linux-lts linux-firmware libva
-	libva-mesa-driver mesa ntfs-3g sshfs vulkan-intel xf86-video-intel
+	base grub intel-media-driver intel-ucode linux-lts linux-firmware libva mesa
+	ntfs-3g sshfs vulkan-intel xf86-video-intel
 )
 archl_pacman_system=(
 	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa
@@ -201,8 +201,7 @@ archl_pacman_development=(
 )
 archl_pacman_apps=(
 	alacritty arandr chromium drawing feh libreoffice-still maim mpv nomacs
-	obs-studio pavucontrol peek remmina rofi signal-desktop slock sxiv
-	virt-viewer
+	obs-studio pavucontrol peek remmina rofi slock sxiv virt-viewer
 )
 archl_pacman_fonts=(
 	noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra terminus-font

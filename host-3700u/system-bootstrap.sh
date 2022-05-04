@@ -4,7 +4,7 @@
 # HP EliteBook 745 G6 [1]
 # CPU: AMD Ryzen 7 PRO 3700U @2.30GHz [2]
 # RAM: 2x 8GiB DDR4 @2.667GHz
-# STO: 512GB M.2 NVMe
+# SSD: 512GB M.2 NVMe
 #
 # [1]: https://support.hp.com/us-en/document/c06386690
 # [2]: https://www.amd.com/en/products/apu/amd-ryzen-7-pro-3700u

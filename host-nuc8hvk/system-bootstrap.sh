@@ -1,14 +1,15 @@
 #!/bin/bash
 
 # --- System Specs ---
-# Intel NUC8i3BEH [1]
-# CPU: Intel Core i3-8109U @3.00GHz [2]
+# Intel NUC8i7HVK [1]
+# CPU: Intel® Core i7-8809G @3.10Ghz [2]
 # RAM: 2x 8GiB DDR4 @2.40GHz-CL16 DC
-# GPU: Intel Iris Plus Graphics 655 @300/1050MHz
+# GPU: Intel HD Graphics 630 @350/1100Mhz
+# GPU: AMD Radeon RX Vega M GH @1063/1190MHz
 # SSD: 250GB M.2 NVMe Kingston A2000 3D TLC
 #
-# [1]: https://ark.intel.com/content/www/us/en/ark/products/126150/intel-nuc-kit-nuc8i3beh.html
-# [2]: https://ark.intel.com/content/www/us/en/ark/products/135936/intel-core-i3-8109u-processor-4m-cache-up-to-3-60-ghz.html
+# [1]: https://ark.intel.com/content/www/us/en/ark/products/126143/intel-nuc-kit-nuc8i7hvk.html
+# [2]: https://ark.intel.com/content/www/us/en/ark/products/130409/intel-core-i7-8809g-processor-with-radeon-rx-vega-m-gh-graphics-8m-cache-up-to-4-20-ghz.html
 
 scriptdir="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 pushd "$scriptdir" > /dev/null
@@ -71,10 +72,6 @@ _starts_at=${_ends_at}
 _ends_at=$((${_starts_at} + 512)) # 512MiB boot partition
 parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" && sync
 
-_starts_at=${_ends_at}
-_ends_at=$((${_starts_at} + 8 * 1024)) # 8GiB swap partition
-parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" && sync
-
 _starts_at=${_ends_at} # Remaining space as the root partition
 parted "$_disk_system" mkpart primary "${_starts_at}MiB" "100%" && sync
 
@@ -90,24 +87,24 @@ if [ ! -L "$_disk_key" ]; then
 fi
 
 dd if="$_disk_key" of=/tmp/main.keyfile \
-   skip=$((640 * 1024 * 1024 + 1024 * 1)) \
+   skip=$((640 * 1024 * 1024 + 1024 * 3)) \
    ibs=1 count=1024 status=none && sync
 
+printinfo "\n"
 usleep $((1000 *  256))
-printinfo "\n\n  -> Requesting fallback decryption password ..."
+printinfo "\n  -> Requesting fallback decryption password ..."
 askpwd > /tmp/pwd.keyfile
 
 mkfs.fat -F32 "${_disk_system}p1"
 mkfs.f2fs -f "${_disk_system}p2"
-mkswap "${_disk_system}p3"
 
 printinfo "\n  -> Encrypting root partition ..."
 cryptsetup --verbose \
-	--batch-mode luksFormat "${_disk_system}p4" /tmp/main.keyfile \
+	--batch-mode luksFormat "${_disk_system}p3" /tmp/main.keyfile \
 	--type luks2 --sector-size 4096
 
 printinfo "\n  -> Setting fallback decryption password ..."
-cryptsetup luksAddKey "${_disk_system}p4" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
+cryptsetup luksAddKey "${_disk_system}p3" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/pwd.keyfile
 
 printinfo "\n  -> Opening the encrypted root partition ..."
@@ -115,7 +112,7 @@ cryptsetup --key-file /tmp/main.keyfile \
 	--allow-discards \
 	--perf-no_read_workqueue \
 	--perf-no_write_workqueue \
-	open "${_disk_system}p4" root
+	open "${_disk_system}p3" root
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/main.keyfile
 
 printinfo "\n  -> Formatting the root partition ..."
@@ -155,7 +152,6 @@ printinfo "+ --------------------- +"
 cp ../shared/sysfiles/pacman.conf /etc/pacman.conf
 pacstrap -i "$bt_rootdir" mkinitcpio --noconfirm
 
-cp sysfiles/crypttab "$bt_rootdir/etc/crypttab"
 cp sysfiles/decrypt.hook "$bt_rootdir/etc/initcpio/hooks/decrypt"
 cp sysfiles/decrypt.install "$bt_rootdir/etc/initcpio/install/decrypt"
 
@@ -182,25 +178,26 @@ printinfo "+ -------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 archl_pacman_core=(
-	base grub intel-media-driver intel-ucode linux-lts linux-firmware libva mesa
-	ntfs-3g sshfs vulkan-intel xf86-video-intel
+	base grub intel-media-driver intel-ucode linux-lts linux-firmware libva
+	libva-mesa-driver mesa mesa-vdpau ntfs-3g sshfs vulkan-intel vulkan-radeon
+	xf86-video-amdgpu
 )
 archl_pacman_system=(
-	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa exfatprogs
-	f2fs-tools fd fish fwupd fzf gptfdisk gnupg gocryptfs intel-gpu-tools
-	intel-undervolt iwd libnotify lz4 man-db nss-mdns openbsd-netcat parted pbzip2
+	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa
+	exfatprogs f2fs-tools fd fish fwupd fzf gptfdisk gnupg gocryptfs
+	intel-gpu-tools iwd libnotify lz4 man-db nss-mdns openbsd-netcat parted pbzip2
 	picom pigz playerctl pulseaudio redshift ripgrep sxhkd tint2 tmux unzip usleep
 	x86_energy_perf_policy xclip xdg-user-dirs xdg-utils xdotool xorg-server
 	xorg-xinit xorg-xinput xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
 )
 archl_pacman_tools=(
-	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop curl
-	edk2-ovmf entr freerdp hey htop inotify-tools iotop jq libva-utils lfs lshw
-	lsof mesa-demos neovim nnn openconnect openssh openvpn p7zip qemu-desktop
-	qemu-arch-extra rsync time tree turbostat usbutils vkmark
+	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop
+	curl edk2-ovmf entr freerdp hey htop inotify-tools iotop jq libva-utils lfs
+	lshw lsof mesa-demos neovim nnn openconnect openssh openvpn p7zip qemu-desktop
+	qemu-arch-extra radeontop rsync time tree turbostat upx usbutils vkmark
 )
 archl_pacman_development=(
-	autoconf-archive base-devel diffutils docker docker-compose git git-delta
+	autoconf-archive base-devel diffutils docker docker-compose gdb git git-delta
 	man-pages perf python python-pip strace tokei vulkan-icd-loader
 	vulkan-mesa-layers
 )
