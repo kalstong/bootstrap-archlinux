@@ -205,7 +205,7 @@ archl_pacman_development=(
 )
 archl_pacman_apps=(
 	alacritty arandr chromium drawing feh libreoffice-still maim mpv nomacs
-	obs-studio pavucontrol peek remmina rofi slock sxiv virt-viewer
+	obs-studio pavucontrol peek remmina rofi signal-destkop slock sxiv virt-viewer
 )
 archl_pacman_fonts=(
 	noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra terminus-font
