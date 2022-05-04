@@ -4,4 +4,4 @@ Type=Application
 Categories=Multimedia
 Path=/usr/bin
 Icon=spotify
-Exec=chromium --app=https://open.spotify.com --window-size=1030,815
+Exec=start-spotify.sh

@@ -78,6 +78,8 @@ cp ../shared/userfiles/rofi_1440p.rasi "${XDG_CONFIG_HOME}/rofi/themes"
 cp ../shared/userfiles/spotify.desktop "${HOME}/.local/share/applications/"
 cp ../shared/userfiles/spotify.png "${HOME}/.icons/"
 cp ../shared/userfiles/ssh.conf "${HOME}/.ssh/config"
+cp ../shared/userfiles/start-spotify.sh "${HOME}/.local/bin/"
+cp ../shared/userfiles/start-teams.sh "${HOME}/.local/bin/"
 cp ../shared/userfiles/sxhkdrc "${XDG_CONFIG_HOME}/sxhkd/"
 cp ../shared/userfiles/teams.desktop "${HOME}/.local/share/applications/"
 cp ../shared/userfiles/teams.png "${HOME}/.icons/"
@@ -96,6 +98,8 @@ gcc ../shared/userfiles/polybar-polytimer.c \
 chmod u+x "${XDG_CONFIG_HOME}/bspwm/bspwmrc"
 chmod u+x "${XDG_CONFIG_HOME}/display_layout.sh"
 chmod u+x "${XDG_CONFIG_HOME}"/nnn/plugins/*
+chmod u+x "${HOME}/.local/bin/start-teams.sh"
+chmod u+x "${HOME}/.local/bin/start-spotify.sh"
 chmod u+x "${HOME}/.local/bin/tmux-gitstat.sh"
 
 cp ../shared/userfiles/alacritty.yml /tmp
