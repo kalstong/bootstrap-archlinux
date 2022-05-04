@@ -137,7 +137,7 @@ _dns="static domain_name_servers=${_dns_ipv4} ${_dns_ipv6}"
 { echo "";
   echo "interface eno1";
   echo "${_dns}";
-{ echo "";
+  echo "";
   echo "interface enp5s0";
   echo "${_dns}";
   echo "";
