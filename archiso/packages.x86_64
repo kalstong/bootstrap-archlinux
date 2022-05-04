@@ -24,6 +24,7 @@ iwd
 kbd
 linux-lts
 linux-firmware
+lm_sensors
 mdadm
 memtest86+
 mkinitcpio
