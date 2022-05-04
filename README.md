@@ -30,8 +30,8 @@ After the first boot:
 
 To create new SSH keys:
 - `ssh-keygen -t ed25519 -C <host> -f id_ed25519`.
-- `ssh-keygen -t rsa -b 8191 -C <host> -f id_rsa`.
-- For files: `chmod u=r,g=,o= id_*`. For folders: `chmod u=rx,g=,o= id_*`.
+- `ssh-keygen -t rsa -b 8192 -C <host> -f id_rsa`.
+- For files: `chmod u=r,g=,o= id_*`. For folders: `chmod u=rx,g=,o= *`.
 
 ## Tasks
 - Set a TDP limit through `energypolicy` for NVIDIA GPUs. See
