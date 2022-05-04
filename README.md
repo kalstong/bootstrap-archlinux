@@ -34,7 +34,6 @@ To create new SSH keys:
 - For files: `chmod u=r,g=,o= id_*`. For folders: `chmod u=rx,g=,o= id_*`.
 
 ## Tasks
-- Reenable zoomed flag in tmux.
 - Set a TDP limit through `energypolicy` for NVIDIA GPUs. See
   [here](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Custom_TDP_Limit).
 - Try to find an alternative to RipGrep that doesn't consumes as much memory,
