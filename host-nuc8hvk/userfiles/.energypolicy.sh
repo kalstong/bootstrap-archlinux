@@ -11,7 +11,7 @@ if [ "$1" = "default" ]; then
 	sudo cpupower set --perf-bias 6 > /dev/null &&
 	sudo intel_gpu_frequency --custom max="1100MHz" > /dev/null &&
 	sudo x86_energy_perf_policy normal &&
-	echo "$AMDGPU_POWERLEVEL_AUTO" > /sys/class/drm/card0/device/power_dpm_force_performance_level &&
+	echo "$AMDGPU_POWERLEVEL_AUTO" > /sys/class/drm/card1/device/power_dpm_force_performance_level &&
 	echo "$1" >> "$XDG_CONFIG_HOME/.energypolicy"
 
 elif [ "$1" = "balanced" ]; then
@@ -20,7 +20,7 @@ elif [ "$1" = "balanced" ]; then
 	sudo cpupower set --perf-bias 8 > /dev/null &&
 	sudo intel_gpu_frequency --custom max="900MHz" > /dev/null &&
 	sudo x86_energy_perf_policy balance-power &&
-	echo "$AMDGPU_POWERLEVEL_AUTO" > /sys/class/drm/card0/device/power_dpm_force_performance_level &&
+	echo "$AMDGPU_POWERLEVEL_AUTO" > /sys/class/drm/card1/device/power_dpm_force_performance_level &&
 	echo "$1" >> "$XDG_CONFIG_HOME/.energypolicy"
 
 elif [ "$1" = "powersave" ]; then
@@ -29,9 +29,9 @@ elif [ "$1" = "powersave" ]; then
 	sudo cpupower set --perf-bias 10 > /dev/null &&
 	sudo intel_gpu_frequency --custom max="700MHz" > /dev/null &&
 	sudo x86_energy_perf_policy balance-power &&
-	echo "$AMDGPU_POWERLEVEL_MANUAL" > /sys/class/drm/card0/device/power_dpm_force_performance_level &&
-	echo "$AMDGPU_PROFILE_POWERSAVE" > /sys/class/drm/card0/device/pp_power_profile_mode &&
-	echo "$AMDGPU_POWERLEVEL_LOW" > /sys/class/drm/card0/device/power_dpm_force_performance_level &&
+	echo "$AMDGPU_POWERLEVEL_MANUAL" > /sys/class/drm/card1/device/power_dpm_force_performance_level &&
+	echo "$AMDGPU_PROFILE_POWERSAVE" > /sys/class/drm/card1/device/pp_power_profile_mode &&
+	echo "$AMDGPU_POWERLEVEL_LOW" > /sys/class/drm/card1/device/power_dpm_force_performance_level &&
 	echo "$1" >> "$XDG_CONFIG_HOME/.energypolicy"
 
 elif [ "$1" = "ultrapowersave" ]; then
@@ -40,9 +40,9 @@ elif [ "$1" = "ultrapowersave" ]; then
 	sudo cpupower set --perf-bias 15 > /dev/null &&
 	sudo intel_gpu_frequency --custom max="600MHz" > /dev/null &&
 	sudo x86_energy_perf_policy power &&
-	echo "$AMDGPU_POWERLEVEL_MANUAL" > /sys/class/drm/card0/device/power_dpm_force_performance_level &&
-	echo "$AMDGPU_PROFILE_POWERSAVE" > /sys/class/drm/card0/device/pp_power_profile_mode &&
-	echo "$AMDGPU_POWERLEVEL_LOW" > /sys/class/drm/card0/device/power_dpm_force_performance_level &&
+	echo "$AMDGPU_POWERLEVEL_MANUAL" > /sys/class/drm/card1/device/power_dpm_force_performance_level &&
+	echo "$AMDGPU_PROFILE_POWERSAVE" > /sys/class/drm/card1/device/pp_power_profile_mode &&
+	echo "$AMDGPU_POWERLEVEL_LOW" > /sys/class/drm/card1/device/power_dpm_force_performance_level &&
 	echo "$1" >> "$XDG_CONFIG_HOME/.energypolicy"
 
 elif [ "$1" = "performance" ]; then
@@ -51,9 +51,9 @@ elif [ "$1" = "performance" ]; then
 	sudo cpupower set --perf-bias 5 > /dev/null &&
 	sudo intel_gpu_frequency --custom max="1100MHz" > /dev/null &&
 	sudo x86_energy_perf_policy performance &&
-	echo "$AMDGPU_POWERLEVEL_MANUAL" > /sys/class/drm/card0/device/power_dpm_force_performance_level &&
-	echo "$AMDGPU_PROFILE_DEFAULT" > /sys/class/drm/card0/device/pp_power_profile_mode &&
-	echo "$AMDGPU_POWERLEVEL_HIGH" > /sys/class/drm/card0/device/power_dpm_force_performance_level &&
+	echo "$AMDGPU_POWERLEVEL_MANUAL" > /sys/class/drm/card1/device/power_dpm_force_performance_level &&
+	echo "$AMDGPU_PROFILE_DEFAULT" > /sys/class/drm/card1/device/pp_power_profile_mode &&
+	echo "$AMDGPU_POWERLEVEL_HIGH" > /sys/class/drm/card1/device/power_dpm_force_performance_level &&
 	echo "$1" >> "$XDG_CONFIG_HOME/.energypolicy"
 
 fi
