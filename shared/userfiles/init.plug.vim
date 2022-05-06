@@ -173,6 +173,7 @@ let g:NERDTrimTrailingWhitespace = 1
 
 " https://github.com/Shougo/defx.nvim
 " -----------------------------------
+autocmd BufEnter * if &ft ==# 'defx' | call defx#redraw() | endif
 autocmd BufWritePost * call defx#redraw()
 
 try
