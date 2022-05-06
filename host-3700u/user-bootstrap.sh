@@ -114,7 +114,6 @@ printinfo "+ ----------------------- +"
 
 archl_aur=(
 	brave-bin@master firefox-esr-bin@master msodbcsql@master polybar@master
-	postman-bin@master
 )
 
 cd "$AUR"
