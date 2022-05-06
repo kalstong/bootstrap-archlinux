@@ -34,4 +34,13 @@ elif [ "$1" = "performance" ]; then
 	echo "$AMDGPU_PROFILE_DEFAULT" > /sys/class/drm/card0/device/pp_power_profile_mode &&
 	echo "$AMDGPU_POWERLEVEL_HIGH" > /sys/class/drm/card0/device/power_dpm_force_performance_level &&
 	echo "$1" >> "$XDG_CONFIG_HOME/.energypolicy"
+
+elif [ "$1" = "ultrapowersave" ]; then
+	sudo cpupower frequency-set --governor powersave > /dev/null &&
+	sudo cpupower frequency-set --max "1.70GHz" > /dev/null &&
+	echo "$AMDGPU_POWERLEVEL_MANUAL" > /sys/class/drm/card0/device/power_dpm_force_performance_level &&
+	echo "$AMDGPU_PROFILE_POWERSAVE" > /sys/class/drm/card0/device/pp_power_profile_mode &&
+	echo "$AMDGPU_POWERLEVEL_LOW" > /sys/class/drm/card0/device/power_dpm_force_performance_level &&
+	echo "$1" >> "$XDG_CONFIG_HOME/.energypolicy"
+
 fi
