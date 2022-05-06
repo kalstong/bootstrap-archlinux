@@ -187,11 +187,12 @@ archl_pacman_core=(
 )
 archl_pacman_system=(
 	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa exfatprogs
-	f2fs-tools fd fish fwupd fzf gptfdisk gnupg gocryptfs intel-gpu-tools
-	intel-undervolt iwd libnotify lz4 man-db nss-mdns openbsd-netcat parted pbzip2
-	picom pigz playerctl pulseaudio redshift ripgrep sxhkd tint2 tmux unzip usleep
-	x86_energy_perf_policy xclip xdg-user-dirs xdg-utils xdotool xorg-server
-	xorg-xinit xorg-xinput xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
+	f2fs-tools fd fish fwupd fzf gnome-keyring gptfdisk gnupg gocryptfs
+	intel-gpu-tools intel-undervolt iwd libnotify lz4 man-db nss-mdns
+	openbsd-netcat parted pbzip2 picom pigz playerctl pulseaudio redshift ripgrep
+	sxhkd tint2 tmux unzip usleep x86_energy_perf_policy xclip xdg-user-dirs
+	xdg-utils xdotool xorg-server xorg-xinit xorg-xinput xorg-xprop xorg-xrandr
+	xorg-xset xorg-xsetroot zip zstd
 )
 archl_pacman_tools=(
 	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop curl
@@ -206,7 +207,7 @@ archl_pacman_development=(
 )
 archl_pacman_apps=(
 	alacritty arandr chromium drawing feh libreoffice-still maim mpv nomacs
-	obs-studio pavucontrol peek remmina rofi slock sxiv virt-viewer
+	obs-studio pavucontrol peek remmina rofi signal-desktop slock sxiv virt-viewer
 )
 archl_pacman_fonts=(
 	noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra terminus-font
