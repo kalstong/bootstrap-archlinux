@@ -91,7 +91,6 @@ dd if="$_disk_key" of=/tmp/main.keyfile \
    ibs=1 count=1024 status=none && sync
 
 printinfo "\n"
-usleep $((1000 *  256))
 printinfo "\n  -> Requesting fallback decryption password ..."
 askpwd > /tmp/pwd.keyfile
 

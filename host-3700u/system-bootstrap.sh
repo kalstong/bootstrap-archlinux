@@ -92,8 +92,8 @@ dd if="$_disk_key" of=/tmp/main.keyfile \
    skip=$((640 * 1024 * 1024 + 1024 * 0)) \
    ibs=1 count=1024 status=none && sync
 
-usleep $((1000 *  256))
-printinfo "\n\n  -> Requesting fallback decryption password ..."
+printinfo "\n"
+printinfo "\n  -> Requesting fallback decryption password ..."
 askpwd > /tmp/pwd.keyfile
 
 mkfs.fat -F32 "${_disk_system}p1"
