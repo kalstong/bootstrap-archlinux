@@ -19,8 +19,3 @@ shared/pkg-gcc11/pkg
 shared/pkg-gcc11/src
 shared/pkg-gcc11/*.tar.xz
 shared/pkg-gcc11/*.tar.zst
-
-shared/pkg-woeusbng/pkg
-shared/pkg-woeusbng/src
-shared/pkg-woeusbng/*.tar.gz
-shared/pkg-woeusbng/*.tar.zst

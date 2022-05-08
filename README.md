@@ -10,7 +10,6 @@ Some packages need manual intervention to check for updates:
 - For Nerd Fonts see [here](https://github.com/ryanoasis/nerd-fonts/releases).
 - For Node.js version manage (NVM) see [here](https://github.com/nvm-sh/nvm/releases).
 - For NVFLASH see [here](https://www.techpowerup.com/download/nvidia-nvflash/).
-- For WoeUSB-ng see [here](https://github.com/WoeUSB/WoeUSB-ng/tags).
 
 Everything else:
 - AUR: `git fetch`, `makepkg -sirc`.
