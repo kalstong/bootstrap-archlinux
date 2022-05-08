@@ -2,7 +2,7 @@
 Name=Postman
 Comment=Build, test, and document your APIs faster
 Path=/usr/bin
-Exec=firejail --noprofile --private=<dir> postman %U
+Exec=firejail --noprofile --private=<dir> postman --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer --disable-gpu-driver-bug-workarounds --enable-accelerated-mjpeg-decode --enable-accelerated-video-decode --enable-features=CanvasOopRasterization,ParallelDownloading,UseVulkan,VaapiVideoDecoder,VaapiVideoEncoder --enable-gpu-rasterization --enable-native-gpu-memory-buffers --enable-oop-rasterization --enable-zero-copy --ignore-gpu-blocklist --use-vulkan %U
 Icon=postman
 Type=Application
 StartupNotify=true
