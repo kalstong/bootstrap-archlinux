@@ -198,8 +198,8 @@ archl_pacman_system=(
 archl_pacman_tools=(
 	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop curl
 	edk2-ovmf entr firejail freerdp hey htop inotify-tools iotop jq libva-utils lfs
-	lshw lsof mesa-demos neovim nnn openconnect openssh openvpn p7zip qemu-desktop
-	qemu-arch-extra rsync time tree turbostat usbutils vkmark
+	lshw lsof mesa-demos neovim nnn openconnect openssh openvpn p7zip qemu-full
+	qemu-emulators-full rsync time tree turbostat usbutils vkmark
 )
 archl_pacman_development=(
 	autoconf-archive base-devel diffutils docker docker-compose git git-delta
