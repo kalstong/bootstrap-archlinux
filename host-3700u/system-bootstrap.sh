@@ -188,9 +188,9 @@ archl_pacman_system=(
 	avahi bat bc bluez brightnessctl bspwm cpupower dash dhcpcd dunst efibootmgr
 	exa exfatprogs f2fs-tools fd fish fwupd fzf gnome-keyring gptfdisk gnupg
 	gocryptfs iwd libnotify lz4 man-db nss-mdns openbsd-netcat parted pbzip2 picom
-	pigz playerctl pulseaudio redshift ripgrep sxhkd tint2 tmux unzip usleep xclip
-	xdg-user-dirs xdg-utils xdotool xorg-server xorg-xinit xorg-xinput xorg-xprop
-	xorg-xrandr xorg-xset xorg-xsetroot zip zstd
+	pigz playerctl polybar pulseaudio redshift ripgrep sxhkd tint2 tmux unzip
+	usleep xclip xdg-user-dirs xdg-utils xdotool xorg-server xorg-xinit xorg-xinput
+	xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
 )
 archl_pacman_tools=(
 	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop curl

@@ -183,7 +183,7 @@ archl_pacman_system=(
 	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa
 	exfatprogs f2fs-tools fd fish fwupd fzf gptfdisk gnupg gocryptfs
 	intel-gpu-tools intel-undervolt iwd libnotify lz4 man-db nss-mdns
-	openbsd-netcat parted pbzip2 picom pigz playerctl pulseaudio redshift
+	openbsd-netcat parted pbzip2 picom pigz playerctl polybar pulseaudio redshift
 	ripgrep sxhkd tint2 tmux unzip usleep x86_energy_perf_policy xclip
 	xdg-user-dirs xdg-utils xdotool xorg-server xorg-xinit xorg-xinput
 	xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
