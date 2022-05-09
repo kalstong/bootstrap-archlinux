@@ -89,12 +89,13 @@ if [ ! -L "$_disk_key" ]; then
 	while [ ! -L "$_disk_key" ]; do usleep $((1000 * 100)); done
 fi
 
+printinfo "  -> Reading decryption key ..."
 dd if="$_disk_key" of=/tmp/main.keyfile \
    skip=$((640 * 1024 * 1024 + 1024 * 1)) \
    ibs=1 count=1024 status=none && sync
 
-printinfo "\n"
-printinfo "\n  -> Requesting fallback decryption password ..."
+sleep 1
+printinfo "\n\n  -> Requesting fallback decryption password ..."
 askpwd > /tmp/pwd.keyfile
 
 mkfs.fat -F32 "${_disk_system}p1"
