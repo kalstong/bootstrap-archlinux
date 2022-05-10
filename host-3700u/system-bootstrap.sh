@@ -181,11 +181,11 @@ printinfo "| Installing Pacman packages |"
 printinfo "+ -------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
-archl_pacman_core=(
+pacman_core=(
 	amd-ucode base grub linux-lts linux-firmware libva libva-mesa-driver mesa
 	mesa-vdpau ntfs-3g sshfs vulkan-radeon xf86-video-amdgpu
 )
-archl_pacman_system=(
+pacman_system=(
 	avahi bat bc bluez brightnessctl bspwm cpupower dash dhcpcd dunst efibootmgr
 	exa exfatprogs f2fs-tools fd fish fwupd fzf gnome-keyring gptfdisk gnupg
 	gocryptfs iwd libnotify lz4 man-db nss-mdns openbsd-netcat parted pbzip2 picom
@@ -193,21 +193,21 @@ archl_pacman_system=(
 	usleep xclip xdg-user-dirs xdg-utils xdotool xorg-server xorg-xinit xorg-xinput
 	xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
 )
-archl_pacman_tools=(
+pacman_tools=(
 	arch-audit aria2 bash-completion bind bluez-utils btop ctop curl edk2-ovmf
 	firejail freerdp hey htop inotify-tools iotop jq libva-utils lfs lshw lsof
 	neovim nnn openconnect openssh openvpn p7zip qemu-full radeontop rsync time
 	tree turbostat usbutils vkmark
 )
-archl_pacman_development=(
+pacman_development=(
 	base-devel diffutils docker docker-compose git git-delta man-pages python
 	python-pip strace tokei vulkan-icd-loader vulkan-mesa-layers
 )
-archl_pacman_apps=(
+pacman_apps=(
 	alacritty arandr chromium drawing feh libreoffice-still maim mpv obs-studio
 	pavucontrol peek remmina rofi signal-desktop slock sxiv virt-viewer
 )
-archl_pacman_fonts=(
+pacman_fonts=(
 	noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra terminus-font
 	ttf-font-awesome ttf-jetbrains-mono
 )
@@ -216,9 +216,9 @@ archl_pacman_fonts=(
 # ffmpeg firejail powertop ctags meld tigervnc ssh-tools
 
 pacman -Syy
-pacstrap -i "$bt_rootdir" ${archl_pacman_core[*]} ${archl_pacman_system[*]} \
-	${archl_pacman_tools[*]} ${archl_pacman_development[*]} ${archl_pacman_apps[*]} \
-	${archl_pacman_apps[*]} ${archl_pacman_fonts[*]} --needed --noconfirm
+pacstrap -i "$bt_rootdir" ${pacman_core[*]} ${pacman_system[*]} \
+	${pacman_tools[*]} ${pacman_development[*]} ${pacman_apps[*]} \
+	${pacman_apps[*]} ${pacman_fonts[*]} --needed --noconfirm
 
 printinfo "\n"
 printinfo "+ ---------------- +"
