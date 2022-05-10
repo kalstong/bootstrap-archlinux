@@ -80,8 +80,6 @@ cp ../shared/userfiles/spotify.png "${HOME}/.icons/"
 cp ../shared/userfiles/ssh.conf "${HOME}/.ssh/config"
 cp ../shared/userfiles/start-spotify.sh "${HOME}/.local/bin/"
 cp ../shared/userfiles/sxhkdrc "${XDG_CONFIG_HOME}/sxhkd/"
-cp ../shared/userfiles/teams.desktop "${HOME}/.local/share/applications/"
-cp ../shared/userfiles/teams.png "${HOME}/.icons/"
 cp ../shared/userfiles/terminate-session.sh "${XDG_CONFIG_HOME}/polybar/"
 cp ../shared/userfiles/tmux-gitstat.sh "${HOME}/.local/bin/"
 

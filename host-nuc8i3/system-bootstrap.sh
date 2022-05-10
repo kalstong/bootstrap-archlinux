@@ -207,8 +207,8 @@ pacman_development=(
 	vulkan-mesa-layers
 )
 pacman_apps=(
-	alacritty arandr chromium drawing feh libreoffice-still maim mpv nomacs
-	obs-studio pavucontrol peek remmina rofi signal-desktop slock sxiv virt-viewer
+	alacritty arandr chromium drawing feh libreoffice-still maim mpv obs-studio
+	pavucontrol peek remmina rofi slock sxiv virt-viewer
 )
 pacman_fonts=(
 	noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra terminus-font
