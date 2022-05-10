@@ -184,7 +184,7 @@ archl_pacman_core=(
 )
 archl_pacman_system=(
 	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa
-	exfatprogs f2fs-tools fd fish fwupd fzf gptfdisk gnupg gocryptfs
+	exfatprogs f2fs-tools fd fish fwupd fzf gptfdisk gnome-keyring gnupg gocryptfs
 	intel-gpu-tools iwd libnotify lz4 man-db nss-mdns openbsd-netcat parted pbzip2
 	picom pigz playerctl polybar pulseaudio redshift ripgrep sxhkd tint2 tmux unzip
 	usleep x86_energy_perf_policy xclip xdg-user-dirs xdg-utils xdotool xorg-server
