@@ -198,11 +198,11 @@ pacman_system=(
 pacman_tools=(
 	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop curl
 	edk2-ovmf entr firejail freerdp hey htop inotify-tools iotop jq libva-utils lfs
-	lshw lsof mesa-demos neovim nnn openconnect openssh openvpn p7zip qemu-full
+	lshw lsof neovim nnn openconnect openssh openvpn p7zip qemu-full
 	qemu-emulators-full rsync time tree turbostat usbutils vkmark
 )
 pacman_development=(
-	autoconf-archive base-devel diffutils docker docker-compose git git-delta
+	autoconf-archive base-devel diffutils docker docker-compose gdb git git-delta
 	man-pages perf python python-pip strace tokei vulkan-icd-loader
 	vulkan-mesa-layers
 )

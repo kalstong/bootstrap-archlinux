@@ -191,7 +191,7 @@ pacman_system=(
 	xorg-xinit xorg-xinput xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
 )
 pacman_tools=(
-	arch-audit aria2 bash-completion bind bluez-utils btop ctop curl edk2-ovmf
+	arch-audit aria2 bash-completion bind bluez-utils btop ctop croc curl edk2-ovmf
 	firejail freerdp hey htop inotify-tools iotop jq libva-utils lfs lshw lsof
 	neovim nnn openconnect openssh openvpn p7zip qemu-full radeontop rsync time
 	tree turbostat usbutils vkmark
