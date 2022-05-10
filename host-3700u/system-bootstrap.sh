@@ -194,19 +194,18 @@ archl_pacman_system=(
 	xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
 )
 archl_pacman_tools=(
-	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop curl
-	edk2-ovmf entr firejail freerdp hey htop inotify-tools iotop jq libva-utils lfs
-	lshw lsof mesa-demos neovim nnn openconnect openssh openvpn p7zip qemu-full
-	qemu-emulators-full radeontop rsync time tree turbostat usbutils vkmark
+	arch-audit aria2 bash-completion bind bluez-utils btop ctop curl edk2-ovmf
+	firejail freerdp hey htop inotify-tools iotop jq libva-utils lfs lshw lsof
+	neovim nnn openconnect openssh openvpn p7zip qemu-full radeontop rsync time
+	tree turbostat usbutils vkmark
 )
 archl_pacman_development=(
-	autoconf-archive base-devel diffutils docker docker-compose git git-delta
-	man-pages perf python python-pip strace tokei vulkan-icd-loader
-	vulkan-mesa-layers
+	base-devel diffutils docker docker-compose git git-delta man-pages python
+	python-pip strace tokei vulkan-icd-loader vulkan-mesa-layers
 )
 archl_pacman_apps=(
-	alacritty arandr chromium drawing feh libreoffice-still maim mpv nomacs
-	obs-studio pavucontrol peek remmina rofi signal-desktop slock sxiv virt-viewer
+	alacritty arandr chromium drawing feh libreoffice-still maim mpv obs-studio
+	pavucontrol peek remmina rofi signal-desktop slock sxiv virt-viewer
 )
 archl_pacman_fonts=(
 	noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra terminus-font
