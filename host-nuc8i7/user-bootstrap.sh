@@ -113,7 +113,7 @@ printinfo "+ ----------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 archl_aur=(
-	brave-bin@master firefox-esr-bin@master
+	brave-bin@master firefox-esr-bin@master postman-bin@master
 )
 
 cd "$AUR"

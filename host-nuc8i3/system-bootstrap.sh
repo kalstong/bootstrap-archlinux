@@ -187,23 +187,23 @@ pacman_core=(
 	ntfs-3g sshfs vulkan-intel xf86-video-intel
 )
 pacman_system=(
-	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa exfatprogs
-	f2fs-tools fd fish fwupd fzf gnome-keyring gptfdisk gnupg gocryptfs
-	intel-gpu-tools intel-undervolt iwd libnotify lz4 man-db nss-mdns
-	openbsd-netcat parted pbzip2 picom pigz playerctl polybar pulseaudio redshift
-	ripgrep sxhkd tint2 tmux unzip usleep x86_energy_perf_policy xclip
-	xdg-user-dirs xdg-utils xdotool xorg-server xorg-xinit xorg-xinput xorg-xprop
-	xorg-xrandr xorg-xset xorg-xsetroot zip zstd
+	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa
+	exfatprogs f2fs-tools fd fish fwupd fzf gnome-keyring gptfdisk gnupg
+	gocryptfs intel-gpu-tools intel-undervolt iwd libnotify lz4 man-db nss-mdns
+	openbsd-netcat parted pbzip2 picom pigz playerctl polybar pulseaudio
+	redshift ripgrep sxhkd tint2 tmux unzip usleep x86_energy_perf_policy xclip
+	xdg-user-dirs xdg-utils xdotool xorg-server xorg-xinit xorg-xinput
+	xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
 )
 pacman_tools=(
-	arch-audit aria2 bash-completion bind bluez-utils btop croc ctop curl edk2-ovmf
-	firejail freerdp hey htop inotify-tools iotop jq libva-utils lfs lshw lsof
-	neovim nnn openconnect openssh openvpn p7zip qemu-full rsync time tree
-	turbostat usbutils vkmark
+	arch-audit aria2 bash-completion bind bluez-utils btop croc ctop curl
+	edk2-ovmf firejail freerdp hey htop inotify-tools iotop jq libva-utils lfs
+	lshw lsof neovim nnn openconnect openssh openvpn p7zip qemu-full rsync time
+	tree turbostat usbutils vkmark
 )
 pacman_development=(
-	base-devel diffutils docker docker-compose git git-delta man-pages perf python
-	python-pip strace tokei vulkan-icd-loader vulkan-mesa-layers
+	base-devel diffutils docker docker-compose git git-delta man-pages perf
+	python python-pip strace tokei vulkan-icd-loader vulkan-mesa-layers
 )
 pacman_apps=(
 	alacritty arandr chromium drawing feh libreoffice-still maim mpv obs-studio

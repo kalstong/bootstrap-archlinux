@@ -183,26 +183,29 @@ pacman_core=(
 	xf86-video-amdgpu
 )
 pacman_system=(
-	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa exfatprogs
-	f2fs-tools fd fish fwupd fzf gptfdisk gnome-keyring gnupg gocryptfs
-	intel-gpu-tools iwd libnotify lz4 man-db nss-mdns openbsd-netcat parted pbzip2
-	picom pigz playerctl polybar pulseaudio redshift ripgrep sxhkd tint2 tmux unzip
-	usleep x86_energy_perf_policy xclip xdg-user-dirs xdg-utils xdotool xorg-server
-	xorg-xinit xorg-xinput xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
+	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa
+	exfatprogs f2fs-tools fd fish fwupd fzf gptfdisk gnome-keyring gnupg
+	gocryptfs intel-gpu-tools iwd libnotify lz4 man-db nss-mdns openbsd-netcat
+	parted pbzip2 picom pigz playerctl polybar pulseaudio redshift ripgrep sxhkd
+	tint2 tmux unzip usleep x86_energy_perf_policy xclip xdg-user-dirs xdg-utils
+	xdotool xorg-server xorg-xinit xorg-xinput xorg-xprop xorg-xrandr xorg-xset
+	xorg-xsetroot zip zstd
 )
 pacman_tools=(
-	arch-audit aria2 bash-completion bind bluez-utils btop ctop croc curl edk2-ovmf
-	firejail freerdp hey htop inotify-tools iotop jq libva-utils lfs lshw lsof
-	neovim nnn openconnect openssh openvpn p7zip qemu-full radeontop rsync time
-	tree turbostat usbutils vkmark
+	arch-audit archiso aria2 bash-completion bind bluez-utils btop ctop croc
+	curl edk2-ovmf entr firejail freerdp hey htop inotify-tools iotop jq
+	libva-utils lfs lshw lsof neovim nnn openconnect openssh openvpn p7zip
+	qemu-full qemu-emulators-full radeontop rsync time tree turbostat usbutils
+	vkmark
 )
 pacman_development=(
-	base-devel diffutils docker docker-compose git git-delta man-pages python
-	python-pip strace tokei vulkan-icd-loader vulkan-mesa-layers
+	autoconf-archive base-devel diffutils docker docker-compose gdb git
+	git-delta man-pages perf python python-pip strace tokei vulkan-icd-loader
+	vulkan-mesa-layers
 )
 pacman_apps=(
-	alacritty arandr chromium drawing feh libreoffice-still maim mpv obs-studio
-	pavucontrol peek remmina rofi slock sxiv virt-viewer
+	alacritty arandr chromium drawing feh libreoffice-still maim mpv nomacs
+	obs-studio pavucontrol peek remmina rofi slock sxiv virt-viewer
 )
 pacman_fonts=(
 	noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra terminus-font
