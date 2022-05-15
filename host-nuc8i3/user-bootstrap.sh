@@ -52,12 +52,12 @@ mkdir -p "$HOME/.local/share/xorg"
 mkdir -p "$HOME/.local/share/fonts"
 mkdir -p {"$AUR","$CODE","$DOWNLOADS","$FILES","$NOTES"}
 mkdir -p {"$RECORDINGS","$SCREENSHOTS","$TRASH","$WALLPAPERS","$WORK"}
-mkdir -p {"$GOCACHE","$GOMODCACHE","$GOPATH","$GOROOT"}
+mkdir -p {"$FVM_HOME","$GOCACHE","$GOMODCACHE","$GOPATH","$GOROOT"}
 mkdir -p {"$NPM_CONFIG_CACHE","$NVM_DIR","$YARN_CACHE_FOLDER"}
 mkdir -p "$CACHE"/docker
 mkdir -p "$TRASH"/firejail
 
-chattr -R +c {"$GOMODCACHE","$NPM_CONFIG_CACHE","$NVM_DIR","$YARN_CACHE_FOLDER"}
+chattr -R +c {"$FVM_HOME", "$GOMODCACHE","$NPM_CONFIG_CACHE","$NVM_DIR","$YARN_CACHE_FOLDER"}
 sudo mkdir -p "$MOUNT"
 sudo chown $bt_user:$bt_user "$MOUNT"
 sudo chmod u=rwx,g=rx,o= userfiles "$MOUNT"

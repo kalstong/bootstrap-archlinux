@@ -9,6 +9,7 @@ set --export TRASH "$HOME/trash"
 set --export WORK "$HOME/work"
 
 set --export DOWNLOADS "$FILES/downloads"
+set --export FVM_HOME "$CACHE/fvm"
 set --export GOBIN "$HOME/.local/bin/go"
 set --export GOCACHE "$CACHE/go/build"
 set --export GOMODCACHE "$CACHE/go/lib/pkg/mod"
