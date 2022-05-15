@@ -124,7 +124,7 @@ super + {Delete,End,Page_Down}
 
 super + Return
 	WINIT_X11_SCALE_FACTOR=1 alacritty \
-		--option window.dimensions.columns=80 \
+		--option window.dimensions.columns=161 \
 		--option window.dimensions.lines=30 \
 		--command tmux
 
