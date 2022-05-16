@@ -195,13 +195,13 @@ pacman_system=(
 )
 pacman_tools=(
 	arch-audit aria2 bash-completion bind bluez-utils btop croc ctop curl
-	edk2-ovmf firejail freerdp hey htop inotify-tools iotop jq libva-utils lfs
-	lshw lsof neovim nnn openconnect openssh openvpn p7zip qemu-full radeontop
-	rsync time tree turbostat usbutils vkmark
+	firejail freerdp htop inotify-tools iotop jq libva-utils lfs lshw lsof
+	neovim nnn openconnect openssh openvpn p7zip radeontop time tree turbostat
+	usbutils vkmark
 )
 pacman_development=(
 	base-devel diffutils docker docker-compose git git-delta man-pages python
-	python-pip strace tokei vulkan-icd-loader vulkan-mesa-layers
+	python-pip tokei vulkan-icd-loader vulkan-mesa-layers
 )
 pacman_apps=(
 	alacritty arandr chromium drawing feh libreoffice-still maim mpv obs-studio
