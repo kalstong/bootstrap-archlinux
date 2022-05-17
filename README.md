@@ -3,12 +3,13 @@
 Some packages need manual intervention to check for updates:
 - For Azure Data Studio see [here](https://github.com/microsoft/azuredatastudio/releases).
 - For Brave see [here](https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md)
-  (for Chromium [here](https://chromiumdash.appspot.com/releases?platform=Linux)).
+- For Chromium see [here](https://chromiumdash.appspot.com/releases?platform=Linux).
 - For Firefox ESR see [here](https://www.mozilla.org/firefox/organizations/notes/).
-- For Go version manager (g) see [here](https://github.com/stefanmaric/g).
+- For Flutter Version Manager see [here](https://github.com/fluttertools/fvm/releases).
+- For Go Version Manager see [here](https://github.com/stefanmaric/g).
 - For MongoDB Compass see [here](https://www.mongodb.com/try/download/compass).
 - For Nerd Fonts see [here](https://github.com/ryanoasis/nerd-fonts/releases).
-- For Node.js version manage (NVM) see [here](https://github.com/nvm-sh/nvm/releases).
+- For Node.js Version Manage see [here](https://github.com/nvm-sh/nvm/releases).
 - For NVFLASH see [here](https://www.techpowerup.com/download/nvidia-nvflash/).
 
 Everything else:
