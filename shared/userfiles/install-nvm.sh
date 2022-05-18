@@ -6,6 +6,7 @@ version="v0.39.1"
 	cd "$NVM_DIR" &&
 	git fetch --all --tags &&
 	git checkout "tags/${version}" &&
+	cd - &&
 	exit 0
 
 rm -rf "$NVM_DIR" &&

@@ -1,15 +1,16 @@
 #!/bin/bash
 
-dvm_version="v1.5.4"
-dvm_url="https://github.com/justjavac/dvm/releases/download/$dvm_version/dvm-x86_64-unknown-linux-gnu.zip"
+dvm_version="1.3.1"
 
-echo "Downloading DVM $dvm_version ..." &&
-curl -sS --connect-timeout 13 --retry 5 --retry-delay 2 -H 'Accept:application/vnd.github.v3.raw' \
-	-L "$dvm_url" -o "/tmp/dvm-$dvm_version.zip" &&
+[ -d "${DVM_ROOT}/.git" ] &&
+	cd "$DVM_ROOT" &&
+	git fetch --all --tags &&
+	git checkout "tags/${dvm_version}" &&
+	cd - &&
+	exit 0
 
-echo "Extracting /tmp/dvm-$dvm_version.zip ..." &&
-unzip /tmp/dvm-$dvm_version.zip dvm -d /tmp
-
-echo "Installing DVM $dvm_version ..." &&
-mv /tmp/dvm
-rm -f /tmp/dvm "/tmp/${dvm_version}.zip"
+rm -rf "$DVM_ROOT" &&
+git clone https://github.com/cbracken/dvm.git "$DVM_ROOT" &&
+cd "$DVM_ROOT" &&
+git checkout "tags/${dvm_version}" &&
+cd -

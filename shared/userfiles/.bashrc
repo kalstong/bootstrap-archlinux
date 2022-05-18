@@ -2,6 +2,9 @@ PS1="\[$(tput setaf 5)\]\A\[$(tput sgr0)\] \w$([ -n "$NNNLVL" ] && echo " nnn:$N
 
 . "$HOME/.bashrc.aux"
 
+[ -f "${DVM_ROOT}/scripts/dvm" ] &&
+	. "${DVM_ROOT}/scripts/dvm"
+
 export FORGIT_NO_ALIASES="true"
 export FORGIT_FZF_DEFAULT_OPTS="--cycle --reverse --height '80%'"
 . "$HOME/.forgit.plugin.sh"

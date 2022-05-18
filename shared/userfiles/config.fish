@@ -115,6 +115,10 @@ function clipit --description "Copy the content of a file to the clipboard"
 	end
 end
 
+function dvm --description "Dart Version Manager"
+	bash -i -c "dvm $argv"
+end
+
 function energypolicy --description "Enables an energy policy"
 	bash -i -c "energypolicy $argv"
 end

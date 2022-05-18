@@ -9,6 +9,7 @@ export TRASH="$HOME/trash"
 export WORK="$HOME/work"
 
 export DOWNLOADS="$FILES/downloads"
+export DVM_ROOT="$CACHE/dvm"
 export FVM_HOME="$CACHE/fvm"
 export GOBIN="$HOME/.local/bin/go"
 export GOCACHE="$CACHE/go/build"
