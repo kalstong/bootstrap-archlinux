@@ -134,6 +134,12 @@ super + shift + Return
 		--option window.dimensions.lines=60 \
 		--command tmux
 
+super + alt + Return
+	WINIT_X11_SCALE_FACTOR=1 alacritty \
+		--option window.dimensions.columns=70 \
+		--option window.dimensions.lines=10 \
+		--command btop
+
 super + shift + n
 	/usr/bin/firefox-esr -private-window
 
