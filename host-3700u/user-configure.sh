@@ -166,4 +166,28 @@ if [ ! -f "${_vimplug_dir}/plug.vim" ]; then
 		"$_vimplug_url" -sS -H "Accept:application/vnd.github.v3.raw" -o "${_vimplug_dir}/plug.vim"
 fi
 
+_forgit_bash_dir="${HOME}"
+_forgit_bash_file=".forgit.plugin.sh"
+if [ ! -f "${_forgit_bash_dir}/${_forgit_bash_file}" ]; then
+	# Consulted on 2022-05-18
+	_forgit_bash_url="https://raw.githubusercontent.com/wfxr/forgit/75e9d12bacaea12012c89facf80bf42a5ad9b769/forgit.plugin.zsh"
+
+	printwarn "Downloading forgit for Bash shell ..."
+	curl --connect-timeout 13 --retry 5 --retry-delay 2 \
+		"$_forgit_bash_url" -sS -H "Accept:application/vnd.github.v3.raw" \
+		-o "${_forgit_bash_dir}/${_forgit_bash_file}"
+fi
+
+_forgit_fish_dir="${XDG_CONFIG_HOME}/fish"
+_forgit_fish_file="forgit.plugin.fish"
+if [ ! -f "${_forgit_fish_dir}/${_forgit_fish_file}" ]; then
+	# Consulted on 2022-05-18
+	_forgit_fish_url="https://raw.githubusercontent.com/wfxr/forgit/75e9d12bacaea12012c89facf80bf42a5ad9b769/conf.d/forgit.plugin.fish"
+
+	printwarn "Downloading forgit for Fish shell ..."
+	curl --connect-timeout 13 --retry 5 --retry-delay 2 \
+		"$_forgit_fish_url" -sS -H "Accept:application/vnd.github.v3.raw" \
+		-o "${_forgit_fish_dir}/${_forgit_fish_file}"
+fi
+
 popd > /dev/null

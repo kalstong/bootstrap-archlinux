@@ -2,6 +2,10 @@ set fish_greeting
 
 source "$XDG_CONFIG_HOME/fish/config.aux.fish"
 
+set --export FORGIT_NO_ALIASES "true"
+set --export FORGIT_FZF_DEFAULT_OPTS "--cycle --reverse --height '80%'"
+source "$XDG_CONFIG_HOME/fish/forgit.plugin.fish"
+
 set -g __fish_git_prompt_show_informative_status 1
 set -g __fish_git_prompt_hide_untrackedfiles 1
 set -g __fish_git_prompt_showupstream "informative"
