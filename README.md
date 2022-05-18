@@ -4,6 +4,7 @@ Some packages need manual intervention to check for updates:
 - For Azure Data Studio see [here](https://github.com/microsoft/azuredatastudio/releases).
 - For Brave see [here](https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md)
 - For Chromium see [here](https://chromiumdash.appspot.com/releases?platform=Linux).
+- For Dart Version Manager see [here](https://github.com/cbracken/dvm/tags).
 - For Firefox ESR see [here](https://www.mozilla.org/firefox/organizations/notes/).
 - For Flutter Version Manager see [here](https://github.com/fluttertools/fvm/releases).
 - For Go Version Manager see [here](https://github.com/stefanmaric/g).
