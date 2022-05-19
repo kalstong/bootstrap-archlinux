@@ -35,6 +35,8 @@ To create new SSH keys:
 - For files: `chmod u=r,g=,o= id_*`. For folders: `chmod u=rx,g=,o= *`.
 
 ## Tasks
+- Have Dart and Flutter tools available in PATH (Bash and Fish) after a default
+  version is selected.
 - Fix RealTek audio driver powersave malfunction.
   ```
    mai 15 23:32:06 nuc8i3 kernel: snd_hda_codec_realtek hdaudioC0D0: Unable to sync register 0x2b8000. -5
