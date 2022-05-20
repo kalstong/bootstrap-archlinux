@@ -17,7 +17,7 @@ Everything else:
 - AUR: `git fetch`, `makepkg -sirc`.
 - Fwupd: `fwupdmgr get-devices`, `fwupdmgr refresh`, `fwupdmgr get-updates`, `fwupdmgr update`.
 - Golang: `g list-all`, `g install <version>`.
-- Node.js/NPM: `nvm ls-remote --lts=fermium`, `nvm install <pkg_version>`.
+- Node.js/NPM: `nvm ls-remote --lts=fermium`, `nvm install <pkg_version>`, `npm outdated -g`.
 - Pacman: `sudo pacman -Sy && pacman -Qu`, `sudo pacman -Syu`.
 - PiP: `pip list --user --outdated`, `pip install --user --upgrade <pkg>`.
 - Vim plugins: `:PlugUpdate`, `:PlugUpgrade`, `:COQdeps`, `:TSUpdate`, `:UpdateRemotePlugins`.
