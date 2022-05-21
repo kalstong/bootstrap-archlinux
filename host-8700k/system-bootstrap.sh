@@ -293,6 +293,7 @@ umount "$bt_rootdir/boot"
 sync
 
 umount -R "$bt_rootdir"
+cryptsetup close d1
 cryptsetup close root
 
 popd > /dev/null
