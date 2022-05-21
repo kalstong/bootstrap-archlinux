@@ -1,14 +1,16 @@
 #!/bin/bash
 
 # --- System Specs ---
-# Intel NUC8i7BEH [1]
-# CPU: Intel Core i7-8559U @2.70GHz [2]
-# RAM: 2x 16GiB DDR4 @2.40GHz-CL14 DC
-# GPU: Intel Iris Plus Graphics 655 @300/1200MHz
-# SSD: 1TiB M.2 NVMe Intel 660p QLC
+# MBO: Asus ROG STRIX Z370-F GAMING [1]
+# CPU: Intel Core i7-8700K @3.70GHz [2]
+# RAM: 2x 16GiB DDR4 @2.80GHz-CL14 DC
+# GPU: Intel UHD 630 @350/1200MHz
+# GPU: Gigabyte NVIDIA RTX 2060 SUPER Gaming 8GB OC
+# STO: 1TiB M.2 NVMe Samsung 970 Evo Plus TLC V-NAND (system)
+# STO: RAID 2x 250GiB SSD SATA3 WDB 3D-NAND (d1)
 #
-# [1]: https://ark.intel.com/content/www/us/en/ark/products/126140/intel-nuc-kit-nuc8i7beh.html
-# [2]: https://ark.intel.com/content/www/us/en/ark/products/137979/intel-core-i7-8559u-processor-8m-cache-up-to-4-50-ghz.html
+# [1]: https://rog.asus.com/us/Motherboards/ROG-Strix/ROG-STRIX-Z370-F-GAMING-Model/
+# [2]: https://ark.intel.com/content/www/us/en/ark/products/126684/intel-core-i7-8700k-processor-12m-cache-up-to-4-70-ghz.html
 
 scriptdir="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 pushd "$scriptdir" > /dev/null
@@ -50,15 +52,20 @@ printinfo "+ ------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 _disk_key="/dev/disk/by-id/usb-General_USB_Flash_Disk_7911020000213736-0:0"
 _disk_system="/dev/nvme0n1"
+_disk_storage="/dev/md126"
 
 nvme format "$_disk_system" --force --namespace-id 1 --ses 0
+sgdisk --zap-all "$_disk_storage"
 sync
+
 partprobe "$_disk_system"
+partprobe "$_disk_storage"
+sync
 
 printinfo "\n"
-printinfo "+ ----------------- +"
-printinfo "| Partitioning disk |"
-printinfo "+ ----------------- +"
+printinfo "+ ------------------------ +"
+printinfo "| Partitioning system disk |"
+printinfo "+ ------------------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 parted "$_disk_system" mklabel gpt && sync
@@ -75,6 +82,16 @@ _starts_at=${_ends_at} # Remaining space as the root partition
 parted "$_disk_system" mkpart primary "${_starts_at}MiB" "100%" && sync
 
 printinfo "\n"
+printinfo "+ ---------------------- +"
+printinfo "| Partitioning data disk |"
+printinfo "+ ---------------------- +"
+[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+
+_starts_at=1
+parted "$_disk_storage" mklabel gpt && sync
+parted "$_disk_storage" mkpart primary "${_starts_at}MiB" "100%" && sync
+
+printinfo "\n"
 printinfo "+ ------------------------------------------------- +"
 printinfo "| Formatting volumes and setting up LUKS encryption |"
 printinfo "+ ------------------------------------------------- +"
@@ -87,7 +104,7 @@ fi
 
 printinfo "  -> Reading decryption key ..."
 dd if="$_disk_key" of=/tmp/main.keyfile \
-   skip=$((640 * 1024 * 1024 + 1024 * 2)) \
+   skip=$((640 * 1024 * 1024 + 1024 * 4)) \
    ibs=1 count=1024 status=none && sync
 
 sleep 1
@@ -96,28 +113,42 @@ askpwd > /tmp/pwd.keyfile
 
 mkfs.fat -F32 "${_disk_system}p1"
 mkfs.f2fs -f "${_disk_system}p2"
+mkfs.f2fs -f "${_disk_storage}-part1"
 
-printinfo "\n  -> Encrypting root partition ..."
+printinfo "\n  -> Encrypting partitions ..."
 cryptsetup --verbose \
 	--batch-mode luksFormat "${_disk_system}p3" /tmp/main.keyfile \
 	--type luks2 --sector-size 4096
 
+cryptsetup --verbose \
+	--batch-mode luksFormat "${_disk_storage}-part1" /tmp/main.keyfile \
+	--type luks2 --sector-size 4096
+
 printinfo "\n  -> Setting fallback decryption password ..."
 cryptsetup luksAddKey "${_disk_system}p3" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
+cryptsetup luksAddKey "${_disk_storage}-part1" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/pwd.keyfile
 
-printinfo "\n  -> Opening the encrypted root partition ..."
+printinfo "\n  -> Opening the encrypted partitions ..."
 cryptsetup --key-file /tmp/main.keyfile \
 	--allow-discards \
 	--perf-no_read_workqueue \
 	--perf-no_write_workqueue \
 	open "${_disk_system}p3" root
+
+cryptsetup --key-file /tmp/main.keyfile \
+	--allow-discards \
+	--perf-no_read_workqueue \
+	--perf-no_write_workqueue \
+	open "${_disk_storage}-part1" d1
+
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/main.keyfile
 
-printinfo "\n  -> Formatting the root partition ..."
+printinfo "\n  -> Formatting the partitions ..."
 mkfs.f2fs -O extra_attr,inode_checksum,sb_checksum,compression,encrypt -f /dev/mapper/root
-
+mkfs.f2fs -O extra_attr,inode_checksum,sb_checksum,compression,encrypt -f /dev/mapper/d1
 sync
+
 printinfo "\n"
 printinfo "+ ------------------- +"
 printinfo "| Mounting partitions |"
@@ -126,6 +157,7 @@ printinfo "+ ------------------- +"
 efi_mount_opts=$(grep "/boot/efi" sysfiles/fstab | awk '{print $4}')
 boot_mount_opts=$(grep "/boot[[:space:]]\+" sysfiles/fstab | awk '{print $4}')
 root_mount_opts=$(grep "/dev/mapper/root" sysfiles/fstab | awk '{print $4}')
+d1_mount_opts=$(grep "/dev/mapper/d1" sysfiles/fstab | awk '{print $4}')
 
 mount -o "$root_mount_opts" /dev/mapper/root "$bt_rootdir" && sync
 
@@ -134,6 +166,9 @@ mount -o "$boot_mount_opts" "${_disk_system}p2" "$bt_rootdir/boot"
 
 mkdir -p "$bt_rootdir/boot/efi"
 mount -o "$efi_mount_opts" "${_disk_system}p1" "$bt_rootdir/boot/efi"
+
+mkdir -p "$bt_rootdir/mnt/d1"
+mount -o "$d1_mount_opts" "${_disk_storage}-part1" "$bt_rootdir/mnt/d1"
 
 printinfo "\n"
 printinfo "+ --------------------- +"
@@ -178,12 +213,12 @@ printinfo "+ -------------------------- +"
 
 pacman_core=(
 	base grub intel-media-driver intel-ucode linux-lts linux-firmware libva mesa
-	ntfs-3g sshfs vulkan-intel xf86-video-intel
+	ntfs-3g nvidia-lts nvidia-utils sshfs vulkan-intel xf86-video-intel
 )
 pacman_system=(
-	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa
+	avahi bat bc bluez bspwm cpupower dash dhcpcd dmraid dunst efibootmgr exa
 	exfatprogs f2fs-tools fd fish fwupd fzf gptfdisk gnome-keyring gnupg
-	gocryptfs intel-gpu-tools intel-undervolt iwd libnotify lz4 man-db nss-mdns
+	gocryptfs intel-gpu-tools iwd libnotify lz4 man-db mdadm nss-mdns
 	openbsd-netcat parted pbzip2 picom pigz playerctl polybar pulseaudio
 	redshift ripgrep sxhkd tint2 tmux unzip usleep x86_energy_perf_policy xclip
 	xdg-user-dirs xdg-utils xdotool xorg-server xorg-xinit xorg-xinput
@@ -192,8 +227,9 @@ pacman_system=(
 pacman_tools=(
 	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop
 	curl edk2-ovmf entr firejail freerdp hey htop inotify-tools iotop jq
-	libva-utils lfs lshw lsof mosh neovim nnn openconnect openssh openvpn p7zip
-	qemu-full qemu-emulators-full rsync time tree turbostat usbutils vkmark
+	libva-utils lfs lshw lsof mosh neovim nnn nvtop openconnect openssh openvpn
+	p7zip qemu-full qemu-emulators-full rsync time tree turbostat usbutils
+	vkmark
 )
 pacman_development=(
 	autoconf-archive base-devel diffutils docker docker-compose gdb git
@@ -252,6 +288,7 @@ printinfo "+ --------------------- +"
 killall -q gpg-agent dirmngr
 sync
 
+umount "$bt_rootdir/mnt/d1"
 umount "$bt_rootdir/boot/efi"
 umount "$bt_rootdir/boot"
 sync

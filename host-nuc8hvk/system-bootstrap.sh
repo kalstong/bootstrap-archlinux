@@ -3,10 +3,10 @@
 # --- System Specs ---
 # Intel NUC8i7HVK [1]
 # CPU: Intel® Core i7-8809G @3.10Ghz [2]
-# RAM: 2x 8GiB DDR4 @2.40GHz-CL16 DC
+# RAM: 2x 16GiB DDR4 @2.40GHz-CL14 DC
 # GPU: Intel HD Graphics 630 @350/1100Mhz
 # GPU: AMD Radeon RX Vega M GH @1063/1190MHz
-# SSD: 250GB M.2 NVMe Kingston A2000 3D TLC
+# STO: 256GiB M.2 NVMe Samsung 960 Evo TLC V-NAND
 #
 # [1]: https://ark.intel.com/content/www/us/en/ark/products/126143/intel-nuc-kit-nuc8i7hvk.html
 # [2]: https://ark.intel.com/content/www/us/en/ark/products/130409/intel-core-i7-8809g-processor-with-radeon-rx-vega-m-gh-graphics-8m-cache-up-to-4-20-ghz.html
@@ -54,7 +54,9 @@ _disk_system="/dev/nvme0n1"
 
 nvme format "$_disk_system" --force --namespace-id 1 --ses 0
 sync
+
 partprobe "$_disk_system"
+sync
 
 printinfo "\n"
 printinfo "+ ----------------- +"
@@ -113,12 +115,13 @@ cryptsetup --key-file /tmp/main.keyfile \
 	--perf-no_read_workqueue \
 	--perf-no_write_workqueue \
 	open "${_disk_system}p3" root
+
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/main.keyfile
 
 printinfo "\n  -> Formatting the root partition ..."
 mkfs.f2fs -O extra_attr,inode_checksum,sb_checksum,compression,encrypt -f /dev/mapper/root
-
 sync
+
 printinfo "\n"
 printinfo "+ ------------------- +"
 printinfo "| Mounting partitions |"
@@ -211,9 +214,6 @@ pacman_fonts=(
 	noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra terminus-font
 	ttf-font-awesome ttf-jetbrains-mono
 )
-
-# @NOTE: Other packages to reconsider
-# ffmpeg firejail powertop ctags meld tigervnc ssh-tools
 
 pacman -Syy
 pacstrap -i "$bt_rootdir" ${pacman_core[*]} ${pacman_system[*]} \

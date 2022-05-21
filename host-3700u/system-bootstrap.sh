@@ -212,9 +212,6 @@ pacman_fonts=(
 	ttf-font-awesome ttf-jetbrains-mono
 )
 
-# @NOTE: Other packages to reconsider
-# ffmpeg firejail powertop ctags meld tigervnc ssh-tools
-
 pacman -Syy
 pacstrap -i "$bt_rootdir" ${pacman_core[*]} ${pacman_system[*]} \
 	${pacman_tools[*]} ${pacman_development[*]} ${pacman_apps[*]} \
