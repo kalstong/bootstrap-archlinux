@@ -194,7 +194,7 @@ pacman_system=(
 pacman_tools=(
 	arch-audit archiso aria2 bash-completion bind bluez-utils btop ctop croc
 	curl edk2-ovmf entr firejail freerdp hey htop inotify-tools iotop jq
-	libva-utils lfs lshw lsof neovim nnn openconnect openssh openvpn p7zip
+	libva-utils lfs lshw lsof mosh neovim nnn openconnect openssh openvpn p7zip
 	qemu-full qemu-emulators-full radeontop rsync time tree turbostat usbutils
 	vkmark
 )

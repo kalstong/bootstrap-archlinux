@@ -197,7 +197,7 @@ pacman_system=(
 )
 pacman_tools=(
 	arch-audit aria2 bash-completion bind bluez-utils btop croc ctop curl
-	firejail freerdp htop inotify-tools iotop jq libva-utils lfs lshw lsof
+	firejail freerdp htop inotify-tools iotop jq libva-utils lfs lshw lsof mosh
 	neovim nnn openconnect openssh openvpn p7zip time tree turbostat usbutils
 	vkmark
 )
