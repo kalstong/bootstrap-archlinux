@@ -191,7 +191,9 @@ passwd --delete root
 passwd --delete "$bt_user"
 
 chown "${bt_user}:${bt_user}" "/home/${bt_user}"
+chown "${bt_user}:${bt_user}" "/mnt/d1"
 chmod u=rwx,g=rx,o= "/home/${bt_user}"
+chmod u=rwx,g=rx,o= "/mnt/d1"
 
 printinfo "\n"
 printinfo "+ ---------------------------- +"
