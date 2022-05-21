@@ -27,3 +27,6 @@ export YARN_CACHE_FOLDER="$CACHE/yarn"
 export NNN_BMS="0://;a:$AUR;c:$CODE;d:$DOWNLOADS;f:$FILES;m:$MOUNT;n:$NOTES;r:$RECORDINGS;s:$SCREENSHOTS;t:$TRASH;w:$WORK"
 [[ ! "$PATH" =~ $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
 [[ ! "$PATH" =~ $GOPATH/bin ]] && export PATH="$PATH:$GOPATH/bin"
+[[ ! "$PATH" =~ "$DVM_ROOT/current" ]] &&
+	export DART_SDK="${DVM_ROOT}/current" &&
+	export PATH="$PATH:${DVM_ROOT}/current/bin"

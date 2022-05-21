@@ -119,6 +119,9 @@ if [ -f "$DVM_ROOT/scripts/dvm" ]
 	function dvm --description "Dart Version Manager"
 		bash -i -c "dvm $argv"
 	end
+	function dvm-set --description "Dart Version Manager (helper)"
+		bash -i -c "dvm-set $argv"
+	end
 end
 
 function energypolicy --description "Enables an energy policy"

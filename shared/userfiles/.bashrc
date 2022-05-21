@@ -2,8 +2,16 @@ PS1="\[$(tput setaf 5)\]\A\[$(tput sgr0)\] \w$([ -n "$NNNLVL" ] && echo " nnn:$N
 
 . "$HOME/.bashrc.aux"
 
-[ -f "${DVM_ROOT}/scripts/dvm" ] &&
-	. "${DVM_ROOT}/scripts/dvm"
+[ -f "${DVM_ROOT}/scripts/dvm" ] && {
+	. "${DVM_ROOT}/scripts/dvm";
+	dvm-set() {
+		[ -n "$1" ] && [ -d "$DVM_ROOT/darts/$1" ] &&
+			rm -rf "$DVM_ROOT/current" &&
+			ln -s "$DVM_ROOT/darts/$1" "$DVM_ROOT/current" &&
+			echo "Dart version set to v$1 at $DVM_ROOT/current" ||
+			echo "Dart v$1 not available."
+	}
+}
 
 export FORGIT_NO_ALIASES="true"
 export FORGIT_FZF_DEFAULT_OPTS="--cycle --reverse --height '80%'"
