@@ -113,7 +113,6 @@ askpwd > /tmp/pwd.keyfile
 
 mkfs.fat -F32 "${_disk_system}p1"
 mkfs.f2fs -f "${_disk_system}p2"
-mkfs.f2fs -f "${_disk_storage}-part1"
 
 printinfo "\n  -> Encrypting partitions ..."
 cryptsetup --verbose \
@@ -121,12 +120,12 @@ cryptsetup --verbose \
 	--type luks2 --sector-size 4096
 
 cryptsetup --verbose \
-	--batch-mode luksFormat "${_disk_storage}-part1" /tmp/main.keyfile \
+	--batch-mode luksFormat "${_disk_storage}p1" /tmp/main.keyfile \
 	--type luks2 --sector-size 4096
 
 printinfo "\n  -> Setting fallback decryption password ..."
 cryptsetup luksAddKey "${_disk_system}p3" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
-cryptsetup luksAddKey "${_disk_storage}-part1" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
+cryptsetup luksAddKey "${_disk_storage}p1" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/pwd.keyfile
 
 printinfo "\n  -> Opening the encrypted partitions ..."
@@ -140,7 +139,7 @@ cryptsetup --key-file /tmp/main.keyfile \
 	--allow-discards \
 	--perf-no_read_workqueue \
 	--perf-no_write_workqueue \
-	open "${_disk_storage}-part1" d1
+	open "${_disk_storage}p1" d1
 
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/main.keyfile
 
@@ -168,7 +167,7 @@ mkdir -p "$bt_rootdir/boot/efi"
 mount -o "$efi_mount_opts" "${_disk_system}p1" "$bt_rootdir/boot/efi"
 
 mkdir -p "$bt_rootdir/mnt/d1"
-mount -o "$d1_mount_opts" "${_disk_storage}-part1" "$bt_rootdir/mnt/d1"
+mount -o "$d1_mount_opts" /dev/mapper/d1 "$bt_rootdir/mnt/d1"
 
 printinfo "\n"
 printinfo "+ --------------------- +"

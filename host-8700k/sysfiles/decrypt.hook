@@ -44,7 +44,7 @@ decrypt_partitions () {
 		--allow-discards \
 		--perf-no_read_workqueue \
 		--perf-no_write_workqueue \
-		open /dev/md126-part1 d1 &&
+		open /dev/md126p1 d1 &&
 	eho "[OK]" || { echo "-> Failed to decrypt d1."; return 1; }
 
 	return 0;
