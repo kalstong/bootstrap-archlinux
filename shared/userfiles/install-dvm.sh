@@ -11,6 +11,4 @@ dvm_version="1.3.1"
 
 rm -rf "$DVM_ROOT" &&
 git clone https://github.com/cbracken/dvm.git "$DVM_ROOT" &&
-cd "$DVM_ROOT" &&
-git checkout "tags/${dvm_version}" &&
-cd -
+cd "$DVM_ROOT"; git checkout "tags/${dvm_version}"; cd -
