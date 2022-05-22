@@ -34,7 +34,7 @@ elif [ "$1" = "performance" ]; then
 	sudo cpupower frequency-set --governor performance > /dev/null &&
 	sudo cpupower frequency-set --max "4.50GHz" > /dev/null &&
 	sudo cpupower set --perf-bias 5 > /dev/null &&
-	sudo intel_gpu_frequency --custom max="1200MHz" > /dev/null &&
+	sudo intel_gpu_frequency --max > /dev/null &&
 	sudo x86_energy_perf_policy performance &&
 	echo "$1" >> "$XDG_CONFIG_HOME/.energypolicy"
 

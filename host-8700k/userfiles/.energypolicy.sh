@@ -2,7 +2,7 @@ if [ "$1" = "default" ]; then
 	sudo cpupower frequency-set --governor powersave > /dev/null &&
 	sudo cpupower frequency-set --max "4.30GHz" > /dev/null &&
 	sudo cpupower set --perf-bias 6 > /dev/null &&
-	sudo intel_gpu_frequency --custom max="1200MHz" > /dev/null &&
+	sudo intel_gpu_frequency --custom max="1100MHz" > /dev/null &&
 	sudo x86_energy_perf_policy normal &&
 	sudo nvidia-smi -pl 250 > /dev/null &&
 	echo "$1" >> "$XDG_CONFIG_HOME/.energypolicy"
@@ -35,10 +35,12 @@ elif [ "$1" = "ultrapowersave" ]; then
 	echo "$1" >> "$XDG_CONFIG_HOME/.energypolicy"
 
 elif [ "$1" = "performance" ]; then
+	# @NOTE: Setting the GPU frequency to the defaults so maybe the hardware
+	# can then assume the BIOS overclocking settings of 1.3GHz.
 	sudo cpupower frequency-set --governor performance > /dev/null &&
 	sudo cpupower frequency-set --max "4.70GHz" > /dev/null &&
 	sudo cpupower set --perf-bias 5 > /dev/null &&
-	sudo intel_gpu_frequency --custom max="1200MHz" > /dev/null &&
+	sudo intel_gpu_frequency --defaults > /dev/null &&
 	sudo x86_energy_perf_policy performance &&
 	sudo nvidia-smi -pl 280 > /dev/null &&
 	echo "$1" >> "$XDG_CONFIG_HOME/.energypolicy"
