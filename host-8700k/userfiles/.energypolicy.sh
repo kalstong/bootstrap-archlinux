@@ -18,7 +18,7 @@ elif [ "$1" = "balanced" ]; then
 
 elif [ "$1" = "powersave" ]; then
 	sudo cpupower frequency-set --governor powersave > /dev/null &&
-	sudo cpupower frequency-set --max "2.70GHz" > /dev/null &&
+	sudo cpupower frequency-set --max "2.90GHz" > /dev/null &&
 	sudo cpupower set --perf-bias 10 > /dev/null &&
 	sudo intel_gpu_frequency --custom max="700MHz" > /dev/null &&
 	sudo x86_energy_perf_policy balance-power &&
