@@ -175,6 +175,12 @@ sed -i -r 's/#SystemMaxUse=/SystemMaxUse=1G/' /etc/systemd/journald.conf
 sed -i -r 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
 # echo "vm.vfs_cache_pressure=90" >> /etc/sysctl.d/99-swappiness.conf
 
+# NOTE: This is hack to force-unload the NVIDIA modules during
+# system shutdown because they're preventing systemd from closing some mounts.
+# For more details: https://bugs.archlinux.org/task/63697#comment203882
+cp sysfiles/nvidia.shutdown /usr/lib/systemd/system-shutdown/
+chmod a+x /usr/lib/systemd/system-shutdown/nvidia.shutdown
+
 cp sysfiles/xorg.conf /etc/X11/xorg.conf.d/
 
 printinfo "\n"
