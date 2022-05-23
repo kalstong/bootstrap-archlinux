@@ -35,21 +35,7 @@ To create new SSH keys:
 - For files: `chmod u=r,g=,o= id_*`. For folders: `chmod u=rx,g=,o= *`.
 
 ## Tasks
-- Have Dart and Flutter tools available in PATH (Bash and Fish) after a default
-  version is selected.
-- Fix RealTek audio driver powersave malfunction.
-  ```
-   mai 15 23:32:06 nuc8i3 kernel: snd_hda_codec_realtek hdaudioC0D0: Unable to sync register 0x2b8000. -5
-   mai 15 23:32:06 nuc8i3 kernel: snd_hda_codec_realtek hdaudioC0D0: Unable to sync register 0x2b8000. -5
-   mai 15 23:32:01 nuc8i3 kernel: snd_hda_codec_realtek hdaudioC0D0: Unable to sync register 0x2b8000. -5
-   mai 15 23:32:01 nuc8i3 kernel: snd_hda_codec_realtek hdaudioC0D0: Unable to sync register 0x2b8000. -5
-   mai 15 23:32:01 nuc8i3 kernel: snd_hda_codec_hdmi hdaudioC0D2: Unable to sync register 0x2f0d00. -5
-   mai 15 23:32:01 nuc8i3 kernel: snd_hda_intel 0000:00:1f.3: CORB reset timeout#2, CORBRP = 65535
-   mai 15 23:32:01 nuc8i3 kernel: snd_hda_intel 0000:00:1f.3: refused to change power state from D3hot to D0
-  ```
 - Consider replacing `Archiso` by [`Archboot`](https://wiki.archlinux.org/title/Archboot).
-- Set a TDP limit through `energypolicy` for NVIDIA GPUs. See
-  [here](https://wiki.archlinux.org/title/NVIDIA/Tips_and_tricks#Custom_TDP_Limit).
 - Try to find an alternative to RipGrep that doesn't consumes as much memory,
   retains the necessary functionality and can be integrated w/ neovim/fzf.
 - Create a mount point with the partition's label. Check the `--json`
@@ -65,5 +51,5 @@ To create new SSH keys:
 - Polybar
   * Rewrite all my plugins in C.
   * Do a CPU usage plugin that reads `/proc/stat`.
-- Set BIOS undervolt for NUC8i7-HVK, 8700K, 9900K, 3950X.
+- Set BIOS undervolt for 9900K, 3950X.
 - Start preparing GCC11 build script based on Arch's.
