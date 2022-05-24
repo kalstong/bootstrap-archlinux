@@ -10,7 +10,7 @@ curl -sS --connect-timeout 13 --retry 5 --retry-delay 2 \
 	-H 'Accept:application/vnd.github.v3.raw' \
 	-L "$fvm_pkg" -o /tmp/fvm.tar.gz &&
 
-echo "Exracting FVM v$fvm_ver ..." &&
+echo "Extracting FVM v$fvm_ver ..." &&
 tar fvxz /tmp/fvm.tar.gz -C /tmp/ --wildcards 'fvm/fvm' --strip-components=1 &&
 mv /tmp/fvm "${HOME}/.local/bin/"
 
