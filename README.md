@@ -35,6 +35,7 @@ To create new SSH keys:
 - For files: `chmod u=r,g=,o= id_*`. For folders: `chmod u=rx,g=,o= *`.
 
 ## Tasks
+- Bring lf with configuration parity w/ nnn.
 - Consider replacing `Archiso` by [`Archboot`](https://wiki.archlinux.org/title/Archboot).
 - Try to find an alternative to RipGrep that doesn't consumes as much memory,
   retains the necessary functionality and can be integrated w/ neovim/fzf.
