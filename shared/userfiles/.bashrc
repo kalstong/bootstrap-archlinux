@@ -241,7 +241,7 @@ mnt () {
 			"$path" "$mountpoint" 2> /dev/null
 
 	elif [ "$fstype" = "ntfs" ]; then
-		sudo mount -t ntfs3 --options-mode ignore -o discard,lazytime,relatime \
+		sudo mount --options-mode ignore -o discard,lazytime,relatime \
 			"$path" "$mountpoint" 2> /dev/null &&
 		sudo chown $USER:users "$mountpoint"
 

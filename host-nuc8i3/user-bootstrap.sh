@@ -69,7 +69,6 @@ printinfo "+ --------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 sudo usermod -aG docker ${bt_user}
 sudo usermod -aG lp ${bt_user}
-sudo usermod -aG video ${bt_user}
 
 printinfo "\n"
 printinfo "+ --------------------- +"
@@ -154,5 +153,14 @@ printinfo "+ ------------------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 bash ../shared/userfiles/install-mongodb.sh --install-tools
 bash ../shared/userfiles/install-mongodb.sh --install-compass
+
+printinfo "\n"
+printinfo "+ ------------------------------------------ +"
+printinfo "| Installing Dart & Flutter Version Managers |"
+printinfo "+ ------------------------------------------ +"
+[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+. ../shared/userfiles/install-dvm.sh
+. ../shared/userfiles/install-fvm.sh
+
 
 popd > /dev/null

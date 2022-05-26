@@ -69,7 +69,6 @@ printinfo "+ --------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 sudo usermod -aG docker ${bt_user}
 sudo usermod -aG lp ${bt_user}
-sudo usermod -aG video ${bt_user}
 
 printinfo "\n"
 printinfo "+ --------------------- +"
