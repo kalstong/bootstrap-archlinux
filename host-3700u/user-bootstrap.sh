@@ -88,6 +88,13 @@ pip3 install --user flashfocus pynvim pywal
 sudo -H pip3 install vpn-slice
 
 printinfo "\n"
+printinfo "+ ----------------------------- +"
+printinfo "| Installing Go Version Manager |"
+printinfo "+ ----------------------------- +"
+[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+. ../shared/userfiles/install-g.sh
+
+printinfo "\n"
 printinfo "+ ------------------------------------ +"
 printinfo "| Installing NVM, NodeJS, NPM and Yarn |"
 printinfo "+ ------------------------------------ +"
