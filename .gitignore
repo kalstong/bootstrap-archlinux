@@ -1,21 +1,7 @@
 archiso/out
 
-shared/pkg-gcc8/pkg
-shared/pkg-gcc8/src
-shared/pkg-gcc8/*.tar.xz
-shared/pkg-gcc8/*.tar.zst
-
-shared/pkg-gcc9/pkg
-shared/pkg-gcc9/src
-shared/pkg-gcc9/*.tar.xz
-shared/pkg-gcc9/*.tar.zst
-
-shared/pkg-gcc10/pkg
-shared/pkg-gcc10/src
-shared/pkg-gcc10/*.tar.xz
-shared/pkg-gcc10/*.tar.zst
-
-shared/pkg-gcc11/pkg
-shared/pkg-gcc11/src
-shared/pkg-gcc11/*.tar.xz
-shared/pkg-gcc11/*.tar.zst
+pkgs/*/pkg
+pkgs/*/src
+pkgs/*/*.rpm
+pkgs/*/*.tar.xz
+pkgs/*/*.tar.zst
