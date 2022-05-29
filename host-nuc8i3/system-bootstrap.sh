@@ -233,7 +233,7 @@ printinfo "| Jumping into the chroot jail |"
 printinfo "+ ---------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 mkdir -p "$bt_rootdir/tmp/bootstrap"
-cp -r {"../host-${bt_host}",../shared,../ssh,../misc.sh} "$bt_rootdir/tmp/bootstrap"
+cp -r {"../host-${bt_host}",../pkgs,../shared,../ssh,../misc.sh} "$bt_rootdir/tmp/bootstrap"
 
 mount proc "$bt_rootdir/proc/" -t proc  -o nosuid,noexec,nodev
 mount sys  "$bt_rootdir/sys/"  -t sysfs -o nosuid,noexec,nodev,ro

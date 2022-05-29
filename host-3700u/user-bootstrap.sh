@@ -38,8 +38,8 @@ printinfo "+ -------------------- +"
 printinfo "| Creating directories |"
 printinfo "+ -------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-sudo chown -R $bt_user:$bt_user userfiles ../shared
-sudo chmod -R u=rw,g=r,o=r userfiles ../shared
+sudo chown -R $bt_user:$bt_user userfiles ../pkgs ../shared
+sudo chmod -R u=rw,g=r,o=r userfiles ../pkgs ../shared
 sudo chmod u+x userfiles ../shared ../shared/userfiles
 
 . userfiles/.bashrc
@@ -113,9 +113,7 @@ printinfo "| Installing AUR packages |"
 printinfo "+ ----------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
-archl_aur=(
-	brave-bin@master firefox-esr-bin@master msodbcsql@master postman-bin@master
-)
+archl_aur=(brave-bin@master firefox-esr-bin@master postman-bin@master)
 
 cd "$AUR"
 for pkg in ${archl_aur[*]}
@@ -153,6 +151,19 @@ printinfo "| Installing Azure Data Studio |"
 printinfo "+ ---------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 . ../shared/userfiles/install-ads.sh
+
+printinfo "\n"
+printinfo "+ ----------------------------------------- +"
+printinfo "| Installing ODBC for MSSQL and MSSQL Tools |"
+printinfo "+ ----------------------------------------- +"
+[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+cd ../pkgs/mssql-odbc
+makepkg -sirc --noconfirm --needed
+cd -
+
+cd ../pkgs/mssql-tools
+makepkg -sirc --noconfirm --needed
+cd -
 
 printinfo "\n"
 printinfo "+ ------------------------ +"

@@ -3,6 +3,7 @@
 
 pkgname=mssql-odbc
 pkgname_source=msodbcsql
+pkgname_sufix=18
 pkgver=18.0.1.1
 pkgrel=1
 pkgdesc="Microsoft® ODBC Driver 18 for SQL Server®"
@@ -11,7 +12,7 @@ url="https://packages.microsoft.com/rhel/8/prod/"
 license=('custom')
 depends=('unixodbc' 'krb5' 'curl')
 options=('!strip')
-source=(https://packages.microsoft.com/rhel/8/prod/${pkgname_source}18-${pkgver}-1.x86_64.rpm)
+source=(https://packages.microsoft.com/rhel/8/prod/${pkgname_source}${pkgname_sufix}-${pkgver}-1.x86_64.rpm)
 sha512sums=('39f0e5555a9cfab0046c094f5279ecc3720340125554fb36ae9c50f4b07b108806ac29a567c630b243ccee13e264bbc69aa56a5948594b57956246df244328a3')
 install=msodbcsql.install
 
@@ -20,8 +21,8 @@ package() {
 	install -Dm0644 usr/share/doc/msodbcsql18/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname_source/LICENSE.txt
 	mv opt "$pkgdir"
 
-	mv "$pkgdir"/opt/microsoft/msodbcsql{18,}
+	mv "$pkgdir"/opt/microsoft/${pkgname_source}{18,}
 
-	cd "$pkgdir"/opt/microsoft/msodbcsql
-	sed 's/msodbcsql18/msodbcsql/g' -i etc/odbcinst.ini
+	cd "$pkgdir"/opt/microsoft/${pkgname_source}
+	sed "s/${pkgname_source}${pkgname_sufix}/${pkgname_source}/g" -i etc/odbcinst.ini
 }
