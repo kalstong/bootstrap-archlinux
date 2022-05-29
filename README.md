@@ -10,7 +10,7 @@ Some packages need manual intervention to check for updates:
 - For Go Version Manager see [here](https://github.com/stefanmaric/g).
 - For MongoDB Compass see [here](https://www.mongodb.com/try/download/compass).
 - For Nerd Fonts see [here](https://github.com/ryanoasis/nerd-fonts/releases).
-- For Node.js Version Manage see [here](https://github.com/nvm-sh/nvm/releases).
+- For Node.js Version Manager see [here](https://github.com/nvm-sh/nvm/releases).
 - For NVFLASH see [here](https://www.techpowerup.com/download/nvidia-nvflash/).
 
 Everything else:
@@ -20,7 +20,7 @@ Everything else:
 - Node.js/NPM: `nvm ls-remote --lts=fermium`, `nvm install <pkg_version>`, `npm outdated -g`.
 - Pacman: `sudo pacman -Sy && pacman -Qu`, `sudo pacman -Syu`.
 - PiP: `pip list --user --outdated`, `pip install --user --upgrade <pkg>`.
-- Vim plugins: `:PlugUgrade`, `:PlugUpdate`, `:COQdeps`, `:TSUpdate`, `:UpdateRemotePlugins`.
+- Vim plugins: `:PlugUgrade`, `:PlugUpdate`, `:UpdateRemotePlugins`, `:COQdeps`.
 
 After the first boot:
 1. Set the energy policy: `energypolicy powersave`.
