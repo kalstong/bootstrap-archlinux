@@ -37,6 +37,7 @@ To create new SSH keys:
 ## Tasks
 - Investigate `broot` as an alternative to `fzf`.
 - Investigate `lf` as an alternative to `nnn`.
+- Condiser replacing `alsa` and `pulseaudio` by [`pipewire`](https://wiki.archlinux.org/title/PipeWire).
 - Try to find an alternative to RipGrep that doesn't consumes as much memory,
   retains the necessary functionality and can be integrated w/ neovim/fzf.
 - Create a mount point with the partition's label. Check the `--json`
