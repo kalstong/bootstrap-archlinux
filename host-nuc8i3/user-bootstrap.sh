@@ -152,9 +152,9 @@ printinfo "+ ---------------------------- +"
 . ../shared/userfiles/install-ads.sh
 
 printinfo "\n"
-printinfo "+ ----------------------------------------- +"
-printinfo "| Installing ODBC for MSSQL and MSSQL Tools |"
-printinfo "+ ----------------------------------------- +"
+printinfo "+ ------------------------------- +"
+printinfo "| Installing MSSQL ODBC and Tools |"
+printinfo "+ ------------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 cd ../pkgs/mssql-odbc
 makepkg -sirc --noconfirm --needed
