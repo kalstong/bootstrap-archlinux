@@ -39,8 +39,8 @@ printinfo "| Creating directories |"
 printinfo "+ -------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 sudo chown -R $bt_user:$bt_user userfiles ../pkgs ../shared
-sudo chmod -R u=rw,g=r,o=r userfiles ../pkgs ../shared
-sudo chmod u+x userfiles ../shared ../shared/userfiles
+sudo chmod -R u=rw,g=r,o=r userfiles ../pkgs ../pkgs* ../shared
+sudo chmod u+x userfiles ../pkgs ../pkgs/* ../shared ../shared/userfiles
 
 . userfiles/.bashrc
 
@@ -157,13 +157,13 @@ printinfo "+ ------------------------------- +"
 printinfo "| Installing MSSQL ODBC and Tools |"
 printinfo "+ ------------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-cd ../pkgs/mssql-odbc
+pushd ../pkgs/mssql-odbc
 makepkg -sirc --noconfirm --needed
-cd -
+popd
 
-cd ../pkgs/mssql-tools
+pushd ../pkgs/mssql-tools
 makepkg -sirc --noconfirm --needed
-cd -
+popd
 
 printinfo "\n"
 printinfo "+ ------------------------ +"
