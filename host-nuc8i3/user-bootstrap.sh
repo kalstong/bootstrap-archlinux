@@ -55,7 +55,7 @@ mkdir -p {"$RECORDINGS","$SCREENSHOTS","$TRASH","$WALLPAPERS","$WORK"}
 mkdir -p {"$FVM_HOME","$GOCACHE","$GOMODCACHE","$GOPATH","$GOROOT"}
 mkdir -p {"$NPM_CONFIG_CACHE","$NVM_DIR","$YARN_CACHE_FOLDER"}
 mkdir -p "$CACHE"/docker
-mkdir -p "$TRASH"/firejail
+mkdir -p "$CACHE"/firejail
 
 chattr -R +c {"$FVM_HOME","$GOMODCACHE","$NPM_CONFIG_CACHE","$NVM_DIR","$YARN_CACHE_FOLDER"}
 sudo mkdir -p "$MOUNT"
