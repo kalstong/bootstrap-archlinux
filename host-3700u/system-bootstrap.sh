@@ -194,10 +194,10 @@ pacman_system=(
 	xorg-xinput xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
 )
 pacman_tools=(
-	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop curl
-	firejail freerdp htop inotify-tools iotop jq libva-utils lfs lshw lsof mosh
-	neovim nnn openconnect openssh openvpn p7zip radeontop time tree turbostat
-	usbutils vkmark
+	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop
+	curl firejail freerdp htop inotify-tools iotop jq libva-utils lfs lshw lsof
+	mosh neovim nnn openconnect openssh openvpn p7zip perf radeontop sysbench
+	time tree turbostat usbutils vkmark
 )
 pacman_development=(
 	base-devel diffutils docker docker-compose git git-delta man-pages python

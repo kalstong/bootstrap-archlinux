@@ -227,12 +227,12 @@ pacman_tools=(
 	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop
 	curl edk2-ovmf entr firejail freerdp hey htop inotify-tools iotop jq
 	libva-utils lfs lshw lsof mosh neovim nnn nvtop openconnect openssh openvpn
-	p7zip qemu-full qemu-emulators-full rsync time tree turbostat usbutils
-	vkmark
+	p7zip perf qemu-full qemu-emulators-full rsync sysbench time tree turbostat
+	usbutils vkmark
 )
 pacman_development=(
 	autoconf-archive base-devel diffutils docker docker-compose gdb git
-	git-delta man-pages perf python python-pip strace tokei vulkan-icd-loader
+	git-delta man-pages python python-pip strace tokei vulkan-icd-loader
 	vulkan-mesa-layers
 )
 pacman_apps=(
