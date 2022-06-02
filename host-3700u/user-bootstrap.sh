@@ -39,7 +39,7 @@ printinfo "| Creating directories |"
 printinfo "+ -------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 sudo chown -R $bt_user:$bt_user userfiles ../pkgs ../shared
-sudo chmod -R u=rw,g=r,o=r userfiles ../pkgs ../pkgs* ../shared
+sudo chmod -R u=rw,g=r,o=r userfiles ../pkgs ../shared
 sudo chmod u+x userfiles ../pkgs ../pkgs/* ../shared ../shared/userfiles
 
 . userfiles/.bashrc
@@ -87,12 +87,12 @@ pip3 install --user wheel
 pip3 install --user flashfocus pynvim pywal
 sudo -H pip3 install vpn-slice
 
-printinfo "\n"
-printinfo "+ ----------------------------- +"
-printinfo "| Installing Go Version Manager |"
-printinfo "+ ----------------------------- +"
-[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-. ../shared/userfiles/install-g.sh
+# printinfo "\n"
+# printinfo "+ ----------------------------- +"
+# printinfo "| Installing Go Version Manager |"
+# printinfo "+ ----------------------------- +"
+# [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+# . ../shared/userfiles/install-g.sh
 
 printinfo "\n"
 printinfo "+ ------------------------------------ +"
@@ -114,10 +114,12 @@ printinfo "| Installing AUR packages |"
 printinfo "+ ----------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
-archl_aur=(brave-bin@master firefox-esr-bin@master postman-bin@master)
+aur_pkgs=(
+	brave-bin@master firefox-esr-bin@master postman-bin@master woeusb-ng@master
+)
 
 cd "$AUR"
-for pkg in ${archl_aur[*]}
+for pkg in ${aur_pkgs[*]}
 do
 	_name=${pkg%%@*}
 	_tag=${pkg##*@}
