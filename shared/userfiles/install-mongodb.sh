@@ -24,7 +24,7 @@
 }
 
 [ "$1" = "--install-compass" ] && {
-	compass_ver="1.31.3";
+	compass_ver="1.32.0";
 	compass_pkg="https://github.com/mongodb-js/compass/releases/download/v${compass_ver}/mongodb-compass-isolated-${compass_ver}-linux-x64.tar.gz";
 	compass_icon="https://raw.githubusercontent.com/mongodb-js/compass/main/packages/compass/src/app/images/compass-dialog-icon.png";
 

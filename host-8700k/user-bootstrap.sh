@@ -55,7 +55,7 @@ mkdir -p {"$RECORDINGS","$SCREENSHOTS","$TRASH","$WALLPAPERS","$WORK"}
 mkdir -p {"$FVM_HOME","$GOCACHE","$GOMODCACHE","$GOPATH","$GOROOT"}
 mkdir -p {"$NPM_CONFIG_CACHE","$NVM_DIR","$YARN_CACHE_FOLDER"}
 mkdir -p "$CACHE"/docker
-mkdir -p "$TRASH"/firejail
+mkdir -p "$TRASH"/.firejail.postman
 
 chattr -R +c {"$FVM_HOME","$GOMODCACHE","$NPM_CONFIG_CACHE","$NVM_DIR","$YARN_CACHE_FOLDER"}
 sudo mkdir -p "$MOUNT"
@@ -145,12 +145,12 @@ printinfo "+ ------------------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 nvim +PlugInstall +qa
 
-printinfo "\n"
-printinfo "+ ------------------------------------------ +"
-printinfo "| Installing Dart & Flutter Version Managers |"
-printinfo "+ ------------------------------------------ +"
-[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-. ../shared/userfiles/install-dvm.sh
-. ../shared/userfiles/install-fvm.sh
+# printinfo "\n"
+# printinfo "+ ------------------------------------------ +"
+# printinfo "| Installing Dart & Flutter Version Managers |"
+# printinfo "+ ------------------------------------------ +"
+# [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+# . ../shared/userfiles/install-dvm.sh
+# . ../shared/userfiles/install-fvm.sh
 
 popd > /dev/null

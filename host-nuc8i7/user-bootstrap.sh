@@ -55,7 +55,7 @@ mkdir -p {"$RECORDINGS","$SCREENSHOTS","$TRASH","$WALLPAPERS","$WORK"}
 mkdir -p {"$FVM_HOME","$GOCACHE","$GOMODCACHE","$GOPATH","$GOROOT"}
 mkdir -p {"$NPM_CONFIG_CACHE","$NVM_DIR","$YARN_CACHE_FOLDER"}
 mkdir -p "$CACHE"/docker
-mkdir -p "$TRASH"/firejail
+mkdir -p "$TRASH"/.firejail.postman
 
 chattr -R +c {"$FVM_HOME","$GOMODCACHE","$NPM_CONFIG_CACHE","$NVM_DIR","$YARN_CACHE_FOLDER"}
 sudo mkdir -p "$MOUNT"
@@ -94,9 +94,9 @@ printinfo "+ ----------------------------- +"
 . ../shared/userfiles/install-g.sh
 
 printinfo "\n"
-printinfo "+ ------------------------------ +"
-printinfo "| Installing NVM, NodeJS and NPM |"
-printinfo "+ ------------------------------ +"
+printinfo "+ ------------------------------------ +"
+printinfo "| Installing NVM, NodeJS, NPM and Yarn |"
+printinfo "+ ------------------------------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 . ../shared/userfiles/install-nvm.sh
 
@@ -104,6 +104,8 @@ NVM_SYMLINK_CURRENT="true"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
 nvm install --lts=fermium
 nvm use default
+
+npm install -g yarn
 
 printinfo "\n"
 printinfo "+ ----------------------- +"
@@ -146,11 +148,32 @@ printinfo "+ ------------------------ +"
 nvim +PlugInstall +qa
 
 printinfo "\n"
-printinfo "+ ------------------------------------------ +"
-printinfo "| Installing Dart & Flutter Version Managers |"
-printinfo "+ ------------------------------------------ +"
+printinfo "+ ---------------------------- +"
+printinfo "| Installing Azure Data Studio |"
+printinfo "+ ---------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-. ../shared/userfiles/install-dvm.sh
-. ../shared/userfiles/install-fvm.sh
+. ../shared/userfiles/install-ads.sh
+
+printinfo "\n"
+printinfo "+ ------------------------------- +"
+printinfo "| Installing MSSQL ODBC and Tools |"
+printinfo "+ ------------------------------- +"
+[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+pushd ../pkgs/mssql-odbc
+makepkg -sirc --noconfirm --needed
+popd
+
+pushd ../pkgs/mssql-tools
+makepkg -sirc --noconfirm --needed
+popd
+
+printinfo "\n"
+printinfo "+ ------------------------ +"
+printinfo "| Installing MongoDB Tools |"
+printinfo "+ ------------------------ +"
+[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+bash ../shared/userfiles/install-mongodb.sh --install-tools
+bash ../shared/userfiles/install-mongodb.sh --install-compass
+
 
 popd > /dev/null

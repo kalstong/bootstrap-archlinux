@@ -86,7 +86,7 @@ cp ../shared/userfiles/teams.desktop "${HOME}/.local/share/applications/"
 cp ../shared/userfiles/teams.png "${HOME}/.icons/"
 cp ../shared/userfiles/terminate-session.sh "${XDG_CONFIG_HOME}/polybar/"
 cp ../shared/userfiles/tmux-gitstat.sh "${HOME}/.local/bin/"
-sed -i -r "s|<dir>|${CACHE}/firejail|" "${HOME}/.local/share/applications/postman.desktop"
+sed -i -r "s|<dir>|${TRASH}/.firejail.postman|" "${HOME}/.local/share/applications/postman.desktop"
 
 cp ../shared/userfiles/nnn-archive "${XDG_CONFIG_HOME}/nnn/plugins/archive"
 cp ../shared/userfiles/nnn-fzcd "${XDG_CONFIG_HOME}/nnn/plugins/fzcd"

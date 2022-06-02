@@ -182,7 +182,7 @@ pacman_core=(
 )
 pacman_system=(
 	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa
-	exfatprogs f2fs-tools fd fish fwupd fzf gptfdisk gnome-keyring gnupg
+	exfatprogs f2fs-tools fd fish fwupd fzf gnome-keyring gptfdisk gnupg
 	gocryptfs intel-gpu-tools intel-undervolt iwd libnotify lz4 man-db nss-mdns
 	openbsd-netcat parted pbzip2 picom pigz playerctl polybar pulseaudio
 	redshift ripgrep sxhkd tint2 tmux unzip usleep x86_energy_perf_policy xclip
@@ -191,19 +191,17 @@ pacman_system=(
 )
 pacman_tools=(
 	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop
-	curl edk2-ovmf entr firejail freerdp hey htop inotify-tools iotop jq
-	libva-utils lfs lshw lsof mosh neovim nnn openconnect openssh openvpn p7zip
-	perf qemu-full qemu-emulators-full rsync sysbench time tree turbostat
-	usbutils vkmark
+	curl firejail freerdp htop inotify-tools iotop jq libva-utils lfs lshw lsof
+	mosh neovim nnn openconnect openssh openvpn p7zip perf sysbench sysstat time
+	tree turbostat usbutils vkmark
 )
 pacman_development=(
-	autoconf-archive base-devel diffutils docker docker-compose gdb git
-	git-delta man-pages python python-pip strace tokei vulkan-icd-loader
-	vulkan-mesa-layers
+	base-devel diffutils docker docker-compose git git-delta man-pages python
+	python-pip tokei vulkan-icd-loader vulkan-mesa-layers
 )
 pacman_apps=(
-	alacritty arandr chromium drawing feh libreoffice-still maim mpv nomacs
-	obs-studio pavucontrol peek remmina rofi slock sxiv virt-viewer
+	alacritty arandr chromium drawing feh libreoffice-still maim mpv obs-studio
+	pavucontrol peek remmina rofi slock sxiv virt-viewer
 )
 pacman_fonts=(
 	noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra terminus-font
