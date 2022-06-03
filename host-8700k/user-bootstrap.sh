@@ -83,7 +83,7 @@ printinfo "| Installing pip packages |"
 printinfo "+ ----------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 pip3 install --user wheel
-pip3 install --user flashfocus pynvim pywal
+pip3 install --user flashfocus gdbgui pynvim pywal
 sudo -H pip3 install vpn-slice
 
 # printinfo "\n"
