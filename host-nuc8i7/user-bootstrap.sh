@@ -86,13 +86,6 @@ pip3 install --user wheel
 pip3 install --user flashfocus pynvim pywal
 sudo -H pip3 install vpn-slice
 
-# printinfo "\n"
-# printinfo "+ ----------------------------- +"
-# printinfo "| Installing Go Version Manager |"
-# printinfo "+ ----------------------------- +"
-# [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-# . ../shared/userfiles/install-g.sh
-
 printinfo "\n"
 printinfo "+ ------------------------------------ +"
 printinfo "| Installing NVM, NodeJS, NPM and Yarn |"
@@ -104,7 +97,6 @@ NVM_SYMLINK_CURRENT="true"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
 nvm install --lts=fermium
 nvm use default
-
 npm install -g yarn
 
 printinfo "\n"
@@ -162,7 +154,6 @@ printinfo "+ ------------------------------- +"
 pushd ../pkgs/mssql-odbc
 makepkg -sirc --noconfirm --needed
 popd
-
 pushd ../pkgs/mssql-tools
 makepkg -sirc --noconfirm --needed
 popd
