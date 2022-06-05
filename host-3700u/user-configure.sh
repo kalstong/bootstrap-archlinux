@@ -103,8 +103,8 @@ gcc ../shared/userfiles/polybar-polytimer.c \
 chmod u+x "${XDG_CONFIG_HOME}/bspwm/bspwmrc"
 chmod u+x "${XDG_CONFIG_HOME}/display_layout.sh"
 chmod u+x "${XDG_CONFIG_HOME}"/nnn/plugins/*
-chmod u+x "${HOME}/.local/bin/start-teams.sh"
 chmod u+x "${HOME}/.local/bin/start-spotify.sh"
+chmod u+x "${HOME}/.local/bin/start-teams.sh"
 chmod u+x "${HOME}/.local/bin/tmux-gitstat.sh"
 
 cp ../shared/userfiles/alacritty.yml /tmp
