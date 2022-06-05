@@ -166,7 +166,7 @@ mkdir -p "$bt_rootdir/usr/local/share/kbd/keymaps"
 { echo "keycode 58 = Caps_Lock";
   echo "altgr keycode 18 = euro";
   echo "altgr keycode 46 = cent"; } > "$bt_rootdir/usr/local/share/kbd/keymaps/recap.map"
-{ echo "KEYMAP=pt-latin1";
+{ echo "KEYMAP=pt-latin9";
   echo "KEYMAP_TOGGLE=/usr/local/share/kbd/keymaps/uncap.map";
   echo "FONT=ter-116n"; } > "$bt_rootdir/etc/vconsole.conf"
 

@@ -90,7 +90,7 @@ locale-gen
   echo "LC_TELEPHONE=pt_PT.UTF-8";
   echo "LC_TIME=pt_PT.UTF-8"; } > /etc/locale.conf
 
-echo "KEYMAP=pt-latin1" > /etc/rc.conf
+echo "KEYMAP=pt-latin9" > /etc/rc.conf
 
 cp /etc/pacman.conf /etc/pacman.conf.bak
 cp ../shared/sysfiles/pacman.conf /etc/pacman.conf

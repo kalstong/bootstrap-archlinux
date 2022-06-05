@@ -3,7 +3,7 @@ if shopt -q login_shell; then
 	locale-gen
 
 	# Only for reference. These are already set in /etc/vconsole.conf
-	# loadkeys pt-latin1
+	# loadkeys pt-latin9
 	# setfont ter-118n
 
 	kbdrate -s -d 190 -r 100 &> /dev/null
