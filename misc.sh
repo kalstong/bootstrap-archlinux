@@ -32,3 +32,8 @@ function askpwd {
 	done
 	printf "$pwd1"
 }
+
+function dirHasFiles {
+	[ -d "$1" ] && [ "$(/usr/bin/ls -A "$1")" ]
+}
+
