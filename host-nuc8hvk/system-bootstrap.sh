@@ -198,7 +198,7 @@ pacman_tools=(
 	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop
 	curl firejail freerdp hey htop inotify-tools iotop jq libva-utils lfs lshw
 	lsof mosh neovim nnn openconnect openssh openvpn p7zip perf radeontop
-	sysbench systat time tree turbostat usbutils vkmark
+	sysbench sysstat time tree turbostat usbutils vkmark
 )
 pacman_development=(
 	base-devel diffutils docker docker-compose git git-delta man-pages python
@@ -232,7 +232,7 @@ printinfo "| Jumping into the chroot jail |"
 printinfo "+ ---------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 mkdir -p "$bt_rootdir/tmp/bootstrap"
-cp -r {"../host-${bt_host}",../shared,../ssh,../misc.sh} "$bt_rootdir/tmp/bootstrap"
+cp -r {"../host-${bt_host}",../pkgs,../shared,../ssh,../misc.sh} "$bt_rootdir/tmp/bootstrap"
 
 mount proc "$bt_rootdir/proc/" -t proc  -o nosuid,noexec,nodev
 mount sys  "$bt_rootdir/sys/"  -t sysfs -o nosuid,noexec,nodev,ro
