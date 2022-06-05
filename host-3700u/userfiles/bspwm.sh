@@ -23,7 +23,7 @@ wm_config_monitors () {
 	[ -f "$layout_file" ] && layout=$(cat "$layout_file")
 
 	. "$XDG_CONFIG_HOME/display_layout.sh" "$layout"
-	if [ -z "$layout" ] || [ "$layout" = "solo" ]; then
+	if [ -z "$layout" ] || [ "$layout" = "single" ]; then
 		bspc monitor --reset-desktops 1 2 3 4 5 6 7 8 9 10
 	elif [ "$layout" = "dual" ]; then
 		bspc monitor eDP --reset-desktops 1 2 3 4 5 6 7 8 9 10
