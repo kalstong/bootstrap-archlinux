@@ -23,7 +23,7 @@ wm_config_monitors () {
 	[ -f "$layout_file" ] && layout=$(cat "$layout_file")
 
 	. "$XDG_CONFIG_HOME/display_layout.sh" "$layout"
-	if [ "$layout" = "solo" ] || [ "$layout" = "" ]; then
+	if [ "$layout" = "single" ] || [ "$layout" = "" ]; then
 		bspc monitor --reset-desktops 1 2 3 4 5 6 7 8 9 10
 	fi
 
@@ -86,8 +86,8 @@ wm_start_daemons () {
 	local layout = "";
 	local layout_file="$XDG_CONFIG_HOME/display_layout"
 	[ -f "$layout_file" ] && layout=$(cat "$layout_file")
-	if [ "$layout" = "solo" ] || [ "$layout" = "" ]; then
-		polybar solo &> "$HOME/.local/share/polybar/solo.log" &
+	if [ "$layout" = "single" ] || [ "$layout" = "" ]; then
+		polybar single &> "$HOME/.local/share/polybar/single.log" &
 	fi
 
 	dunst &> "$HOME/.local/share/dunst/log" &

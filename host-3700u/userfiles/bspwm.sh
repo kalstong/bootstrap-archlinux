@@ -89,8 +89,8 @@ wm_start_daemons () {
 	local layout = "";
 	local layout_file="$XDG_CONFIG_HOME/display_layout"
 	[ -f "$layout_file" ] && layout=$(cat "$layout_file")
-	if [ -z "$layout" ] || [ "$layout" = "solo" ]; then
-		polybar solo &> "$HOME/.local/share/polybar/solo.log" &
+	if [ -z "$layout" ] || [ "$layout" = "single" ]; then
+		polybar single &> "$HOME/.local/share/polybar/single.log" &
 	elif [ "$layout" = "dual" ]; then
 		polybar laptop &> "$HOME/.local/share/polybar/laptop.log" &
 		polybar external &> "$HOME/.local/share/polybar/external.log" &

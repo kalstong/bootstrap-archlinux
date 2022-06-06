@@ -23,8 +23,11 @@ wm_config_monitors () {
 	[ -f "$layout_file" ] && layout=$(cat "$layout_file")
 
 	. "$XDG_CONFIG_HOME/display_layout.sh" "$layout"
-	if [ "$layout" = "solo" ] || [ "$layout" = "" ]; then
-		bspc monitor --reset-desktops 1 2 3 4 5 6 7 8 9 10
+	if [ -z "$layout" ] || [ "$layout" = "single" ]; then
+		polybar single &> "$HOME/.local/share/polybar/single.log" &
+	elif [ "$layout" = "dual" ]; then
+		polybar left &> "$HOME/.local/share/polybar/left.log" &
+		polybar right &> "$HOME/.local/share/polybar/right.log" &
 	fi
 
 	bspc config automatic_scheme alternate
@@ -86,8 +89,11 @@ wm_start_daemons () {
 	local layout = "";
 	local layout_file="$XDG_CONFIG_HOME/display_layout"
 	[ -f "$layout_file" ] && layout=$(cat "$layout_file")
-	if [ "$layout" = "solo" ] || [ "$layout" = "" ]; then
-		polybar solo &> "$HOME/.local/share/polybar/solo.log" &
+	if [ -z "$layout" ] || [ "$layout" = "single" ]; then
+		polybar single &> "$HOME/.local/share/polybar/single.log" &
+	elif [ "$layout" = "dual" ]; then
+		polybar left &> "$HOME/.local/share/polybar/left.log" &
+		polybar right &> "$HOME/.local/share/polybar/right.log" &
 	fi
 
 	dunst &> "$HOME/.local/share/dunst/log" &
