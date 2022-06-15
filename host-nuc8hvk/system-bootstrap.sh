@@ -202,7 +202,7 @@ pacman_tools=(
 )
 pacman_development=(
 	base-devel diffutils docker docker-compose git git-delta man-pages python
-	python-pip tokei vulkan-icd-loader vulkan-mesa-layers
+	python-pip tokei unixodbc vulkan-icd-loader vulkan-mesa-layers
 )
 pacman_apps=(
 	alacritty arandr chromium drawing feh libreoffice-still maim mpv obs-studio
