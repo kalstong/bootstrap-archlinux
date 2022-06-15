@@ -2,7 +2,7 @@
 
 
 [ "$1" = "--install-tools" ] && {
-	tools_ver="100.5.2";
+	tools_ver="100.5.3";
 	tools_pkg="https://fastdl.mongodb.org/tools/db/mongodb-database-tools-debian10-x86_64-${tools_ver}.tgz";
 
 	rm -rf /tmp/mongodb-tools/ ;
