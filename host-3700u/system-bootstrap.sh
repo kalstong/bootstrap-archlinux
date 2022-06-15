@@ -119,7 +119,7 @@ cryptsetup --key-file /tmp/main.keyfile \
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/main.keyfile
 
 printinfo "\n  -> Formatting the root partition ..."
-mkfs.f2fs -O extra_attr,inode_checksum,sb_checksum,compression,encrypt -f /dev/mapper/root
+mkfs.f2fs -O extra_attr,inode_checksum,sb_checksum,encrypt -f /dev/mapper/root
 
 sync
 printinfo "\n"

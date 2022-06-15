@@ -57,7 +57,6 @@ mkdir -p {"$NPM_CONFIG_CACHE","$NVM_DIR","$YARN_CACHE_FOLDER"}
 mkdir -p "$CACHE"/docker
 mkdir -p "$TRASH"/.firejail.postman
 
-chattr -R +c {"$FVM_HOME","$GOMODCACHE","$NPM_CONFIG_CACHE","$NVM_DIR","$YARN_CACHE_FOLDER"}
 sudo mkdir -p "$MOUNT"
 sudo chown $bt_user:$bt_user "$MOUNT"
 sudo chmod u=rwx,g=rx,o= userfiles "$MOUNT"
