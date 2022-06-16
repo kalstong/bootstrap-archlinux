@@ -2,8 +2,8 @@
 
 rm -rf /tmp/ads*
 
-ads_pkg_version="1.36.2"
-ads_pkg="https://go.microsoft.com/fwlink/?linkid=2193237"
+ads_pkg_version="1.37.0"
+ads_pkg="https://go.microsoft.com/fwlink/?linkid=2198879"
 ads_ico="https://raw.githubusercontent.com/microsoft/azuredatastudio/main/resources/linux/code.png"
 
 echo "Downloading $ads_pkg ..." &&
