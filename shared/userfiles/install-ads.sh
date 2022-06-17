@@ -23,7 +23,7 @@ mv /tmp/ads.png "$HOME/.icons" &&
 mkdir -p "$HOME/.local/share/applications" &&
 cat <<EOF > "$HOME/.local/share/applications/ads.desktop"
 [Desktop Entry]
-Exec="$HOME/.local/bin/ads/azuredatastudio"
+Exec="$HOME/.local/bin/ads/azuredatastudio " --disable-features=UseChromeOSDirectVideoDecoder,UseSkiaRenderer --disable-gpu-driver-bug-workarounds --enable-accelerated-mjpeg-decode --enable-accelerated-video-decode --enable-features=CanvasOopRasterization,ParallelDownloading,UseVulkan,VaapiVideoDecoder,VaapiVideoEncoder --enable-gpu-rasterization --enable-native-gpu-memory-buffers --enable-oop-rasterization --enable-zero-copy --ignore-gpu-blocklist --use-vulkan
 Type=Application
 Categories=Development
 Name=Azure Data Studio
