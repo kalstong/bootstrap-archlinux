@@ -145,17 +145,17 @@ printinfo "+ ---------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 . ../shared/userfiles/install-ads.sh
 
-# printinfo "\n"
-# printinfo "+ ------------------------------- +"
-# printinfo "| Installing MSSQL ODBC and Tools |"
-# printinfo "+ ------------------------------- +"
-# [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-# pushd ../pkgs/mssql-odbc
-# makepkg -sirc --noconfirm --needed
-# popd
-# pushd ../pkgs/mssql-tools
-# makepkg -sirc --noconfirm --needed
-# popd
+printinfo "\n"
+printinfo "+ ------------------------------- +"
+printinfo "| Installing MSSQL ODBC and Tools |"
+printinfo "+ ------------------------------- +"
+[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+pushd ../pkgs/mssql-odbc
+makepkg -sirc --noconfirm --needed
+popd
+pushd ../pkgs/mssql-tools
+makepkg -sirc --noconfirm --needed
+popd
 
 printinfo "\n"
 printinfo "+ ------------------------ +"
