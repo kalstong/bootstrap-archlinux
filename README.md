@@ -17,7 +17,7 @@ Some packages need manual intervention to check for updates:
 
 Everything else:
 - AUR: `git fetch`, `makepkg -sirc`.
-- Fwupd: `fwupdmgr get-devices`, `fwupdmgr refresh`, `fwupdmgr get-updates`, `fwupdmgr update`.
+- Fwupd: `fwupdmgr get-devices|refresh|get-updates|update`.
 - Golang: `g list-all`, `g install <version>`.
 - Node.js/NPM: `nvm ls-remote --lts=fermium`, `nvm install <version>`, `npm outdated -g`.
 - Pacman: `sudo pacman -Sy && pacman -Qu`, `sudo pacman -Syu`.
@@ -26,7 +26,7 @@ Everything else:
 
 After the first boot:
 1. Set the energy policy: `energypolicy powersave`.
-2. Install the SSH keys: `sudo cryptsetup open <dev> <name>`, `sudo cryptsetup close <name>`.
+2. Install the SSH keys: `sudo cryptsetup open <device> stash`, `sudo cryptsetup close stash`.
 3. Connect to WiFi: `iwctl`.
 4. Enable NTP: `timedatectl set-ntp true`.
 5. Install NVIM plugins: `:UpdateRemotePlugins`, `:COQdeps`
