@@ -121,6 +121,7 @@ command! -nargs=* -bang RG call RgFzf(<q-args>, <bang>0)
 
 nnoremap , :Buffers<CR>
 nnoremap ; :Files<CR>
+nnoremap - :call FilterHistory(getcwd())<CR>:History<CR>
 nnoremap m :GFiles?<CR>
 nnoremap <Leader>sa :RG<CR>
 nnoremap <Leader>sb :BLines<CR>
