@@ -42,7 +42,7 @@ printinfo "+ ------------------------------- +"
 grub-install \
 	--target=x86_64-efi \
 	--efi-directory="/boot/efi" \
-	--bootloader-id=arch_grub \
+	--bootloader-id="Arch Linux" \
 	--recheck && sync
 
 cp sysfiles/grub.cfg /boot/grub/grub.cfg
