@@ -96,16 +96,20 @@ cp /etc/pacman.conf /etc/pacman.conf.bak
 cp ../shared/sysfiles/pacman.conf /etc/pacman.conf
 
 printinfo "\n"
-printinfo "+ -------------------- +"
-printinfo "| Configuring Hostname |"
-printinfo "+ -------------------- +"
+printinfo "+ ------------------------------ +"
+printinfo "| Configuring Hostname and Hosts |"
+printinfo "+ ------------------------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 echo "$bt_host" > /etc/hostname
-{ echo -e "127.0.0.1\tlocalhost";
-  echo -e "::1\tlocalhost";
-  echo -e "127.0.0.1\thost.docker.internal";
-  echo -e "127.0.0.1\t${bt_host}.localdomain\t${bt_host}"; } > /etc/hosts
+
+_hosts_url="https://raw.githubusercontent.com/StevenBlack/hosts/0b4de22567fe1f7d0fc5fd456612b809e703fb00/hosts"
+curl --connect-timeout 13 --retry 5 --retry-delay 2 "$_hosts_url" \
+	-sS -H "Accept:application/vnd.github.v3.raw" \
+	-o /etc/hosts
+sed -i "/^127.0.0.1 local$/a 127.0.0.1 host.docker.internal" /etc/hosts
+sed -i "/^127.0.0.1 local$/a 127.0.0.1 ${bt_host}.localdomain" /etc/hosts
+sed -i "/^127.0.0.1 local$/a 127.0.0.1 ${bt_host}" /etc/hosts
 
 printinfo "\n"
 printinfo "+ -------------------- +"
