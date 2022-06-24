@@ -96,6 +96,7 @@ NVM_SYMLINK_CURRENT="true"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
 nvm install --lts=fermium
 nvm use default
+npm install -g yalc
 npm install -g yarn
 
 printinfo "\n"

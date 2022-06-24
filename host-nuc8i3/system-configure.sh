@@ -39,12 +39,12 @@ printinfo "| Installing and configuring SystemD Boot |"
 printinfo "+ --------------------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
-bootctl --esp-path=/boot/efi --boot-path=/boot install
+bootctl --esp-path=/boot install
 
-cp sysfiles/systemd-boot-loader.conf /boot/efi/loader/loader.conf
-cp sysfiles/systemd-boot-arch.conf /boot/efi/loader/entries/arch.conf
-chmod u=rw,g=r,o= /boot/efi/loader/loader.conf
-chmod u=rw,g=r,o= /boot/efi/loader/entries/arch.conf
+cp sysfiles/systemd-boot-loader.conf /boot/loader/loader.conf
+cp sysfiles/systemd-boot-arch.conf /boot/loader/entries/arch.conf
+chmod u=rw,g=r,o=r /boot/loader/loader.conf
+chmod u=rw,g=r,o=r /boot/loader/entries/arch.conf
 
 printinfo "\n"
 printinfo "+ --------------------------------- +"

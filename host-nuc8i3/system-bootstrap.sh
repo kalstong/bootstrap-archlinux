@@ -64,12 +64,8 @@ printinfo "+ ----------------- +"
 parted "$_disk_system" mklabel gpt && sync
 
 _starts_at=1
-_ends_at=$((${_starts_at} + 256)) # 256MiB EFI partition
+_ends_at=$((${_starts_at} + 512)) # 512iB boot partition
 parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" set 1 esp on && sync
-
-_starts_at=${_ends_at}
-_ends_at=$((${_starts_at} + 512)) # 512MiB boot partition
-parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" && sync
 
 _starts_at=${_ends_at}
 _ends_at=$((${_starts_at} + 8 * 1024)) # 8GiB swap partition
@@ -99,16 +95,15 @@ printinfo "\n\n  -> Requesting fallback decryption password ..."
 askpwd > /tmp/pwd.keyfile
 
 mkfs.fat -F32 "${_disk_system}p1"
-mkfs.f2fs -f "${_disk_system}p2"
-mkswap "${_disk_system}p3"
+mkswap "${_disk_system}p2"
 
 printinfo "\n  -> Encrypting root partition ..."
 cryptsetup --verbose \
-	--batch-mode luksFormat "${_disk_system}p4" /tmp/main.keyfile \
+	--batch-mode luksFormat "${_disk_system}p3" /tmp/main.keyfile \
 	--type luks2 --sector-size 4096
 
 printinfo "\n  -> Setting fallback decryption password ..."
-cryptsetup luksAddKey "${_disk_system}p4" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
+cryptsetup luksAddKey "${_disk_system}p3" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/pwd.keyfile
 
 printinfo "\n  -> Opening the encrypted root partition ..."
@@ -116,7 +111,7 @@ cryptsetup --key-file /tmp/main.keyfile \
 	--allow-discards \
 	--perf-no_read_workqueue \
 	--perf-no_write_workqueue \
-	open "${_disk_system}p4" root
+	open "${_disk_system}p3" root
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/main.keyfile
 
 printinfo "\n  -> Formatting the root partition ..."
@@ -128,17 +123,13 @@ printinfo "+ ------------------- +"
 printinfo "| Mounting partitions |"
 printinfo "+ ------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-efi_mount_opts=$(grep "/boot/efi" sysfiles/fstab | awk '{print $4}')
-boot_mount_opts=$(grep "/boot[[:space:]]\+" sysfiles/fstab | awk '{print $4}')
+boot_mount_opts=$(grep "/boot" sysfiles/fstab | awk '{print $4}')
 root_mount_opts=$(grep "/dev/mapper/root" sysfiles/fstab | awk '{print $4}')
 
 mount -o "$root_mount_opts" /dev/mapper/root "$bt_rootdir" && sync
 
 mkdir -p "$bt_rootdir/boot"
-mount -o "$boot_mount_opts" "${_disk_system}p2" "$bt_rootdir/boot"
-
-mkdir -p "$bt_rootdir/boot/efi"
-mount -o "$efi_mount_opts" "${_disk_system}p1" "$bt_rootdir/boot/efi"
+mount -o "$boot_mount_opts" "${_disk_system}p1" "$bt_rootdir/boot"
 
 printinfo "\n"
 printinfo "+ --------------------- +"
@@ -257,7 +248,6 @@ printinfo "+ --------------------- +"
 killall -q gpg-agent dirmngr
 sync
 
-umount "$bt_rootdir/boot/efi"
 umount "$bt_rootdir/boot"
 sync
 
