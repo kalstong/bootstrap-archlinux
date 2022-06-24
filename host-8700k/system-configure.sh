@@ -116,7 +116,7 @@ printinfo "+ -------------------- +"
 systemctl enable avahi-daemon.service
 systemctl enable bluetooth.service
 systemctl enable dhcpcd.service
-systemctl enable docker.service
+systemctl enable docker.socket
 systemctl enable fstrim.timer
 systemctl enable iwd.service
 systemctl enable sshd.service

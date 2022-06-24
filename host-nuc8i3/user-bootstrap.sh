@@ -86,9 +86,9 @@ pip3 install --user flashfocus pynvim pywal
 sudo -H pip3 install vpn-slice
 
 printinfo "\n"
-printinfo "+ ------------------------------------ +"
-printinfo "| Installing NVM, NodeJS, NPM and Yarn |"
-printinfo "+ ------------------------------------ +"
+printinfo "+ --------------------------- +"
+printinfo "| Installing NVM, NodeJS, NPM |"
+printinfo "+ --------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 . ../shared/userfiles/install-nvm.sh
 
@@ -96,7 +96,6 @@ NVM_SYMLINK_CURRENT="true"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
 nvm install --lts=fermium
 nvm use default
-npm install -g yarn
 
 printinfo "\n"
 printinfo "+ ----------------------- +"
