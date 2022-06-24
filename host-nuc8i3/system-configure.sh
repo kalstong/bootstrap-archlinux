@@ -34,19 +34,17 @@ done
 [ -z "$bt_host" ] && echo "Missing mandatory '-u/--user' option." && exit 1
 
 printinfo "\n"
-printinfo "+ ------------------------------- +"
-printinfo "| Installing and configuring GRUB |"
-printinfo "+ ------------------------------- +"
+printinfo "+ --------------------------------------- +"
+printinfo "| Installing and configuring SystemD Boot |"
+printinfo "+ --------------------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
-grub-install \
-	--target=x86_64-efi \
-	--efi-directory="/boot/efi" \
-	--bootloader-id=arch_grub \
-	--recheck && sync
+bootctl --esp-path=/boot/efi --boot-path=/boot install
 
-cp sysfiles/grub.cfg /boot/grub/grub.cfg
-chmod u=rw,g=r,o=r /boot/grub/grub.cfg
+cp sysfiles/systemd-boot-loader.conf /boot/efi/loader/loader.conf
+cp sysfiles/systemd-boot-arch.conf /boot/efi/loader/entries/arch.conf
+chmod u=rw,g=r,o= /boot/efi/loader/loader.conf
+chmod u=rw,g=r,o= /boot/efi/loader/entries/arch.conf
 
 printinfo "\n"
 printinfo "+ --------------------------------- +"

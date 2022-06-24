@@ -183,7 +183,7 @@ printinfo "+ -------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 pacman_core=(
-	base grub intel-media-driver intel-ucode linux-lts linux-firmware libva mesa
+	base intel-media-driver intel-ucode linux-lts linux-firmware libva mesa
 	ntfs-3g sshfs vulkan-intel xf86-video-intel
 )
 pacman_system=(
