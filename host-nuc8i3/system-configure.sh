@@ -34,17 +34,19 @@ done
 [ -z "$bt_host" ] && echo "Missing mandatory '-u/--user' option." && exit 1
 
 printinfo "\n"
-printinfo "+ --------------------------------------- +"
-printinfo "| Installing and configuring SystemD Boot |"
-printinfo "+ --------------------------------------- +"
+printinfo "+ ------------------------------- +"
+printinfo "| Installing and configuring GRUB |"
+printinfo "+ ------------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
-bootctl --esp-path=/boot install
+grub-install \
+	--target=x86_64-efi \
+	--efi-directory="/boot/efi" \
+	--bootloader-id=arch_grub \
+	--recheck && sync
 
-cp sysfiles/systemd-boot-loader.conf /boot/loader/loader.conf
-cp sysfiles/systemd-boot-arch.conf /boot/loader/entries/arch.conf
-chmod u=rw,g=r,o=r /boot/loader/loader.conf
-chmod u=rw,g=r,o=r /boot/loader/entries/arch.conf
+cp sysfiles/grub.cfg /boot/grub/grub.cfg
+chmod u=rw,g=r,o=r /boot/grub/grub.cfg
 
 printinfo "\n"
 printinfo "+ --------------------------------- +"
@@ -111,10 +113,10 @@ printinfo "| Configuring services |"
 printinfo "+ -------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
-systemctl enable avahi-daemon.socket
+systemctl enable avahi-daemon.service
 systemctl enable bluetooth.service
 systemctl enable dhcpcd.service
-systemctl enable docker.socket
+systemctl enable docker.service
 systemctl enable fstrim.timer
 systemctl enable intel-undervolt.service
 systemctl enable iwd.service
