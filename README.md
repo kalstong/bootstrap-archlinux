@@ -37,6 +37,10 @@ To create new SSH keys:
 - `ssh-keygen -t rsa -b 8192 -C <host> -f id_rsa`.
 - For files: `chmod u=r,g=,o= id_*`. For folders: `chmod u=rx,g=,o= *`.
 
+Useful commands:
+- See the dependencies of a given package: `pacman -Sii <pkg>`.
+- See which installed packages depend on another one: `pacman -Qi <pkg>`.
+
 ## Tasks
 - Investigate `broot` as an alternative to `fzf`.
 - Investigate `lf` as an alternative to `nnn`.
