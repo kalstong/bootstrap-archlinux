@@ -71,12 +71,8 @@ printinfo "+ ------------------------ +"
 parted "$_disk_system" mklabel gpt && sync
 
 _starts_at=1
-_ends_at=$((${_starts_at} + 256)) # 256MiB EFI partition
+_ends_at=$((${_starts_at} + 512)) # 512iB boot partition
 parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" set 1 esp on && sync
-
-_starts_at=${_ends_at}
-_ends_at=$((${_starts_at} + 512)) # 512MiB boot partition
-parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" && sync
 
 _starts_at=${_ends_at} # Remaining space as the root partition
 parted "$_disk_system" mkpart primary "${_starts_at}MiB" "100%" && sync
@@ -112,11 +108,10 @@ printinfo "\n\n  -> Requesting fallback decryption password ..."
 askpwd > /tmp/pwd.keyfile
 
 mkfs.fat -F32 "${_disk_system}p1"
-mkfs.f2fs -f "${_disk_system}p2"
 
 printinfo "\n  -> Encrypting partitions ..."
 cryptsetup --verbose \
-	--batch-mode luksFormat "${_disk_system}p3" /tmp/main.keyfile \
+	--batch-mode luksFormat "${_disk_system}p2" /tmp/main.keyfile \
 	--type luks2 --sector-size 4096
 
 cryptsetup --verbose \
@@ -124,7 +119,7 @@ cryptsetup --verbose \
 	--type luks2 --sector-size 4096
 
 printinfo "\n  -> Setting fallback decryption password ..."
-cryptsetup luksAddKey "${_disk_system}p3" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
+cryptsetup luksAddKey "${_disk_system}p2" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
 cryptsetup luksAddKey "${_disk_storage}p1" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/pwd.keyfile
 
@@ -133,7 +128,7 @@ cryptsetup --key-file /tmp/main.keyfile \
 	--allow-discards \
 	--perf-no_read_workqueue \
 	--perf-no_write_workqueue \
-	open "${_disk_system}p3" root
+	open "${_disk_system}p2" root
 
 cryptsetup --key-file /tmp/main.keyfile \
 	--allow-discards \
@@ -153,18 +148,14 @@ printinfo "+ ------------------- +"
 printinfo "| Mounting partitions |"
 printinfo "+ ------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-efi_mount_opts=$(grep "/boot/efi" sysfiles/fstab | awk '{print $4}')
-boot_mount_opts=$(grep "/boot[[:space:]]\+" sysfiles/fstab | awk '{print $4}')
+boot_mount_opts=$(grep "/boot" sysfiles/fstab | awk '{print $4}')
 root_mount_opts=$(grep "/dev/mapper/root" sysfiles/fstab | awk '{print $4}')
 d1_mount_opts=$(grep "/dev/mapper/d1" sysfiles/fstab | awk '{print $4}')
 
 mount -o "$root_mount_opts" /dev/mapper/root "$bt_rootdir" && sync
 
 mkdir -p "$bt_rootdir/boot"
-mount -o "$boot_mount_opts" "${_disk_system}p2" "$bt_rootdir/boot"
-
-mkdir -p "$bt_rootdir/boot/efi"
-mount -o "$efi_mount_opts" "${_disk_system}p1" "$bt_rootdir/boot/efi"
+mount -o "$boot_mount_opts" "${_disk_system}p1" "$bt_rootdir/boot"
 
 mkdir -p "$bt_rootdir/mnt/d1"
 mount -o "$d1_mount_opts" /dev/mapper/d1 "$bt_rootdir/mnt/d1"
@@ -211,8 +202,8 @@ printinfo "+ -------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 pacman_core=(
-	base grub intel-media-driver intel-ucode linux-lts linux-firmware libva mesa
-	ntfs-3g nvidia-lts nvidia-utils sshfs vulkan-intel xf86-video-intel
+	base intel-media-driver intel-ucode linux-lts linux-firmware libva mesa
+	nvidia-lts nvidia-utils sshfs vulkan-intel xf86-video-intel
 )
 pacman_system=(
 	avahi bat bc bluez bspwm cpupower dash dhcpcd dmraid dunst efibootmgr exa
@@ -288,7 +279,6 @@ killall -q gpg-agent dirmngr
 sync
 
 umount "$bt_rootdir/mnt/d1"
-umount "$bt_rootdir/boot/efi"
 umount "$bt_rootdir/boot"
 sync
 

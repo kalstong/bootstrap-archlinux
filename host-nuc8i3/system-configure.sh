@@ -34,19 +34,26 @@ done
 [ -z "$bt_host" ] && echo "Missing mandatory '-u/--user' option." && exit 1
 
 printinfo "\n"
-printinfo "+ ------------------------------- +"
-printinfo "| Installing and configuring GRUB |"
-printinfo "+ ------------------------------- +"
+printinfo "+ ---------------------------------- +"
+printinfo "| Installing and configuring sd-boot |"
+printinfo "+ ---------------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
-grub-install \
-	--target=x86_64-efi \
-	--efi-directory="/boot/efi" \
-	--bootloader-id="Arch Linux" \
-	--recheck && sync
+bootctl --esp-path=/boot install
+cp sysfiles/sd-boot-loader.conf /boot/loader/loader.conf
+cp sysfiles/sd-boot-entry.conf /boot/loader/entries/entry.conf
+chmod u=rw,g=r,o= /boot/loader/loader.conf
+chmod u=rw,g=r,o= /boot/loader/entries/entry.conf
 
-cp sysfiles/grub.cfg /boot/grub/grub.cfg
-chmod u=rw,g=r,o=r /boot/grub/grub.cfg
+# @NOTE(fm) For reference in case I want to go back to GRUB.
+# grub-install \
+# 	--target=x86_64-efi \
+# 	--efi-directory="/boot/efi" \
+# 	--bootloader-id="Arch Linux" \
+# 	--recheck && sync
+
+# cp sysfiles/grub.cfg /boot/grub/grub.cfg
+# chmod u=rw,g=r,o=r /boot/grub/grub.cfg
 
 printinfo "\n"
 printinfo "+ --------------------------------- +"
