@@ -215,8 +215,8 @@ pacman_system=(
 	xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
 )
 pacman_tools=(
-	arch-audit archiso aria2 bash-completion bind bluez-utils btop croc ctop
-	curl edk2-ovmf entr ffmpeg ffmpeg4.4 firejail freerdp hey htop inotify-tools
+	arch-audit aria2 bash-completion bind bluez-utils btop croc ctop curl
+	edk2-ovmf entr ffmpeg ffmpeg4.4 firejail freerdp hey htop inotify-tools
 	iotop jq libva-utils lfs lshw lsof mosh neovim nnn nvtop openconnect openssh
 	openvpn p7zip perf qemu-full qemu-emulators-full rsync sysbench sysstat time
 	tree turbostat usbutils vkmark
