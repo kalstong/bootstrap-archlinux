@@ -110,7 +110,7 @@ printinfo "+ ------------------------------ +"
 
 echo "$bt_host" > /etc/hostname
 
-_hosts_url="https://raw.githubusercontent.com/StevenBlack/hosts/0b4de22567fe1f7d0fc5fd456612b809e703fb00/hosts"
+_hosts_url="https://raw.githubusercontent.com/StevenBlack/hosts/3.10.11/hosts"
 curl --connect-timeout 13 --retry 5 --retry-delay 2 "$_hosts_url" \
 	-sS -H "Accept:application/vnd.github.v3.raw" \
 	-o /etc/hosts
