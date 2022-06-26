@@ -84,8 +84,7 @@ nnoremap <Leader>vs0 :syntax off<CR>
 nnoremap <Leader>vs1 :syntax on<CR>
 
 	" Navigation
-nnoremap - :e .<CR>
-nnoremap _ :bp <CR>
+nnoremap _ :bp<CR>
 nnoremap <A-n> <A-}>
 nnoremap <A-b> <A-{>
 vnoremap <A-n> <A-}>
