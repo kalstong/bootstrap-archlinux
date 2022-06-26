@@ -39,7 +39,9 @@ printinfo "| Installing and configuring sd-boot |"
 printinfo "+ ---------------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
-bootctl --esp-path=/boot install
+bootctl remove
+bootctl install
+
 cp sysfiles/sd-boot-loader.conf /boot/loader/loader.conf
 cp sysfiles/sd-boot-entry.conf /boot/loader/entries/entry.conf
 chmod u=rw,g=r,o= /boot/loader/loader.conf
