@@ -42,22 +42,23 @@ Useful commands:
 - See which installed packages depend on another one: `pacman -Qi <pkg>`.
 
 ## Tasks
-- Investigate `broot` as an alternative to `fzf`.
-- Investigate `lf` as an alternative to `nnn`.
-- Consider replacing `alsa` and `pulseaudio` by [`pipewire`](https://wiki.archlinux.org/title/PipeWire).
-- Try to find an alternative to RipGrep that doesn't consume as much memory,
-  retains the necessary functionality and can be integrated w/ neovim/fzf.
-- Create a mount point with the partition's label.
-  Check the `--json` switch of `lsblk` and use `jq` to parse the output.
-- GCC10, GCC11
-  * Fix ISL source URL.
-  * Remove Ada & Fortran from the build script.
-  * Check Arch's GCC12 script for optimizations like PGO, -march=native ...
-- GCC10 and GCC11 for ARM T32, A32 and A64. See
-  [Instruction Sets](https://developer.arm.com/architectures/instruction-sets)
-  for more details about each architecture.
-- Improve GPG helper functions to encrypt/decrypt text or binary files.
-- Polybar
-  * Rewrite all my plugins in C.
-  * Do a CPU usage plugin that reads `/proc/stat`.
+
+### High Priority
 - Set BIOS undervolt for 9900K, 3950X.
+- When mounting a partition, try to use its label to name the mount point.
+  Check the `--json` switch of `lsblk` and use `jq` to parse the output.
+
+### Low Priority
+- Check (`borg`)[https://archlinux.org/packages/community/x86_64/borg/] for compressed/mountable backups.
+- Check `broot` as an alternative to `fzf`.
+- Check `lf` as an alternative to `nnn`.
+- Check [`pipewire`](https://wiki.archlinux.org/title/PipeWire) as an alternative to `alsa`/`pulseaudio`.
+- Improve GPG helper functions to encrypt/decrypt text or binary files.
+- Polybar: do a CPU usage plugin that reads `/proc/stat`.
+- Polybar: wewrite all plugins in C.
+- Create PKGBUILDs for GCC10 and GCC11.
+  - Check ArchLinux's GCC12 PKGBUILD for optimizations like PGO, -march=native, ...
+  - Don't build Ada and Fortran.
+  - Fix the URL of ISL.
+  - Find out to have GCC build that build/link apps for other
+    [instruction sets](https://archlinux.org/packages/community/x86_64/borg/).
