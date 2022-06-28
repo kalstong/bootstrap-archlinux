@@ -62,3 +62,8 @@ Useful commands:
   - Fix the URL of ISL.
   - Find out to have GCC build that build/link apps for other
     [instruction sets](https://archlinux.org/packages/community/x86_64/borg/).
+
+### Other
+- Consider [obs-glcapture](https://github.com/2xsaiko/obs-glcapture) and
+  [obs-vkcapture](https://github.com/nowrep/obs-vkcapture) to record
+  OpenGL/Vulkan frame buffers w/ minimal performance penalties.
