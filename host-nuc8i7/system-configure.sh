@@ -100,14 +100,7 @@ printinfo "+ ------------------------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 echo "$bt_host" > /etc/hostname
-
-_hosts_url="https://raw.githubusercontent.com/StevenBlack/hosts/3.10.11/hosts"
-curl --connect-timeout 13 --retry 5 --retry-delay 2 "$_hosts_url" \
-	-sS -H "Accept:application/vnd.github.v3.raw" \
-	-o /etc/hosts
-sed -i "/^127.0.0.1 local$/a 127.0.0.1 host.docker.internal" /etc/hosts
-sed -i "/^127.0.0.1 local$/a 127.0.0.1 ${bt_host}.localdomain" /etc/hosts
-sed -i "/^127.0.0.1 local$/a 127.0.0.1 ${bt_host}" /etc/hosts
+bash /tmp/bootstrap/shared/userfiles/install-hosts.sh "${bt_host}"
 
 printinfo "\n"
 printinfo "+ -------------------- +"
