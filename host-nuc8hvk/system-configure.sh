@@ -171,7 +171,8 @@ chmod --changes u=r,g=r,o= /etc/sudoers
 
 sed -i -r 's/#SystemMaxUse=/SystemMaxUse=1G/' /etc/systemd/journald.conf
 sed -i -r 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
-# echo "vm.vfs_cache_pressure=90" >> /etc/sysctl.d/99-swappiness.conf
+# echo "vm.vfs_cache_pressure=90" >> /etc/sysctl.d/50-swappiness.conf
+echo "vm.oom_kill_allocating_task=1" >> /etc/sysctl.d/51-oomd.conf
 
 cp sysfiles/30-amdgpu-pm.rules /etc/udev/rules.d/
 cp sysfiles/xorg.conf /etc/X11/xorg.conf.d/

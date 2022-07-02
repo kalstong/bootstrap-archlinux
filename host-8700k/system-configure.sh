@@ -116,6 +116,7 @@ systemctl enable docker.socket
 systemctl enable fstrim.timer
 systemctl enable iwd.service
 systemctl enable sshd.service
+systemctl enable systemd-oomd.socket
 
 # fscrypt setup
 # fscrypt /mnt/d1
@@ -169,7 +170,8 @@ chmod --changes u=r,g=r,o= /etc/sudoers
 
 sed -i -r 's/#SystemMaxUse=/SystemMaxUse=1G/' /etc/systemd/journald.conf
 sed -i -r 's/#user_allow_other/user_allow_other/' /etc/fuse.conf
-# echo "vm.vfs_cache_pressure=90" >> /etc/sysctl.d/99-swappiness.conf
+# echo "vm.vfs_cache_pressure=90" >> /etc/sysctl.d/50-swappiness.conf
+echo "vm.oom_kill_allocating_task=1" >> /etc/sysctl.d/51-oomd.conf
 
 # NOTE: This is hack to force-unload the NVIDIA modules during
 # system shutdown because they're preventing systemd from closing some mounts.
