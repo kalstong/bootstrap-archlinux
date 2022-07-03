@@ -13,5 +13,6 @@ unzip /tmp/jai.zip -d /tmp
 mkdir -p "$JAI_DIR"
 rm -rf "$JAI_DIR"/*
 mv /tmp/jai/* "$JAI_DIR"
-rm -rf "$JAI_DIR"/{jai.exe,lld-macosx,lld.exe}
+rm -rf "$JAI_DIR"/bin/{jai.exe,lld-macosx,lld.exe}
 mv "$JAI_DIR"/bin/jai-linux "$JAI_DIR"/bin/jai
+chmod u+x "$JAI_DIR"/bin/{jai,lld-linux}
