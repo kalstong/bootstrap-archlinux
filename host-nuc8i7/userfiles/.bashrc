@@ -17,6 +17,7 @@ export GOCACHE="$CACHE/go/build"
 export GOMODCACHE="$CACHE/go/lib/pkg/mod"
 export GOPATH="$CACHE/go/lib"
 export GOROOT="$CACHE/go/bin"
+export JAI_DIR="$CACHE/jai"
 export NOTES="$FILES/notes"
 export NPM_CONFIG_CACHE="$CACHE/npm"
 export NVM_DIR="$CACHE/nvm"
@@ -27,8 +28,9 @@ export YARN_CACHE_FOLDER="$CACHE/yarn"
 
 export NNN_BMS="0://;a:$AUR;c:$CODE;d:$DOWNLOADS;f:$FILES;m:$MOUNT;n:$NOTES;r:$RECORDINGS;s:$SCREENSHOTS;t:$TRASH;w:$WORK"
 [[ ! "$PATH" =~ $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"
-[[ ! "$PATH" =~ $GOPATH/bin ]] && export PATH="$PATH:$GOPATH/bin"
 [[ ! "$PATH" =~ "$DVM_DIR" ]] && export PATH="$PATH:${DVM_DIR}/bin"
 [[ ! "$PATH" =~ "$DVM_ROOT/current" ]] &&
 	export DART_SDK="${DVM_ROOT}/current" &&
 	export PATH="$PATH:${DVM_ROOT}/current/bin"
+[[ ! "$PATH" =~ $GOPATH/bin ]] && export PATH="$PATH:$GOPATH/bin"
+[[ ! "$PATH" =~ "$JAI_DIR" ]] && export PATH="$PATH:${JAI_DIR}/bin"
