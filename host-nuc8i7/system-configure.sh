@@ -33,6 +33,7 @@ done
 [ -z "$bt_host" ] && echo "Missing mandatory '-h/--host' option." && exit 1
 [ -z "$bt_host" ] && echo "Missing mandatory '-u/--user' option." && exit 1
 
+printinfo "\n"
 printinfo "+ ---------------------------------- +"
 printinfo "| Installing and configuring sd-boot |"
 printinfo "+ ---------------------------------- +"
