@@ -173,7 +173,7 @@ num_logical_cores="$(grep "^processor" /proc/cpuinfo | wc -l)"
 num_physical_cores="$(grep -m 1 -oP "cpu cores\s*:\s*\K\d+" /proc/cpuinfo)"
 sed -i -r "s/<max_make_jobs>/-j$num_physical_cores/" /etc/makepkg.conf
 
-echo "options snd_hda_intel power_save=0" > /etc/modprobe.d/snd_hda_intel.conf
+# echo "options snd_hda_intel power_save=0" > /etc/modprobe.d/snd_hda_intel.conf
 
 cp /etc/sudoers /etc/sudoers.bak
 cp ../shared/sysfiles/sudoers /etc/sudoers
