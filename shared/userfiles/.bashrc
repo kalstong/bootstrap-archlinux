@@ -211,8 +211,9 @@ mnt () {
 
 	local part=$(
 		eval $cmd_lsblk | eval $cmd_grep_1 | eval $cmd_grep_2 | eval $cmd_awk |
-		fzf --bind "ctrl-r:reload($cmd_lsblk | $cmd_grep_1 | $cmd_grep_2 | $cmd_awk)" \
-			--header "Press CTRL-R to reload" \
+		fzf --bind "ctrl-r:reload:$cmd_lsblk | $cmd_grep_1 | $cmd_grep_2 | $cmd_awk" \
+			--bind "change:reload:$cmd_lsblk | $cmd_grep_1 | $cmd_grep_2 | $cmd_awk" \
+			--header "Press CTRL-R or type to reload" \
 			--reverse |
 		awk '{printf "%s %s %s",$1,$2,$3}')
 	[ -z "$part" ] && return
