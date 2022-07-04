@@ -204,10 +204,18 @@ mnt () {
 	# 2. Grep the ones that aren't mounted
 	# 3. Send them to `fzf'
 	# 4. Grab de selectd partition
-	local part=$(lsblk --list --output PATH,SIZE,FSTYPE,TYPE,MOUNTPOINT |
-		grep 'part[[:space:]]*$\|crypt[[:space:]]*$' | grep --invert-match 'crypto_LUKS' |
-		awk '{printf "%s %s %s\n",$1,$2,$3}' |
-		fzf --reverse | awk '{printf "%s %s %s",$1,$2,$3}')
+	local cmd_lsblk="lsblk --list --output PATH,SIZE,FSTYPE,TYPE,MOUNTPOINT"
+	local cmd_grep_1="grep 'part[[:space:]]*$\\|crypt[[:space:]]*$'"
+	local cmd_grep_2="grep --invert-match 'crypto_LUKS'"
+	local cmd_awk="awk '{printf \"%s %s %s\\n\",\$1,\$2,\$3}'"
+
+	local part=$(
+		eval $cmd_lsblk |
+		eval $cmd_grep_1 |
+		eval $cmd_grep_2 |
+		eval $cmd_awk |
+		fzf --bind "ctrl-r:reload($cmd_lsblk | $cmd_grep_1 | $cmd_grep_2 | $cmd_awk)" --reverse |
+		awk '{printf "%s %s %s",$1,$2,$3}')
 	[ -z "$part" ] && return
 
 	# Find the directories at $MOUNT that aren't already used as a mount point.
