@@ -83,8 +83,11 @@ function fish_mode_prompt
 end
 
 fish_vi_key_bindings
-bind --mode default \cy accept-autosuggestion
-bind --mode insert \cy accept-autosuggestion
+
+bind --mode default \cf accept-autosuggestion
+bind --mode insert \cf accept-autosuggestion
+bind --mode default \cy accept-autosuggestion execute
+bind --mode insert \cy accept-autosuggestion execute
 
 set --export EDITOR nvim
 set --export LESSCHARSET UTF-8
