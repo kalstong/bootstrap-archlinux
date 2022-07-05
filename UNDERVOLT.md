@@ -1,17 +1,23 @@
 **NUC8i3**
-- Type: intel-undervolt
+- Type: Undervolt
+- Medium : intel-undervolt
 
 **NUC8i7**
-- Type: intel-undervolt
+- Type: Undervolt
+- Medium : intel-undervolt
 
 **NUC8HVK**
-- Type: BIOS
+- Type: Overclock and Undervolt
+- Medium: BIOS
 
 **8700K**
-- Type: BIOS
+- Type: Overclock and Undervolt
+- Medium: BIOS
 
 **9900K**
-- Type: BIOS
+- Type: ???
+- Medium: ???
 
 **3950X**
-- Type: BIOS
+- Type: ???
+- Medium: ???
