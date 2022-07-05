@@ -747,6 +747,15 @@ shup () {
 	eval $cmd
 }
 
+stopwatch () {
+    local start=$(date +%s)
+    while true; do
+        local time="$(( $(date +%s) - $start))"
+        printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
+        sleep 1
+    done
+}
+
 theme () {
 	local light_themes="$HOME/.local/lib/python3.10/site-packages/pywal/colorschemes/light"
 	local dark_themes="$HOME/.local/lib/python3.10/site-packages/pywal/colorschemes/dark"

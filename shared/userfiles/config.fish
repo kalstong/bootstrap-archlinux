@@ -227,6 +227,10 @@ function shup --description "Evaluate Bash commands out of a file"
 	bash -i -c "shup $argv"
 end
 
+function stopwatch --description "Display stopwatch timer"
+	bash -i -c "stopwatch"
+end
+
 function theme --description "Set a colorscheme from pywall"
 	bash -i -c "theme"
 end
