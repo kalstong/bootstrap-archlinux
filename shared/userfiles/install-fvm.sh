@@ -1,6 +1,6 @@
 #!/bin/bash
 
-fvm_ver="2.3.1";
+fvm_ver="2.4.0";
 fvm_pkg="https://github.com/fluttertools/fvm/releases/download/${fvm_ver}/fvm-${fvm_ver}-linux-x64.tar.gz";
 
 rm -rf /tmp/fvm*
