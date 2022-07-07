@@ -751,7 +751,7 @@ stopwatch () {
     local start=$(date +%s)
     while true; do
         local time="$(( $(date +%s) - $start))"
-        printf '%s\r' "$(date -u -d "@$time" +%H:%M:%S)"
+        printf " %s\r" "$(date -u -d "@$time" +%H:%M:%S)"
         sleep 1
     done
 }
