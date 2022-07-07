@@ -1,0 +1,6 @@
+[install]
+globalDir = "<base_dir>/install/global"
+globalBinDir = "<base_dir>/bin"
+
+[install.cache]
+dir = "<base_dir>/install/cache"
