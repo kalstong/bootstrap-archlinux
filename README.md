@@ -2,7 +2,8 @@
 
 Some packages need manual intervention to check for updates:
 - For Azure Data Studio see [here](https://github.com/microsoft/azuredatastudio/releases).
-- For Brave see [here](https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md)
+- For Brave see [here](https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md).
+- For Bun see [here](https://github.com/Jarred-Sumner/bun/releases).
 - For Chromium see [here](https://chromiumdash.appspot.com/releases?platform=Linux).
 - For Dart Version Manager see [here](https://github.com/cbracken/dvm/tags).
 - For Firefox ESR see [here](https://www.mozilla.org/firefox/organizations/notes/).
