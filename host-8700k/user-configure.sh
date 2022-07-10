@@ -90,6 +90,12 @@ cp ../shared/userfiles/nnn-fzcd "${XDG_CONFIG_HOME}/nnn/plugins/fzcd"
 cp ../shared/userfiles/nnn-fzopen "${XDG_CONFIG_HOME}/nnn/plugins/fzopen"
 cp ../shared/userfiles/nnn-pskill "${XDG_CONFIG_HOME}/nnn/plugins/pskill"
 cp ../shared/userfiles/polybar-*.sh "${HOME}/.local/bin/"
+gcc ../shared/userfiles/polybar-fsusage.c \
+	-std=c99 -Wall -Wextra -O2 -march=native \
+	-o "${HOME}/.local/bin/polybar-fsusage"
+gcc ../shared/userfiles/polybar-mem.c \
+	-std=c99 -Wall -Wextra -O2 -march=native \
+	-o "${HOME}/.local/bin/polybar-mem"
 gcc ../shared/userfiles/polybar-polytimer.c \
 	-Wall -Wextra -O2 -march=native \
 	-o "${HOME}/.local/bin/polytimer"
