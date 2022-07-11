@@ -1,11 +1,24 @@
 #define _GNU_SOURCE
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
 #define KiB2GiB (1024.0f * 1024.0f)
 #define STDERR 2
+
+static bool
+starts_with (const char *str, const char *pattern)
+{
+	int i = 0;
+	while (str[i] && pattern[i]) {
+		if (str[i] != pattern[i]) return false;
+		else i++;
+	}
+
+	return true;
+}
 
 int main(int argc, char **argv)
 {
@@ -22,33 +35,44 @@ int main(int argc, char **argv)
 	char *line = 0;
 	size_t len = 0;
 	while (getline(&line, &len, stream) != -1) {
-		if (mem_total == 0)
-		if (sscanf(line, "MemTotal: %u kB", &mem_total) == 1)
+		if (mem_total == 0 && starts_with(line, "MemTotal:")) {
+			sscanf(line, "MemTotal: %u kB", &mem_total);
 			continue;
+		}
 
-		if (mem_free == 0)
-		if (sscanf(line, "MemFree: %u kB", &mem_free) == 1)
+		if (mem_free == 0 && starts_with(line, "MemFree:")) {
+			sscanf(line, "MemFree: %u kB", &mem_free);
 			continue;
+		}
 
-		if (mem_buffers == 0)
-		if (sscanf(line, "Buffers: %u kB", &mem_buffers) == 1)
+		if (mem_buffers == 0 && starts_with(line, "Buffers:")) {
+			sscanf(line, "Buffers: %u kB", &mem_buffers);
 			continue;
+		}
 
-		if (mem_cached == 0)
-		if (sscanf(line, "Cached: %u kB", &mem_cached) == 1)
+		if (mem_cached == 0 && starts_with(line, "Cached:")) {
+			sscanf(line, "Cached: %u kB", &mem_cached);
 			continue;
+		}
 
-		if (mem_reclaimable == 0)
-		if (sscanf(line, "SReclaimable: %u kB", &mem_reclaimable) == 1)
+		if (mem_reclaimable == 0 && starts_with(line, "SReclaimable:")) {
+			sscanf(line, "SReclaimable: %u kB", &mem_reclaimable);
 			continue;
+		}
 
-		if (mem_unreclaimable == 0)
-		if (sscanf(line, "SUnreclaimable: %u kB", &mem_unreclaimable) == 1)
+		if (mem_unreclaimable == 0 && starts_with(line, "SUnreclaimable:")) {
+			sscanf(line, "SUnreclaimable: %u kB", &mem_unreclaimable);
 			continue;
+		}
 
-		if (mem_tmpfs == 0)
-		if (sscanf(line, "Shmem: %u kB", &mem_tmpfs) == 1)
+		if (mem_tmpfs == 0 && starts_with(line, "Shmem:")) {
+			sscanf(line, "Shmem: %u kB", &mem_tmpfs);
 			continue;
+		}
+
+		if (mem_total > 0 && mem_free > 0 && mem_cached > 0 &&
+		    mem_reclaimable > 0 && mem_reclaimable > 0 && mem_tmpfs > 0)
+			break;
 	}
 
 	char msg[16] = {0};
