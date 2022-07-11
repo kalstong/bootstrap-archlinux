@@ -2,8 +2,8 @@
 
 set -e
 
-ver="0.1.030"
-url="https://www.dropbox.com/s/m3m8ar8nknrnggm/jai-beta-1-030.zip?dl=1"
+ver="0.1.031"
+url="https://www.dropbox.com/s/4lfvceze2x8ra95/jai-beta-1-031.zip?dl=1"
 
 rm -rf /tmp/jai*
 echo "==> Downloading JAI v$ver ..."
