@@ -37,43 +37,43 @@ int main(int argc, char **argv)
 	size_t len = 0;
 	while (i < TOTAL_SOURCES) {
 		getline(&line, &len, stream);
-		if (starts_with(line, "MemTotal:")) {
+		if (mem_total == 0 && starts_with(line, "MemTotal:")) {
 			i++;
 			sscanf(line, "MemTotal: %u kB", &mem_total);
 			continue;
 		}
 
-		if (starts_with(line, "MemFree:")) {
+		if (mem_free == 0 && starts_with(line, "MemFree:")) {
 			i++;
 			sscanf(line, "MemFree: %u kB", &mem_free);
 			continue;
 		}
 
-		if (starts_with(line, "Buffers:")) {
+		if (mem_buffers == 0 && starts_with(line, "Buffers:")) {
 			i++;
 			sscanf(line, "Buffers: %u kB", &mem_buffers);
 			continue;
 		}
 
-		if (starts_with(line, "Cached:")) {
+		if (mem_cached == 0 && starts_with(line, "Cached:")) {
 			i++;
 			sscanf(line, "Cached: %u kB", &mem_cached);
 			continue;
 		}
 
-		if (starts_with(line, "SReclaimable:")) {
+		if (mem_reclaimable == 0 && starts_with(line, "SReclaimable:")) {
 			i++;
 			sscanf(line, "SReclaimable: %u kB", &mem_reclaimable);
 			continue;
 		}
 
-		if (starts_with(line, "SUnreclaim:")) {
+		if (mem_unreclaimable == 0 && starts_with(line, "SUnreclaim:")) {
 			i++;
 			sscanf(line, "SUnreclaim: %u kB", &mem_unreclaimable);
 			continue;
 		}
 
-		if (starts_with(line, "Shmem:")) {
+		if (mem_tmpfs == 0 && starts_with(line, "Shmem:")) {
 			i++;
 			sscanf(line, "Shmem: %u kB", &mem_tmpfs);
 			continue;
