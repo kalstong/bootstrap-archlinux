@@ -51,7 +51,7 @@ int main(int argc, char **argv)
 	total_t1 = user + nice + sys + idle + io + irq + softirq + guest + guest_nice;
 	work_t1 = user + nice + sys + guest + guest_nice;
 
-	struct timespec sleep_amount = { .tv_sec = 1, .tv_nsec = 0 };
+	struct timespec sleep_amount = { .tv_sec = 0, .tv_nsec = 1000 * 1000 * 100 };
 	nanosleep(&sleep_amount, 0);
 
 	success = read_cpu_counters(
