@@ -56,7 +56,6 @@ Useful commands:
 - Check [`pipewire`](https://wiki.archlinux.org/title/PipeWire) as an alternative to `alsa` and `pulseaudio`.
 - Improve GPG helper functions to encrypt/decrypt text or binary files.
 - Polybar: do a CPU usage plugin that reads `/proc/stat`.
-- Polybar: rewrite cpufreq and thermal plugins in C.
 - Create PKGBUILDs for GCC10 and GCC11.
   - Check ArchLinux's GCC12 PKGBUILD for optimizations like PGO, -march=native, ...
   - Don't build Ada and Fortran.
