@@ -35,8 +35,9 @@ int main(int argc, char **argv)
 
 	char *line = 0;
 	size_t len = 0;
-	while (i < TOTAL_SOURCES) {
-		getline(&line, &len, stream);
+	int ret = 0;
+	while (i < TOTAL_SOURCES && ret != -1) {
+		ret = getline(&line, &len, stream);
 		if (mem_total == 0 && starts_with(line, "MemTotal:")) {
 			i++;
 			sscanf(line, "MemTotal: %u kB", &mem_total);
