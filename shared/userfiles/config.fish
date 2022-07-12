@@ -94,6 +94,12 @@ set --export LESSCHARSET UTF-8
 
 alias aria2c="aria2c --async-dns=false"
 alias beep="tput bel"
+alias gl="git log"
+alias glo="git log --oneline"
+alias gp="git pull"
+alias gpr="git pull --rebase"
+alias gs="git status"
+alias gss="git status -s"
 alias less="bat"
 alias l="exa -1"
 alias la="exa -1a"
