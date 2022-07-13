@@ -87,7 +87,7 @@ int main(int argc, char **argv)
 		 mem_cached - mem_reclaimable +
 		 mem_unreclaimable + mem_tmpfs) / KiB2GiB;
 
-	const int n = sprintf(msg, "%.3fGiB", mem_used);
+	const int n = sprintf(msg, "%.2fGiB", mem_used);
 	write(STDERR, (const void *)msg, n);
 
 	free(line);
