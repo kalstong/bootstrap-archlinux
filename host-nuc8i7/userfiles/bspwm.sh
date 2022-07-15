@@ -70,6 +70,7 @@ wm_start_daemons () {
 	export HGL_ICON="$(echo -e "\uf252 ")"
 	export KBD_ICON="$(echo -e "\uf11c ")"
 	export MEM_ICON="$(echo -e "\uf538 ")"
+	export PAC_ICON="$(echo -e "\ue4c7 ")"
 	export MUT_ICON="$(echo -e "\uf6a9")"
 	export PWR_ICON="$(echo -e "\uf011")"
 	export TMP_ICON="$(echo -e "\uf2c8 ")"
