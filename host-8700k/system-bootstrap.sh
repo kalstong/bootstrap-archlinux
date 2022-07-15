@@ -218,8 +218,8 @@ pacman_tools=(
 	arch-audit aria2 bash-completion bind bluez-utils btop croc ctop curl
 	edk2-ovmf entr ffmpeg ffmpeg4.4 firejail freerdp hey htop inotify-tools
 	iotop jq libva-utils lfs lshw lsof mosh neovim nnn nvtop openconnect openssh
-	openvpn p7zip perf qemu-full qemu-emulators-full rsync sysbench sysstat time
-	tree turbostat usbutils vkmark
+	openvpn p7zip pacman-contrib perf qemu-full qemu-emulators-full rsync
+	sysbench sysstat time tree turbostat usbutils vkmark
 )
 pacman_development=(
 	autoconf-archive base-devel diffutils docker docker-compose gdb git
