@@ -66,7 +66,7 @@ endfun
 if exists("g:terminal_color_1")
 	exe 'hi TrailingWhitespaces ctermbg=red guibg='.g:terminal_color_1
 endif
-hi CursorLine guibg=NONE
+hi CursorLine guibg=#323c41
 hi link Defx_filename_directory Directory
 
 
