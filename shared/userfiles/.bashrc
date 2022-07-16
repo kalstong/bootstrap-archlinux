@@ -110,8 +110,9 @@ alias n="nvim"
 alias nn="nvim -n -u NONE -i NONE"
 alias q="exit"
 
-c () {
-	clear
+
+clear-history () {
+	rm -f "$HISTFILE" && unset HISTFILE > /dev/null
 }
 
 clipit () {

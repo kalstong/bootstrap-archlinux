@@ -122,6 +122,12 @@ alias nn="nvim -n -u NONE -i NONE"
 alias q="exit"
 
 
+function clear-history --description "Clear Bash and Fish command line history"
+	echo "yes" | history clear > /dev/null
+	bash -i -c "clear-history"
+	echo "Done."
+end
+
 function clipit --description "Copy the content of a file to the clipboard"
 	if [ -f "$argv[1]" ]
 		set --local mimetype (file --brief --mime-type "$argv[1]")
