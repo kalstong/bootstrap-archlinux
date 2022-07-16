@@ -122,7 +122,7 @@ clipit () {
 	fi
 }
 
-display_layout () {
+display-layout () {
 	[ -z $1 ] && return
 
 	local layout=""

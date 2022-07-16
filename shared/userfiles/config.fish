@@ -237,6 +237,10 @@ function shup --description "Evaluate Bash commands out of a file"
 	bash -i -c "shup $argv"
 end
 
+function display-layout --description "Set a different display layout"
+	bash -i -c "display-layout $argv"
+end
+
 function stopwatch --description "Display stopwatch timer"
 	bash -i -c "stopwatch"
 end

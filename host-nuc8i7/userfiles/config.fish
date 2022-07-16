@@ -25,7 +25,3 @@ set --export WALLPAPERS "$FILES/wallpapers"
 set --export YARN_CACHE_FOLDER "$CACHE/yarn"
 
 set --export NNN_BMS "0://;a:$AUR;c:$CODE;d:$DOWNLOADS;f:$FILES;m:$MOUNT;n:$NOTES;r:$RECORDINGS;s:$SCREENSHOTS;t:$TRASH;w:$WORK"
-
-function display_layout --description "Set display's layout"
-	bash -i -c "display_layout $argv"
-end
