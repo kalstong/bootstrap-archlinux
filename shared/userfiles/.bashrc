@@ -81,6 +81,8 @@ export HISTIGNORE="?:??:???:????:?????"
 export HISTTIMEFORMAT="%F %T "
 export LESSCHARSET=UTF-8
 
+alias ...="cd ../.."
+alias ....="cd ../../.."
 alias aria2c="aria2c --async-dns=false"
 alias beep="tput bel"
 alias gitaa="git add --all"
