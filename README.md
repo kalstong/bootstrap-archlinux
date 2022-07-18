@@ -49,6 +49,8 @@ Useful commands:
 - When mounting a partition, try to use its label to name the mount point.
   Check the `--json` switch of `lsblk` and use `jq` to parse the output.
 - Customize [vim-visual-multi](https://github.com/mg979/vim-visual-multi/wiki).
+- Consider moving the boot partition back to an external USB disk and
+  find out how to encrypt the internal disks based on TPM.
 
 ### Low Priority
 - Check [`borg`](https://archlinux.org/packages/community/x86_64/borg/) for compressed/mountable backups.
