@@ -48,7 +48,7 @@ Useful commands:
 - Set BIOS undervolt for 9900K, 3950X.
 - When mounting a partition, try to use its label to name the mount point.
   Check the `--json` switch of `lsblk` and use `jq` to parse the output.
-- Costumize [vim-visual-multi](https://github.com/mg979/vim-visual-multi/wiki).
+- Customize [vim-visual-multi](https://github.com/mg979/vim-visual-multi/wiki).
 
 ### Low Priority
 - Check [`borg`](https://archlinux.org/packages/community/x86_64/borg/) for compressed/mountable backups.
@@ -63,6 +63,8 @@ Useful commands:
   - Fix the URL of ISL.
   - Find out to have GCC build that build/link apps for other
     [instruction sets](https://archlinux.org/packages/community/x86_64/borg/).
+- Consider installing [yt-dlp](https://archlinux.org/packages/community/any/yt-dlp/)
+  It integrates with MPV allowing it to play media from Twitter, YouTube, etc ...
 
 ### Other
 - Consider [obs-glcapture](https://github.com/2xsaiko/obs-glcapture) and
