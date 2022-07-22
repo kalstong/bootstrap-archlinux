@@ -54,7 +54,8 @@ Useful commands:
 
 ### Low Priority
 - Check [`borg`](https://archlinux.org/packages/community/x86_64/borg/) for compressed/mountable backups.
-- Check `broot` as an alternative to `fzf`.
+- Check `broot` as an alternative to `fzf` file-system navigation.
+- Check [`fzy`](https://github.com/jhawthorn/fzy) as an alternative to `fzf`.
 - Check `lf` as an alternative to `nnn`.
 - Check [`pipewire`](https://wiki.archlinux.org/title/PipeWire) as an alternative to `alsa` and `pulseaudio`.
 - Improve GPG helper functions to encrypt/decrypt text or binary files.
