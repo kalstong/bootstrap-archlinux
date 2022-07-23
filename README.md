@@ -53,13 +53,15 @@ Useful commands:
   find out how to encrypt the internal disks based on TPM.
 
 ### Low Priority
-- Check [`borg`](https://archlinux.org/packages/community/x86_64/borg/) for compressed/mountable backups.
+- Check [`borg`](https://archlinux.org/packages/community/x86_64/borg/)
+  for compressed/mountable backups.
 - Check `broot` as an alternative to `fzf` file-system navigation.
-- Check [`fzy`](https://github.com/jhawthorn/fzy) as an alternative to `fzf`.
+- Check [`fzy`](https://github.com/jhawthorn/fzy) as an alternative to `fzf`,
+  when the input doesn't change.
 - Check `lf` as an alternative to `nnn`.
-- Check [`pipewire`](https://wiki.archlinux.org/title/PipeWire) as an alternative to `alsa` and `pulseaudio`.
+- Check [`pipewire`](https://wiki.archlinux.org/title/PipeWire) as an
+  alternative to `alsa` and `pulseaudio`.
 - Improve GPG helper functions to encrypt/decrypt text or binary files.
-- Polybar: do a CPU usage plugin that reads `/proc/stat`.
 - Create PKGBUILDs for GCC10 and GCC11.
   - Check ArchLinux's GCC12 PKGBUILD for optimizations like PGO, -march=native, ...
   - Don't build Ada and Fortran.
