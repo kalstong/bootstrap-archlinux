@@ -25,7 +25,7 @@ set listchars=eol:¬,tab:\|\ ,space:·
 set mouse=a
 set nolist
 set noshowmode
-set nowrap
+set wrap
 set number
 set omnifunc=syntaxcomplete#Complete
 set relativenumber
