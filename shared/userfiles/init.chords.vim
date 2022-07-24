@@ -95,6 +95,10 @@ inoremap <C-s> <ESC>:up!<CR>i<Right>
 nnoremap <C-s> <ESC>:up!<CR>
 inoremap <C-a> <ESC>:wa!<CR>i<Right>
 nnoremap <C-a> <ESC>:wa!<CR>
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 " https://github.com/junegunn/fzf.vim
 " -----------------------------------
