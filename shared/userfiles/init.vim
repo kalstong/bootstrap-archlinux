@@ -19,7 +19,6 @@ runtime ./init.chords.vim
 	" Visual
 	" ------
 set completeopt+=menuone,noselect,noinsert
-set cursorline
 set guicursor=a:block-blink0,i:ver25-blinkwait150-blinkoff150-blinkon150
 set ignorecase
 set listchars=eol:¬,tab:\|\ ,space:·
@@ -72,7 +71,9 @@ hi link Defx_filename_directory Directory
 
 	" Other
 	" -----
-autocmd BufEnter,BufNewFile,BufRead * setlocal formatoptions=jql | set cursorline
+autocmd BufLeave,BufWinLeave,FocusLost,VimLeave,WinLeave * setlocal nocursorline
+autocmd BufEnter,BufWinEnter,FocusGained,VimEnter,WinEnter * setlocal cursorline
+autocmd BufEnter,BufNewFile,BufRead * setlocal formatoptions=jql
 autocmd BufEnter * let &titlestring=expand('%:t')
 autocmd BufWinLeave * call clearmatches()
 autocmd FileType defx call clearmatches()
