@@ -350,7 +350,7 @@ move-window () {
 	local screen_offset_x=$(echo "$xrandr_screen_info" | sed -n -e 's/.*\([+|-][[:digit:]]\+\)\([+|-][[:digit:]]\+\).*/\1/p')
 	local screen_offset_y=$(echo "$xrandr_screen_info" | sed -n -e 's/.*\([+|-][[:digit:]]\+\)\([+|-][[:digit:]]\+\).*/\2/p')
 	local top_gap=60
-	local bottom_gap=60
+	local bottom_gap=55
 	local left_gap=20
 	local right_gap=20
 
