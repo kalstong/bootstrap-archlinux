@@ -11,6 +11,7 @@ Some packages need manual intervention to check for updates:
 - For Go Version Manager see [here](https://github.com/stefanmaric/g).
 - For Forgit see [here](https://github.com/wfxr/forgit).
 - For Hosts see [here](https://github.com/stevenblack/hosts).
+- For JAI see release emails from Jonathan Blow.
 - For MongoDB Compass see [here](https://www.mongodb.com/try/download/compass).
 - For msodbcsql and mssql-tools see [here](https://packages.microsoft.com/rhel/8/prod/).
 - For Nerd Fonts see [here](https://github.com/ryanoasis/nerd-fonts/releases).
