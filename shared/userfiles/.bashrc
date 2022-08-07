@@ -13,9 +13,9 @@ PS1="\[$(tput setaf 5)\]\A\[$(tput sgr0)\] \w$([ -n "$NNNLVL" ] && echo " nnn:$N
 	}
 }
 
-export FORGIT_NO_ALIASES="true"
-export FORGIT_FZF_DEFAULT_OPTS="--cycle --reverse --height '80%'"
-. "$HOME/.forgit.plugin.sh"
+# export FORGIT_NO_ALIASES="true"
+# export FORGIT_FZF_DEFAULT_OPTS="--cycle --reverse --height '80%'"
+# . "$HOME/.forgit.plugin.sh"
 
 NVM_SYMLINK_CURRENT="true"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
