@@ -186,18 +186,17 @@ pacman_system=(
 )
 pacman_tools=(
 	arch-audit aria2 bash-completion bind bluez-utils btop croc ctop curl ffmpeg
-	ffmpeg4.4 firejail freerdp hey htop inotify-tools iotop jq libva-utils lfs
-	lshw lsof mosh neovim nnn openconnect openssh openvpn p7zip pacman-contrib
-	perf radeontop sysbench sysstat time tree turbostat usbutils vkmark
+	firejail freerdp hey htop inotify-tools iotop iperf3 jq libva-utils lfs lshw
+	lsof mosh neovim nnn openconnect openssh openvpn p7zip pacman-contrib perf
+	radeontop sysbench sysstat time tree turbostat usbutils vkmark
 )
 pacman_development=(
 	base-devel diffutils docker docker-compose git git-delta man-pages python
 	python-pip tokei unixodbc vulkan-icd-loader vulkan-mesa-layers
 )
 pacman_apps=(
-	alacritty arandr chromium code drawing feh libreoffice-still maim mpv
-	obs-studio pavucontrol peek remmina rofi signal-desktop slock sxiv
-	virt-viewer
+	alacritty arandr chromium drawing feh libreoffice-still maim mpv obs-studio
+	pavucontrol peek remmina rofi signal-desktop slock sxiv virt-viewer
 )
 pacman_fonts=(
 	noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra terminus-font
