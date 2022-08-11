@@ -110,7 +110,7 @@ npm_pkgs=(
 	typescript typescript-language-server
 	vim-language-server
 )
-npm install -g ${aur_pkgs[*]}
+npm install -g ${npm_pkgs[*]}
 
 printinfo "\n"
 printinfo "+ ----------------------- +"
