@@ -9,11 +9,11 @@ Plug 'itchyny/vim-gitbranch'
 Plug 'junegunn/fzf.vim'
 Plug 'kristijanhusak/defx-git'
 Plug 'kristijanhusak/defx-icons'
-" Plug 'ludovicchabant/vim-gutentags'
-" Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
 Plug 'ms-jpq/coq_nvim', { 'branch': 'coq' }
-" Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'machakann/vim-sandwich'
+Plug 'neovim/nvim-lspconfig'
+Plug 'onsails/lspkind.nvim'
 Plug 'pechorin/any-jump.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
@@ -27,6 +27,9 @@ Plug 'terryma/vim-smooth-scroll'
 	" https://github.com/lewis6991/spellsitter.nvim
 	" https://github.com/nvim-telescope/telescope.nvim
 	" https://github.com/lifepillar/vim-mucomplete
+	" Plug 'ludovicchabant/vim-gutentags'
+	" Plug 'lukas-reineke/indent-blankline.nvim'
+	" Plug 'nvim-treesitter/nvim-treesitter'
 
 call plug#end()
 
@@ -140,7 +143,20 @@ let g:coq_settings = {
 	\ 'auto_start': 'shut-up',
 	\ 'clients.snippets.warn': [],
 	\ 'clients.third_party.enabled': v:false,
+	\ 'limits.completion_manual_timeout': 1.0,
 	\ }
+
+
+" https://github.com/neovim/nvim-lspconfig
+" ----------------------------------------
+lua <<EOF
+local lspconfig = require('lspconfig')
+local servers = { 'bashls', 'tsserver', 'vimls' }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup(require('coq').lsp_ensure_capabilities({
+  }))
+end
+EOF
 
 " https://github.com/nvim-treesitter/nvim-treesitter
 " --------------------------------------------------
