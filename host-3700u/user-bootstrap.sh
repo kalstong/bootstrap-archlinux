@@ -91,6 +91,7 @@ printinfo "+ --------------------------- +"
 printinfo "| Installing NVM, NodeJS, NPM |"
 printinfo "+ --------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+
 . ../shared/userfiles/install-nvm.sh
 
 NVM_SYMLINK_CURRENT="true"
@@ -100,13 +101,25 @@ nvm use default
 
 printinfo "\n"
 printinfo "+ ----------------------- +"
+printinfo "| Installing NPM packages |"
+printinfo "+ ----------------------- +"
+[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+
+npm_pkgs=(
+	bash-language-server
+	typescript typescript-language-server
+	vim-language-server
+)
+npm install -g ${aur_pkgs[*]}
+
+printinfo "\n"
+printinfo "+ ----------------------- +"
 printinfo "| Installing AUR packages |"
 printinfo "+ ----------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 aur_pkgs=(
-	brave-bin@master firefox-esr-bin@master postman-bin@master
-	#woeusb-ng@master
+	brave-bin@master firefox-esr-bin@master postman-bin@master woeusb-ng@master
 )
 
 cd "$AUR"

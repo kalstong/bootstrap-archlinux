@@ -1,6 +1,6 @@
 pkgname=mssql-tools
 pkgname_sufix=18
-pkgver=18.0.1.1
+pkgver=18.1.1.1
 pkgrel=1
 pkgdesc="Microsoft® SQL Server® Tools for Linux"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('custom')
 depends=('mssql-odbc')
 options=('!strip')
 source=("https://packages.microsoft.com/rhel/8/prod/${pkgname}${pkgname_sufix}-${pkgver}-1.x86_64.rpm")
-sha512sums=('81b2ab5dbda99f0612bf71ad4434df2d4fc137d80813bfb3ea9a46a8ae6bc766a5172a7594eb6e623fcd8ec463671fef701a04ce0ac82b0275131ebba1a3afb9')
+sha512sums=('442db9327fce9bc6741563915d897d749931a7f0acec7b795b370f49992cb1f7d533ea8f06c9a05dce5b3cccaad2223cc6a95208e6c3acf8d13223270619297f')
 
 package() {
 	cd "$srcdir"

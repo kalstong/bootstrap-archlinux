@@ -1,7 +1,7 @@
 #!/bin/bash
 
 hostname="${1:-$HOST}"
-ver="3.10.14"
+ver="3.11.15"
 url="https://raw.githubusercontent.com/StevenBlack/hosts/${ver}/hosts"
 
 curl --connect-timeout 13 --retry 5 --retry-delay 2 "$url" \

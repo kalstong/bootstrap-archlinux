@@ -2,8 +2,12 @@
 
 set -e
 
-ver="0.1.031"
-url="https://www.dropbox.com/s/4lfvceze2x8ra95/jai-beta-1-031.zip?dl=1"
+
+ver="0.1.035"
+url="https://www.dropbox.com/s/bixaclixc81d2il/jai-beta-1-035.zip?dl=1"
+# ver="0.1.031"
+# url="https://www.dropbox.com/s/4lfvceze2x8ra95/jai-beta-1-031.zip?dl=1"
+
 
 [ ! -v JAI_DIR ] && echo "==> ERROR: \$JAI_DIR is not defined." && exit 1
 

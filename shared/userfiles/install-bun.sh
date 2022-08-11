@@ -2,7 +2,7 @@
 
 set -e
 
-ver="0.1.2"
+ver="0.1.8"
 url="https://github.com/Jarred-Sumner/bun/releases/download/bun-v${ver}/bun-linux-x64.zip"
 
 rm -rf /tmp/bun*

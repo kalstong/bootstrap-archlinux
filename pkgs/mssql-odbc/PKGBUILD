@@ -4,7 +4,7 @@
 pkgname=mssql-odbc
 pkgname_source=msodbcsql
 pkgname_sufix=18
-pkgver=18.0.1.1
+pkgver=18.1.1.1
 pkgrel=1
 pkgdesc="Microsoft® ODBC Driver 18 for SQL Server®"
 arch=('x86_64')
@@ -13,7 +13,7 @@ license=('custom')
 depends=('unixodbc' 'krb5' 'curl')
 options=('!strip')
 source=(https://packages.microsoft.com/rhel/8/prod/${pkgname_source}${pkgname_sufix}-${pkgver}-1.x86_64.rpm)
-sha512sums=('39f0e5555a9cfab0046c094f5279ecc3720340125554fb36ae9c50f4b07b108806ac29a567c630b243ccee13e264bbc69aa56a5948594b57956246df244328a3')
+sha512sums=('81d2bcee1adb8ebf01532da241fae2d4456145377e39ab60efaebfe79049f71c3e71eb040862cd32262ad91b53dc570b6d55895068686c8dc4a63e133d45b061')
 install=msodbcsql.install
 
 package() {
