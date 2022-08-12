@@ -1,6 +1,9 @@
 set fish_greeting
 
 source "$XDG_CONFIG_HOME/fish/config.aux.fish"
+if [ -f /opt/asdf-vm/asdf.fish ]
+  source /opt/asdf-vm/asdf.fish
+end
 
 # set --export FORGIT_NO_ALIASES "true"
 # set --export FORGIT_FZF_DEFAULT_OPTS "--cycle --reverse --height '80%'"
@@ -210,10 +213,6 @@ end
 
 function notes --description "Take notes"
 	bash -i -c "notes $argv"
-end
-
-function nvm --description "NVM"
-	bash -i -c "nvm $argv"
 end
 
 function random-wallpaper --description "Changes the wallpaper randomly"

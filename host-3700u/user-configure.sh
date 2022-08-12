@@ -26,7 +26,6 @@ mkdir -p \
 	"${XDG_CONFIG_HOME}/git" \
 	"${XDG_CONFIG_HOME}/gtk-3.0" \
 	"${XDG_CONFIG_HOME}/htop" \
-	"${XDG_CONFIG_HOME}/lf" \
 	"${XDG_CONFIG_HOME}/mpv" \
 	"${XDG_CONFIG_HOME}/nnn/plugins" \
 	"${XDG_CONFIG_HOME}/nvim" \
@@ -44,6 +43,7 @@ touch "${HOME}/.hushlogin"
 cp userfiles/.bashrc "${HOME}/.bashrc.aux"
 cp userfiles/.energypolicy.sh "${XDG_CONFIG_HOME}/"
 cp userfiles/.pam_environment "${HOME}/"
+cp userfiles/.tool-versions "${HOME}/"
 cp userfiles/bspwm.sh "${XDG_CONFIG_HOME}/bspwm/"
 cp userfiles/config.fish "${XDG_CONFIG_HOME}/fish/config.aux.fish"
 cp userfiles/display_layout.sh "${XDG_CONFIG_HOME}/"
@@ -70,7 +70,6 @@ cp ../shared/userfiles/git.conf "${XDG_CONFIG_HOME}/git/config"
 cp ../shared/userfiles/gpg.conf "${HOME}/.gnupg/"
 cp ../shared/userfiles/gtk3.ini "${XDG_CONFIG_HOME}/gtk-3.0/settings.ini"
 cp ../shared/userfiles/htoprc "${XDG_CONFIG_HOME}/htop/"
-cp ../shared/userfiles/lfrc "${XDG_CONFIG_HOME}/lf/"
 cp ../shared/userfiles/init.vim "${XDG_CONFIG_HOME}/nvim/"
 cp ../shared/userfiles/init.plug.vim "${XDG_CONFIG_HOME}/nvim/"
 cp ../shared/userfiles/init.chords.vim "${XDG_CONFIG_HOME}/nvim/"

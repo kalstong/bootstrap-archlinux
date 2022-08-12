@@ -52,8 +52,8 @@ mkdir -p "$HOME/.local/share/xorg"
 mkdir -p "$HOME/.local/share/fonts"
 mkdir -p {"$AUR","$CODE","$DOWNLOADS","$FILES","$NOTES"}
 mkdir -p {"$RECORDINGS","$SCREENSHOTS","$TRASH","$WALLPAPERS","$WORK"}
-mkdir -p {"$FVM_HOME","$GOCACHE","$GOMODCACHE","$GOPATH","$GOROOT"}
-mkdir -p {"$NPM_CONFIG_CACHE","$NVM_DIR","$YARN_CACHE_FOLDER"}
+mkdir -p {"$ASDF_DATA_DIR","$GOCACHE","$GOMODCACHE","$GOPATH","$GOROOT"}
+mkdir -p {"$NPM_CONFIG_CACHE","$YARN_CACHE_FOLDER"}
 mkdir -p "$CACHE"/docker
 mkdir -p "$TRASH"/.firejail.postman
 
@@ -82,40 +82,7 @@ printinfo "| Installing pip packages |"
 printinfo "+ ----------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 pip3 install --user wheel
-pip3 install --user flashfocus gdbgui pynvim pywal
-sudo -H pip3 install vpn-slice
-
-# printinfo "\n"
-# printinfo "+ ----------------------------- +"
-# printinfo "| Installing Go Version Manager |"
-# printinfo "+ ----------------------------- +"
-# [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-# . ../shared/userfiles/install-g.sh
-
-printinfo "\n"
-printinfo "+ ------------------------------ +"
-printinfo "| Installing NVM, NodeJS and NPM |"
-printinfo "+ ------------------------------ +"
-[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-. ../shared/userfiles/install-nvm.sh
-
-NVM_SYMLINK_CURRENT="true"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
-nvm install --lts=fermium
-nvm use default
-
-printinfo "\n"
-printinfo "+ ----------------------- +"
-printinfo "| Installing NPM packages |"
-printinfo "+ ----------------------- +"
-[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-
-npm_pkgs=(
-	bash-language-server
-	typescript typescript-language-server
-	vim-language-server
-)
-npm install -g ${npm_pkgs[*]}
+pip3 install --user flashfocus pynvim pywal
 
 printinfo "\n"
 printinfo "+ ----------------------- +"
@@ -124,7 +91,7 @@ printinfo "+ ----------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 aur_pkgs=(
-	brave-bin@master firefox-esr-bin@master postman-bin@master
+	asdf-vm@master brave-bin@master firefox-esr-bin@master postman-bin@master
 )
 
 cd "$AUR"
@@ -144,11 +111,44 @@ done
 cd "$script_path"
 
 printinfo "\n"
+printinfo "+ ----------------------- +"
+printinfo "| Installing ASDF Plugins |"
+printinfo "+ ----------------------- +"
+[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+
+. "${HOME}"/.bashrc
+
+asdf_plugins=(
+	"nodejs:14.20.0"
+)
+
+for plugin in ${asdf_plugins[*]}
+do
+	_name=${p%%;*}
+	_ver=${p##*;}
+	asdf plugin-add "${_name}"
+	asdf install "${_name}" "${_ver}"
+done
+
+printinfo "\n"
+printinfo "+ ----------------------- +"
+printinfo "| Installing NPM packages |"
+printinfo "+ ----------------------- +"
+[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+
+npm_pkgs=(
+	bash-language-server
+	typescript typescript-language-server
+	vim-language-server
+)
+npm install -g ${npm_pkgs[*]}
+
+printinfo "\n"
 printinfo "+ ---------------------------------- +"
 printinfo "| Installing NERDFont JetBrains Mono |"
 printinfo "+ ---------------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-. ../shared/userfiles/install-nf-jetbrainsmono.sh
+. ../shared/userfiles/install-nfjetbrainsmono.sh
 
 printinfo "\n"
 printinfo "+ ------------------------ +"
@@ -157,12 +157,5 @@ printinfo "+ ------------------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 nvim +PlugInstall +qa
 
-# printinfo "\n"
-# printinfo "+ ------------------------------------------ +"
-# printinfo "| Installing Dart & Flutter Version Managers |"
-# printinfo "+ ------------------------------------------ +"
-# [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-# . ../shared/userfiles/install-dvm.sh
-# . ../shared/userfiles/install-fvm.sh
 
 popd > /dev/null

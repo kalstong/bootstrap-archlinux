@@ -1,6 +1,7 @@
 PS1="\[$(tput setaf 5)\]\A\[$(tput sgr0)\] \w$([ -n "$NNNLVL" ] && echo " nnn:$NNNLVL") \[$(tput setaf 6)\]>\[$(tput sgr0)\] "
 
 . "$HOME/.bashrc.aux"
+[ -f /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
 
 [ -f "${DVM_ROOT}/scripts/dvm" ] && {
 	. "${DVM_ROOT}/scripts/dvm";
@@ -16,14 +17,6 @@ PS1="\[$(tput setaf 5)\]\A\[$(tput sgr0)\] \w$([ -n "$NNNLVL" ] && echo " nnn:$N
 # export FORGIT_NO_ALIASES="true"
 # export FORGIT_FZF_DEFAULT_OPTS="--cycle --reverse --height '80%'"
 # . "$HOME/.forgit.plugin.sh"
-
-NVM_SYMLINK_CURRENT="true"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-[ -s "$NVM_DIR/nvm.sh" ] &&
-	[[ "$PATH" != *"$NVM_DIR/current/bin"* ]] &&
-	[ -d "$NVM_DIR/current/bin" ] &&
-	PATH="$NVM_DIR/current/bin:$PATH"
 
 set_vte_theme () {
 	if [ "$TERM" = "linux" ]; then

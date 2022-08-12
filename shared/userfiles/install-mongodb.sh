@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-[ "$1" = "--install-tools" ] && {
+[ "$1" = "--tools" ] && {
 	tools_ver="100.5.4";
 	tools_pkg="https://fastdl.mongodb.org/tools/db/mongodb-database-tools-debian10-x86_64-${tools_ver}.tgz";
 
@@ -23,7 +23,7 @@
 	exit 0;
 }
 
-[ "$1" = "--install-compass" ] && {
+[ "$1" = "--compass" ] && {
 	compass_ver="1.32.6";
 	compass_pkg="https://github.com/mongodb-js/compass/releases/download/v${compass_ver}/mongodb-compass-isolated-${compass_ver}-linux-x64.tar.gz";
 	compass_icon="https://raw.githubusercontent.com/mongodb-js/compass/main/packages/compass/src/app/images/compass-dialog-icon.png";
