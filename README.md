@@ -3,13 +3,8 @@
 Some packages need manual intervention to check for updates:
 - For Azure Data Studio see [here](https://github.com/microsoft/azuredatastudio/releases).
 - For Brave see [here](https://github.com/brave/brave-browser/blob/master/CHANGELOG_DESKTOP.md).
-- For Bun see [here](https://github.com/Jarred-Sumner/bun/releases).
 - For Chromium see [here](https://chromiumdash.appspot.com/releases?platform=Linux).
-- For Dart Version Manager see [here](https://github.com/cbracken/dvm/tags).
 - For Firefox ESR see [here](https://www.mozilla.org/firefox/organizations/notes/).
-- For Flutter Version Manager see [here](https://github.com/fluttertools/fvm/releases).
-- For Forgit see [here](https://github.com/wfxr/forgit).
-- For Go Version Manager see [here](https://github.com/stefanmaric/g).
 - For Hosts see [here](https://github.com/stevenblack/hosts).
 - For JAI see release emails from Jonathan Blow.
 - For MongoDB Compass see [here](https://www.mongodb.com/try/download/compass).
@@ -21,8 +16,7 @@ Some packages need manual intervention to check for updates:
 Everything else:
 - AUR: `git fetch`, `makepkg -sirc`.
 - Fwupd: `fwupdmgr get-devices|refresh|get-updates|update`.
-- Golang: `g list-all`, `g install <version>`.
-- Node.js/NPM: `nvm ls-remote --lts=fermium`, `nvm install <version>`, `npm outdated -g`.
+- Node.js/NPM: `npm outdated -g`.
 - Pacman: `sudo pacman -Sy && pacman -Qu`, `sudo pacman -Syu`.
 - PiP: `pip list --user --outdated`, `pip install --user --upgrade <pkg>`.
 - Vim plugins: `:PlugUgrade`, `:PlugUpdate`, `:UpdateRemotePlugins`, `:COQdeps`.
