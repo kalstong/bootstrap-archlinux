@@ -36,8 +36,8 @@ mkdir -p \
 	"${XDG_CONFIG_HOME}/tint2"
 
 _monospace_font="monospace"
-_monospace_font_size="9.5"
-_terminal_font_size="9.5"
+_monospace_font_size="10.5"
+_terminal_font_size="10.5"
 
 touch "${HOME}/.hushlogin"
 cp userfiles/.bashrc "${HOME}/.bashrc.aux"
