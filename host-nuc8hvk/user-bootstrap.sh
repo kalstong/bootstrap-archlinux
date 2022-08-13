@@ -125,8 +125,8 @@ asdf_plugins=(
 
 for plugin in ${asdf_plugins[*]}
 do
-	_name=${p%%;*}
-	_ver=${p##*;}
+	_name=${plugin%%:*}
+	_ver=${plugin##*:}
 	asdf plugin-add "${_name}"
 	asdf install "${_name}" "${_ver}"
 done
