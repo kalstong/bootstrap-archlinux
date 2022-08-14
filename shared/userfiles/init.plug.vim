@@ -324,6 +324,13 @@ for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup(require('coq').lsp_ensure_capabilities({
   }))
 end
+
+lspconfig.bashls.setup {
+	cmd_env = {
+		SHELLCHECK_PATH = '',
+		HIGHLIGHT_PARSING_ERRORS = true,
+	},
+}
 EOF
 
 " https://github.com/nvim-treesitter/nvim-treesitter
