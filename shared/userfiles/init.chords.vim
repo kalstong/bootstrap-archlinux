@@ -122,6 +122,11 @@ function! RgFzf(query, fullscreen)
 endfunction
 command! -nargs=* -bang RG call RgFzf(<q-args>, <bang>0)
 
+" https://github.com/kyazdani42/nvim-tree.lua
+" -------------------------------------------
+nnoremap <Leader>we :NvimTreeFindFile<CR>
+nnoremap <Leader>wn :NvimTreeToggle<CR>
+
 nnoremap , :Buffers<CR>
 nnoremap ; :Files<CR>
 nnoremap - :call FilterHistory(getcwd())<CR>:History<CR>
