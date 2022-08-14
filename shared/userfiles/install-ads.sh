@@ -6,7 +6,7 @@ ads_pkg_version="1.38.0"
 ads_pkg="https://go.microsoft.com/fwlink/?linkid=2202340"
 ads_ico="https://raw.githubusercontent.com/microsoft/azuredatastudio/main/resources/linux/code.png"
 
-echo "Downloading $ads_pkg ..." &&
+echo "Downloading v${ads_pkg_version} ($ads_pkg) ..." &&
 curl -sS --connect-timeout 13 --retry 5 --retry-delay 2 -L "$ads_pkg" -o /tmp/ads.tar.gz &&
 curl -sS --connect-timeout 13 --retry 5 --retry-delay 2 -H 'Accept:application/vnd.github.v3.raw' \
 	-L "$ads_ico" -o /tmp/ads.png &&
