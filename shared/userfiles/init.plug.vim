@@ -7,8 +7,8 @@ Plug 'eugen0329/vim-esearch'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'junegunn/fzf.vim'
-Plug 'kristijanhusak/defx-git'
-Plug 'kristijanhusak/defx-icons'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
 Plug 'ms-jpq/coq_nvim', { 'branch': 'coq' }
 Plug 'machakann/vim-sandwich'
@@ -19,7 +19,6 @@ Plug 'preservim/nerdcommenter'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sainnhe/everforest'
 Plug 'sheerun/vim-polyglot'
-Plug 'Shougo/defx.nvim'
 Plug 't9md/vim-choosewin'
 Plug 'terryma/vim-smooth-scroll'
 
@@ -90,36 +89,205 @@ let g:lightline = {
 	\ },
 \ }
 
-" https://github.com/kristijanhusak/defx-git
-" https://github.com/kristijanhusak/defx-icons
-" --------------------------------------------
-try
-	call defx#custom#column('git', 'column_length', 2)
-	call defx#custom#column('git', 'indicators', {
-	\ 'Modified'  : '✹',
-	\ 'Staged'    : '✚',
-	\ 'Untracked' : '✭',
-	\ 'Renamed'   : '➜',
-	\ 'Unmerged'  : '═',
-	\ 'Ignored'   : '☒',
-	\ 'Deleted'   : '✖',
-	\ 'Unknown'   : '?'
-	\ })
-catch
-endtry
-
-let g:defx_icons_enable_syntax_highlight = 1
-let g:defx_icons_column_length = 2
-let g:defx_icons_directory_icon = '🗀  '
-let g:defx_icons_copy_icon = ''
-let g:defx_icons_link_icon = ''
-let g:defx_icons_move_icon = ''
-let g:defx_icons_parent_icon = '🗁  '
-let g:defx_icons_default_icon = ''
-let g:defx_icons_directory_symlink_icon = '☊  '
-let g:defx_icons_root_opened_tree_icon = '🗁  '
-let g:defx_icons_nested_opened_tree_icon = '🗁  '
-let g:defx_icons_nested_closed_tree_icon = '🗀  '
+" https://github.com/kyazdani42/nvim-tree.lua
+" -------------------------------------------
+lua <<EOF
+require("nvim-tree").setup {
+  auto_reload_on_write = true,
+  create_in_closed_folder = false,
+  disable_netrw = false,
+  hijack_cursor = false,
+  hijack_netrw = true,
+  hijack_unnamed_buffer_when_opening = false,
+  ignore_buffer_on_setup = false,
+  open_on_setup = false,
+  open_on_setup_file = false,
+  open_on_tab = false,
+  ignore_buf_on_tab_change = {},
+  sort_by = "name",
+  root_dirs = {},
+  prefer_startup_root = false,
+  sync_root_with_cwd = false,
+  reload_on_bufenter = false,
+  respect_buf_cwd = false,
+  on_attach = "disable",
+  remove_keymaps = false,
+  view = {
+	adaptive_size = true,
+	centralize_selection = false,
+	width = 30,
+	height = 30,
+	hide_root_folder = true,
+	side = "left",
+	preserve_window_proportions = false,
+	number = false,
+	relativenumber = false,
+	signcolumn = "yes",
+	float = {
+	  enable = true,
+	  open_win_config = {
+		relative = "win",
+		border = "rounded",
+		style = "minimal",
+	  },
+	},
+  },
+  renderer = {
+	add_trailing = false,
+	group_empty = false,
+	highlight_git = false,
+	full_name = false,
+	highlight_opened_files = "none",
+	root_folder_modifier = ":~",
+	indent_markers = {
+	  enable = false,
+	  inline_arrows = true,
+	  icons = {
+		corner = "└",
+		edge = "│",
+		item = "│",
+		none = " ",
+	  },
+	},
+	icons = {
+	  webdev_colors = true,
+	  git_placement = "before",
+	  padding = " ",
+	  symlink_arrow = " ➛ ",
+	  show = {
+		file = true,
+		folder = true,
+		folder_arrow = true,
+		git = true,
+	  },
+	  glyphs = {
+		default = "",
+		symlink = "",
+		bookmark = "",
+		folder = {
+		  arrow_closed = "",
+		  arrow_open = "",
+		  default = "",
+		  open = "",
+		  empty = "",
+		  empty_open = "",
+		  symlink = "",
+		  symlink_open = "",
+		},
+		git = {
+		  unstaged = "✗",
+		  staged = "✓",
+		  unmerged = "",
+		  renamed = "➜",
+		  untracked = "★",
+		  deleted = "",
+		  ignored = "◌",
+		},
+	  },
+	},
+	special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md" },
+	symlink_destination = true,
+  },
+  hijack_directories = {
+	enable = true,
+	auto_open = true,
+  },
+  update_focused_file = {
+	enable = false,
+	update_root = false,
+	ignore_list = {},
+  },
+  ignore_ft_on_setup = {},
+  system_open = {
+	cmd = "",
+	args = {},
+  },
+  diagnostics = {
+	enable = false,
+	show_on_dirs = false,
+	debounce_delay = 50,
+	icons = {
+	  hint = "",
+	  info = "",
+	  warning = "",
+	  error = "",
+	},
+  },
+  filters = {
+	dotfiles = false,
+	custom = {},
+	exclude = {},
+  },
+  filesystem_watchers = {
+	enable = true,
+	debounce_delay = 50,
+  },
+  git = {
+	enable = true,
+	ignore = true,
+	show_on_dirs = true,
+	timeout = 400,
+  },
+  actions = {
+	use_system_clipboard = true,
+	change_dir = {
+	  enable = true,
+	  global = false,
+	  restrict_above_cwd = false,
+	},
+	expand_all = {
+	  max_folder_discovery = 300,
+	  exclude = {},
+	},
+	file_popup = {
+	  open_win_config = {
+		col = 1,
+		row = 1,
+		relative = "cursor",
+		border = "shadow",
+		style = "minimal",
+	  },
+	},
+	open_file = {
+	  quit_on_open = false,
+	  resize_window = true,
+	  window_picker = {
+		enable = true,
+		chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+		exclude = {
+		  filetype = { "notify", "packer", "qf", "diff", "fugitive", "fugitiveblame" },
+		  buftype = { "nofile", "terminal", "help" },
+		},
+	  },
+	},
+	remove_file = {
+	  close_window = true,
+	},
+  },
+  trash = {
+	cmd = "gio trash",
+	require_confirm = true,
+  },
+  live_filter = {
+	prefix = "[FILTER]: ",
+	always_show_folders = true,
+  },
+  log = {
+	enable = false,
+	truncate = false,
+	types = {
+	  all = false,
+	  config = false,
+	  copy_paste = false,
+	  dev = false,
+	  diagnostics = false,
+	  git = false,
+	  profile = false,
+	  watcher = false,
+	},
+  },
+}
+EOF
 
 " https://github.com/ludovicchabant/vim-gutentags
 " -----------------------------------------------
@@ -186,61 +354,3 @@ let g:any_jump_disable_default_keybindings = 1
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDTrimTrailingWhitespace = 1
-
-" https://github.com/Shougo/defx.nvim
-" -----------------------------------
-autocmd BufEnter * if &ft ==# 'defx' | call defx#redraw() | endif
-autocmd BufWritePost * call defx#redraw()
-
-try
-	call defx#custom#column('mark', {
-		\ 'readonly_icon': '✗ ',
-		\ 'selected_icon': '✓ ',
-		\ })
-catch
-endtry
-
-function! _Defx_Root(path) abort
-	return fnamemodify(a:path, ':t')
-endfunction
-
-try
-	call defx#custom#source('file', { 'root': '_Defx_Root' })
-catch
-endtry
-
-function! _Defx_IsOpenInCurrentTab()
-	let l:winarray = map(range(1, winnr('$')), '[v:val, bufname(winbufnr(v:val))]')
-	for wnd in l:winarray
-		if stridx(wnd[1],'defx-' . tabpagenr()) >= 0
-			return v:true
-		endif
-	endfor
-	return v:false
-endfunction
-
-function! _Defx_JumpToFile(...)
-	let fname = expand('%:p')
-	if a:0 > 0
-		let fname = getcwd() . '/' . a:1
-	endif
-	if _Defx_IsOpenInCurrentTab()
-		exec "Defx -buffer-name=`'defx-'.tabpagenr()` " .
-			\ "-columns=indent:mark:git:icons:filename:type " .
-			\ "-search-recursive=" . fname . " `getcwd()`"
-	else
-		exec "Defx -buffer-name=`'defx-'.tabpagenr()` " .
-			\ "-columns=indent:mark:git:icons:filename:type " .
-			\ "-split=vertical -winwidth=30 -direction=topleft " .
-			\ "-root-marker='' -ignored-files=.*,node_modules ".
-			\ "-search-recursive=" . fname . " `getcwd()`"
-	endif
-endfunction
-
-function! _Defx_Toggle()
-	Defx -buffer-name=`'defx-'.tabpagenr()` -toggle
-		\ -columns=indent:mark:git:icons:filename:type
-		\ -split=vertical -winwidth=30 -direction=topleft
-		\ -root-marker='' -ignored-files=.*,node_modules
-		\ -columns=indent:mark:git:icons:filename:type
-endfunction

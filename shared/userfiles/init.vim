@@ -66,7 +66,7 @@ if exists("g:terminal_color_1")
 	exe 'hi TrailingWhitespaces ctermbg=red guibg='.g:terminal_color_1
 endif
 hi CursorLine guibg=#323c41
-hi link Defx_filename_directory Directory
+hi FloatBorder guibg=NONE
 
 
 	" Other
@@ -76,8 +76,6 @@ autocmd BufEnter,BufWinEnter,FocusGained,VimEnter,WinEnter * setlocal cursorline
 autocmd BufEnter,BufNewFile,BufRead * setlocal formatoptions=jql
 autocmd BufEnter * let &titlestring=expand('%:t')
 autocmd BufWinLeave * call clearmatches()
-autocmd FileType defx call clearmatches()
-autocmd FileType defx call _Defx_Settings()
 autocmd FileType fzf set nonumber norelativenumber
 
 match TrailingWhitespaces /\s\+$/
@@ -97,12 +95,3 @@ endif
 " Taken from https://unix.stackexchange.com/a/383044
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if mode() != 'c' | checktime | endif
 autocmd FileChangedShellPost * echohl WarningMsg | echo "File changed. Buffer was reloaded." | echohl None
-
-" Automatically exit if the last window is Defx
-autocmd BufEnter * if (winnr("$") == 1 && tabpagenr('$') == 1 && &ft == 'defx') | q | endif
-autocmd BufEnter * if (winnr("$") == 1 && tabpagenr('$') > 1 && &ft == 'defx') |
-	\ vnew | Defx -buffer-name=`'defx-'.tabpagenr()`
-		\ -split=vertical -winwidth=30 -direction=topleft
-		\ -columns=git:indent:mark:icons:filename:type
-		\ -root-marker='' -search-recursive=`expand('%:p')`
-		\ `getcwd()`| endif
