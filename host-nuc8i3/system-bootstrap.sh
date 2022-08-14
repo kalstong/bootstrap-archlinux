@@ -184,9 +184,8 @@ pacman_system=(
 	x86_energy_perf_policy xdg-user-dirs xdg-utils zip zstd
 )
 pacman_tools=(
-	arch-audit bash-completion bluez-utils ctop curl ffmpeg firejail hey htop
-	iotop iperf3 jq libva-utils lfs lshw lsof mosh neovim nnn p7zip
-	pacman-contrib time tree turbostat usbutils
+	bash-completion bluez-utils ctop curl ffmpeg firejail hey htop iotop iperf3
+	jq libva-utils lfs lshw lsof neovim nnn p7zip pacman-contrib time tree
 )
 pacman_development=(
 	base-devel diffutils docker git git-delta man-pages python python-pip tokei

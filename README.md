@@ -34,6 +34,12 @@ Useful commands:
 - See the dependencies of a given package: `pacman -Sii <pkg>`.
 - See which installed packages depend on another one: `pacman -Qi <pkg>`.
 
+Useful packages not installed by default:
+- Development: perf, strace, sysbench, systat.
+- System: arch-audit, bind, ctop, turbostat, usbutils.
+- Utils : archiso, croc, edk2-ovmf, entr, qemu-full, qemu-emulators-full, mosh.
+
+
 ## Tasks
 
 ### High Priority
