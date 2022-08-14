@@ -8,9 +8,8 @@ Some packages need manual intervention to check for updates:
 - For Hosts see [here](https://github.com/stevenblack/hosts).
 - For JAI see release emails from Jonathan Blow.
 - For MongoDB Compass see [here](https://www.mongodb.com/try/download/compass).
-- For msodbcsql and mssql-tools see [here](https://packages.microsoft.com/rhel/8/prod/).
+- For MSSQL ODBC and Tools see [here](https://packages.microsoft.com/rhel/8/prod/).
 - For Nerd Fonts see [here](https://github.com/ryanoasis/nerd-fonts/releases).
-- For Node.js Version Manager see [here](https://github.com/nvm-sh/nvm/releases).
 - For NVFLASH see [here](https://www.techpowerup.com/download/nvidia-nvflash/).
 
 Everything else:
