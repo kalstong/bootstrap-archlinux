@@ -5,6 +5,11 @@ pushd "$script_path" > /dev/null
 
 . ../misc.sh
 
+if [ "$HOST" != "nuc8i7" ]; then
+	printerr "ERROR: This configuration file belongs to nuc8i7."
+	exit 1
+fi
+
 XDG_CONFIG_HOME="$HOME/.config"
 mkdir -p \
 	"${HOME}/.icons" \

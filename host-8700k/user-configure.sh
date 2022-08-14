@@ -5,6 +5,11 @@ pushd "$script_path" > /dev/null
 
 . ../misc.sh
 
+if [ "$HOST" != "8700k" ]; then
+	printerr "ERROR: This configuration file belongs to 8700k."
+	exit 1
+fi
+
 XDG_CONFIG_HOME="$HOME/.config"
 mkdir -p \
 	"${HOME}/.icons" \

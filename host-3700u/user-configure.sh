@@ -5,6 +5,11 @@ pushd "$script_path" > /dev/null
 
 . ../misc.sh
 
+if [ "$HOST" != "3700u" ]; then
+	printerr "ERROR: This configuration file belongs to 3700u."
+	exit 1
+fi
+
 XDG_CONFIG_HOME="$HOME/.config"
 mkdir -p \
 	"${HOME}/.icons" \
