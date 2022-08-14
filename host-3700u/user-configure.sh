@@ -37,7 +37,7 @@ mkdir -p \
 
 _monospace_font="monospace"
 _monospace_font_size="10.5"
-_terminal_font_size="10.5"
+_terminal_font_size="11"
 
 touch "${HOME}/.hushlogin"
 cp userfiles/.bashrc "${HOME}/.bashrc.aux"
