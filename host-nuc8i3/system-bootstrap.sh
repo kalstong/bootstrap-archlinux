@@ -178,32 +178,22 @@ pacman_core=(
 	sshfs vulkan-intel xf86-video-intel
 )
 pacman_system=(
-	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa
-	exfatprogs f2fs-tools fd fish fwupd fzf gnome-keyring gptfdisk gnupg
-	gocryptfs intel-gpu-tools intel-undervolt iwd libnotify lz4 man-db nss-mdns
-	openbsd-netcat parted pbzip2 picom pigz playerctl polybar pulseaudio
-	redshift ripgrep sxhkd tint2 tmux unzip usleep x86_energy_perf_policy xclip
-	xdg-user-dirs xdg-utils xdotool xorg-server xorg-xinit xorg-xinput
-	xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
+	avahi bat bluez cpupower dash dhcpcd efibootmgr exa exfatprogs f2fs-tools fd
+	fish fwupd fzf gptfdisk gnupg gocryptfs intel-gpu-tools intel-undervolt iwd
+	lz4 man-db nss-mdns parted pbzip2 pigz ripgrep tmux unzip usleep
+	x86_energy_perf_policy xdg-user-dirs xdg-utils zip zstd
 )
 pacman_tools=(
-	arch-audit aria2 bash-completion bind bluez-utils btop croc ctop curl ffmpeg
-	firejail freerdp hey htop inotify-tools iotop iperf3 jq libva-utils lfs lshw
-	lsof mosh neovim nnn openconnect openssh openvpn p7zip pacman-contrib perf
-	sysbench sysstat time tree turbostat usbutils vkmark
+	arch-audit bash-completion bluez-utils ctop curl ffmpeg firejail hey htop
+	iotop iperf3 jq libva-utils lfs lshw lsof mosh neovim nnn p7zip
+	pacman-contrib time tree turbostat usbutils
 )
 pacman_development=(
-	base-devel diffutils docker docker-compose git git-delta man-pages python
-	python-pip tokei unixodbc vulkan-icd-loader vulkan-mesa-layers
+	base-devel diffutils docker git git-delta man-pages python python-pip tokei
+	vulkan-icd-loader vulkan-mesa-layers
 )
-pacman_apps=(
-	alacritty arandr chromium drawing feh libreoffice-still maim mpv obs-studio
-	pavucontrol peek remmina rofi slock sxiv virt-viewer
-)
-pacman_fonts=(
-	noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra terminus-font
-	ttf-font-awesome ttf-jetbrains-mono
-)
+pacman_apps=()
+pacman_fonts=(terminus-font)
 
 pacman -Syy
 pacstrap -i "$bt_rootdir" ${pacman_core[*]} ${pacman_system[*]} \

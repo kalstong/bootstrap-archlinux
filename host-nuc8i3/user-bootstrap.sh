@@ -48,14 +48,9 @@ mkdir "$HOME/.gnupg" "$HOME/.ssh"
 chmod u=rwx,g=,o= "$HOME/.gnupg" "$HOME/.ssh"
 mkdir -p "$HOME/.config/fontconfig"
 mkdir -p "$HOME/.local/bin/go"
-mkdir -p "$HOME/.local/share/xorg"
 mkdir -p "$HOME/.local/share/fonts"
-mkdir -p {"$AUR","$CODE","$DOWNLOADS","$FILES","$NOTES"}
-mkdir -p {"$RECORDINGS","$SCREENSHOTS","$TRASH","$WALLPAPERS","$WORK"}
-mkdir -p {"$FVM_HOME","$GOCACHE","$GOMODCACHE","$GOPATH","$GOROOT"}
-mkdir -p {"$NPM_CONFIG_CACHE","$NVM_DIR","$YARN_CACHE_FOLDER"}
+mkdir -p {"$AUR","$CODE","$DOWNLOADS","$FILES","$NOTES","$TRASH"}
 mkdir -p "$CACHE"/docker
-mkdir -p "$TRASH"/.firejail.postman
 
 sudo mkdir -p "$MOUNT"
 sudo chown $bt_user:$bt_user "$MOUNT"
@@ -82,53 +77,7 @@ printinfo "| Installing pip packages |"
 printinfo "+ ----------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 pip3 install --user wheel
-pip3 install --user flashfocus pynvim pywal
-sudo -H pip3 install vpn-slice
-
-printinfo "\n"
-printinfo "+ --------------------------- +"
-printinfo "| Installing NVM, NodeJS, NPM |"
-printinfo "+ --------------------------- +"
-[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-. ../shared/userfiles/install-nvm.sh
-
-NVM_SYMLINK_CURRENT="true"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use
-nvm install --lts=fermium
-nvm use default
-
-printinfo "\n"
-printinfo "+ ----------------------- +"
-printinfo "| Installing AUR packages |"
-printinfo "+ ----------------------- +"
-[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-
-aur_pkgs=(
-	brave-bin@master firefox-esr-bin@master postman-bin@master
-)
-
-cd "$AUR"
-for pkg in ${aur_pkgs[*]}
-do
-	_name=${pkg%%@*}
-	_tag=${pkg##*@}
-	_repo="https://aur.archlinux.org/${_name}.git"
-
-	git clone "$_repo" || continue
-
-	cd "$_name"
-	git checkout "$_tag"
-	makepkg -sirc --noconfirm --needed || true
-	cd ..
-done
-cd "$script_path"
-
-printinfo "\n"
-printinfo "+ ---------------------------------- +"
-printinfo "| Installing NERDFont JetBrains Mono |"
-printinfo "+ ---------------------------------- +"
-[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-. ../shared/userfiles/install-nf-jetbrainsmono.sh
+pip3 install --user pynvim
 
 printinfo "\n"
 printinfo "+ ------------------------ +"
@@ -136,33 +85,6 @@ printinfo "| Installing Neovim pugins |"
 printinfo "+ ------------------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 nvim +PlugInstall +qa
-
-printinfo "\n"
-printinfo "+ ---------------------------- +"
-printinfo "| Installing Azure Data Studio |"
-printinfo "+ ---------------------------- +"
-[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-. ../shared/userfiles/install-ads.sh
-
-printinfo "\n"
-printinfo "+ ------------------------------- +"
-printinfo "| Installing MSSQL ODBC and Tools |"
-printinfo "+ ------------------------------- +"
-[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-pushd ../pkgs/mssql-odbc
-makepkg -sirc --noconfirm --needed
-popd
-pushd ../pkgs/mssql-tools
-makepkg -sirc --noconfirm --needed
-popd
-
-printinfo "\n"
-printinfo "+ ------------------------ +"
-printinfo "| Installing MongoDB Tools |"
-printinfo "+ ------------------------ +"
-[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-bash ../shared/userfiles/install-mongodb.sh --install-tools
-bash ../shared/userfiles/install-mongodb.sh --install-compass
 
 
 popd > /dev/null
