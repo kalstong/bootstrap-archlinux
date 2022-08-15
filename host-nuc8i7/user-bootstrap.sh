@@ -157,7 +157,7 @@ printinfo "+ ------------------------ +"
 printinfo "| Installing Neovim pugins |"
 printinfo "+ ------------------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-nvim +PlugInstall +qa
+nvim +PlugInstall +UpdateRemotePlugins +sleep1 +qa
 
 printinfo "\n"
 printinfo "+ ---------------------------- +"

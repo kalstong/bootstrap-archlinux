@@ -23,7 +23,6 @@ After the first boot:
 2. Install the SSH keys: `sudo cryptsetup open <device> stash`, `sudo cryptsetup close stash`.
 3. Connect to WiFi: `iwctl`.
 4. Enable NTP: `timedatectl set-ntp true`.
-5. Install NVIM plugins: `:UpdateRemotePlugins`, `:COQdeps`
 
 To create new SSH keys:
 - `ssh-keygen -t ed25519 -C <host> -f id_ed25519`.
