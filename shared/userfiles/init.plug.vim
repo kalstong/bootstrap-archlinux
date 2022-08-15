@@ -4,13 +4,17 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'eugen0329/vim-esearch'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/vim-vsnip'
 Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'junegunn/fzf.vim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
-Plug 'ms-jpq/coq_nvim', { 'branch': 'coq' }
 Plug 'machakann/vim-sandwich'
 Plug 'neovim/nvim-lspconfig'
 Plug 'onsails/lspkind.nvim'
@@ -32,7 +36,6 @@ Plug 'terryma/vim-smooth-scroll'
 
 call plug#end()
 
-
 " https://github.com/eugen0329/vim-esearch
 " ----------------------------------------
 let g:esearch = {
@@ -44,6 +47,46 @@ let g:esearch = {
 	\ 'out': 'win',
 	\ 'use': ['visual', 'last'],
 	\ }
+
+" https://github.com/hrsh7th/nvim-cmp
+" -----------------------------------
+set completeopt=menu,menuone,noselect
+lua <<EOF
+	local cmp = require'cmp'
+
+	cmp.setup({
+	snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+      end,
+    },
+	window = {
+		-- completion = cmp.config.window.bordered(),
+		-- documentation = cmp.config.window.bordered(),
+	},
+	mapping = cmp.mapping.preset.insert({
+		['<C-c>'] = cmp.mapping.abort(),
+		['<Tab>'] = cmp.mapping.select_next_item(),
+		['<S-Tab>'] = cmp.mapping.select_prev_item(),
+		['<C-b>'] = cmp.mapping.scroll_docs(-4),
+		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<C-Space>'] = cmp.mapping.complete(),
+		['<CR>'] = cmp.mapping.confirm({ select = true }),
+	}),
+	sources = cmp.config.sources({
+		{ name = 'buffer' },
+		{ name = 'nvim_lsp' },
+		{ name = 'nvim_lsp_signature_help' }})
+	})
+
+	-- Setup lspconfig.
+	local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+	local lspconfig = require('lspconfig')
+	local servers = { 'bashls', 'tsserver', 'vimls' }
+	for _, lsp in ipairs(servers) do
+		lspconfig[lsp].setup{ capabilities = capabilities }
+	end
+EOF
 
 " https://github.com/itchyny/lightline.vim
 " ----------------------------------------
@@ -175,12 +218,12 @@ require("nvim-tree").setup {
 		  symlink_open = "",
 		},
 		git = {
-		  unstaged = "✗",
+		  unstaged = "✹",
 		  staged = "✓",
 		  unmerged = "",
 		  renamed = "➜",
 		  untracked = "★",
-		  deleted = "",
+		  deleted = "✖",
 		  ignored = "◌",
 		},
 	  },
@@ -305,30 +348,28 @@ EOF
 " }
 " EOF
 
-" https://github.com/ms-jpq/coq_nvim
-" ----------------------------------
-let g:coq_settings = {
-	\ 'auto_start': 'shut-up',
-	\ 'clients.snippets.warn': [],
-	\ 'clients.third_party.enabled': v:false,
-	\ 'limits.completion_manual_timeout': 1.0,
-	\ }
-
-
 " https://github.com/neovim/nvim-lspconfig
 " ----------------------------------------
 lua <<EOF
 local lspconfig = require('lspconfig')
-local servers = { 'bashls', 'tsserver', 'vimls' }
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup(require('coq').lsp_ensure_capabilities({
-  }))
-end
 
 lspconfig.bashls.setup {
 	cmd_env = {
 		SHELLCHECK_PATH = '',
 		HIGHLIGHT_PARSING_ERRORS = true,
+	},
+}
+
+-- See more at https://github.com/typescript-language-server/typescript-language-server#initializationoptions
+lspconfig.tsserver.setup {
+	init_options = {
+		hostInfo = "neovim",
+		disableAutomaticTypingAcquisition = true,
+		prefences = {
+			includeCompletionsForModuleExports = true,
+			includeCompletionsForImportStatements = true,
+			includeAutomaticOptionalChainCompletions = true,
+		},
 	},
 }
 
@@ -355,6 +396,7 @@ lspconfig.vimls.setup {
 		},
 		vimruntime = ""
 	}
+}
 EOF
 
 " https://github.com/nvim-treesitter/nvim-treesitter
