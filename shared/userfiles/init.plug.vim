@@ -51,6 +51,7 @@ let g:esearch = {
 " https://github.com/hrsh7th/nvim-cmp
 " -----------------------------------
 set completeopt=menu,menuone,noselect
+try
 lua << EOF
 	local cmp = require('cmp')
 	local lspkind = require('lspkind')
@@ -96,6 +97,8 @@ lua << EOF
 		lspconfig[lsp].setup{ capabilities = capabilities }
 	end
 EOF
+catch
+endtry
 
 " https://github.com/itchyny/lightline.vim
 " ----------------------------------------
@@ -143,6 +146,7 @@ let g:lightline = {
 
 " https://github.com/kyazdani42/nvim-tree.lua
 " -------------------------------------------
+try
 lua <<EOF
 require("nvim-tree").setup {
 	auto_reload_on_write = true,
@@ -340,6 +344,8 @@ require("nvim-tree").setup {
 	},
 }
 EOF
+catch
+endtry
 
 " https://github.com/ludovicchabant/vim-gutentags
 " -----------------------------------------------
@@ -359,6 +365,7 @@ EOF
 
 " https://github.com/neovim/nvim-lspconfig
 " ----------------------------------------
+try
 lua <<EOF
 local lspconfig = require('lspconfig')
 
@@ -407,6 +414,8 @@ lspconfig.vimls.setup {
 	}
 }
 EOF
+catch
+endtry
 
 " https://github.com/nvim-treesitter/nvim-treesitter
 " --------------------------------------------------
