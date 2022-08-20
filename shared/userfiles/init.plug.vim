@@ -78,7 +78,7 @@ lua << EOF
 		sources = cmp.config.sources({
 			{ name = 'buffer' },
 			{ name = 'nvim_lsp' },
-			{ name = 'nvim_lsp_signature_help' }
+			{ name = 'nvim_lsp_signature_help' },
 		}),
 		formatting = {
 			-- Setup lspkind.
@@ -380,11 +380,10 @@ lspconfig.bashls.setup {
 lspconfig.tsserver.setup {
 	init_options = {
 		hostInfo = "neovim",
-		disableAutomaticTypingAcquisition = true,
-		prefences = {
-			includeCompletionsForModuleExports = true,
-			includeCompletionsForImportStatements = true,
-			includeAutomaticOptionalChainCompletions = true,
+	},
+	settings = {
+		diagnostics = {
+			ignoredCodes = { 7016, 80001 },
 		},
 	},
 }
