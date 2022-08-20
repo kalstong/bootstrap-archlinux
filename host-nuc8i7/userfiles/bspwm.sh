@@ -63,7 +63,7 @@ wm_start_daemons () {
 	export BOL_ICON="$(echo -e "\uf0e7 ")"
 	export CAL_ICON="$(echo -e "\uf073")"
 	export CPU_ICON="$(echo -e "\uf5dc ")"
-	export ETH_ICON="$(echo -e "\uf796 ")"
+	export ETH_ICON="$(echo -e "\uf796")"
 	export EXG_ICON="$(echo -e "\uf362 ")"
 	export FRQ_ICON="$(echo -e "\uf83e ")"
 	export HDD_ICON="$(echo -e "\uf0a0 ")"
