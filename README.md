@@ -7,7 +7,7 @@ Package Managers:
 - Node.js/NPM: `npm outdated -g`.
 - Pacman: `sudo pacman -Sy && pacman -Qu`, `sudo pacman -Syu`.
 - PiP: `pip list --user --outdated`, `pip install --user --upgrade <pkg>`.
-- Vim plugins: `:PlugUpgrade`, `:PlugUpdate`, `:UpdateRemotePlugins`, `:COQdeps`.
+- Vim plugins: `:PlugUpgrade`, `:PlugUpdate`, `:UpdateRemotePlugins`.
 
 Some packages have their own install scripts and must be manually updated:
 - For Azure Data Studio see [here](https://github.com/microsoft/azuredatastudio/releases).
