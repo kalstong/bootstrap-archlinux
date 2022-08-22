@@ -19,11 +19,11 @@ PS1="\[$(tput setaf 5)\]\A\[$(tput sgr0)\] \w$([ -n "$NNNLVL" ] && echo " nnn:$N
 # . "$HOME/.forgit.plugin.sh"
 
 set_vte_theme () {
-	if [ "$TERM" = "linux" ]; then
+	[ "$TERM" = "linux" ] && {
 		[ -f "$HOME/.cache/wal/colors-tty.sh" ] &&
-			. "$HOME/.cache/wal/colors-tty.sh"
-		[ -n "$VTFONT" ] && setfont "$VTFONT"
-	fi
+			. "$HOME/.cache/wal/colors-tty.sh";
+		[ -n "$VTFONT" ] && setfont "$VTFONT";
+	}
 }
 set_vte_theme
 
@@ -851,5 +851,5 @@ e () {
 		rm -f "$NNN_TMPFILE" &> /dev/null
 	fi
 
-	[ "$TERM" = "linux" ] && set_vte_theme && clear
+	set_vte_theme && clear
 }
