@@ -151,6 +151,10 @@ if [ -f "$DVM_ROOT/scripts/dvm" ]
 	end
 end
 
+function display-layout --description "Set a different display layout"
+	bash -i -c "display-layout $argv"
+end
+
 function energypolicy --description "Enables an energy policy"
 	bash -i -c "energypolicy $argv"
 end
@@ -220,11 +224,6 @@ function random-wallpaper --description "Changes the wallpaper randomly"
 	bash -l -c "random-wallpaper"
 end
 
-function rsync-to --description ""
-	rsync -auvP --delete -e "ssh -i ~/.ssh/id_ed25519 -p 16012" $argv[3] \
-		"$argv[1]/" "$argv[2]"
-end
-
 function screenshot --description "Take a screenshot"
 	bash -l -c "screenshot"
 end
@@ -245,12 +244,16 @@ function shup --description "Evaluate Bash commands out of a file"
 	bash -i -c "shup $argv"
 end
 
-function display-layout --description "Set a different display layout"
-	bash -i -c "display-layout $argv"
-end
-
 function stopwatch --description "Display stopwatch timer"
 	bash -i -c "stopwatch"
+end
+
+function syncdirs --description "Synchronizes the target with the source directory"
+	set --local src "$argv[1]"
+	set --local dst "$argv[2]"
+	set --local ext "$argv[3]"
+	rsync --archive --checksum --partial --progress --update $ext \
+		"$src/" "$dst/"
 end
 
 function theme --description "Set a colorscheme from pywall"

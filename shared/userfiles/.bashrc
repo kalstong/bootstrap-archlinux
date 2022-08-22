@@ -670,10 +670,6 @@ random-wallpaper () {
 	fi
 }
 
-rsync-to () {
-	rsync -auvP --delete $3 -e "ssh -i ~/.ssh/id_ed25519 -p 16012" "$1/" "$2"
-}
-
 # Taken from https://stackoverflow.com/a/44811468
 sanitize() {
 	local s="${1?need a string}"
@@ -761,6 +757,14 @@ stopwatch () {
         printf " %s\r" "$(date -u -d "@$time" +%H:%M:%S)"
         sleep 1
     done
+}
+
+syncdirs () {
+	local src="$1"
+	local dst="$2"
+	local ext="$3"
+	rsync --archive --checksum --partial --progress --update $ext \
+		"${src}/" "${dst}/"
 }
 
 theme () {
