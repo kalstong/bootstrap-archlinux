@@ -166,7 +166,8 @@ end
 
 function purge --description "Purge caches"
 	if [ "$argv[1]" = "fish" ]
-		echo 'yes' | history clear
+		echo 'yes' | history clear &&
+		echo "Fish history was cleared."
 	else
 		bash -i -c "purge $argv"
 	end

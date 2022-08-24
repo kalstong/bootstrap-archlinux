@@ -420,8 +420,9 @@ notes () {
 
 purge () {
 	if [ "$1" == "bash" ]; then
-		history -c
-		rm -f "$HOME/.bash_history"
+		history -c &&
+		rm -f "$HOME/.bash_history" &&
+		echo "Bash history was cleared."
 
 	elif [ "$1" == "cache" ]; then
 		sync
@@ -429,14 +430,16 @@ purge () {
 		echo "System cache was cleared."
 
 	elif [ "$1" == "clipboard" ]; then
-		xclip -selection clipboard -in /dev/null
-		xclip -selection primary -in /dev/null
-		xclip -selection secondary -in /dev/null
+		xclip -selection clipboard -in /dev/null &&
+		xclip -selection primary -in /dev/null &&
+		xclip -selection secondary -in /dev/null &&
+		echo "X11 clipboard was cleared."
 
 	elif [ "$1" == "nvim" ]; then
-		rm -f ~/.local/share/nvim/shada/*.shada
+		rm -f ~/.local/share/nvim/shada/*.shada &&
+		echo "Neovim cache was cleared."
 
-	else echo "Unknown or empty argument '$1'."
+	else echo "Empty or unknown argument '$1'."
 	fi
 }
 
