@@ -17,6 +17,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
 Plug 'machakann/vim-sandwich'
 Plug 'neovim/nvim-lspconfig'
+Plug 'ntpeters/vim-better-whitespace'
 Plug 'onsails/lspkind.nvim'
 Plug 'pechorin/any-jump.vim'
 Plug 'preservim/nerdcommenter'
@@ -214,7 +215,7 @@ require("nvim-tree").setup {
 		},
 		icons = {
 			webdev_colors = true,
-			git_placement = "before",
+			git_placement = "after",
 			padding = "  ",
 			symlink_arrow = " ➛ ",
 			show = {
@@ -239,9 +240,9 @@ require("nvim-tree").setup {
 				},
 				git = {
 					unstaged = "",
-					staged = "✓",
+					staged = "",
 					unmerged = "",
-					renamed = "➜",
+					renamed = "凜",
 					untracked = "﯂",
 					deleted = "",
 					ignored = "",
@@ -441,6 +442,10 @@ endtry
 "	},
 " }
 " EOF
+
+" https://github.com/ntpeters/vim-better-whitespace
+" -------------------------------------------------
+let g:better_whitespace_enabled=1
 
 " https://github.com/pechorin/any-jump.vim
 " ----------------------------------------

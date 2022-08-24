@@ -63,11 +63,10 @@ endfun
 	" Highlights
 	" ----------
 if exists("g:terminal_color_1")
-	exe 'hi TrailingWhitespaces ctermbg=red guibg='.g:terminal_color_1
+	exe 'hi ExtraWhiteSpace ctermbg=red guibg='.g:terminal_color_1
 endif
 hi CursorLine guibg=#323c41
 hi FloatBorder guibg=NONE
-
 
 	" Other
 	" -----
@@ -77,11 +76,6 @@ autocmd BufEnter,BufNewFile,BufRead * setlocal formatoptions=jql
 autocmd BufEnter * let &titlestring=expand('%:t')
 autocmd BufWinLeave * call clearmatches()
 autocmd FileType fzf set nonumber norelativenumber
-
-match TrailingWhitespaces /\s\+$/
-autocmd BufWinEnter * match TrailingWhitespaces /\s\+$/
-autocmd InsertEnter * match TrailingWhitespaces /\s\+\%#\@<!$/
-autocmd InsertLeave * match TrailingWhitespaces /\s\+$/
 
 " Jump to the last known position when re-opening a file
 if has("autocmd")
