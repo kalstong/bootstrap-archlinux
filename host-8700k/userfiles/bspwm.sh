@@ -53,7 +53,7 @@ wm_kill_daemons () {
 	killall -q sxhkd
 	killall -q flashfocus
 	killall -q dunst
-	killall -q polybar
+	killall -q -9 polybar
 	killall -q tint2
 }
 
