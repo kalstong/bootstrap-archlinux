@@ -76,7 +76,14 @@ lua << EOF
 			['<CR>'] = cmp.mapping.confirm({ select = true }),
 		}),
 		sources = cmp.config.sources({
-			{ name = 'buffer' },
+			{
+				name = 'buffer',
+				-- See more options at https://github.com/hrsh7th/cmp-buffer#configuration
+				option = {
+					get_bufnrs = function()
+						return vim.api.nvim_list_bufs()
+					end
+			}},
 			{ name = 'nvim_lsp' },
 			{ name = 'nvim_lsp_signature_help' },
 		}),
