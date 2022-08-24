@@ -215,7 +215,7 @@ require("nvim-tree").setup {
 		icons = {
 			webdev_colors = true,
 			git_placement = "before",
-			padding = " ",
+			padding = "  ",
 			symlink_arrow = " ➛ ",
 			show = {
 				file = true,
@@ -233,8 +233,8 @@ require("nvim-tree").setup {
 					default = "",
 					open = "",
 					empty = "",
-					empty_open = "",
-					symlink = "",
+					empty_open = "",
+					symlink = "",
 					symlink_open = "",
 				},
 				git = {
@@ -244,7 +244,7 @@ require("nvim-tree").setup {
 					renamed = "➜",
 					untracked = "﯂",
 					deleted = "",
-					ignored = "◌",
+					ignored = "",
 				},
 			},
 		},
@@ -270,7 +270,7 @@ require("nvim-tree").setup {
 		show_on_dirs = false,
 		debounce_delay = 50,
 		icons = {
-			hint = "",
+			hint = "逸",
 			info = "",
 			warning = "",
 			error = "ﱥ",

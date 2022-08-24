@@ -13,7 +13,10 @@ font:
   size: <terminal-font-size>
   offset:
     x: 0
-    y: 1
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
 
 #ipc_socket: true
 live_config_reload: true
