@@ -146,11 +146,11 @@ npm_pkgs=(
 npm install -g ${npm_pkgs[*]}
 
 printinfo "\n"
-printinfo "+ ---------------------------------- +"
-printinfo "| Installing NERDFont JetBrains Mono |"
-printinfo "+ ---------------------------------- +"
+printinfo "+ -------------------- +"
+printinfo "| Installing NERD Font |"
+printinfo "+ -------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-. ../shared/userfiles/install-nfjetbrainsmono.sh
+. ../shared/userfiles/install-nf.sh
 
 printinfo "\n"
 printinfo "+ ------------------------ +"

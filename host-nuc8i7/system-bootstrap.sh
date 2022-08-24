@@ -181,9 +181,9 @@ pacman_system=(
 	xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
 )
 pacman_tools=(
-	aria2 bash-completion bluez-utils btop curl ffmpeg firejail freerdp hey htop
-	inotify-tools iotop iperf3 jq libva-utils lfs lshw lsof neovim nnn
-	openconnect openssh openvpn p7zip pacman-contrib time tree vkmark
+	aria2 bash-completion bluez-utils btop curl ffmpeg firejail fontforge
+	freerdp hey htop inotify-tools iotop iperf3 jq libva-utils lfs lshw lsof
+	neovim nnn openconnect openssh openvpn p7zip pacman-contrib time tree vkmark
 )
 pacman_development=(
 	base-devel diffutils docker docker-compose git git-delta man-pages python
