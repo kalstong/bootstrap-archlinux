@@ -4,7 +4,7 @@ Package Managers:
 - ASDF: `asdf latest <pkg> <ver>`, `asdf plugin-update <pkg> <ver>`.
 - AUR: `git fetch|pull`, `makepkg -sirc`.
 - Fwupd: `fwupdmgr get-devices|refresh|get-updates|update`.
-- Node.js/NPM: `npm outdated -g`.
+- Node.js/NPM: `npm outdated -g`, `npm update -g`.
 - Pacman: `sudo pacman -Sy && pacman -Qu`, `sudo pacman -Syu`.
 - PiP: `pip list --user --outdated`, `pip install --user --upgrade <pkg>`.
 - Vim plugins: `:PlugUpgrade`, `:PlugUpdate`, `:UpdateRemotePlugins`.
