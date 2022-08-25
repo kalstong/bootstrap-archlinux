@@ -160,7 +160,7 @@ require("nvim-tree").setup {
 	auto_reload_on_write = true,
 	create_in_closed_folder = false,
 	disable_netrw = false,
-	hijack_cursor = false,
+	hijack_cursor = true,
 	hijack_netrw = true,
 	hijack_unnamed_buffer_when_opening = false,
 	ignore_buffer_on_setup = false,
@@ -204,7 +204,7 @@ require("nvim-tree").setup {
 		highlight_opened_files = "none",
 		root_folder_modifier = ":~",
 		indent_markers = {
-			enable = false,
+			enable = true,
 			inline_arrows = true,
 			icons = {
 				corner = "└",
@@ -221,7 +221,7 @@ require("nvim-tree").setup {
 			show = {
 				file = true,
 				folder = true,
-				folder_arrow = true,
+				folder_arrow = false,
 				git = true,
 			},
 			glyphs = {
@@ -278,8 +278,8 @@ require("nvim-tree").setup {
 		},
 	},
 	filters = {
-		dotfiles = true,
-		custom = {},
+		dotfiles = false,
+		custom = { "^\\.git" },
 		exclude = {},
 	},
 	filesystem_watchers = {
