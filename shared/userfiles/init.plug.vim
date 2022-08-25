@@ -118,7 +118,7 @@ function! RenderFileFormat()
 endfunction
 function! RenderTabName(name)
 	let l:filename = lightline#tab#filename(a:name)
-	return (WebDevIconsGetFileTypeSymbol(l:filename) . ' ' . l:filename)
+	return (WebDevIconsGetFileTypeSymbol(l:filename) . '  ' . l:filename)
 endfunction
 
 let g:lightline = {
@@ -193,6 +193,34 @@ require("nvim-tree").setup {
 				relative = "win",
 				border = "rounded",
 				style = "minimal",
+			},
+		},
+		mappings = {
+			custom_only = true,
+			list = {
+				{ key = "c", action = "copy", action_cb = "" },
+				{ key = "d", action = "remove", action_cb = "" },
+				{ key = "e", action = "edit", action_cb = "", mode = "n" },
+				{ key = "m", action = "toggle_mark", action_cb = "" },
+				{ key = "n", action = "create", action_cb = "", mode = "n" },
+				{ key = "o", action = "edit_no_picker", action_cb = "", mode = "n" },
+				{ key = "p", action = "paste", action_cb = "" },
+				{ key = "q", action = "close", action_cb = "" },
+				{ key = "r", action = "rename", action_cb = "" },
+				{ key = "s", action = "split", action_cb = "", mode = "n" },
+				{ key = "t", action = "tabnew", action_cb = "", mode = "n" },
+				{ key = "v", action = "vsplit", action_cb = "", mode = "n" },
+				{ key = "x", action = "cut", action_cb = "" },
+				{ key = "y", action = "copy_path", action_cb = "" },
+
+				{ key = "<BS>", action = "close_node", action_cb = "" },
+
+				{ key = "M", action = "bulk_move", action_cb = "" },
+				{ key = "R", action = "refresh", action_cb = "" },
+				{ key = "Y", action = "copy_absolute_path", action_cb = "" },
+
+				-- See https://github.com/kyazdani42/nvim-tree.lua/issues/1145
+				-- { key = "C-p", action = "preview", action_cb = "", mode = "n" },
 			},
 		},
 	},
