@@ -2,8 +2,8 @@
 
 
 [ "$1" = "--tools" ] && {
-	tools_ver="100.5.4";
-	tools_pkg="https://fastdl.mongodb.org/tools/db/mongodb-database-tools-debian10-x86_64-${tools_ver}.tgz";
+	tools_ver="100.6.0";
+	tools_pkg="https://fastdl.mongodb.org/tools/db/mongodb-database-tools-debian11-x86_64-${tools_ver}.tgz";
 
 	rm -rf /tmp/mongodb-tools/ ;
 
