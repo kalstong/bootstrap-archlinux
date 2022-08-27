@@ -118,7 +118,7 @@ function! RenderFileFormat()
 endfunction
 function! RenderTabName(name)
 	let l:filename = lightline#tab#filename(a:name)
-	return (WebDevIconsGetFileTypeSymbol(l:filename) . '  ' . l:filename)
+	return (WebDevIconsGetFileTypeSymbol(l:filename) . ' ' . l:filename)
 endfunction
 
 let g:lightline = {
@@ -244,7 +244,7 @@ require("nvim-tree").setup {
 		icons = {
 			webdev_colors = true,
 			git_placement = "after",
-			padding = "  ",
+			padding = " ",
 			symlink_arrow = " ➛ ",
 			show = {
 				file = true,
@@ -262,7 +262,7 @@ require("nvim-tree").setup {
 					default = "",
 					open = "",
 					empty = "",
-					empty_open = "",
+					empty_open = "",
 					symlink = "",
 					symlink_open = "",
 				},
