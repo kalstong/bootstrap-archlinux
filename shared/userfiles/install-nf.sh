@@ -2,7 +2,7 @@
 
 set -e
 
-ver="2.2.1"
+ver="v2.2.1"
 url="https://github.com/ryanoasis/nerd-fonts/releases/download/${ver}/FontPatcher.zip"
 
 rm -rf /tmp/FontPatcher.zip /tmp/fontpatcher
