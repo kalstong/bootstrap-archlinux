@@ -6,7 +6,7 @@ Package Managers:
 - Fwupd: `fwupdmgr get-devices|refresh|get-updates|update`.
 - Node.js/NPM: `npm outdated -g`, `npm update -g`.
 - Pacman: `sudo pacman -Sy && pacman -Qu`, `sudo pacman -Syu`.
-- PiP: `pip list --user --outdated`, `pip install --user --upgrade <pkg>`.
+- Python/pip: `pip list --user --outdated`, `pip install --user --upgrade <pkg>`.
 - Vim plugins: `:PlugUpgrade`, `:PlugUpdate`, `:UpdateRemotePlugins`.
 
 Some packages have their own install scripts and must be manually updated:
