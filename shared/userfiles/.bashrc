@@ -191,7 +191,7 @@ makefs () {
 		sudo mkfs.fat -c -F 32 -n "$label" -v "$part"
 	[ "$fs" = "f2fs" ] &&
 		sudo mkfs.f2fs -O extra_attr,inode_checksum,sb_checksum,compression,encrypt \
-			-l "$label" "$part"
+			-f -l "$label" "$part"
 	[ "$fs" = "luks" ] &&
 		sudo cryptsetup --verbose --verify-passphrase luksFormat "$part" \
 			--type luks2 --sector-size 4096
