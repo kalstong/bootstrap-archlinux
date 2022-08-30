@@ -125,7 +125,7 @@ systemctl enable dhcpcd.service
 systemctl enable docker.socket
 systemctl enable fstrim.timer
 systemctl enable intel-undervolt.service
-systemctl enable iwd.service
+#systemctl enable iwd.service
 systemctl enable sshd.service
 systemctl enable systemd-oomd.socket
 
