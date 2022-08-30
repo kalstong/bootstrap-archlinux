@@ -141,7 +141,7 @@ super + alt + Return
 		--command btop
 
 super + shift + n
-	/usr/bin/firefox-esr -private-window
+	/usr/bin/firefox -private-window
 
 super + @space
 	/usr/bin/rofi -modi drun -show drun -show-icons \
