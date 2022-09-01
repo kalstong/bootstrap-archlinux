@@ -215,14 +215,13 @@ pacman_system=(
 	xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
 )
 pacman_tools=(
-	aria2 bash-completion bluez-utils btop curl ffmpeg firejail freerdp hey htop
-	inotify-tools iotop iperf3 jq libva-utils lfs lshw lsof neovim nnn nvtop
+	aria2 bash-completion bluez-utils btop curl ffmpeg firejail freerdp htop
+	inotify-tools iotop iperf3 jq libva-utils lshw lsof neovim nnn nvtop
 	openconnect openssh openvpn p7zip pacman-contrib time tree vkmark
 )
 pacman_development=(
 	autoconf-archive base-devel diffutils docker docker-compose gdb git
-	git-delta man-pages python python-pip tokei vulkan-icd-loader
-	vulkan-mesa-layers
+	git-delta man-pages python python-pip vulkan-icd-loader vulkan-mesa-layers
 )
 pacman_apps=(
 	alacritty arandr chromium drawing feh firefox libreoffice-still maim mpv

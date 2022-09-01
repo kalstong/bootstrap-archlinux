@@ -186,13 +186,12 @@ pacman_system=(
 )
 pacman_tools=(
 	aria2 bash-completion bluez-utils btop curl ffmpeg firejail fontforge
-	freerdp hey htop inotify-tools iotop iperf3 jq libva-utils lfs lshw lsof
-	neovim nnn openconnect openssh openvpn p7zip pacman-contrib radeontop time
-	tree vkmark
+	freerdp htop inotify-tools iotop iperf3 jq libva-utils lshw lsof neovim nnn
+	openconnect openssh openvpn p7zip pacman-contrib radeontop time tree vkmark
 )
 pacman_development=(
 	base-devel diffutils docker docker-compose git git-delta man-pages python
-	python-pip tokei unixodbc vulkan-icd-loader vulkan-mesa-layers
+	python-pip unixodbc vulkan-icd-loader vulkan-mesa-layers
 )
 pacman_apps=(
 	alacritty arandr chromium drawing feh firefox libreoffice-still maim mpv
