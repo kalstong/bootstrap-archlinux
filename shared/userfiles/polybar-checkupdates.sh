@@ -1,11 +1,15 @@
 #!/usr/bin/dash
 
-updates=$(checkupdates 2> /dev/null)
-ret=$?
+ret=1
+while [ $ret -eq 1 ]
+do
+	updates=$(checkupdates 2> /dev/null)
+	ret=$?
+	sleep 2
+done
 
-if [ $ret -eq 0 ] || [ $ret -eq 2 ]; then
-	[ -n "$updates" ] && echo $(printf "%s\n" "$updates" | wc -l) && exit 0
-	[ -z "$updates" ] && echo "0" && exit 0
-else
-	echo "?"
-fi
+[ -n "$updates" ] &&
+	echo $(printf "%s\n" "$updates" | wc -l) &&
+	exit 0
+
+echo "0"
