@@ -2,7 +2,7 @@
 
 rm -rf /tmp/ads*
 
-ads_pkg_version="1.39.0"
+ads_pkg_version="1.39.1"
 ads_pkg="https://go.microsoft.com/fwlink/?linkid=2204773"
 ads_ico="https://raw.githubusercontent.com/microsoft/azuredatastudio/main/resources/linux/code.png"
 

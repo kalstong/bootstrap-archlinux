@@ -37,7 +37,7 @@ Useful packages not installed by default:
 - Development: perf, strace, sysbench, systat.
 - System: arch-audit, bind, ctop, turbostat, usbutils.
 - Utils: archiso, croc, edk2-ovmf, entr, qemu-full, qemu-emulators-full,
-    mosh, woeusb-ng@master
+  mosh, woeusb-ng@master
 
 
 ## Tasks
