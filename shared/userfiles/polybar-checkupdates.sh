@@ -5,7 +5,7 @@ while [ $ret -eq 1 ]
 do
 	updates=$(checkupdates 2> /dev/null)
 	ret=$?
-	sleep 2
+	sleep 5
 done
 
 [ -n "$updates" ] &&
