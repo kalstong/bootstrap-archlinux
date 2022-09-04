@@ -48,6 +48,7 @@ endif
 set background=dark
 try
 	let g:everforest_background = 'hard'
+	let g:everforest_disable_italic_comment = 1
 	let g:everforest_transparent_background = 1
 	colorscheme everforest
 catch
