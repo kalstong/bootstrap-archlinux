@@ -43,6 +43,7 @@ Useful packages not installed by default:
 ## Tasks
 
 ### High Priority
+- Create a shell function simplify miniserve setup.
 - Set BIOS undervolt for 9900K, 3950X.
 - When mounting a partition, try to use its label to name the mount point.
   Check the `--json` switch of `lsblk` and use `jq` to parse the output.
