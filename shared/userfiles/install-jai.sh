@@ -2,8 +2,8 @@
 
 set -e
 
-ver="0.1.037"
-url="https://www.dropbox.com/s/959v0775p4y8iwt/jai-beta-1-037.zip?dl=1"
+ver="0.1.038"
+url="https://www.dropbox.com/s/xuh3njkqdkcya64/jai-beta-1-038.zip?dl=1"
 
 [ ! -v JAI_DIR ] && echo "==> ERROR: \$JAI_DIR is not defined." && exit 1
 
@@ -31,6 +31,8 @@ rm -rf /tmp/jai/ /tmp/jai.zip
 echo "==> Done."
 
 # Previous Releases -----------------------------------------------------
+# ver="0.1.037"
+# url="https://www.dropbox.com/s/959v0775p4y8iwt/jai-beta-1-037.zip?dl=1"
 # ver="0.1.036"
 # url="https://www.dropbox.com/s/kdm3lyqjfh7qnee/jai-beta-1-036.zip?dl=1"
 # ver="0.1.035"

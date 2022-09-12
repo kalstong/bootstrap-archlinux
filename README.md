@@ -34,7 +34,7 @@ Useful commands:
 - See which installed packages depend on another one: `pacman -Qi <pkg>`.
 
 Useful packages not installed by default:
-- Development: hey, perf, strace, sysbench, systat, tokei.
+- Development: hey, perf, strace, sysbench, systat, tokei, valgrind.
 - System: arch-audit, bind, ctop, lfs, turbostat, usbutils.
 - Utils: archiso, croc, edk2-ovmf, entr, qemu-full, qemu-emulators-full, mosh,
   tree, woeusb-ng@master.
