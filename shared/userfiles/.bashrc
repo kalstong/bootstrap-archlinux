@@ -835,9 +835,9 @@ vcrypt-create () {
 		--keyfiles="" --random-source="/dev/urandom"
 }
 
-export FZF_DEFAULT_COMMAND="fd --exclude '.git/' --hidden --type f"
+export FZF_DEFAULT_COMMAND="fd --exclude '.git/' --hidden --strip-cwd-prefix --type f"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --exclude '.git/' --hidden --type d"
+export FZF_ALT_C_COMMAND="fd --exclude '.git/' --hidden --strip-cwd-prefix --type d"
 [[ $- == *i* ]] && . "/usr/share/fzf/completion.bash" 2> /dev/null
 [ -f "/usr/share/fzf/key-bindings.bash" ] && . "/usr/share/fzf/key-bindings.bash"
 

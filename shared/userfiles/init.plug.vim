@@ -412,14 +412,15 @@ lspconfig.bashls.setup {
 	},
 }
 
--- See more at https://github.com/typescript-language-server/typescript-language-server#initializationoptions
+-- TSServer doc: https://github.com/typescript-language-server/typescript-language-server#initializationoptions
+-- Diagnostic codes: https://github.com/microsoft/TypeScript/blob/main/src/compiler/diagnosticMessages.json
 lspconfig.tsserver.setup {
 	init_options = {
 		hostInfo = "neovim",
 	},
 	settings = {
 		diagnostics = {
-			ignoredCodes = { 7016, 80001 },
+			ignoredCodes = { 7016, 80001, 80006 },
 		},
 	},
 }

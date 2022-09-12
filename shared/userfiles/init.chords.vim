@@ -133,7 +133,7 @@ nnoremap - :call FilterHistory(getcwd())<CR>:History<CR>
 nnoremap m :GFiles?<CR>
 nnoremap <Leader>sa :RG<CR>
 nnoremap <Leader>sb :BLines<CR>
-nnoremap <Leader>sd :call fzf#run(fzf#wrap({'source': 'fd --type d'}))<CR>
+nnoremap <Leader>sd :call fzf#run(fzf#wrap({'source': 'fd --strip-cwd-prefix --type d'}))<CR>
 nnoremap <Leader>sf :Lines<CR>
 nnoremap <Leader>sh :call FilterHistory(getcwd())<CR>:History<CR>
 nnoremap <Leader>sta :Tags <C-r><C-w><CR>

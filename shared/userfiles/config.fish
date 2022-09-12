@@ -271,11 +271,11 @@ function vcrypt-create --description "Create a password-encrypt Veracrypt file"
 end
 
 
-set --export FZF_DEFAULT_COMMAND "fd --exclude '.git/'  --hidden --type f"
+set --export FZF_DEFAULT_COMMAND "fd --exclude '.git/' --hidden --strip-cwd-prefix --type f"
 set --export FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
-set --export FZF_ALT_C_COMMAND "fd --exclude '.git/' --hidden --type d"
-if test -f /usr/share/fish/functions/fzf_key_bindings.fish
-	source /usr/share/fish/functions/fzf_key_bindings.fish
+set --export FZF_ALT_C_COMMAND "fd --exclude '.git/' --hidden --strip-cwd-prefix --type d"
+if test -f /usr/share/fish/vendor_functions.d/fzf_key_bindings.fish
+	source /usr/share/fish/vendor_functions.d/fzf_key_bindings.fish
 end
 fzf_key_bindings
 
