@@ -74,3 +74,7 @@ Useful packages not installed by default:
 - Consider [obs-glcapture](https://github.com/2xsaiko/obs-glcapture) and
   [obs-vkcapture](https://github.com/nowrep/obs-vkcapture) to record
   OpenGL/Vulkan frame buffers w/ minimal performance penalties.
+
+
+## Notes
+- List of [Chromium's CLI switches](https://peter.sh/experiments/chromium-command-line-switches/).
