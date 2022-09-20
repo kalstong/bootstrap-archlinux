@@ -195,7 +195,7 @@ pacman_development=(
 	python-pip unixodbc vulkan-icd-loader vulkan-mesa-layers
 )
 pacman_apps=(
-	alacritty arandr chromium drawing feh firefox libreoffice-still maim mpv
+	alacritty arandr chromium drawing feh firefox imv libreoffice-still maim mpv
 	obs-studio pavucontrol peek remmina rofi signal-desktop slock sxiv
 	virt-viewer
 )

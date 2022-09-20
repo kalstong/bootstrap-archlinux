@@ -224,7 +224,7 @@ pacman_development=(
 	git-delta man-pages python python-pip vulkan-icd-loader vulkan-mesa-layers
 )
 pacman_apps=(
-	alacritty arandr chromium drawing feh firefox libreoffice-still maim mpv
+	alacritty arandr chromium drawing eh firefox imv libreoffice-still maim mpv
 	nomacs obs-studio pavucontrol peek remmina rofi slock sxiv virt-viewer
 )
 pacman_fonts=(
