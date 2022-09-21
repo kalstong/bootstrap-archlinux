@@ -54,7 +54,9 @@ Useful packages not installed by default:
 ### Low Priority
 - Check [`borg`](https://archlinux.org/packages/community/x86_64/borg/)
   for compressed/mountable backups.
-- Check `broot` as an alternative to `fzf` file-system navigation.
+- Check [`broot`](https://github.com/Canop/broot) as an alternative to `fzf`
+  for file system navigation.
+- Check [`clp`](https://github.com/jpe90/clp) as an alternative to `bat`.
 - Check [`fzy`](https://github.com/jhawthorn/fzy) as an alternative to `fzf`,
   when the input doesn't change.
 - Check `lf` as an alternative to `nnn`.
