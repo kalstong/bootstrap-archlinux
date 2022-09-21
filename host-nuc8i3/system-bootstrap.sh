@@ -5,7 +5,7 @@
 # CPU: Intel Core i3-8109U @3.00GHz [2]
 # RAM: 2x 8GiB DDR4 @2.40GHz-CL16 DC
 # GPU: Intel Iris Plus Graphics 655 @300/1050MHz
-# SSD: 250GB M.2 NVMe Kingston A2000 3D TLC
+# SSD: 120GB SATA3 Toshiba Q300
 #
 # [1]: https://ark.intel.com/content/www/us/en/ark/products/126150/intel-nuc-kit-nuc8i3beh.html
 # [2]: https://ark.intel.com/content/www/us/en/ark/products/135936/intel-core-i3-8109u-processor-4m-cache-up-to-3-60-ghz.html
@@ -49,11 +49,13 @@ printinfo "| Erasing disk |"
 printinfo "+ ------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 _disk_key="/dev/disk/by-id/usb-General_USB_Flash_Disk_7911020000213736-0:0"
-_disk_system="/dev/nvme0n1"
+_disk_system="/dev/sda"
 
-nvme format "$_disk_system" --force --namespace-id 1 --ses 0
+sgdisk --zap-all "$_disk_storage"
 sync
+
 partprobe "$_disk_system"
+sync
 
 printinfo "\n"
 printinfo "+ ----------------- +"
@@ -68,7 +70,7 @@ _ends_at=$((${_starts_at} + 512)) # 512MiB boot partition
 parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" set 1 esp on && sync
 
 _starts_at=${_ends_at}
-_ends_at=$((${_starts_at} + 8 * 1024)) # 8GiB swap partition
+_ends_at=$((${_starts_at} + 4 * 1024)) # 8GiB swap partition
 parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" && sync
 
 _starts_at=${_ends_at} # Remaining space as the root partition
@@ -94,16 +96,16 @@ sleep 1
 printinfo "\n\n  -> Requesting fallback decryption password ..."
 askpwd > /tmp/pwd.keyfile
 
-mkfs.fat -F32 "${_disk_system}p1"
-mkswap "${_disk_system}p2"
+mkfs.fat -F32 "${_disk_system}1"
+mkswap "${_disk_system}2"
 
 printinfo "\n  -> Encrypting root partition ..."
 cryptsetup --verbose \
-	--batch-mode luksFormat "${_disk_system}p3" /tmp/main.keyfile \
+	--batch-mode luksFormat "${_disk_system}3" /tmp/main.keyfile \
 	--type luks2 --sector-size 4096
 
 printinfo "\n  -> Setting fallback decryption password ..."
-cryptsetup luksAddKey "${_disk_system}p3" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
+cryptsetup luksAddKey "${_disk_system}3" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/pwd.keyfile
 
 printinfo "\n  -> Opening the encrypted root partition ..."
@@ -111,7 +113,7 @@ cryptsetup --key-file /tmp/main.keyfile \
 	--allow-discards \
 	--perf-no_read_workqueue \
 	--perf-no_write_workqueue \
-	open "${_disk_system}p3" root
+	open "${_disk_system}3" root
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/main.keyfile
 
 printinfo "\n  -> Formatting the root partition ..."
@@ -184,12 +186,12 @@ pacman_system=(
 	x86_energy_perf_policy xdg-user-dirs xdg-utils zip zstd
 )
 pacman_tools=(
-	bash-completion bluez-utils ctop curl ffmpeg firejail hey htop iotop iperf3
-	jq libva-utils lfs lshw lsof miniserve neovim nnn p7zip pacman-contrib time
+	bash-completion bluez-utils ctop curl firejail hey htop iotop iperf3 jq
+	libva-utils lfs lshw lsof miniserve neovim nnn p7zip pacman-contrib time
 )
 pacman_development=(
-	base-devel diffutils docker git git-delta man-pages python python-pip tokei
-	vulkan-icd-loader vulkan-mesa-layers
+	base-devel diffutils docker docker-compose git git-delta man-pages python
+	python-pip tokei vulkan-icd-loader vulkan-mesa-layers
 )
 pacman_apps=()
 pacman_fonts=(terminus-font)

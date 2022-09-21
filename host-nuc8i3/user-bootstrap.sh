@@ -47,14 +47,17 @@ sudo chmod u+x userfiles ../pkgs ../pkgs/* ../shared ../shared/userfiles
 mkdir "$HOME/.gnupg" "$HOME/.ssh"
 chmod u=rwx,g=,o= "$HOME/.gnupg" "$HOME/.ssh"
 mkdir -p "$HOME/.config/fontconfig"
-mkdir -p "$HOME/.local/bin/go"
 mkdir -p "$HOME/.local/share/fonts"
-mkdir -p {"$AUR","$CODE","$DOWNLOADS","$FILES","$NOTES","$TRASH"}
+mkdir -p {"$AUR","$DOWNLOADS","$FILES","$NOTES","$TRASH"}
 mkdir -p "$CACHE"/docker
 
 sudo mkdir -p "$MOUNT"
 sudo chown $bt_user:$bt_user "$MOUNT"
 sudo chmod u=rwx,g=rx,o= userfiles "$MOUNT"
+
+sudo mkdir -p "$D1"
+sudo chown $bt_user:$bt_user "$D1"
+sudo chmod u=rwx,g=rx,o= "$D1"
 
 printinfo "\n"
 printinfo "+ --------------- +"

@@ -1,3 +1,4 @@
+set --export D1 "/mnt/d1"
 set --export EDITOR "nvim"
 set --export HOST "nuc8i3"
 set --export MOUNT "/mnt/media"
@@ -9,4 +10,4 @@ set --export FILES "$HOME/files"
 set --export TRASH "$HOME/trash"
 set --export WORK "$HOME/work"
 
-set --export NNN_BMS "0://;a:$AUR;c:$CODE;d:$DOWNLOADS;f:$FILES;m:$MOUNT;n:$NOTES;r:$RECORDINGS;s:$SCREENSHOTS;t:$TRASH;w:$WORK"
+set --export NNN_BMS "0://;1:$D1;a:$AUR;d:$DOWNLOADS;f:$FILES;m:$MOUNT;n:$NOTES;t:$TRASH"

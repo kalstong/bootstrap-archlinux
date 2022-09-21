@@ -1,4 +1,4 @@
-let g:plug_threads=2
+let g:plug_threads=4
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'airblade/vim-gitgutter'
