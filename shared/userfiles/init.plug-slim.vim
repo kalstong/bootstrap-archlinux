@@ -13,7 +13,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'itchyny/vim-gitbranch'
 Plug 'junegunn/fzf.vim'
 Plug 'mg979/vim-visual-multi', { 'branch': 'master' }
-Plug 'neovim/nvim-lspconfig'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'onsails/lspkind.nvim'
 Plug 'pechorin/any-jump.vim'
@@ -81,8 +80,6 @@ lua << EOF
 						return vim.api.nvim_list_bufs()
 					end
 			}},
-			{ name = 'nvim_lsp' },
-			{ name = 'nvim_lsp_signature_help' },
 		}),
 		formatting = {
 			-- Setup lspkind.
@@ -92,14 +89,6 @@ lua << EOF
 			})
 		},
 	})
-
-	-- Setup lspconfig.
-	local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-	local lspconfig = require('lspconfig')
-	local servers = {}
-	for _, lsp in ipairs(servers) do
-		lspconfig[lsp].setup{ capabilities = capabilities }
-	end
 EOF
 catch
 endtry
@@ -148,15 +137,6 @@ let g:lightline = {
 	\ },
 \ }
 
-
-" https://github.com/neovim/nvim-lspconfig
-" ----------------------------------------
-try
-lua <<EOF
-local lspconfig = require('lspconfig')
-EOF
-catch
-endtry
 
 " https://github.com/ntpeters/vim-better-whitespace
 " -------------------------------------------------
