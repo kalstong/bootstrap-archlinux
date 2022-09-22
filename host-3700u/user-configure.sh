@@ -90,7 +90,7 @@ cp ../shared/userfiles/ssh.conf "${HOME}/.ssh/config"
 cp ../shared/userfiles/sxhkdrc "${XDG_CONFIG_HOME}/sxhkd/"
 cp ../shared/userfiles/teams.desktop "${HOME}/.local/share/applications/"
 cp ../shared/userfiles/teams.png "${HOME}/.icons/"
-cp ../shared/userfiles/terminate-session.sh "${XDG_CONFIG_HOME}/polybar/"
+cp ../shared/userfiles/terminate-session.sh "${HOME}/.local/bin/"
 cp ../shared/userfiles/tmux-gitstat.sh "${HOME}/.local/bin/"
 
 sed -i -r "s|<base_dir>|${BUN_INSTALL}|" "${XDG_CONFIG_HOME}/.bunfig.toml"

@@ -38,7 +38,7 @@ cp ../shared/userfiles/init.plug-slim.vim "${XDG_CONFIG_HOME}/nvim/init.plug.vim
 cp ../shared/userfiles/init.chords.vim "${XDG_CONFIG_HOME}/nvim/"
 cp ../shared/userfiles/mimeapps.list "${XDG_CONFIG_HOME}/"
 cp ../shared/userfiles/ssh.conf "${HOME}/.ssh/config"
-cp ../shared/userfiles/terminate-session.sh "${XDG_CONFIG_HOME}/polybar/"
+cp ../shared/userfiles/terminate-session.sh "${HOME}/.local/bin/"
 cp ../shared/userfiles/tmux-gitstat.sh "${HOME}/.local/bin/"
 
 cp ../shared/userfiles/nnn-archive "${XDG_CONFIG_HOME}/nnn/plugins/archive"

@@ -163,7 +163,7 @@ has-cmd () {
 }
 
 logout () {
-	. "$HOME/.config/polybar/terminate-session.sh"
+	. "$HOME/.local/bin/terminate-session.sh"
 }
 
 makefs () {
