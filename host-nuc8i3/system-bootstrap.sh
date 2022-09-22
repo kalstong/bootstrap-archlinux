@@ -180,18 +180,17 @@ pacman_core=(
 	sshfs vulkan-intel xf86-video-intel
 )
 pacman_system=(
-	avahi bat bluez cpupower dash dhcpcd efibootmgr exa exfatprogs f2fs-tools fd
-	fish fwupd fzf gptfdisk gnupg gocryptfs intel-gpu-tools intel-undervolt iwd
-	lz4 man-db nss-mdns parted pbzip2 pigz ripgrep tmux unzip usleep
+	avahi bat bluez cpupower dhcpcd efibootmgr exa exfatprogs f2fs-tools fd fish
+	fwupd fzf gptfdisk gnupg gocryptfs intel-gpu-tools intel-undervolt iwd lz4
+	man-db nss-mdns parted pbzip2 pigz ripgrep tmux unzip usleep
 	x86_energy_perf_policy xdg-user-dirs xdg-utils zip zstd
 )
 pacman_tools=(
-	bash-completion bluez-utils ctop curl firejail hey htop iotop iperf3 jq
-	libva-utils lfs lshw lsof miniserve neovim nnn p7zip pacman-contrib time
+	bash-completion bluez-utils ctop curl firejail htop iotop iperf3 libva-utils
+	lfs lshw lsof miniserve neovim nnn p7zip pacman-contrib time
 )
 pacman_development=(
-	base-devel diffutils docker docker-compose git git-delta man-pages python
-	python-pip tokei vulkan-icd-loader vulkan-mesa-layers
+	base-devel diffutils docker git git-delta man-pages python python-pip tokei
 )
 pacman_apps=()
 pacman_fonts=(terminus-font)
