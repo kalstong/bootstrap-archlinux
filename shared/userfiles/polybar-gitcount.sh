@@ -3,18 +3,23 @@
 dir="$1"
 args="$2"
 
+count () {
+	out=$(/usr/bin/git -C "$dir" $args 2> /dev/null)
+	ret=$?
+	if [ $ret -eq 0 ] && [ -n "$out" ]; then
+		echo "$out" | wc -l
+	elif [ $ret -eq 0 ] ; then
+		echo "0"
+	else
+		echo "?"
+	fi
+}
+
+count
 /usr/bin/inotifywait \
-	--monitor "${dir}/.git" --recursive \
-	--event create --event modify 2> /dev/null |
+	--monitor "${dir}/.git/logs/HEAD" --recursive \
+	--event create 2> /dev/null |
 	while read directory action file; do
 		# echo "'directory'/'$file' via '$action'"
-		out=$(/usr/bin/git -C "$dir" $args 2> /dev/null)
-		ret=$?
-		if [ $ret -eq 0 ] && [ -n "$out" ]; then
-			echo "$out" | wc -l
-		elif [ $ret -eq 0 ] ; then
-			echo "0"
-		else
-			echo "?"
-		fi
+		count
 	done
