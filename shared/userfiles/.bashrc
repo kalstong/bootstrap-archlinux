@@ -241,16 +241,16 @@ mnt () {
 	local fstype=$(echo "$part" | awk '{print $3}')
 	if [ "$fstype" = "exfat" ]; then
 		sudo mount -t exfat --options-mode ignore \
-			-o gid=users,fmask=113,dmask=002,discard,dirsync,lazytime,relatime,sync \
+			-o gid=users,fmask=113,dmask=002,discard,lazytime,relatime \
 			"$path" "$mountpoint" 2> /dev/null
 
 	elif [ "$fstype" = "ext4" ]; then
-		sudo mount -t ext4 --options-mode ignore -o defaults,discard,dirsync,lazytime,sync \
+		sudo mount -t ext4 --options-mode ignore -o defaults,discard,lazytime \
 			"$path" "$mountpoint" 2> /dev/null &&
 		sudo chown $USER:users "$mountpoint"
 
 	elif [ "$fstype" = "f2fs" ]; then
-		sudo mount -t f2fs --options-mode ignore -o atgc,discard,dirsync,gc_merge,lazytime,relatime,sync,whint_mode=fs-based \
+		sudo mount -t f2fs --options-mode ignore -o atgc,discard,gc_merge,lazytime,relatime,whint_mode=fs-based \
 			"$path" "$mountpoint" 2> /dev/null &&
 		sudo chown $USER:users "$mountpoint"
 
@@ -259,18 +259,18 @@ mnt () {
 			"$path" "$mountpoint" 2> /dev/null
 
 	elif [ "$fstype" = "ntfs" ]; then
-		sudo mount -t ntfs3 --options-mode ignore -o discard,dirsync,lazytime,relatime,sync \
+		sudo mount -t ntfs3 --options-mode ignore -o discard,lazytime,relatime \
 			"$path" "$mountpoint" 2> /dev/null &&
 		sudo chown $USER:users "$mountpoint"
 
 	elif [ "$fstype" = "vfat" ]; then
 		sudo mount -t vfat --options-mode ignore \
-			-o gid=users,fmask=113,dmask=002,discard,dirsync,flush,lazytime,relatime,sync \
+			-o gid=users,fmask=113,dmask=002,discard,flush,lazytime,relatime \
 			"$path" "$mountpoint" 2> /dev/null
 
 	else
 		sudo mount --options-mode ignore \
-			-o gid=users,fmask=113,dmask=002,discard,dirsync,flush,lazytime,relatime,sync \
+			-o gid=users,fmask=113,dmask=002,discard,flush,lazytime,relatime \
 			"$path" "$mountpoint" 2> /dev/null
 
 	fi
