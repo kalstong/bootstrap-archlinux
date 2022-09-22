@@ -79,6 +79,7 @@ wm_start_daemons () {
 	export PCO_ICON="$(echo -e "\uf1e6 ")"
 	export BFL_ICON="$(echo -e "\uf240 ")"
 	export BKL_ICON="$(echo -e "\uf0eb ")";
+	export COM_ICON="$(echo -e "\ue13a ")";
 	SXHKD_SHELL=/usr/bin/bash
 
 	set-wallpaper &
