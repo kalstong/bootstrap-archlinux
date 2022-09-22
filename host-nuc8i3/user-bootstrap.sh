@@ -80,7 +80,7 @@ printinfo "| Installing pip packages |"
 printinfo "+ ----------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 pip3 install --user wheel
-pip3 install --user pynvim
+pip3 install --user pynvim pywall
 
 printinfo "\n"
 printinfo "+ ------------------------ +"
