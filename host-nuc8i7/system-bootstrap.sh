@@ -5,7 +5,7 @@
 # CPU: Intel Core i7-8559U @2.70GHz [2]
 # RAM: 2x 16GiB DDR4 @2.40GHz-CL14 DC
 # GPU: Intel Iris Plus Graphics 655 @300/1200MHz
-# SSD: 1TiB M.2 NVMe Intel 660p QLC
+# SSD: 250GB M.2 NVMe Kingston A2000 3D TLC
 #
 # [1]: https://ark.intel.com/content/www/us/en/ark/products/126140/intel-nuc-kit-nuc8i7beh.html
 # [2]: https://ark.intel.com/content/www/us/en/ark/products/137979/intel-core-i7-8559u-processor-8m-cache-up-to-4-50-ghz.html
