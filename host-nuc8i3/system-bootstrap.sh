@@ -51,7 +51,7 @@ printinfo "+ ------------ +"
 _disk_key="/dev/disk/by-id/usb-General_USB_Flash_Disk_7911020000213736-0:0"
 _disk_system="/dev/sda"
 
-sgdisk --zap-all "$_disk_storage"
+sgdisk --zap-all "$_disk_system"
 sync
 
 partprobe "$_disk_system"
@@ -131,7 +131,7 @@ root_mount_opts=$(grep "/dev/mapper/root" sysfiles/fstab | awk '{print $4}')
 mount -o "$root_mount_opts" /dev/mapper/root "$bt_rootdir" && sync
 
 mkdir -p "$bt_rootdir/boot"
-mount -o "$boot_mount_opts" "${_disk_system}p1" "$bt_rootdir/boot"
+mount -o "$boot_mount_opts" "${_disk_system}1" "$bt_rootdir/boot"
 
 printinfo "\n"
 printinfo "+ --------------------- +"
