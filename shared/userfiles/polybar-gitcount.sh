@@ -17,7 +17,9 @@ count () {
 
 count
 /usr/bin/inotifywait \
-	--monitor "${dir}/.git/refs/heads" --monitor "${dir}/.git/refs/remotes" --recursive \
+	--monitor "${dir}/.git/refs/heads" \
+	--monitor "${dir}/.git/refs/remotes" \
+	--recursive \
 	--event create --event modify --event delete 2> /dev/null |
 	while read directory action file; do
 		# echo "'directory'/'$file' via '$action'"
