@@ -28,17 +28,17 @@ set -g __fish_git_prompt_color_untrackedfiles $fish_color_normal
 set -g __fish_git_prompt_color_cleanstate green
 set -g fish_color_command blue --bold
 set -g fish_color_cwd (cat ~/.cache/wal/colors | sed -n 3p)
-set -g fish_color_nnn (cat ~/.cache/wal/colors | sed -n 5p)
+set -g fish_color_lf (cat ~/.cache/wal/colors | sed -n 5p)
 set -g fish_color_error brred --bold
 
 function fish_prompt
 	if test "$ENABLE_GIT_PROMPT" = 1
 		printf '%s%s%s%s%s%s%s > ' (set_color $fish_color_cwd) (prompt_pwd) (set_color $fish_color_normal) \
-			(__fish_git_prompt) (set_color $fish_color_nnn) ([ -n "$NNNLVL" ] && echo " [$NNNLVL]") \
+			(__fish_git_prompt) (set_color $fish_color_lf) ([ -n "$LF_LEVEL" ] && echo " [$LF_LEVEL]") \
 			(set_color $fish_color_normal)
 	else
 		printf '%s%s%s%s%s%s > ' (set_color $fish_color_cwd) (prompt_pwd) (set_color $fish_color_normal) \
-			(set_color $fish_color_nnn) ([ -n "$NNNLVL" ] && echo " [$NNNLVL]") \
+			(set_color $fish_color_lf) ([ -n "$LF_LEVEL" ] && echo " [$LF_LEVEL]") \
 			(set_color $fish_color_normal)
 	end
 end
@@ -100,6 +100,7 @@ alias ....="cd ../../.."
 alias aria2c="aria2c --async-dns=false"
 alias beep="tput bel"
 alias compose="docker compose"
+alias e="lf"
 alias gita="git add"
 alias gitaa="git add --all"
 alias gitau="git add -u"
@@ -288,15 +289,4 @@ function encgpg --description "Encrypt stdin with password into a given file"
 end
 function decgpg --description "Decrypt given file into a nvim buffer"
 	gpg -d "$argv[1]" | nvim -i NONE -n -;
-end
-
-set --export NNN_PLUG 'a:archive;d:fzcd;e:_nvim $nnn*;f:-fzopen;k:-pskill'
-function e --description "Starts nnn in the current directory"
-	env SHELL="/usr/bin/fish" nnn -x $argv
-	set --export NNN_TMPFILE $XDG_CONFIG_HOME/nnn/.lastd
-
-	if test -e $NNN_TMPFILE
-		source $NNN_TMPFILE
-		rm $NNN_TMPFILE
-	end
 end

@@ -59,7 +59,6 @@ Useful packages not installed by default:
 - Check [`clp`](https://github.com/jpe90/clp) as an alternative to `bat`.
 - Check [`fzy`](https://github.com/jhawthorn/fzy) as an alternative to `fzf`,
   when the input doesn't change.
-- Check `lf` as an alternative to `nnn`.
 - Check [`pipewire`](https://wiki.archlinux.org/title/PipeWire) as an
   alternative to `alsa` and `pulseaudio`.
 - Improve GPG helper functions to encrypt/decrypt text or binary files.

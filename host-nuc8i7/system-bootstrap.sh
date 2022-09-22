@@ -183,7 +183,7 @@ pacman_system=(
 pacman_tools=(
 	aria2 bash-completion bluez-utils btop curl ffmpeg firejail fontforge
 	freerdp htop inotify-tools iotop iperf3 jq libva-utils lshw lsof miniserve
-	neovim nnn openconnect openssh openvpn p7zip pacman-contrib time vkmark
+	neovim openconnect openssh openvpn p7zip pacman-contrib time vkmark
 )
 pacman_development=(
 	base-devel diffutils docker docker-compose git git-delta man-pages python

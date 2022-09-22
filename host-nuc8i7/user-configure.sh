@@ -16,6 +16,7 @@ mkdir -p \
 	"${HOME}/.local/bin" \
 	"${HOME}/.local/share/applications" \
 	"${HOME}/.local/share/dunst" \
+	"${HOME}/.local/share/lf" \
 	"${HOME}/.local/share/polybar" \
 	"${HOME}/.local/share/picom" \
 	"${HOME}/.local/share/tint2" \
@@ -31,8 +32,8 @@ mkdir -p \
 	"${XDG_CONFIG_HOME}/git" \
 	"${XDG_CONFIG_HOME}/gtk-3.0" \
 	"${XDG_CONFIG_HOME}/htop" \
+	"${XDG_CONFIG_HOME}/lf" \
 	"${XDG_CONFIG_HOME}/mpv" \
-	"${XDG_CONFIG_HOME}/nnn/plugins" \
 	"${XDG_CONFIG_HOME}/nvim" \
 	"${XDG_CONFIG_HOME}/polybar" \
 	"${XDG_CONFIG_HOME}/pulse" \
@@ -45,6 +46,7 @@ _monospace_font_size="10.5"
 _terminal_font_size="10.5"
 
 touch "${HOME}/.hushlogin"
+touch "${XDG_CONFIG_HOME}/lf/bookmarks"
 cp userfiles/.bashrc "${HOME}/.bashrc.aux"
 cp userfiles/.energypolicy.sh "${XDG_CONFIG_HOME}/"
 cp userfiles/.pam_environment "${HOME}/"
@@ -65,6 +67,7 @@ cp ../shared/userfiles/brave-flags.conf "${XDG_CONFIG_HOME}/"
 cp ../shared/userfiles/bspwmrc "${XDG_CONFIG_HOME}/bspwm/"
 cp ../shared/userfiles/btop.conf "${XDG_CONFIG_HOME}/btop/"
 cp ../shared/userfiles/config.fish "${XDG_CONFIG_HOME}/fish/"
+cp ../shared/userfiles/cp-p "${HOME}/.local/bin/"
 cp ../shared/userfiles/chromium-flags.conf "${XDG_CONFIG_HOME}/"
 cp ../shared/userfiles/dunstrc "${XDG_CONFIG_HOME}/dunst/"
 cp ../shared/userfiles/feh-preview.desktop "${HOME}/.local/share/applications"
@@ -77,8 +80,10 @@ cp ../shared/userfiles/htoprc "${XDG_CONFIG_HOME}/htop/"
 cp ../shared/userfiles/init.vim "${XDG_CONFIG_HOME}/nvim/"
 cp ../shared/userfiles/init.plug.vim "${XDG_CONFIG_HOME}/nvim/"
 cp ../shared/userfiles/init.chords.vim "${XDG_CONFIG_HOME}/nvim/"
+cp ../shared/userfiles/lfrc "${XDG_CONFIG_HOME}/lf/"
 cp ../shared/userfiles/mimeapps.list "${XDG_CONFIG_HOME}/"
 cp ../shared/userfiles/mpv.conf "${XDG_CONFIG_HOME}/mpv/"
+cp ../shared/userfiles/mv-p "${HOME}/.local/bin/"
 cp ../shared/userfiles/postman.desktop "${HOME}/.local/share/applications"
 cp ../shared/userfiles/redshift.conf "${XDG_CONFIG_HOME}/"
 cp ../shared/userfiles/rofi_1440p.rasi "${XDG_CONFIG_HOME}/rofi/themes"
@@ -90,12 +95,19 @@ cp ../shared/userfiles/teams.desktop "${HOME}/.local/share/applications/"
 cp ../shared/userfiles/teams.png "${HOME}/.icons/"
 cp ../shared/userfiles/terminate-session.sh "${HOME}/.local/bin/"
 cp ../shared/userfiles/tmux-gitstat.sh "${HOME}/.local/bin/"
-sed -i -r "s|<dir>|${TRASH}/.firejail.postman|" "${HOME}/.local/share/applications/postman.desktop"
+sed -i -r "s|<dir>|${TRASH}/.firejail.postman|" \
+	"${HOME}/.local/share/applications/postman.desktop"
 
-cp ../shared/userfiles/nnn-archive "${XDG_CONFIG_HOME}/nnn/plugins/archive"
-cp ../shared/userfiles/nnn-fzcd "${XDG_CONFIG_HOME}/nnn/plugins/fzcd"
-cp ../shared/userfiles/nnn-fzopen "${XDG_CONFIG_HOME}/nnn/plugins/fzopen"
-cp ../shared/userfiles/nnn-pskill "${XDG_CONFIG_HOME}/nnn/plugins/pskill"
+echo "0:/
+a:${AUR}
+c:${CODE}
+d:${DOWNLOADS}
+f:${FILES}
+h:${HOME}
+m:${MOUNT}
+t:${TRASH}
+w:${WORK}" > "${HOME}/.local/share/lf/marks"
+
 cp ../shared/userfiles/polybar-*.sh "${HOME}/.local/bin/"
 gcc ../shared/userfiles/polybar-fsusage.c \
 	-std=c99 -Wall -Wextra -O2 -flto \
@@ -109,8 +121,9 @@ gcc ../shared/userfiles/polybar-polytimer.c -flto \
 
 chmod u+x "${XDG_CONFIG_HOME}/bspwm/bspwmrc"
 chmod u+x "${XDG_CONFIG_HOME}/display_layout.sh"
-chmod u+x "${XDG_CONFIG_HOME}"/nnn/plugins/*
 chmod u+x "${HOME}/.local/bin/tmux-gitstat.sh"
+chmod u+x "${HOME}/.local/bin/cp-p"
+chmod u+x "${HOME}/.local/bin/mv-p"
 
 cp ../shared/userfiles/alacritty.yml /tmp
 sed -i -r "s|<monospace-font-size>|${_monospace_font_size}|" /tmp/alacritty.yml
@@ -125,9 +138,12 @@ xdg-user-dirs-update --set DOWNLOAD "$DOWNLOADS"
 rmdir "$HOME/"{Desktop,Documents,Downloads,Music} &> /dev/null
 rmdir "$HOME/"{Pictures,Public,Templates,Videos} &> /dev/null
 
-sed -i -r "s|<monospace-font-size>|${_monospace_font_size}|" "${HOME}/.Xresources"
-sed -i -r "s|<monospace-font-size>|${_monospace_font} ${_monospace_font_size}|" "${XDG_CONFIG_HOME}/dunst/dunstrc"
-sed -i -r "s|<monospace-font-size>|${_monospace_font_size}|" "${XDG_CONFIG_HOME}/polybar/config.ini"
+sed -i -r "s|<monospace-font-size>|${_monospace_font_size}|" \
+	"${HOME}/.Xresources"
+sed -i -r "s|<monospace-font-size>|${_monospace_font} ${_monospace_font_size}|" \
+	"${XDG_CONFIG_HOME}/dunst/dunstrc"
+sed -i -r "s|<monospace-font-size>|${_monospace_font_size}|" \
+	"${XDG_CONFIG_HOME}/polybar/config.ini"
 
 cp ../shared/userfiles/picom.conf /tmp
 sed -i -r "s|<username>|$USER|" "/tmp/picom.conf"

@@ -1,0 +1,93 @@
+cmd archive ${{
+	set -f
+	archive_ext="${1##*.}"
+	archive_name="${1%.*}"
+
+	if [ "$archive_ext" = "7z" ]; then
+		for item in $fx
+		do
+			cd $(dirname "$item") && 7z a "$PWD/$1" ./$(basename "$item")
+		done
+
+	elif [ "$archive_ext" = "tar" ]; then
+		for item in $fx
+		do
+			cd $(dirname "$item") && tar --update --file \
+				"$PWD/$1" $(basename "$item")
+		done
+
+	elif [ "$archive_ext" = "tar.bz2" ] || [ "$archive_ext" = "tbz2" ]; then
+		for item in $fx
+		do
+			cd $(dirname "$item") && tar --update --file \
+				"$PWD/$archive_name".tar $(basename "$item")
+		done
+		pbzip2 --stdout "$PWD/$archive_name".tar > "$PWD/$1"
+		rm "$PWD/$archive_name".tar
+
+	elif [ "$archive_ext" = "tar.gz" ] || [ "$archive_ext" = "tgz" ]; then
+		for item in $fx
+		do
+			cd $(dirname "$item") && tar --update --file \
+				"$PWD/$archive_name".tar $(basename "$item")
+		done
+		pigz --stdout "$PWD/$archive_name".tar > "$PWD/$1"
+		rm "$PWD/$archive_name".tar
+
+	elif [ "$archive_ext" = "tar.xz" ] || [ "$archive_ext" = "txz" ]; then
+		for item in $fx
+		do
+			cd $(dirname "$item") && tar --update --file \
+				"$PWD/$archive_name".tar $(basename "$item")
+		done
+		xz --threads=0 --stdout "$PWD/$archive_name".tar > "$PWD/$1"
+		rm "$PWD/$archive_name".tar
+
+	elif [ "$archive_ext" = "tar.zst" ] || [ "$archive_ext" = "txz" ]; then
+		for item in $fx
+		do
+			cd $(dirname "$item") && tar --update --file \
+				"$PWD/$archive_name".tar $(basename "$item")
+		done
+		zstd --threads=0 --stdout "$PWD/$1".tar > "$PWD/$1"
+		rm "$PWD/$archive_name".tar
+
+	elif [ "$archive_ext" = "zip" ]; then
+		for item in $fx
+		do
+			cd $(dirname "$item") && zip --recurse-path \
+				"$PWD/$1" ./$(basename "$item")
+		done
+	fi
+}}
+
+cmd fzfcd ${{
+	set -f
+	sel=$(fd --exclude '.git/' --hidden --strip-cwd-prefix --type d --type f | fzf)
+	if [ -d "$sel" ]; then
+		lf -remote "send $id cd \"$sel\""
+	else
+		lf -remote "send $id select \"$sel\""
+	fi
+}}
+cmd bookmark_jump ${{
+	res="$(cat "$LF_BOOKMARKS_PATH" | fzf --with-nth=1)"
+	lf -remote "send $id cd \"$(eval echo $res)\""
+}}
+
+cmd bookmark_add ${{
+	echo "$f" >> "$LF_BOOKMARKS_PATH"
+	lf -remote "send echo bookmarked: $f"
+}}
+
+cmd paste $cp-p --lf-paste $id
+
+map "'" push :bookmark_jump<enter>
+map + push :bookmark_add<enter>
+map ~ cd
+map . set hidden!
+map - jump-prev
+map ; push :fzfcd<enter>
+map a push :archive<space>
+map b mark-load
+map x delete

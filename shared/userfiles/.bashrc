@@ -1,4 +1,4 @@
-PS1="\[$(tput setaf 5)\]\A\[$(tput sgr0)\] \w$([ -n "$NNNLVL" ] && echo " nnn:$NNNLVL") \[$(tput setaf 6)\]>\[$(tput sgr0)\] "
+PS1="\[$(tput setaf 5)\]\A\[$(tput sgr0)\] \w$([ -n "$LF_LEVEL" ] && echo " lf:$LF_LEVEL") \[$(tput setaf 6)\]>\[$(tput sgr0)\] "
 
 . "$HOME/.bashrc.aux"
 [ -f /opt/asdf-vm/asdf.sh ] && . /opt/asdf-vm/asdf.sh
@@ -79,6 +79,7 @@ alias ....="cd ../../.."
 alias aria2c="aria2c --async-dns=false"
 alias beep="tput bel"
 alias compose="docker compose"
+alias e="lf"
 alias gita="git add"
 alias gitaa="git add --all"
 alias gitau="git add -u"
@@ -847,16 +848,3 @@ export FZF_ALT_C_COMMAND="fd --exclude '.git/' --hidden --strip-cwd-prefix --typ
 export GPG_TTY=$(tty)
 encgpg () { gpg -c -o "$1" "$2"; }
 decgpg () { gpg -d "$1" | nvim -i NONE -n -; }
-
-export NNN_PLUG='a:archive;d:fzcd;e:_nvim $nnn*;f:-fzopen;k:-pskill'
-e () {
-	nnn -x "$@"
-	export NNN_TMPFILE="$XDG_CONFIG_HOME/nnn/.lastd"
-
-	if [ -f "$NNN_TMPFILE" ]; then
-		. "$NNN_TMPFILE"
-		rm -f "$NNN_TMPFILE" &> /dev/null
-	fi
-
-	set_vte_theme && clear
-}
