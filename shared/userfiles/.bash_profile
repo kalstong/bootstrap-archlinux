@@ -28,6 +28,7 @@ if shopt -q login_shell; then
 		exec startx -- -keeptty -ardelay 190 -arinterval 15 &> ~/.local/share/xorg/tty.log
 	elif [ "$TERM" = "linux" ]; then
 		sudo kbdrate -s -d 190 -r 100
+		[ ! -d "$HOME/.cache/wal" ] && wal --theme base16-default
 		clear
 	fi
 fi
