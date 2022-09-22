@@ -2,7 +2,7 @@ set fish_greeting
 
 source "$XDG_CONFIG_HOME/fish/config.aux.fish"
 if [ -f /opt/asdf-vm/asdf.fish ]
-  source /opt/asdf-vm/asdf.fish
+	source /opt/asdf-vm/asdf.fish
 end
 
 # set --export FORGIT_NO_ALIASES "true"
@@ -55,33 +55,33 @@ function disable_git_prompt
 end
 
 function fish_mode_prompt
-  switch $fish_bind_mode
-    case default
-      set_color --background red
-      set_color black
-      echo ' C '
-			set_color normal
-			echo ' '
-    case insert
-      echo ''
-    case replace_one
-      set_color --background green
-      set_color black
-      echo ' R '
-			set_color normal
-			echo ' '
-    case visual
-      set_color --background yellow
-      set_color black
-      echo ' S '
-			set_color normal
-			echo ' '
-    case '*'
-      set_color --background blue
-      set_color black
-      echo ' ? '
-			set_color normal
-			echo ' '
+	switch $fish_bind_mode
+	case default
+		set_color --background red
+		set_color black
+		echo ' C '
+		set_color normal
+		echo ' '
+	case insert
+		echo ''
+	case replace_one
+		set_color --background green
+		set_color black
+		echo ' R '
+		set_color normal
+		echo ' '
+	case visual
+		set_color --background yellow
+		set_color black
+		echo ' S '
+		set_color normal
+		echo ' '
+	case '*'
+		set_color --background blue
+		set_color black
+		echo ' ? '
+		set_color normal
+		echo ' '
   end
 end
 
@@ -100,7 +100,6 @@ alias ....="cd ../../.."
 alias aria2c="aria2c --async-dns=false"
 alias beep="tput bel"
 alias compose="docker compose"
-alias e="lf"
 alias gita="git add"
 alias gitaa="git add --all"
 alias gitau="git add -u"
@@ -158,6 +157,15 @@ end
 
 function display-layout --description "Set a different display layout"
 	bash -i -c "display-layout $argv"
+end
+
+function e --description "lf wrapper"
+	lf
+	if [ -f /tmp/lfcd ]
+		set --local dir (cat /tmp/lfcd)
+		[ -d "$dir" ] && cd "$dir"
+		rm -rf /tmp/lfcd
+	end
 end
 
 function energypolicy --description "Enables an energy policy"

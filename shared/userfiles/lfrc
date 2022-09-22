@@ -71,16 +71,18 @@ cmd fzfcd ${{
 	fi
 }}
 cmd bookmark_jump ${{
+	set -f
 	res="$(cat "$LF_BOOKMARKS_PATH" | fzf --with-nth=1)"
 	lf -remote "send $id cd \"$(eval echo $res)\""
 }}
 
-cmd bookmark_add ${{
-	echo "$f" >> "$LF_BOOKMARKS_PATH"
-	lf -remote "send echo bookmarked: $f"
+cmd quitcd ${{
+	echo "$PWD" > /tmp/lfcd
+	lf -remote "send $id quit"
 }}
 
 cmd paste $cp-p --lf-paste $id
+
 
 map "'" push :bookmark_jump<enter>
 map + push :bookmark_add<enter>
@@ -90,4 +92,6 @@ map - jump-prev
 map ; push :fzfcd<enter>
 map a push :archive<space>
 map b mark-load
+map q quit
 map x delete
+map <c-g> push :quitcd<enter>

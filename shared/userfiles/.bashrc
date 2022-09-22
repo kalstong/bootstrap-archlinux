@@ -79,7 +79,6 @@ alias ....="cd ../../.."
 alias aria2c="aria2c --async-dns=false"
 alias beep="tput bel"
 alias compose="docker compose"
-alias e="lf"
 alias gita="git add"
 alias gitaa="git add --all"
 alias gitau="git add -u"
@@ -135,6 +134,15 @@ display-layout () {
 	[ "$layout" != "$layout_new" ] &&
 		echo "$layout_new" > "$layout_file" &&
 		bspc wm --restart
+}
+
+e () {
+	lf
+	if [ -f /tmp/lfcd ]; then
+		local dir=$(cat /tmp/lfcd)
+		[ -d "$dir" ] && cd "$dir"
+		rm -rf /tmp/lfcd
+	fi
 }
 
 energypolicy () {
