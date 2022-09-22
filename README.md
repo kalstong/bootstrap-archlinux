@@ -78,5 +78,14 @@ Useful packages not installed by default:
   OpenGL/Vulkan frame buffers w/ minimal performance penalties.
 
 
+## Overclock/Undervolt Configuration
+- nuc8i3: Controlled through `intel-undervolt`
+- nuc8i7: Controlled through `intel-undervolt`
+- nuc8hvk: TODO
+- 8700k: TODO
+- 9900k: TODO
+- 3950x: TODO
+
+
 ## Notes
 - List of [Chromium's CLI switches](https://peter.sh/experiments/chromium-command-line-switches/).

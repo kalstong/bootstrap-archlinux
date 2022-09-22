@@ -70,7 +70,7 @@ _ends_at=$((${_starts_at} + 512)) # 512MiB boot partition
 parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" set 1 esp on && sync
 
 _starts_at=${_ends_at}
-_ends_at=$((${_starts_at} + 4 * 1024)) # 8GiB swap partition
+_ends_at=$((${_starts_at} + 4 * 1024)) # 4GiB swap partition
 parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" && sync
 
 _starts_at=${_ends_at} # Remaining space as the root partition
