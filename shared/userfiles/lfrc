@@ -97,4 +97,7 @@ map x delete
 map <c-g> push :quitcd<enter>
 
 
+set icons
+set preview
+set previewer lfpreview
 set ratios 2:3

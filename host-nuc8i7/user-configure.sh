@@ -81,6 +81,8 @@ cp ../shared/userfiles/init.vim "${XDG_CONFIG_HOME}/nvim/"
 cp ../shared/userfiles/init.plug.vim "${XDG_CONFIG_HOME}/nvim/"
 cp ../shared/userfiles/init.chords.vim "${XDG_CONFIG_HOME}/nvim/"
 cp ../shared/userfiles/lfrc "${XDG_CONFIG_HOME}/lf/"
+cp ../shared/userfiles/lficons "${XDG_CONFIG_HOME}/lf/icons"
+cp ../shared/userfiles/lfpreview "${HOME}/.local/bin/"
 cp ../shared/userfiles/mimeapps.list "${XDG_CONFIG_HOME}/"
 cp ../shared/userfiles/mpv.conf "${XDG_CONFIG_HOME}/mpv/"
 cp ../shared/userfiles/mv-p "${HOME}/.local/bin/"
@@ -119,11 +121,12 @@ gcc ../shared/userfiles/polybar-polytimer.c -flto \
 	-std=c99 -Wall -Wextra -O2 -flto \
 	-o "${HOME}/.local/bin/polytimer"
 
+chmod u+x "${HOME}/.local/bin/cp-p"
+chmod u+x "${HOME}/.local/bin/lfpreview"
+chmod u+x "${HOME}/.local/bin/mv-p"
+chmod u+x "${HOME}/.local/bin/tmux-gitstat.sh"
 chmod u+x "${XDG_CONFIG_HOME}/bspwm/bspwmrc"
 chmod u+x "${XDG_CONFIG_HOME}/display_layout.sh"
-chmod u+x "${HOME}/.local/bin/tmux-gitstat.sh"
-chmod u+x "${HOME}/.local/bin/cp-p"
-chmod u+x "${HOME}/.local/bin/mv-p"
 
 cp ../shared/userfiles/alacritty.yml /tmp
 sed -i -r "s|<monospace-font-size>|${_monospace_font_size}|" /tmp/alacritty.yml

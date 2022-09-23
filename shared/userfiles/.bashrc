@@ -73,6 +73,7 @@ export HISTCONTROL=ignoreboth:ereasedups
 export HISTIGNORE="?:??:???:????:?????"
 export HISTTIMEFORMAT="%F %T "
 export LESSCHARSET=UTF-8
+export PAGER="bat --color always --style="auto""
 
 alias ...="cd ../.."
 alias ....="cd ../../.."

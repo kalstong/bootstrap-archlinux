@@ -37,6 +37,8 @@ cp ../shared/userfiles/git.conf "${XDG_CONFIG_HOME}/git/config"
 cp ../shared/userfiles/gpg.conf "${HOME}/.gnupg/"
 cp ../shared/userfiles/htoprc "${XDG_CONFIG_HOME}/htop/"
 cp ../shared/userfiles/lfrc "${XDG_CONFIG_HOME}/lf/"
+cp ../shared/userfiles/lficons "${XDG_CONFIG_HOME}/lf/icons"
+cp ../shared/userfiles/lfpreview "${HOME}/.local/bin/"
 cp ../shared/userfiles/init.vim "${XDG_CONFIG_HOME}/nvim/"
 cp ../shared/userfiles/init.plug-slim.vim "${XDG_CONFIG_HOME}/nvim/init.plug.vim"
 cp ../shared/userfiles/init.chords.vim "${XDG_CONFIG_HOME}/nvim/"
@@ -55,6 +57,7 @@ m:${MOUNT}
 t:${TRASH}" > "${HOME}/.local/share/lf/marks"
 
 chmod u+x "${HOME}/.local/bin/cp-p"
+chmod u+x "${HOME}/.local/bin/lfpreview"
 chmod u+x "${HOME}/.local/bin/mv-p"
 
 sed -i -r "s|<xdg-config-home>|${XDG_CONFIG_HOME}|" "${HOME}/.pam_environment"
