@@ -140,8 +140,8 @@ map s push :fzf_search<enter>
 map x delete
 map o push :cd_selection<enter>
 map B push :bookmark_jump<enter>
+map M push :bookmark_add<enter>
 map O push :cd_selection_quit<enter>
-map T push :bookmark_add<enter>
 map W push :cd_quit<enter>
 
 
