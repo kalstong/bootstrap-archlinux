@@ -81,8 +81,12 @@ cmd fzf_cd ${{
 	set -f
 	sel=$(fd --exclude '.git/' --hidden --strip-cwd-prefix --type d --type f | fzf)
 	if [ -d "$sel" ]; then
+		name=$(basename "$sel")
+		[[ $name = .* ]] && lf -remote "send $id set hidden"
 		lf -remote "send $id cd \"$sel\""
 	else
+		name=$(basename "$sel")
+		[[ $name = .* ]] && lf -remote "send $id set hidden"
 		lf -remote "send $id select \"$sel\""
 	fi
 }}
