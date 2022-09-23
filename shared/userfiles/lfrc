@@ -95,3 +95,6 @@ map b mark-load
 map q quit
 map x delete
 map <c-g> push :quitcd<enter>
+
+
+set ratios 2:3
