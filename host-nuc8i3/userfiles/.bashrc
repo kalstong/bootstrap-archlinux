@@ -8,7 +8,6 @@ export DOWNLOADS="$HOME/files/downloads"
 export FILES="$HOME/files"
 export NOTES="$FILES/notes"
 export TRASH="$HOME/trash"
+export LF_BOOKMARKS_PATH="$XDG_CONFIG_HOME/lf/bookmarks"
 
-
-export NNN_BMS="0://;1:$D1;a:$AUR;d:$DOWNLOADS;f:$FILES;m:$MOUNT;n:$NOTES;t:$TRASH"
 [[ ! "$PATH" =~ $HOME/.local/bin ]] && export PATH="$PATH:$HOME/.local/bin"

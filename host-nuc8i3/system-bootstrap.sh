@@ -187,7 +187,7 @@ pacman_system=(
 )
 pacman_tools=(
 	bash-completion bluez-utils ctop curl firejail htop iotop iperf3 libva-utils
-	lfs lshw lsof miniserve neovim nnn p7zip pacman-contrib time
+	lfs lshw lsof miniserve neovim p7zip pacman-contrib strace time
 )
 pacman_development=(
 	base-devel diffutils docker git git-delta man-pages python python-pip tokei

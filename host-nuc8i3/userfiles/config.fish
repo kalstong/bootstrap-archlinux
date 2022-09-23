@@ -9,5 +9,4 @@ set --export DOWNLOADS "$HOME/files/downloads"
 set --export FILES "$HOME/files"
 set --export TRASH "$HOME/trash"
 set --export WORK "$HOME/work"
-
-set --export NNN_BMS "0://;1:$D1;a:$AUR;d:$DOWNLOADS;f:$FILES;m:$MOUNT;n:$NOTES;t:$TRASH"
+set --export LF_BOOKMARKS_PATH "$XDG_CONFIG_HOME/lf/bookmarks"

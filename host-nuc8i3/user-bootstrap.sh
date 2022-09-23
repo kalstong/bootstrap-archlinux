@@ -83,6 +83,30 @@ pip3 install --user wheel
 pip3 install --user pynvim pywall
 
 printinfo "\n"
+printinfo "+ ----------------------- +"
+printinfo "| Installing AUR packages |"
+printinfo "+ ----------------------- +"
+[ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
+
+aur_pkgs=(lf-bin@master)
+
+cd "$AUR"
+for pkg in ${aur_pkgs[*]}
+do
+	_name=${pkg%%@*}
+	_tag=${pkg##*@}
+	_repo="https://aur.archlinux.org/${_name}.git"
+
+	git clone "$_repo" || continue
+
+	cd "$_name"
+	git checkout "$_tag"
+	makepkg -sirc --noconfirm --needed || true
+	cd ..
+done
+cd "$script_path"
+
+printinfo "\n"
 printinfo "+ ------------------------ +"
 printinfo "| Installing Neovim pugins |"
 printinfo "+ ------------------------ +"
