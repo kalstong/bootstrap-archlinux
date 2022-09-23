@@ -112,13 +112,24 @@ cmd fzf_search ${{
 
 cmd paste $cp-p --lf-paste $id
 
-cmd quitcd ${{
-	echo "$PWD" > /tmp/lfcd
+cmd cd_quit ${{
+	echo "$PWD" > /tmp/lfcd &&
 	lf -remote "send $id quit"
 }}
 
+cmd cd_selection ${{
+	[ -d "$f" ] &&
+		lf -remote "send $id cd \"$f\""
+		lf -remote "send $id \$$SHELL"
+}}
 
-map ~ cd
+cmd cd_selection_quit ${{
+	[ -d "$f" ] &&
+		echo "$f" > /tmp/lfcd &&
+		lf -remote "send $id quit"
+}}
+
+
 map . set hidden!
 map - jump-prev
 map ; push :fzf_cd<enter>
@@ -127,9 +138,11 @@ map b mark-load
 map q quit
 map s push :fzf_search<enter>
 map x delete
+map o push :cd_selection<enter>
 map B push :bookmark_jump<enter>
+map O push :cd_selection_quit<enter>
 map T push :bookmark_add<enter>
-map W push :quitcd<enter>
+map W push :cd_quit<enter>
 
 
 set icons
