@@ -1,3 +1,8 @@
+# Documentation: https://pkg.go.dev/github.com/gokcehan/lf
+# Repository: https://github.com/gokcehan/lf
+# Wiki: https://github.com/gokcehan/lf/wiki
+
+
 cmd archive ${{
 	set -f
 	archive_ext="${1##*.}"
@@ -61,7 +66,13 @@ cmd archive ${{
 	fi
 }}
 
-cmd fzfcd ${{
+cmd bookmark_jump ${{
+	set -f
+	res="$(cat "$LF_BOOKMARKS_PATH" | fzf --with-nth=1)"
+	lf -remote "send $id cd \"$(eval echo $res)\""
+}}
+
+cmd fzf_cd ${{
 	set -f
 	sel=$(fd --exclude '.git/' --hidden --strip-cwd-prefix --type d --type f | fzf)
 	if [ -d "$sel" ]; then
@@ -70,18 +81,36 @@ cmd fzfcd ${{
 		lf -remote "send $id select \"$sel\""
 	fi
 }}
-cmd bookmark_jump ${{
-	set -f
-	res="$(cat "$LF_BOOKMARKS_PATH" | fzf --with-nth=1)"
-	lf -remote "send $id cd \"$(eval echo $res)\""
+
+cmd fzf_search ${{
+	RG_PREFIX="rg --color=always --column --hidden --line-number "\
+"--no-heading --no-mmap --smart-case --threads 2 "\
+"--glob '!{.git,node_modules}/*' "
+	FZF_DEFAULT_COMMAND="${RG_PREFIX} ''"
+
+	res=`fzf --ansi --bind "change:reload:$RG_PREFIX {q} || true" --delimiter ':' --nth '2..' --reverse --layout=reverse`
+	file=$(echo "$res" | awk -F ':' '{ print $1}')
+	line=$(echo "$res" | awk -F ':' '{ print $2}')
+
+	if [ -n "$file" ] && [ -n "$line" ]; then
+		name=$(basename "$file")
+		[[ $name = .* ]] && lf -remote "send $id set hidden"
+		lf -remote "send $id select \"$file\""
+		nvim "+${line}" "${file}"
+
+	elif [ -n "$file" ]; then
+		name=$(basename "$file")
+		[[ $name = .* ]] && lf -remote "send $id set hidden"
+		lf -remote "send $id select \"$file\""
+	fi
 }}
+
+cmd paste $cp-p --lf-paste $id
 
 cmd quitcd ${{
 	echo "$PWD" > /tmp/lfcd
 	lf -remote "send $id quit"
 }}
-
-cmd paste $cp-p --lf-paste $id
 
 
 map "'" push :bookmark_jump<enter>
@@ -89,10 +118,11 @@ map + push :bookmark_add<enter>
 map ~ cd
 map . set hidden!
 map - jump-prev
-map ; push :fzfcd<enter>
+map ; push :fzf_cd<enter>
 map a push :archive<space>
 map b mark-load
 map q quit
+map s push :fzf_search<enter>
 map x delete
 map <c-g> push :quitcd<enter>
 
@@ -100,4 +130,4 @@ map <c-g> push :quitcd<enter>
 set icons
 set preview
 set previewer lfpreview
-set ratios 2:3
+set ratios 2:4
