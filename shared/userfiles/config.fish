@@ -94,7 +94,7 @@ bind --mode insert \cy accept-autosuggestion execute
 
 set --export EDITOR nvim
 set --export LESSCHARSET UTF-8
-set --export PAGER "bat --color always --style="auto""
+set --export PAGER "bat --color always --style=auto --wrap=never"
 
 alias ...="cd ../.."
 alias ....="cd ../../.."
