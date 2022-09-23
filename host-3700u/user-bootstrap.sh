@@ -93,7 +93,7 @@ printinfo "+ ----------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 aur_pkgs=(
-	asdf-vm@master brave-bin@master lf-bin@master postman-bin@master
+	asdf-vm@master brave-bin@master postman-bin@master
 )
 
 cd "$AUR"

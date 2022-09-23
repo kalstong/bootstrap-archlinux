@@ -186,8 +186,8 @@ pacman_system=(
 	x86_energy_perf_policy xdg-user-dirs xdg-utils zip zstd
 )
 pacman_tools=(
-	bash-completion bluez-utils ctop curl firejail htop iotop iperf3 libva-utils
-	lfs lshw lsof miniserve neovim p7zip pacman-contrib strace time
+	bash-completion bluez-utils ctop curl firejail htop iotop iperf3 lf lfs
+	libva-utils lshw lsof miniserve neovim p7zip pacman-contrib strace time
 )
 pacman_development=(
 	base-devel diffutils docker git git-delta man-pages python python-pip tokei

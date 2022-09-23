@@ -186,9 +186,9 @@ pacman_system=(
 )
 pacman_tools=(
 	aria2 bash-completion bluez-utils btop curl ffmpeg firejail fontforge
-	freerdp htop inotify-tools iotop iperf3 jq libva-utils lshw lsof miniserve
-	neovim openconnect openssh openvpn p7zip pacman-contrib radeontop strace
-	time tree vkmark
+	freerdp htop inotify-tools iotop iperf3 jq lf libva-utils lshw lsof
+	miniserve neovim openconnect openssh openvpn p7zip pacman-contrib radeontop
+	strace time tree vkmark
 )
 pacman_development=(
 	base-devel diffutils docker docker-compose git git-delta man-pages python

@@ -188,7 +188,7 @@ pacman_system=(
 )
 pacman_tools=(
 	aria2 bash-completion bluez-utils btop curl ffmpeg firejail freerdp htop
-	inotify-tools iotop iperf3 jq libva-utils lshw lsof miniserve neovim
+	inotify-tools iotop iperf3 jq lf libva-utils lshw lsof miniserve neovim
 	openconnect openssh openvpn p7zip pacman-contrib radeontop strace time
 	vkmark
 )

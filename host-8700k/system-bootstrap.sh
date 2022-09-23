@@ -216,8 +216,8 @@ pacman_system=(
 )
 pacman_tools=(
 	aria2 bash-completion bluez-utils btop curl ffmpeg firejail freerdp htop
-	inotify-tools iotop iperf3 jq libva-utils lshw lsof miniserve neovim nvtop
-	openconnect openssh openvpn p7zip pacman-contrib strace time vkmark
+	inotify-tools iotop iperf3 jq libva-utils lf lshw lsof miniserve neovim
+	nvtop openconnect openssh openvpn p7zip pacman-contrib strace time vkmark
 )
 pacman_development=(
 	autoconf-archive base-devel diffutils docker docker-compose gdb git
