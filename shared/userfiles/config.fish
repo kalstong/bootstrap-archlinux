@@ -215,20 +215,20 @@ function mkcd --description "Make directory and cd into it"
 	cd "$argv[1]"
 end
 
-function mnt --description "Mount a device the users group can write to"
-	bash -i -c "mnt $argv"
+function m --description "Mount a device the users group can write to"
+	bash -i -c "m $argv"
 end
 
-function mnt-gocrypt --description "Mount a folder encrypted by gocryptfs"
-	bash -i -c "mnt-gocrypt $argv"
+function m-gocrypt --description "Mount a folder encrypted by gocryptfs"
+	bash -i -c "m-gocrypt $argv"
 end
 
-function mnt-ssh --description "Mount a folder available through SSH"
-	bash -i -c "mnt-ssh $argv"
+function m-ssh --description "Mount a folder available through SSH"
+	bash -i -c "m-ssh $argv"
 end
 
-function mnt-vcrypt --description "Mount a Veracrypt file"
-	bash -i -c "mnt-vcrypt $argv"
+function m-vcrypt --description "Mount a Veracrypt file"
+	bash -i -c "m-vcrypt $argv"
 end
 
 function notes --description "Take notes"
@@ -275,8 +275,8 @@ function theme --description "Set a colorscheme from pywall"
 	bash -i -c "theme"
 end
 
-function umnt --description "Unmount a partition, gofscrypt folder or Veracrypt file"
-	bash -i -c "umnt $argv"
+function um --description "Unmount a partition, gofscrypt folder or Veracrypt file"
+	bash -i -c "um $argv"
 end
 
 function vcrypt-create --description "Create a password-encrypt Veracrypt file"

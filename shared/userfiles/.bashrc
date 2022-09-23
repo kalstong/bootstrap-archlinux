@@ -217,7 +217,7 @@ mkcd () {
 	cd "$1"
 }
 
-mnt () {
+m () {
 	# TODO: How to detect if a LUKS device is opened:
 	# https://unix.stackexchange.com/a/302850
 
@@ -294,8 +294,8 @@ mnt () {
 	fi
 }
 
-mnt-gocrypt () {
-	[ ! -d "$1"	] && echo "Usage: mnt-gocrypt <cypherdir>" && return 1
+m-gocrypt () {
+	[ ! -d "$1"	] && echo "Usage: m-gocrypt <cypherdir>" && return 1
 
 	local mountpoint="${MOUNT}/gocrypt$(($(/usr/bin/ls -1 $MOUNT | grep '^gocrypt*' | wc -l) + 1))"
 	mkdir -p "$mountpoint" || { echo "Failed to create directory for mount point: '$mountpoint'" && return 1; }
@@ -312,8 +312,8 @@ mnt-gocrypt () {
 	fi
 }
 
-mnt-ssh () {
-	[ -z "$1" ] && echo "Usage: mnt-ssh <user>@<host>:<dir> [port]" && return 1
+m-ssh () {
+	[ -z "$1" ] && echo "Usage: m-ssh <user>@<host>:<dir> [port]" && return 1
 
 	local mountpoint="${MOUNT}/sshfs$(($(/usr/bin/ls -1 $MOUNT | grep '^sshfs*' | wc -l) + 1))"
 	mkdir -p "$mountpoint" || { echo "Failed to create directory for mount point: '$mountpoint'" && return 1; }
@@ -330,8 +330,8 @@ mnt-ssh () {
 	fi
 }
 
-mnt-vcrypt () {
-	[ ! -f "$1" ] && echo "Usage: mnt-vcrypt <veracrypt-file>" && return 1
+m-vcrypt () {
+	[ ! -f "$1" ] && echo "Usage: m-vcrypt <veracrypt-file>" && return 1
 
 	local mountpoint="${MOUNT}/vcrypt$(($(/usr/bin/ls -1 $MOUNT | grep '^vcrypt*' | wc -l) + 1))"
 	mkdir -p "$mountpoint" || { echo "Failed to create directory for mount point: '$mountpoint'" && return 1; }
@@ -804,7 +804,7 @@ theme () {
 	fi
 }
 
-umnt () {
+um () {
 	# Find the directories at $MOUNT that are already used as a mount point.
 	# Taken from: https://catonmat.net/set-operations-in-unix-shell
 	# local mountpoint=$(comm -12 <(/bin/ls -1Ld $MOUNT/* | sort) \
