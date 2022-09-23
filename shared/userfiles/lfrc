@@ -110,6 +110,27 @@ cmd fzf_search ${{
 	fi
 }}
 
+cmd pager ${{
+	case "$f" in
+		*.tar*)
+			tar tf "$f" | $PAGER;;
+		*.zip)
+			unzip -l "$f" | $PAGER;;
+		*.rar)
+			unrar l "$f" | $PAGER;;
+		*.7z)
+			7z l "$f" | $PAGER;;
+		*.pdf)
+			pdftotext "$f" - | $PAGER;;
+		*)
+			if [ -f "$f" ]; then
+				$PAGER "$f"
+			elif [ -d "$f" ]; then
+				ls -la "$f" | $PAGER
+			fi ;;
+	esac
+}}
+
 cmd paste $cp-p --lf-paste $id
 
 cmd cd_quit ${{
@@ -135,6 +156,7 @@ map - jump-prev
 map ; push :fzf_cd<enter>
 map a push :archive<space>
 map b mark-load
+map i push :pager<enter>
 map q quit
 map s push :fzf_search<enter>
 map x delete
