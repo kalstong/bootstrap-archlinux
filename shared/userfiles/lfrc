@@ -66,6 +66,11 @@ cmd archive ${{
 	fi
 }}
 
+cmd bookmark_add ${{
+	echo "$f" >> "$LF_BOOKMARKS_PATH"
+	lf -remote "send echo bookmarked: $f"
+}}
+
 cmd bookmark_jump ${{
 	set -f
 	res="$(cat "$LF_BOOKMARKS_PATH" | fzf --with-nth=1)"
