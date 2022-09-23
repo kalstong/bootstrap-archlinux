@@ -118,8 +118,6 @@ cmd quitcd ${{
 }}
 
 
-map "'" push :bookmark_jump<enter>
-map + push :bookmark_add<enter>
 map ~ cd
 map . set hidden!
 map - jump-prev
@@ -129,7 +127,9 @@ map b mark-load
 map q quit
 map s push :fzf_search<enter>
 map x delete
-map <c-g> push :quitcd<enter>
+map B push :bookmark_jump<enter>
+map T push :bookmark_add<enter>
+map W push :quitcd<enter>
 
 
 set icons
