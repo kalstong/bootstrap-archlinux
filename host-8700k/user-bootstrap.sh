@@ -119,7 +119,7 @@ printinfo "+ ----------------------- +"
 . "${HOME}"/.bashrc
 
 asdf_plugins=(
-	"nodejs:14.20.0"
+	"nodejs:14"
 )
 
 for plugin in ${asdf_plugins[*]}
@@ -127,7 +127,7 @@ do
 	_name=${plugin%%:*}
 	_ver=${plugin##*:}
 	asdf plugin-add "${_name}"
-	asdf install "${_name}" "${_ver}"
+	asdf install "${_name}" "latest:${_ver}"
 done
 
 printinfo "\n"
