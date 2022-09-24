@@ -68,7 +68,7 @@ cmd archive ${{
 
 cmd bookmark_add ${{
 	echo "$f" >> "$LF_BOOKMARKS_PATH"
-	lf -remote "send echo bookmarked: $f"
+	lf -remote "send $id echo bookmarked: $f"
 }}
 
 cmd bookmark_jump ${{
@@ -154,6 +154,20 @@ cmd cd_selection_quit ${{
 		lf -remote "send $id quit"
 }}
 
+cmd create ${{
+	clear
+	printf "(d)irectory / (f)file: "
+	read -n 1 answer
+	if [ "$answer" = "d" ] || [ "$answer" = "f" ]; then
+		printf "\nname: "
+		read name
+		[ "$answer" = "d" ] && mkdir -p "$PWD/$name" && exit 0
+		[ "$answer" = "f" ] && touch "$PWD/$name" && exit 0
+	fi
+}}
+
+cmd select_all :unselect; invert
+
 
 map . set hidden!
 map - jump-prev
@@ -161,10 +175,12 @@ map ; push :fzf_cd<enter>
 map a push :archive<space>
 map b mark-load
 map i push :pager<enter>
+map n push :create<enter>
 map q quit
 map s push :fzf_search<enter>
 map x delete
 map o push :cd_selection<enter>
+map A push :select_all<enter>
 map B push :bookmark_jump<enter>
 map M push :bookmark_add<enter>
 map O push :cd_selection_quit<enter>
@@ -176,3 +192,4 @@ set preview
 set previewer lfpreview
 set promptfmt "\033[32;1m%u@%h\033[0m:\033[34;1m%d\033[0m"
 set ratios 2:4
+set wrapscroll
