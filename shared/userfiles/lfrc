@@ -124,8 +124,6 @@ cmd pager ${{
 			unrar l "$f" | $PAGER;;
 		*.7z)
 			7z l "$f" | $PAGER;;
-		*.pdf)
-			pdftotext "$f" - | $PAGER;;
 		*)
 			if [ -f "$f" ]; then
 				$PAGER "$f"
