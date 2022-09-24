@@ -272,7 +272,7 @@ function syncdirs --description "Synchronizes the target with the source directo
 		"$src/" "$dst/"
 end
 
-function theme --description "Set a colorscheme from pywall"
+function theme --description "Set a colorscheme from pywal"
 	bash -i -c "theme"
 end
 
