@@ -129,6 +129,7 @@ do
 	_ver=${plugin##*:}
 	asdf plugin-add "${_name}"
 	asdf install "${_name}" "latest:${_ver}"
+	asdf global "${_name}" "latest:${_ver}"
 done
 
 printinfo "\n"
@@ -139,8 +140,10 @@ printinfo "+ ----------------------- +"
 
 npm_pkgs=(
 	bash-language-server
-	typescript typescript-language-server
-	yarn vim-language-server
+	typescript
+	typescript-language-server
+	vim-language-server
+	yarn
 )
 npm install -g ${npm_pkgs[*]}
 
