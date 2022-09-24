@@ -146,6 +146,7 @@ cmd cd_selection ${{
 	[ -d "$f" ] &&
 		lf -remote "send $id cd \"$f\""
 		lf -remote "send $id \$$SHELL"
+		lf -remote "send $id cd $OLDPWD"
 }}
 
 cmd cd_selection_quit ${{
