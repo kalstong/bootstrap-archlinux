@@ -45,11 +45,11 @@
 
 window {
 	width: 30em;
-	location: north;
-	anchor: north;
+	location: center;
+	anchor: center;
 	border:  0px 0px 0px 0px;
 	text-color: @lightwhite;
-	y-offset: 60px;
+	y-offset: -256px;
 }
 
 mode-switcher {
