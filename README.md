@@ -36,8 +36,8 @@ Useful commands:
 Useful packages not installed by default:
 - Development: hey, perf, strace, sysbench, systat, tokei, valgrind.
 - System: arch-audit, bind, ctop, lfs, turbostat, usbutils.
-- Utils: archiso, croc, edk2-ovmf, entr, qemu-full, qemu-emulators-full, mosh,
-  tree, woeusb-ng@master.
+- Utils: archiso, croc, edk2-ovmf, entr, pdfgrep, qemu-full,
+  qemu-emulators-full, mosh, tree, woeusb-ng@master.
 
 
 ## Tasks
