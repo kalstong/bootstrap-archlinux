@@ -42,8 +42,8 @@ mkdir -p \
 	"${XDG_CONFIG_HOME}/tint2"
 
 _monospace_font="monospace"
-_monospace_font_size="9.5"
-_terminal_font_size="9.5"
+_monospace_font_size="10.5"
+_terminal_font_size="10.5"
 
 touch "${HOME}/.hushlogin"
 touch "${XDG_CONFIG_HOME}/lf/bookmarks"
@@ -98,7 +98,9 @@ cp ../shared/userfiles/teams.desktop "${HOME}/.local/share/applications/"
 cp ../shared/userfiles/teams.png "${HOME}/.icons/"
 cp ../shared/userfiles/terminate-session.sh "${HOME}/.local/bin/"
 cp ../shared/userfiles/tmux-gitstat.sh "${HOME}/.local/bin/"
-sed -i -r "s|<dir>|${TRASH}/.firejail.postman|" \
+
+mkdir -p "${CACHE}/firejail.postman"
+sed -i -r "s|<dir>|${CACHE}/firejail.postman|" \
 	"${HOME}/.local/share/applications/postman.desktop"
 
 echo "0:/

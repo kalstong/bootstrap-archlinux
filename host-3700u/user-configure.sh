@@ -99,8 +99,9 @@ cp ../shared/userfiles/teams.png "${HOME}/.icons/"
 cp ../shared/userfiles/terminate-session.sh "${HOME}/.local/bin/"
 cp ../shared/userfiles/tmux-gitstat.sh "${HOME}/.local/bin/"
 
+mkdir -p "${CACHE}/firejail.postman"
 sed -i -r "s|<base_dir>|${BUN_INSTALL}|" "${XDG_CONFIG_HOME}/.bunfig.toml"
-sed -i -r "s|<dir>|${TRASH}/.firejail.postman|" \
+sed -i -r "s|<dir>|${TRASH}/firejail.postman|" \
 	"${HOME}/.local/share/applications/postman.desktop"
 
 echo "0:/

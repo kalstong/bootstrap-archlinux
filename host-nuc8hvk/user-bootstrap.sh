@@ -55,7 +55,7 @@ mkdir -p {"$RECORDINGS","$SCREENSHOTS","$TRASH","$WALLPAPERS","$WORK"}
 mkdir -p {"$ASDF_DATA_DIR","$GOCACHE","$GOMODCACHE","$GOPATH","$GOROOT"}
 mkdir -p {"$NPM_CONFIG_CACHE","$YARN_CACHE_FOLDER"}
 mkdir -p "$CACHE"/docker
-mkdir -p "$TRASH"/.firejail.postman
+mkdir -p "$CACHE"/firejail.postman
 
 sudo mkdir -p "$MOUNT"
 sudo chown $bt_user:$bt_user "$MOUNT"
@@ -148,11 +148,11 @@ npm_pkgs=(
 npm install -g ${npm_pkgs[*]}
 
 printinfo "\n"
-printinfo "+ ---------------------------------- +"
-printinfo "| Installing NERDFont JetBrains Mono |"
-printinfo "+ ---------------------------------- +"
+printinfo "+ -------------------- +"
+printinfo "| Installing NERD Font |"
+printinfo "+ -------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-. ../shared/userfiles/install-nfjetbrainsmono.sh
+. ../shared/userfiles/install-nf.sh
 
 printinfo "\n"
 printinfo "+ ------------------------ +"
@@ -184,6 +184,7 @@ printinfo "+ ------------------------------- +"
 pushd ../pkgs/mssql-odbc
 makepkg -sirc --noconfirm --needed
 popd
+
 pushd ../pkgs/mssql-tools
 makepkg -sirc --noconfirm --needed
 popd

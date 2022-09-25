@@ -7,7 +7,6 @@
 # GPU: Intel HD Graphics 630 @350/1100Mhz
 # GPU: AMD Radeon RX Vega M GH @1063/1190MHz
 # SSD: 256GiB M.2 NVMe Samsung 960 Evo TLC V-NAND
-# SSD: 1TiB M.2 NVMe Intel 660p QLC
 #
 # [1]: https://ark.intel.com/content/www/us/en/ark/products/126143/intel-nuc-kit-nuc8i7hvk.html
 # [2]: https://ark.intel.com/content/www/us/en/ark/products/130409/intel-core-i7-8809g-processor-with-radeon-rx-vega-m-gh-graphics-8m-cache-up-to-4-20-ghz.html
@@ -187,10 +186,10 @@ pacman_system=(
 	xorg-xsetroot zip zstd
 )
 pacman_tools=(
-	aria2 bash-completion bluez-utils btop curl ffmpeg firejail freerdp htop
-	inotify-tools iotop iperf3 jq lf libva-utils lshw lsof miniserve neovim
-	openconnect openssh openvpn p7zip pacman-contrib radeontop strace time
-	vkmark
+	aria2 bash-completion bluez-utils btop curl ffmpeg firejail fontforge
+	freerdp htop inotify-tools iotop iperf3 jq lf libva-utils lshw lsof
+	miniserve neovim openconnect openssh openvpn p7zip pacman-contrib radeontop
+	strace time vkmark
 )
 pacman_development=(
 	base-devel diffutils docker docker-compose git git-delta man-pages python

@@ -55,7 +55,7 @@ mkdir -p {"$RECORDINGS","$SCREENSHOTS","$TRASH","$WALLPAPERS","$WORK"}
 mkdir -p {"$ASDF_DATA_DIR","$GOCACHE","$GOMODCACHE","$GOPATH","$GOROOT"}
 mkdir -p {"$NPM_CONFIG_CACHE","$YARN_CACHE_FOLDER"}
 mkdir -p "$CACHE"/docker
-mkdir -p "$TRASH"/.firejail.postman
+mkdir -p "$CACHE"/firejail.postman
 
 sudo mkdir -p "$MOUNT"
 sudo chown $bt_user:$bt_user "$MOUNT"

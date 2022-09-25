@@ -53,7 +53,9 @@ _disk_system="/dev/nvme0n1"
 
 nvme format "$_disk_system" --force --namespace-id 1 --ses 0
 sync
+
 partprobe "$_disk_system"
+sync
 
 printinfo "\n"
 printinfo "+ ----------------- +"
