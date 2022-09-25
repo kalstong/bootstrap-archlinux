@@ -27,7 +27,7 @@ wm_config_monitors () {
 		bspc monitor --reset-desktops 1 2 3 4 5 6 7 8 9 10
 	elif [ "$layout" = "dual" ]; then
 		bspc monitor DisplayPort-2 --reset-desktops 1 2 3 4 5 6 7 8 9 10
-		bspc monitor DisplayPort-3 --reset-desktops A B C D E F G H I J
+		bspc monitor HDMI-A-1 --reset-desktops A B C D E F G H I J
 	fi
 
 	bspc config automatic_scheme alternate

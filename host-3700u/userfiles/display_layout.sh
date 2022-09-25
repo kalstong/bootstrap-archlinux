@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ "$1" = "solo" ]; then
+if [ "$1" = "single" ]; then
 xrandr \
 	--output DisplayPort-0 --off \
 	--output DisplayPort-1 --off \
