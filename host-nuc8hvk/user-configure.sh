@@ -46,7 +46,8 @@ _monospace_font_size="9.5"
 _terminal_font_size="9.5"
 
 touch "${HOME}/.hushlogin"
-	"${XDG_CONFIG_HOME}/lf" \
+touch "${XDG_CONFIG_HOME}/lf/bookmarks"
+
 cp userfiles/.bashrc "${HOME}/.bashrc.aux"
 cp userfiles/.energypolicy.sh "${XDG_CONFIG_HOME}/"
 cp userfiles/.pam_environment "${HOME}/"

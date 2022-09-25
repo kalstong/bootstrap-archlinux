@@ -47,6 +47,7 @@ _terminal_font_size="10.5"
 
 touch "${HOME}/.hushlogin"
 touch "${XDG_CONFIG_HOME}/lf/bookmarks"
+
 cp userfiles/.bashrc "${HOME}/.bashrc.aux"
 cp userfiles/.energypolicy.sh "${XDG_CONFIG_HOME}/"
 cp userfiles/.pam_environment "${HOME}/"
