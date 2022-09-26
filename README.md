@@ -48,8 +48,9 @@ Useful packages not installed by default:
 - When mounting a partition, try to use its label to name the mount point.
   Check the `--json` switch of `lsblk` and use `jq` to parse the output.
 - Customize [vim-visual-multi](https://github.com/mg979/vim-visual-multi/wiki).
-- Consider moving the boot partition back to an external USB disk and
-  find out how to encrypt the internal disks based on TPM.
+- Move the boot partition to an external USB disk.
+- Consider using an [Unified Kernel Image](https://wiki.archlinux.org/title/Unified_kernel_image).
+  and [Secure Boot](https://wiki.archlinux.org/title/Unified_Extensible_Firmware_Interface/Secure_Boot)
 
 ### Low Priority
 - Check [`borg`](https://archlinux.org/packages/community/x86_64/borg/)
