@@ -276,7 +276,7 @@ function theme --description "Set a colorscheme from pywal"
 	bash -i -c "theme"
 end
 
-function um --description "Unmount a partition, gofscrypt folder or Veracrypt file"
+function u --description "Unmount a partition, gofscrypt folder or Veracrypt file"
 	bash -i -c "um $argv"
 end
 

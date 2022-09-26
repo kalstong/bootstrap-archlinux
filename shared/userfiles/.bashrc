@@ -805,7 +805,7 @@ theme () {
 	fi
 }
 
-um () {
+u () {
 	# Find the directories at $MOUNT that are already used as a mount point.
 	# Taken from: https://catonmat.net/set-operations-in-unix-shell
 	# local mountpoint=$(comm -12 <(/bin/ls -1Ld $MOUNT/* | sort) \
