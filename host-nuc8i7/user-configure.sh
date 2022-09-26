@@ -153,7 +153,7 @@ sed -i -r "s|<monospace-font-size>|${_monospace_font_size}|" \
 cp ../shared/userfiles/picom.conf /tmp
 sed -i -r "s|<username>|$USER|" "/tmp/picom.conf"
 sed -i -r "s|<backend>|xrender|" "/tmp/picom.conf"
-sed -i -r "s|<enable-vsync>|true|" "/tmp/picom.conf"
+sed -i -r "s|<enable-vsync>|false|" "/tmp/picom.conf"
 sed -i -r "s|<enable-sync-fence>|false|" "/tmp/picom.conf"
 cp /tmp/picom.conf "${XDG_CONFIG_HOME}/"
 
