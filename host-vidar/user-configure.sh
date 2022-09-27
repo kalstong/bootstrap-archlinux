@@ -97,6 +97,7 @@ cp ../shared/userfiles/teams.desktop "${HOME}/.local/share/applications/"
 cp ../shared/userfiles/teams.png "${HOME}/.icons/"
 cp ../shared/userfiles/terminate-session.sh "${HOME}/.local/bin/"
 cp ../shared/userfiles/tmux-gitstat.sh "${HOME}/.local/bin/"
+cp -RL ../shared/userfiles/wallpapers "${WALLPAPERS}"
 
 mkdir -p "${CACHE}/firejail.postman"
 sed -i -r "s|<dir>|${CACHE}/firejail.postman|" \
