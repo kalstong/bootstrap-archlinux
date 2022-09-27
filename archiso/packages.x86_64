@@ -16,6 +16,7 @@ exfatprogs
 f2fs-tools
 fsarchiver
 gawk
+git
 gptfdisk
 hdparm
 htop
