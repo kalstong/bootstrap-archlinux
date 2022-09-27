@@ -24,10 +24,10 @@ wm_config_monitors () {
 
 	. "$XDG_CONFIG_HOME/display_layout.sh" "$layout"
 	if [ -z "$layout" ] || [ "$layout" = "single" ]; then
-		bspc monitor DP2 --reset-desktops 1 2 3 4 5 6 7 8 9 10
+		bspc monitor eDP1 --reset-desktops 1 2 3 4 5 6 7 8 9 10
 	elif [ "$layout" = "dual" ]; then
-		bspc monitor DP1 --reset-desktops 1 2 3 4 5 6 7 8 9 10
-		bspc monitor DP2 --reset-desktops A B C D E F G H I J
+		bspc monitor eDP1 --reset-desktops 1 2 3 4 5 6 7 8 9 10
+		bspc monitor DP1 --reset-desktops A B C D E F G H I J
 	fi
 
 	bspc config automatic_scheme alternate
@@ -94,8 +94,8 @@ wm_start_daemons () {
 	if [ "$layout" = "single" ] || [ "$layout" = "" ]; then
 		polybar single &> "$HOME/.local/share/polybar/single.log" &
 	elif [ "$layout" = "dual" ]; then
-		polybar left &> "$HOME/.local/share/polybar/left.log" &
-		polybar right &> "$HOME/.local/share/polybar/right.log" &
+		polybar laptop &> "$HOME/.local/share/polybar/laptop.log" &
+		polybar external &> "$HOME/.local/share/polybar/external.log" &
 	fi
 
 	dunst &> "$HOME/.local/share/dunst/log" &
