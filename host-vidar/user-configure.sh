@@ -5,8 +5,8 @@ pushd "$script_path" > /dev/null
 
 . ../misc.sh
 
-if [ "$HOST" != "8700k" ]; then
-	printerr "ERROR: This configuration file belongs to 8700k."
+if [ "$HOST" != "vidar" ]; then
+	printerr "ERROR: This configuration file belongs to vidar."
 	exit 1
 fi
 
@@ -42,11 +42,12 @@ mkdir -p \
 	"${XDG_CONFIG_HOME}/tint2"
 
 _monospace_font="monospace"
-_monospace_font_size="9.5"
-_terminal_font_size="9.5"
+_monospace_font_size="10.5"
+_terminal_font_size="10.5"
 
 touch "${HOME}/.hushlogin"
 touch "${XDG_CONFIG_HOME}/lf/bookmarks"
+
 cp userfiles/.bashrc "${HOME}/.bashrc.aux"
 cp userfiles/.energypolicy.sh "${XDG_CONFIG_HOME}/"
 cp userfiles/.pam_environment "${HOME}/"
@@ -92,9 +93,14 @@ cp ../shared/userfiles/spotify.desktop "${HOME}/.local/share/applications/"
 cp ../shared/userfiles/spotify.png "${HOME}/.icons/"
 cp ../shared/userfiles/ssh.conf "${HOME}/.ssh/config"
 cp ../shared/userfiles/sxhkdrc "${XDG_CONFIG_HOME}/sxhkd/"
+cp ../shared/userfiles/teams.desktop "${HOME}/.local/share/applications/"
+cp ../shared/userfiles/teams.png "${HOME}/.icons/"
 cp ../shared/userfiles/terminate-session.sh "${HOME}/.local/bin/"
 cp ../shared/userfiles/tmux-gitstat.sh "${HOME}/.local/bin/"
-sed -i -r "s|<dir>|${TRASH}/.firejail.postman|" "${HOME}/.local/share/applications/postman.desktop"
+
+mkdir -p "${CACHE}/firejail.postman"
+sed -i -r "s|<dir>|${CACHE}/firejail.postman|" \
+	"${HOME}/.local/share/applications/postman.desktop"
 
 echo "0:/
 a:${AUR}
@@ -113,7 +119,7 @@ gcc ../shared/userfiles/polybar-fsusage.c \
 gcc ../shared/userfiles/polybar-mem.c \
 	-std=c99 -Wall -Wextra -O2 -flto \
 	-o "${HOME}/.local/bin/polybar-mem"
-gcc ../shared/userfiles/polybar-polytimer.c \
+gcc ../shared/userfiles/polybar-polytimer.c -flto \
 	-std=c99 -Wall -Wextra -O2 -flto \
 	-o "${HOME}/.local/bin/polytimer"
 
@@ -137,14 +143,17 @@ xdg-user-dirs-update --set DOWNLOAD "$DOWNLOADS"
 rmdir "$HOME/"{Desktop,Documents,Downloads,Music} &> /dev/null
 rmdir "$HOME/"{Pictures,Public,Templates,Videos} &> /dev/null
 
-sed -i -r "s|<monospace-font-size>|${_monospace_font_size}|" "${HOME}/.Xresources"
-sed -i -r "s|<monospace-font-size>|${_monospace_font} ${_monospace_font_size}|" "${XDG_CONFIG_HOME}/dunst/dunstrc"
-sed -i -r "s|<monospace-font-size>|${_monospace_font_size}|" "${XDG_CONFIG_HOME}/polybar/config.ini"
+sed -i -r "s|<monospace-font-size>|${_monospace_font_size}|" \
+	"${HOME}/.Xresources"
+sed -i -r "s|<monospace-font-size>|${_monospace_font} ${_monospace_font_size}|" \
+	"${XDG_CONFIG_HOME}/dunst/dunstrc"
+sed -i -r "s|<monospace-font-size>|${_monospace_font_size}|" \
+	"${XDG_CONFIG_HOME}/polybar/config.ini"
 
 cp ../shared/userfiles/picom.conf /tmp
 sed -i -r "s|<username>|$USER|" "/tmp/picom.conf"
 sed -i -r "s|<backend>|xrender|" "/tmp/picom.conf"
-sed -i -r "s|<enable-vsync>|true|" "/tmp/picom.conf"
+sed -i -r "s|<enable-vsync>|false|" "/tmp/picom.conf"
 sed -i -r "s|<enable-sync-fence>|false|" "/tmp/picom.conf"
 cp /tmp/picom.conf "${XDG_CONFIG_HOME}/"
 

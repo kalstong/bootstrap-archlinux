@@ -1,15 +1,14 @@
 #!/bin/bash
 
 # --- System Specs ---
-# Intel NUC8i7HVK [1]
-# CPU: Intel® Core i7-8809G @3.10Ghz [2]
+# Intel NUC8i7BEH [1]
+# CPU: Intel Core i7-8559U @2.70GHz [2]
 # RAM: 2x 16GiB DDR4 @2.40GHz-CL14 DC
-# GPU: Intel HD Graphics 630 @350/1100Mhz
-# GPU: AMD Radeon RX Vega M GH @1063/1190MHz
-# SSD: 256GiB M.2 NVMe Samsung 960 Evo TLC V-NAND
+# GPU: Intel Iris Plus Graphics 655 @300/1200MHz
+# SSD: 250GB M.2 NVMe Kingston A2000 3D TLC
 #
-# [1]: https://ark.intel.com/content/www/us/en/ark/products/126143/intel-nuc-kit-nuc8i7hvk.html
-# [2]: https://ark.intel.com/content/www/us/en/ark/products/130409/intel-core-i7-8809g-processor-with-radeon-rx-vega-m-gh-graphics-8m-cache-up-to-4-20-ghz.html
+# [1]: https://ark.intel.com/content/www/us/en/ark/products/126140/intel-nuc-kit-nuc8i7beh.html
+# [2]: https://ark.intel.com/content/www/us/en/ark/products/137979/intel-core-i7-8559u-processor-8m-cache-up-to-4-50-ghz.html
 
 scriptdir="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 pushd "$scriptdir" > /dev/null
@@ -49,7 +48,7 @@ printinfo "+ ------------ +"
 printinfo "| Erasing disk |"
 printinfo "+ ------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-_disk_key="/dev/disk/by-id/usb-General_USB_Flash_Disk_7911020000213736-0:0"
+_disk_key="/dev/disk/by-id/usb-Kingston_DataTraveler_102_001CC0EC3466FD20671EAD4D-0:0"
 _disk_system="/dev/nvme0n1"
 
 nvme format "$_disk_system" --force --namespace-id 1 --ses 0
@@ -67,7 +66,7 @@ printinfo "+ ----------------- +"
 parted "$_disk_system" mklabel gpt && sync
 
 _starts_at=1
-_ends_at=$((${_starts_at} + 512)) # 512iB boot partition
+_ends_at=$((${_starts_at} + 512)) # 512MiB boot partition
 parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" set 1 esp on && sync
 
 _starts_at=${_ends_at} # Remaining space as the root partition
@@ -86,7 +85,7 @@ fi
 
 printinfo "  -> Reading decryption key ..."
 dd if="$_disk_key" of=/tmp/main.keyfile \
-   skip=$((640 * 1024 * 1024 + 1024 * 3)) \
+   skip=$((640 * 1024 * 1024 + 1024 * 1)) \
    ibs=1 count=1024 status=none && sync
 
 sleep 1
@@ -110,13 +109,12 @@ cryptsetup --key-file /tmp/main.keyfile \
 	--perf-no_read_workqueue \
 	--perf-no_write_workqueue \
 	open "${_disk_system}p2" root
-
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/main.keyfile
 
 printinfo "\n  -> Formatting the root partition ..."
 mkfs.f2fs -O extra_attr,inode_checksum,sb_checksum,encrypt -f /dev/mapper/root
-sync
 
+sync
 printinfo "\n"
 printinfo "+ ------------------- +"
 printinfo "| Mounting partitions |"
@@ -172,24 +170,23 @@ printinfo "+ -------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
 pacman_core=(
-	base intel-media-driver intel-ucode linux-lts linux-firmware libva
-	libva-mesa-driver mesa mesa-vdpau sshfs vulkan-intel vulkan-radeon
-	xf86-video-amdgpu
+	base intel-media-driver intel-ucode linux-lts linux-firmware libva mesa
+	sshfs vulkan-intel xf86-video-intel
 )
 pacman_system=(
 	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa
 	exfatprogs f2fs-tools fd fish fwupd fzf gnome-keyring gptfdisk gnupg
-	gocryptfs intel-gpu-tools iwd libnotify lz4 man-db nss-mdns openbsd-netcat
-	parted pbzip2 picom pigz playerctl polybar pulseaudio redshift ripgrep sxhkd
-	tint2 tmux unzip usleep x86_energy_perf_policy xclip xdg-user-dirs xdg-utils
-	xdotool xorg-server xorg-xinit xorg-xinput xorg-xprop xorg-xrandr xorg-xset
-	xorg-xsetroot zip zstd
+	gocryptfs intel-gpu-tools intel-undervolt iwd libnotify lz4 man-db nss-mdns
+	openbsd-netcat parted pbzip2 picom pigz playerctl polybar pulseaudio
+	redshift ripgrep sxhkd tint2 tmux unzip usleep x86_energy_perf_policy xclip
+	xdg-user-dirs xdg-utils xdotool xorg-server xorg-xinit xorg-xinput
+	xorg-xprop xorg-xrandr xorg-xset xorg-xsetroot zip zstd
 )
 pacman_tools=(
 	aria2 bash-completion bluez-utils btop curl ffmpeg firejail fontforge
 	freerdp htop inotify-tools iotop iperf3 jq lf libva-utils lshw lsof
-	miniserve neovim openconnect openssh openvpn p7zip pacman-contrib radeontop
-	strace time vkmark
+	miniserve neovim openconnect openssh openvpn p7zip pacman-contrib strace
+	time vkmark
 )
 pacman_development=(
 	base-devel diffutils docker docker-compose git git-delta man-pages python

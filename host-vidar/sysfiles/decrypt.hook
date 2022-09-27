@@ -2,7 +2,7 @@
 # vim:ft=sh
 
 read_from_usb () {
-	_usb_disk="/dev/disk/by-id/usb-General_USB_Flash_Disk_7911020000213736-0:0"
+	_usb_disk="/dev/disk/by-id/usb-Kingston_DataTraveler_102_001CC0EC3466FD20671EAD4D-0:0"
 	while [ ! -L "$_usb_disk" ]; do usleep $((1000 * 100)); done
 
 	dd if="$_usb_disk" of=/tmp/keyfile \
