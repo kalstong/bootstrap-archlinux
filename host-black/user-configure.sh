@@ -22,7 +22,6 @@ mkdir -p \
 	"${HOME}/.local/share/tint2" \
 	"${HOME}/.gnupg/" \
 	"${XDG_CONFIG_HOME}/alacritty" \
-	"${XDG_CONFIG_HOME}/bspwm" \
 	"${XDG_CONFIG_HOME}/btop" \
 	"${XDG_CONFIG_HOME}/ctags" \
 	"${XDG_CONFIG_HOME}/dunst" \
@@ -35,6 +34,7 @@ mkdir -p \
 	"${XDG_CONFIG_HOME}/lf" \
 	"${XDG_CONFIG_HOME}/mpv" \
 	"${XDG_CONFIG_HOME}/nvim" \
+	"${XDG_CONFIG_HOME}/openbox" \
 	"${XDG_CONFIG_HOME}/polybar" \
 	"${XDG_CONFIG_HOME}/pulse" \
 	"${XDG_CONFIG_HOME}/rofi/themes" \
@@ -51,7 +51,6 @@ touch "${XDG_CONFIG_HOME}/lf/bookmarks"
 cp userfiles/.bashrc "${HOME}/.bashrc.aux"
 cp userfiles/.energypolicy.sh "${XDG_CONFIG_HOME}/"
 cp userfiles/.pam_environment "${HOME}/"
-cp userfiles/bspwm.sh "${XDG_CONFIG_HOME}/bspwm/"
 cp userfiles/config.fish "${XDG_CONFIG_HOME}/fish/config.aux.fish"
 cp userfiles/display_layout.sh "${XDG_CONFIG_HOME}/"
 cp userfiles/polybar.ini "${XDG_CONFIG_HOME}/polybar/config.ini"
@@ -60,11 +59,10 @@ cp ../shared/userfiles/.bash_profile "${HOME}/"
 cp ../shared/userfiles/.bashrc "${HOME}/"
 cp ../shared/userfiles/.ctags "${XDG_CONFIG_HOME}/ctags/default.ctags"
 cp ../shared/userfiles/.tmux.conf "${HOME}/"
-cp ../shared/userfiles/.xinitrc "${HOME}/"
+cp userfiles/.xinitrc "${HOME}/"
 cp ../shared/userfiles/.Xresources "${HOME}/"
 cp ../shared/userfiles/alacritty-theme.sh "${HOME}/.local/bin/"
 cp ../shared/userfiles/brave-flags.conf "${XDG_CONFIG_HOME}/"
-cp ../shared/userfiles/bspwmrc "${XDG_CONFIG_HOME}/bspwm/"
 cp ../shared/userfiles/btop.conf "${XDG_CONFIG_HOME}/btop/"
 cp ../shared/userfiles/chromium-flags.conf "${XDG_CONFIG_HOME}/"
 cp ../shared/userfiles/config.fish "${XDG_CONFIG_HOME}/fish/"
@@ -97,7 +95,11 @@ cp ../shared/userfiles/teams.desktop "${HOME}/.local/share/applications/"
 cp ../shared/userfiles/teams.png "${HOME}/.icons/"
 cp ../shared/userfiles/terminate-session.sh "${HOME}/.local/bin/"
 cp ../shared/userfiles/tmux-gitstat.sh "${HOME}/.local/bin/"
-cp -RL ../shared/userfiles/wallpapers "${WALLPAPERS}"
+cp ../shared/userfiles/autostart "${XDG_CONFIG_HOME}/openbox/"
+cp ../shared/userfiles/environment "${XDG_CONFIG_HOME}/openbox/"
+cp ../shared/userfiles/menu.xml "${XDG_CONFIG_HOME}/openbox/"
+cp ../shared/userfiles/rc.xml "${XDG_CONFIG_HOME}/openbox/"
+cp -R ../shared/userfiles/wallpapers/* "${WALLPAPERS}"
 
 mkdir -p "${CACHE}/firejail.postman"
 sed -i -r "s|<dir>|${CACHE}/firejail.postman|" \
@@ -128,7 +130,6 @@ chmod u+x "${HOME}/.local/bin/cp-p"
 chmod u+x "${HOME}/.local/bin/lfpreview"
 chmod u+x "${HOME}/.local/bin/mv-p"
 chmod u+x "${HOME}/.local/bin/tmux-gitstat.sh"
-chmod u+x "${XDG_CONFIG_HOME}/bspwm/bspwmrc"
 chmod u+x "${XDG_CONFIG_HOME}/display_layout.sh"
 
 cp ../shared/userfiles/alacritty.yml /tmp
