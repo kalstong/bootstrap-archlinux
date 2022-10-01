@@ -27,3 +27,16 @@ export YARN_CACHE_FOLDER="$CACHE/yarn"
 [[ ! "$PATH" =~ "$HOME/.local/bin" ]] && export PATH="$PATH:$HOME/.local/bin"
 [[ ! "$PATH" =~ "$GOPATH/bin" ]] && export PATH="$PATH:$GOPATH/bin"
 [[ ! "$PATH" =~ "$JAI_DIR" ]] && export PATH="$PATH:${JAI_DIR}/bin"
+
+display-layout () {
+	[ -z $1 ] && return
+
+	local layout=""
+	local layout_file="$XDG_CONFIG_HOME/display_layout"
+	local layout_new="$1"
+	[ -f "$layout_file" ] && layout=$(cat "$layout_file")
+
+	[ "$layout" != "$layout_new" ] &&
+		echo "$layout_new" > "$layout_file" &&
+		openbox --reconfigure
+}

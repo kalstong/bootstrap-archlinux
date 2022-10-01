@@ -10,5 +10,4 @@ xrdb -merge "$HOME/.Xresources"
 xrdb -merge "$HOME/.cache/wal/colors.Xresources"
 xsetroot -cursor_name left_ptr
 
-# exec bspwm -c "$XDG_CONFIG_HOME/bspwm/bspwmrc"
 exec openbox
