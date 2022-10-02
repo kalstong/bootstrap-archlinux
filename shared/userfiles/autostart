@@ -15,3 +15,5 @@
 # If you want to use XFCE config tools...
 #
 #xfce-mcs-manager &
+
+./$XDG_CONFIG_HOME/openbox/autostart.sh &
