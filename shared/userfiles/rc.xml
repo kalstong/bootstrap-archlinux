@@ -227,22 +227,22 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="W-F1">
+    <keybind key="W-1">
       <action name="GoToDesktop">
         <to>1</to>
       </action>
     </keybind>
-    <keybind key="W-F2">
+    <keybind key="W-2">
       <action name="GoToDesktop">
         <to>2</to>
       </action>
     </keybind>
-    <keybind key="W-F3">
+    <keybind key="W-3">
       <action name="GoToDesktop">
         <to>3</to>
       </action>
     </keybind>
-    <keybind key="W-F4">
+    <keybind key="W-4">
       <action name="GoToDesktop">
         <to>4</to>
       </action>
@@ -250,11 +250,11 @@
     <keybind key="W-d">
       <action name="ToggleShowDesktop"/>
     </keybind>
-    <keybind key="W-F11">
+    <keybind key="C-S-W-R">
       <action name="Reconfigure"/>
     </keybind>
     <!-- Keybindings for windows -->
-    <keybind key="A-F4">
+    <keybind key="W-Q">
       <action name="Close"/>
     </keybind>
     <keybind key="A-Escape">
@@ -286,9 +286,9 @@
         </finalactions>
       </action>
     </keybind>
-    <keybind key="C-A-Tab">
+    <!-- <keybind key="C-A-Tab">
       <action name="NextWindow">
-        <panels>yes</panels>
+        <panels>true</panels>
         <desktop>yes</desktop>
         <finalactions>
           <action name="Focus"/>
@@ -296,7 +296,7 @@
           <action name="Unshade"/>
         </finalactions>
       </action>
-    </keybind>
+    </keybind> -->
     <!-- Keybindings for window switching with the arrow keys -->
     <keybind key="W-S-Right">
       <action name="DirectionalCycleWindows">
@@ -319,13 +319,14 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
-    <keybind key="W-e">
+    <keybind key="W-space">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Konqueror</name>
-        </startupnotify>
-        <command>kfmclient openProfile filemanagement</command>
+        <command>/usr/bin/rofi -modi drun -show drun -show-icons -matching fuzzy -sort -sorting-method fzf -me-select-entry '' -me-accept-entry 'MousePrimary' -theme rofi_1440p</command>
+      </action>
+    </keybind>
+        <keybind key="W-Return">
+      <action name="Execute">
+        <command>alacritty --option window.dimensions.columns=100 --option window.dimensions.lines=20 --command tmux</command>
       </action>
     </keybind>
   </keyboard>

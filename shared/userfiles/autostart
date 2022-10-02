@@ -16,4 +16,4 @@
 #
 #xfce-mcs-manager &
 
-./$XDG_CONFIG_HOME/openbox/autostart.sh &
+bash $XDG_CONFIG_HOME/openbox/autostart.sh &
