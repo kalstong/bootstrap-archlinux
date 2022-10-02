@@ -5,7 +5,7 @@ pushd "$script_path" > /dev/null
 
 . ../misc.sh
 
-if [ "$HOST" != "vidar" ]; then
+if [ "$HOST" != "black" ]; then
 	printerr "ERROR: This configuration file belongs to vidar."
 	exit 1
 fi
@@ -96,6 +96,7 @@ cp ../shared/userfiles/teams.png "${HOME}/.icons/"
 cp ../shared/userfiles/terminate-session.sh "${HOME}/.local/bin/"
 cp ../shared/userfiles/tmux-gitstat.sh "${HOME}/.local/bin/"
 cp ../shared/userfiles/autostart "${XDG_CONFIG_HOME}/openbox/"
+cp ../shared/userfiles/autostart.sh "${XDG_CONFIG_HOME}/openbox"
 cp ../shared/userfiles/environment "${XDG_CONFIG_HOME}/openbox/"
 cp ../shared/userfiles/menu.xml "${XDG_CONFIG_HOME}/openbox/"
 cp ../shared/userfiles/rc.xml "${XDG_CONFIG_HOME}/openbox/"

@@ -10,4 +10,4 @@ xrdb -merge "$HOME/.Xresources"
 xrdb -merge "$HOME/.cache/wal/colors.Xresources"
 xsetroot -cursor_name left_ptr
 
-exec openbox
+exec openbox-session
