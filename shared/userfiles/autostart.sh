@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 wm_config_monitors () {
 	local db=$(xrdb -query)
@@ -20,81 +20,44 @@ wm_config_monitors () {
 	local color14=$(echo "$db" | grep '^\*\.color14:' | awk '{print $2}')
 	local color15=$(echo "$db" | grep '^\*\.color15:' | awk '{print $2}')
 
-	local layout = "";
+	local layout=""
 	local layout_file="$XDG_CONFIG_HOME/display_layout"
 	[ -f "$layout_file" ] && layout=$(cat "$layout_file")
 
-	# . "$XDG_CONFIG_HOME/display_layout.sh" "$layout"
-	# if [ -z "$layout" ] || [ "$layout" = "single" ]; then
-	# 	bspc monitor eDP --reset-desktops 1 2 3 4 5 6 7 8 9 10
-	# elif [ "$layout" = "office" ]; then
-	# 	bspc monitor eDP --reset-desktops 1 2 3 4 5 6 7 8 9 10
-	# 	bspc monitor DisplayPort-0 --reset-desktops A B C D E F G H I J
-	# elif [ "$layout" = "home" ]; then
-	# 	bspc monitor eDP --reset-desktops 1 2 3 4 5 6 7 8 9 10
-	# 	bspc monitor DisplayPort-0 --reset-desktops A B C D E F G H I J
-	# fi
-
-	# bspc config automatic_scheme alternate
-	# bspc config border_width 0
-	# bspc config focus_follows_pointer false
-	# bspc config pointer_follows_monitor true
-	# bspc config remove_unplugged_monitors true
-	# bspc config swallow_first_click false
-	# bspc config split_ratio 0.5
-	# bspc config window_gap 7
-	# bspc config active_border_color $colorfg
-	# bspc config focused_border_color $color03
-	# bspc config normal_border_color $colorfg
-	# bspc config presel_feedback_color $color03
-
-	# bspc rule --add "*" state=floating layer=bellow
-	# bspc wm --record-history on
+	. "$XDG_CONFIG_HOME/display_layout.sh" "$layout" &
 }
 
 wm_kill_daemons () {
-	killall -q picom
-	killall -q redshift
-	#killall -q sxhkd
-	killall -q flashfocus
-	killall -q dunst
-	killall -q -9 polybar
-	killall -q tint2
+	killall -q picom &
+	killall -q redshift &
+	killall -q flashfocus &
+	killall -q dunst &
+	killall -q -9 polybar &
+	killall -q tint2 &
 }
 
 wm_start_daemons () {
-	. "$HOME/.bashrc"
 
-	export BAT_ICON="$(echo -e "\uf241 ")"
-	export BFL_ICON="$(echo -e "\uf240 ")"
-	export BKL_ICON="$(echo -e "\uf0eb ")";
-	export BOL_ICON="$(echo -e "\uf0e7 ")"
-	export CAL_ICON="$(echo -e "\uf073")"
-	export COM_ICON="$(echo -e "\ue13a ")";
-	export CPU_ICON="$(echo -e "\uf5dc ")"
-	export ETH_ICON="$(echo -e "\uf796")"
-	export EXG_ICON="$(echo -e "\uf362 ")"
-	export FRQ_ICON="$(echo -e "\uf83e ")"
-	export HDD_ICON="$(echo -e "\uf0a0 ")"
-	export HGL_ICON="$(echo -e "\uf252 ")"
-	export KBD_ICON="$(echo -e "\uf11c ")"
-	export MEM_ICON="$(echo -e "\uf538 ")"
-	export MUT_ICON="$(echo -e "\uf6a9")"
-	export PAC_ICON="$(echo -e "\ue4c7 ")"
-	export PCO_ICON="$(echo -e "\uf1e6 ")"
-	export PWR_ICON="$(echo -e "\uf011")"
-	export TMP_ICON="$(echo -e "\uf2c8 ")"
-	export WIF_ICON="$(echo -e "\uf1eb")"
-	#SXHKD_SHELL=/usr/bin/bash
+    local hour=$(date '+%H')
+    local tod=""
+    if [ $hour -ge 6 ] && [ $hour -lt 14 ]; then
+    	tod="morning"
+    elif [ $hour -ge 14 ] && [ $hour -lt 20 ]; then
+   		tod="afternoon"
+   	else
+   		tod="night"
+   	fi
 
-	set-wallpaper &
+	local img=$(ls "$WALLPAPERS/$tod" | shuf -n 1)
+    feh --bg-fill "$WALLPAPERS/$tod/$img" &
+    echo "$WALLPAPERS/$tod/$img" > /tmp/wallpaper &
 
-	rm -rf "$HOME/.local/share/picom/log"
+	rm -rf "$HOME/.local/share/picom/log" &
 	[ ! -p "$HOME/.local/share/polybar/polytimer-fifo" ] &&
-		mkfifo "$HOME/.local/share/polybar/polytimer-fifo"
+		mkfifo "$HOME/.local/share/polybar/polytimer-fifo" &
 
-	local layout="";
-	local layout_file="$XDG_CONFIG_HOME/display_layout"#!/usr/bin/env bash
+	local layout=""
+	local layout_file="$XDG_CONFIG_HOME/display_layout"
 	[ -f "$layout_file" ] && layout=$(cat "$layout_file")
 	if [ -z "$layout" ] || [ "$layout" = "single" ]; then
 		polybar single &> "$HOME/.local/share/polybar/single.log" &
@@ -109,7 +72,6 @@ wm_start_daemons () {
 	dunst &> "$HOME/.local/share/dunst/log" &
 	flashfocus &
 	while pgrep -u $UID -x redshift > /dev/null; do sleep 1; done && redshift &
-	#sxhkd -m 1 &
 	tint2 &> "$HOME/.local/share/tint2/log" &
 
 	local picom_wait_usec=$((500 * 1000))
@@ -118,6 +80,4 @@ wm_start_daemons () {
 
 script_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)" &
 
-wm_kill_daemons &
-#wm_config_monitors
-wm_start_daemons &
+wm_config_monitors && wm_start_daemons &
