@@ -163,7 +163,7 @@
     <!-- (Top|Bottom)(Left|Right|)|Top|Bottom|Left|Right|Floating -->
     <floatingX>0</floatingX>
     <floatingY>0</floatingY>
-    <noStrut>no</noStrut>
+    <noStrut>yes</noStrut>
     <stacking>Above</stacking>
     <!-- 'Above', 'Normal', or 'Below' -->
     <direction>Vertical</direction>
@@ -324,9 +324,59 @@
         <command>/usr/bin/rofi -modi drun -show drun -show-icons -matching fuzzy -sort -sorting-method fzf -me-select-entry '' -me-accept-entry 'MousePrimary' -theme rofi_1440p</command>
       </action>
     </keybind>
-        <keybind key="W-Return">
+    <keybind key="W-Return">
       <action name="Execute">
         <command>alacritty --option window.dimensions.columns=100 --option window.dimensions.lines=20 --command tmux</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-C-L">
+      <action name="Execute">
+        <command>slock</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-C-P">
+      <action name="Execute">
+        <command>systemctl poweroff</command>
+      </action>
+    </keybind>
+    <keybind key="W-S-C-S">
+      <action name="Execute">
+        <command>slock systemctl suspend</command>
+      </action>
+    </keybind>
+    <keybind key="W-E">
+      <action name="Execute">
+        <command>thunar</command>
+      </action>
+    </keybind>
+    <keybind key="Print">
+      <action name="Execute">
+        <command>~/.local/bin/screenshot.sh</command>
+      </action>
+    </keybind>
+    <keybind key="XF86MonBrightnessUp">
+      <action name="Execute">
+        <command>brightnessctl set +1%; echo "$(brightnessctl get)" > "$XDG_CONFIG_HOME/.brightnessctl"</command>
+      </action>
+    </keybind>
+    <keybind key="XF86MonBrightnessDown">
+      <action name="Execute">
+        <command>brightnessctl set 1%-; echo "$(brightnessctl get)" > "$XDG_CONFIG_HOME/.brightnessctl"</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioMute">
+      <action name="Execute">
+        <command>pactl set-sink-mute @DEFAULT_SINK@ toggle</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioRaiseVolume">
+      <action name="Execute">
+        <command>pactl set-sink-volume @DEFAULT_SINK@ +1%</command>
+      </action>
+    </keybind>
+    <keybind key="XF86AudioLowerVolume">
+      <action name="Execute">
+        <command>pactl set-sink-volume @DEFAULT_SINK@ -1%</command>
       </action>
     </keybind>
   </keyboard>

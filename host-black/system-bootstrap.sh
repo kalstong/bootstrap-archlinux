@@ -174,11 +174,11 @@ pacman_core=(
 	sshfs vulkan-intel xf86-video-intel
 )
 pacman_system=(
-	avahi bat bc bluez cpupower dash dhcpcd dunst efibootmgr exa
+	avahi bat bc bluez brightnessctl cpupower dash dhcpcd dunst efibootmgr exa
 	exfatprogs f2fs-tools fd fish fwupd fzf gnome-keyring gptfdisk gnupg
 	gocryptfs intel-gpu-tools intel-undervolt iwd libnotify lz4 man-db nss-mdns
 	openbox openbsd-netcat parted pbzip2 picom pigz playerctl polybar
-	pulseaudio redshift ripgrep sxhkd tint2 tmux ttf-dejavu ttf-liberation
+	pulseaudio redshift ripgrep sxhkd thunar tint2 tmux ttf-dejavu ttf-liberation
 	unzip usleep x86_energy_perf_policy xclip xdg-user-dirs xdg-utils xdotool
 	xorg-server xorg-xinit xorg-xinput xorg-xprop xorg-xrandr xorg-xset
 	xorg-xsetroot zip zstd
@@ -194,9 +194,9 @@ pacman_development=(
 	python-pip unixodbc vulkan-icd-loader vulkan-mesa-layers
 )
 pacman_apps=(
-	alacritty arandr chromium drawing feh firefox imv libreoffice-still maim mpv
-	obs-studio pavucontrol peek remmina rofi signal-desktop slock sxiv
-	virt-viewer
+	alacritty arandr chromium code drawing feh firefox gimp inkscape imv
+	libreoffice-still maim mpv obs-studio pavucontrol peek remmina rofi
+	signal-desktop slock sxiv virt-viewer
 )
 pacman_fonts=(
 	noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-extra terminus-font

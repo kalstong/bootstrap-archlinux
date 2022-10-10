@@ -101,6 +101,7 @@ cp ../shared/userfiles/environment "${XDG_CONFIG_HOME}/openbox/"
 cp ../shared/userfiles/menu.xml "${XDG_CONFIG_HOME}/openbox/"
 cp ../shared/userfiles/rc.xml "${XDG_CONFIG_HOME}/openbox/"
 cp -R ../shared/userfiles/wallpapers/* "${WALLPAPERS}"
+cp ../shared/userfiles/screenshot.sh "${HOME}/.local/bin/"
 
 mkdir -p "${CACHE}/firejail.postman"
 sed -i -r "s|<dir>|${CACHE}/firejail.postman|" \
@@ -132,6 +133,7 @@ chmod u+x "${HOME}/.local/bin/lfpreview"
 chmod u+x "${HOME}/.local/bin/mv-p"
 chmod u+x "${HOME}/.local/bin/tmux-gitstat.sh"
 chmod u+x "${XDG_CONFIG_HOME}/display_layout.sh"
+chmod u+x "${HOME}/.local/bin/screenshot.sh"
 
 cp ../shared/userfiles/alacritty.yml /tmp
 sed -i -r "s|<monospace-font-size>|${_monospace_font_size}|" /tmp/alacritty.yml
