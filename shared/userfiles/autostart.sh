@@ -80,4 +80,4 @@ wm_start_daemons () {
 
 script_path="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)" &
 
-wm_config_monitors && wm_start_daemons &
+wm_kill_daemons && wm_config_monitors && wm_start_daemons &
