@@ -40,5 +40,5 @@ window:
   padding:
     x: 5
     y: 5
-  gtk_theme_variant: light
+  window.decorations_theme_variant: dark
   opacity: 1.0

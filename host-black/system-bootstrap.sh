@@ -195,7 +195,7 @@ pacman_development=(
 )
 pacman_apps=(
 	alacritty arandr chromium code drawing feh firefox gimp inkscape imv
-	libreoffice-still maim mpv obs-studio pavucontrol peek remmina rofi
+	libreoffice-still maim meld mpv obs-studio pavucontrol peek remmina rofi
 	signal-desktop slock sxiv virt-viewer
 )
 pacman_fonts=(
