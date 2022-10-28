@@ -39,6 +39,16 @@ printinfo "| Installing and configuring sd-boot |"
 printinfo "+ ---------------------------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
+boot_entries="$(efibootmgr | grep -oP '^Boot\K(\d+|[A-Z]|[a-z])+\*? ')"
+for item in $boot_entries
+do
+	if [ "${item: -1}" = "*" ]; then
+		efibootmgr --bootnum ${item::-1} --delete-bootnum &> /dev/null
+	else
+		efibootmgr --bootnum $item --delete-bootnum &> /dev/null
+	fi
+done
+
 bootctl remove
 bootctl install
 
@@ -46,6 +56,16 @@ cp sysfiles/sd-boot-loader.conf /boot/loader/loader.conf
 cp sysfiles/sd-boot-entry.conf /boot/loader/entries/entry.conf
 chmod u=rw,g=r,o= /boot/loader/loader.conf
 chmod u=rw,g=r,o= /boot/loader/entries/entry.conf
+
+# @NOTE(fm) For reference in case I want to go back to GRUB.
+# grub-install \
+# 	--target=x86_64-efi \
+# 	--efi-directory="/boot/efi" \
+# 	--bootloader-id="Arch Linux" \
+# 	--recheck && sync
+
+# cp sysfiles/grub.cfg /boot/grub/grub.cfg
+# chmod u=rw,g=r,o=r /boot/grub/grub.cfg
 
 printinfo "\n"
 printinfo "+ --------------------------------- +"
@@ -114,8 +134,8 @@ systemctl enable bluetooth.service
 systemctl enable dhcpcd.service
 systemctl enable docker.socket
 systemctl enable fstrim.timer
-#systemctl enable intel-undervolt.service
-zsystemctl enable iwd.service
+systemctl enable intel-undervolt.service
+systemctl enable iwd.service
 systemctl enable sshd.service
 systemctl enable systemd-oomd.socket
 
@@ -129,11 +149,15 @@ sed -i "s/hosts:.*/hosts: $_mdns_config/" /etc/nsswitch.conf
 mkdir -p /etc/bluetooth
 cp ../shared/sysfiles/bluetooth.conf /etc/bluetooth/main.conf
 
+sed -i -r 's/^option host_name/#option host_name/' /etc/dhcpcd.conf
+
 _dns_ipv4="1.1.1.1 1.0.0.1"
 _dns_ipv6="2606:4700:4700::1111 2606:4700:4700::1001"
 _dns="static domain_name_servers=${_dns_ipv4} ${_dns_ipv6}"
-{ echo "";
-  echo "interface enp1s0f1";
+{ echo "hostname $bt_host";
+  echo "noarp";
+  echo "";
+  echo "interface eno1";
   echo "${_dns}";
   echo "";
   echo "interface wlan0";
@@ -163,7 +187,7 @@ num_logical_cores="$(grep "^processor" /proc/cpuinfo | wc -l)"
 num_physical_cores="$(grep -m 1 -oP "cpu cores\s*:\s*\K\d+" /proc/cpuinfo)"
 sed -i -r "s/<max_make_jobs>/-j$num_physical_cores/" /etc/makepkg.conf
 
-# echo "options snd_hda_intel power_save=0" > /etc/modprobe.d/snd_hda_intel.conf
+echo "options snd_hda_intel power_save=0" > /etc/modprobe.d/snd_hda_intel.conf
 
 cp /etc/sudoers /etc/sudoers.bak
 cp ../shared/sysfiles/sudoers /etc/sudoers
