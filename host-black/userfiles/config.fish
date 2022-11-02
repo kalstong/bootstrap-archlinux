@@ -1,5 +1,5 @@
 set --export EDITOR "nvim"
-set --export HOST "vidar"
+set --export HOST "black"
 set --export MOUNT "/mnt/media"
 set --export AUR "$HOME/aur"
 set --export CACHE "$HOME/.cache"

@@ -1,5 +1,5 @@
 export EDITOR="nvim"
-export HOST="vidar"
+export HOST="black"
 export MOUNT="/mnt/media"
 export AUR="$HOME/aur"
 export CACHE="$HOME/.cache"
