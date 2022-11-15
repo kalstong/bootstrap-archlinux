@@ -47,7 +47,7 @@ printinfo "+ ------------ +"
 printinfo "| Erasing disk |"
 printinfo "+ ------------ +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
-_disk_key="/dev/disk/by-id/usb-Kingston_DataTraveler_102_001CC0EC3466FD20671EAD4D-0:0"
+_disk_key="/dev/disk/by-id/usb-Generic_Flash_Disk_564A6D85-0:0"
 _disk_system="/dev/nvme0n1"
 
 nvme format "$_disk_system" --force --namespace-id 1 --ses 0
