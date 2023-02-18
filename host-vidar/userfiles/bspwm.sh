@@ -34,7 +34,7 @@ wm_config_monitors () {
 	fi
 
 	bspc config automatic_scheme alternate
-	bspc config border_width 0
+	bspc config border_width 1
 	bspc config focus_follows_pointer false
 	bspc config pointer_follows_monitor true
 	bspc config remove_unplugged_monitors true
