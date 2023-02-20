@@ -27,10 +27,10 @@ wm_config_monitors () {
 		bspc monitor eDP1 --reset-desktops 1 2 3 4 5 6 7 8 9 10
 	elif [ "$layout" = "office" ]; then
 		bspc monitor eDP --reset-desktops 1 2 3 4 5 6 7 8 9 10
-		bspc monitor DisplayPort-0 --reset-desktops A B C D E F G H I J
+		bspc monitor HDMI2 --reset-desktops A B C D E F G H I J
 	elif [ "$layout" = "home" ]; then
 		bspc monitor eDP --reset-desktops 1 2 3 4 5 6 7 8 9 10
-		bspc monitor DisplayPort-0 --reset-desktops A B C D E F G H I J
+		bspc monitor HDMI2 --reset-desktops A B C D E F G H I J
 	fi
 
 	bspc config automatic_scheme alternate
