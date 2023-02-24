@@ -174,7 +174,7 @@ pacman_core=(
 	sshfs vulkan-intel xf86-video-intel
 )
 pacman_system=(
-	avahi bat bc bluez bspwm cpupower dash dhcpcd dunst efibootmgr exa
+	avahi bat bc bluez brightnessctl bspwm cpupower dash dhcpcd dunst efibootmgr exa
 	exfatprogs f2fs-tools fd fish fwupd fzf gnome-keyring gptfdisk gnupg
 	gocryptfs intel-gpu-tools intel-undervolt iwd libnotify lz4 man-db nss-mdns
 	openbsd-netcat parted pbzip2 picom pigz playerctl polybar pulseaudio
