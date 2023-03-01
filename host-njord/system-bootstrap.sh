@@ -51,7 +51,7 @@ printinfo "+ ------------ +"
 _disk_key="/dev/disk/by-id/usb-Generic_Flash_Disk_564A6D85-0:0"
 _disk_system="/dev/sda"
 
-nvme format "$_disk_system" --force --namespace-id 1 --ses 0
+sgdisk --zap-all "$_disk_system"
 sync
 
 partprobe "$_disk_system"
@@ -92,15 +92,15 @@ sleep 1
 printinfo "\n\n  -> Requesting fallback decryption password ..."
 askpwd > /tmp/pwd.keyfile
 
-mkfs.fat -F32 "${_disk_system}p1"
+mkfs.fat -F32 "${_disk_system}1"
 
 printinfo "\n  -> Encrypting root partition ..."
 cryptsetup --verbose \
-	--batch-mode luksFormat "${_disk_system}p2" /tmp/main.keyfile \
+	--batch-mode luksFormat "${_disk_system}2" /tmp/main.keyfile \
 	--type luks2 --sector-size 4096
 
 printinfo "\n  -> Setting fallback decryption password ..."
-cryptsetup luksAddKey "${_disk_system}p2" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
+cryptsetup luksAddKey "${_disk_system}2" --key-file /tmp/main.keyfile < /tmp/pwd.keyfile
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/pwd.keyfile
 
 printinfo "\n  -> Opening the encrypted root partition ..."
@@ -108,7 +108,7 @@ cryptsetup --key-file /tmp/main.keyfile \
 	--allow-discards \
 	--perf-no_read_workqueue \
 	--perf-no_write_workqueue \
-	open "${_disk_system}p2" root
+	open "${_disk_system}2" root
 shred --iterations=1 --random-source=/dev/urandom -u --zero /tmp/main.keyfile
 
 printinfo "\n  -> Formatting the root partition ..."
@@ -126,7 +126,7 @@ root_mount_opts=$(grep "/dev/mapper/root" sysfiles/fstab | awk '{print $4}')
 mount -o "$root_mount_opts" /dev/mapper/root "$bt_rootdir" && sync
 
 mkdir -p "$bt_rootdir/boot"
-mount -o "$boot_mount_opts" "${_disk_system}p1" "$bt_rootdir/boot"
+mount -o "$boot_mount_opts" "${_disk_system}1" "$bt_rootdir/boot"
 
 printinfo "\n"
 printinfo "+ --------------------- +"
