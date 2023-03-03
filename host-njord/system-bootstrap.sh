@@ -63,14 +63,17 @@ printinfo "| Partitioning disk |"
 printinfo "+ ----------------- +"
 [ "$bt_stepping" ] && { yesno "Continue?" || exit 1; }
 
-parted "$_disk_system" mklabel gpt && sync
+parted "$_disk_system" mklabel mbr && sync
 
 _starts_at=1
 _ends_at=$((${_starts_at} + 512)) # 512MiB boot partition
-parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" set 1 esp on && sync
+
+parted "$_disk_system" mkpart primary "${_starts_at}MiB" "${_ends_at}MiB" set 1 boot on && sync
 
 _starts_at=${_ends_at} # Remaining space as the root partition
 parted "$_disk_system" mkpart primary "${_starts_at}MiB" "100%" && sync
+
+
 
 printinfo "\n"
 printinfo "+ ------------------------------------------------- +"
@@ -174,7 +177,7 @@ pacman_core=(
 	sshfs vulkan-intel xf86-video-intel
 )
 pacman_system=(
-	avahi bat bc bluez brightnessctl bspwm cpupower dash dhcpcd dunst efibootmgr exa
+	avahi bat bc bluez brightnessctl bspwm cpupower dash dhcpcd dunst exa
 	exfatprogs f2fs-tools fd fish fwupd fzf gnome-keyring gptfdisk gnupg
 	gocryptfs intel-gpu-tools intel-undervolt iwd libnotify lz4 man-db nss-mdns
 	openbsd-netcat parted pbzip2 picom pigz playerctl polybar pulseaudio
